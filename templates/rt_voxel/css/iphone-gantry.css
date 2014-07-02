@@ -1,0 +1,47 @@
+/**
+* @version   $Id: iphone-gantry.css 595 2012-05-01 23:58:28Z kevin $
+* @author    RocketTheme http://www.rockettheme.com
+* @copyright Copyright (C) 2007 - ${copyright_year} RocketTheme, LLC
+* @license   http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+*/
+
+/* Menu */
+body #rt-menu .rt-container {background: transparent;height:auto;overflow:hidden;}
+.rt-container {background: none !important;}
+.rt-menu-container {overflow:hidden;}
+#rt-menu-root {z-index:50;position:relative;}
+#rt-menu ul.menu ul {display: none;position:absolute;z-index:5;top: 0; left: 0;background:white;}
+#rt-menu , #rt-menu .rt-container {position:relative;z-index:10000;}
+body.rt-normal #rt-menu .rt-container, body.rt-flipped #rt-menu .rt-container {width: 320px;}
+body.rt-right #rt-menu .rt-container, body.rt-left #rt-menu .rt-container {width: 480px;}
+#rt-menu ul.menu {height:100%;}
+#rt-menu ul.menu li a:hover, #rt-menu ul.menu li.active a:hover {background: transparent !important;}
+body #rt-menu {background: transparent !important;height: auto;}
+body #rt-menu ul.menu li.active, body #rt-menu ul.menu li:hover {background: #333;}
+body #rt-menu ul.menu li a {font-size: 0.9em;line-height:3em !important;padding: 0 10px;color: #fff;text-shadow: -1px 1px 1px rgba(0,0,0,0.2);}
+body #rt-menu ul.menu li.active a, body #rt-menu ul.menu li:hover a {color: #fff;}
+#rt-left-menu, #rt-right-menu {background-image: none;background-repeat: no-repeat; width: 26px; height: 27px;position: absolute;z-index:2;}
+#rt-left-menu {background-position: bottom left;left: 0;}
+#rt-right-menu {background-position: top left;right:0;}
+#rt-menu ul.menu li {list-style: none;float: left;padding: 0;background: none;}
+body #rt-navigation {margin: 0 -20px;}
+body #rt-navigation2, body #rt-navigation3 {border-radius: 0;}
+
+/* Reminder:  320 / 480 */
+body {word-wrap: break-word;}
+body h1 {border-bottom: 0;}
+a {-webkit-transition: color 0.2 ease-out;}
+body.rt-normal #form-login .inputbox, body.rt-flipped #form-login .inputbox {width: 100px !important;}
+#form-login fieldset p {margin:0;}
+body .rt-demo-grid-2, body .rt-demo-grid-3, body .rt-demo-grid-4, body .rt-demo-grid-5, body .rt-demo-grid-6, body .rt-demo-grid-7, body .rt-demo-grid-8, body .rt-demo-grid-9 {float: none;margin-left: 0;margin-right: 0;}
+body #rocket {margin: 0 auto;}
+
+/* Joomla */
+.component-content .edit img, .component-content .actions, .component-content .rokgallery-wrapper {display: none;}
+
+/* Tabs */
+body .sprocket-tabs-nav > li > .sprocket-tabs-inner {font-size: 0.9em;}
+body .sprocket-tabs-nav li .sprocket-tabs-inner {padding: 10px 5px;line-height: 1em;width: 80px;}
+body .sprocket-tabs-nav li.active .sprocket-tabs-inner {padding: 14px 5px;}
+body .layout-top .sprocket-tabs-nav {padding: 26px 8px 0 8px;}
+body .sprocket-tabs {position: relative;overflow: hidden;margin: -5px;}

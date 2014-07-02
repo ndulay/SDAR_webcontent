@@ -1,0 +1,74 @@
+<CENTER>
+
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="bigTextMarine align="left" nowrap>&nbsp;Office Information</TD>
+	</TR>
+</TABLE>
+
+
+<TABLE border="0" cellspacing="0" cellpadding="5" width="100%">
+	<TR CLASS="bgbar">
+		<TD CLASS="nnText"><!$MG_Office_Bio></TD>
+	</TR>
+</TABLE>
+
+
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD nowrap align="right"><A CLASS="bTextBlue"  href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSOfficeMembers&ARGUMENTS=-N<!$MG_Session_Number>,-N<!$MG_Office_Number>">Office Agents</A></TD>
+	</TR>
+</TABLE>
+
+
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD width="15%" nowrap>&nbsp;</TD>
+		<TD CLASS="bigText" nowrap><!$MG_Office_Name><BR>
+			<FONT size="2"><!$MG_Street_Address><BR>
+			<!$MG_Street_City>, <!$MG_Street_State> <!$MG_Street_Zip>
+			</FONT>
+		</TD>
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" nowrap width="15%">Office:&nbsp;</TD>
+		<TD CLASS="nnText" nowrap><!$MG_Office_Phone></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" nowrap width="15%">Fax:&nbsp;</TD>
+		<TD CLASS="nnText" nowrap><!$MG_Office_Fax></TD>
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+		<TD>&nbsp;</TD>
+	</TR>
+	<!$MGIF_REALTOR>
+		<TR>
+			<TD CLASS="bText" nowrap width="15%">Office ID:&nbsp;</TD>
+			<TD CLASS="nnText" nowrap><!$MG_Office_MLS_ID></TD>
+		</TR>
+	<!$MGENDIF>
+	<!$MGIF_SHOW_EMAIL>
+	<TR>
+		<TD CLASS="bText" nowrap width="15%">E-Mail:&nbsp;</TD>
+		<TD CLASS="nnText" nowrap><A href="mailto:<!$MG_Office_Email>"><!$MG_Office_Email></A></TD>
+	</TR>
+	<!$MGENDIF>
+	<!$MGIF_HAS_WEB_PAGE>
+	<TR>
+		<TD CLASS="bText" nowrap width="15%">Web Page:&nbsp;</TD>
+		<TD CLASS="nnText" nowrap><A href="<!$MGIF_HTTP_Not_Found>http://<!$MGENDIF><!$MG_Office_Website>" target="NEW"><!$MG_Office_Website></A></TD>
+	</TR>
+	<!$MGENDIF>
+</TABLE>
+
+
+<BR>
+
+
+</CENTER>

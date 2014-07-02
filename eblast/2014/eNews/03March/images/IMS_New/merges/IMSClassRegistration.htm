@@ -1,0 +1,625 @@
+<SCRIPT LANGUAGE="JavaScript">
+// global variable
+var creditCardErrorMsg = ''
+
+function LTrim(str) 
+	{
+	for (var i=0; str.charAt(i)==" "; i++);
+	return str.substring(i,str.length);
+	}
+function CheckAddress()
+	{
+	var Check_if_Blank = (document.Education.Street_Addr.value);
+	if( Check_if_Blank == '')
+		{
+		alert ("Address is required.");
+		document.Education.Street_Addr.focus();
+		}
+	}
+function CheckCity()
+	{
+	var Check_if_Blank = (document.Education.City.value);
+	if( Check_if_Blank == '')
+		{
+		alert ("City is required.");
+		document.Education.City.focus();
+		}
+	}
+function CheckState()
+	{
+	var Check_if_Blank = (document.Education.State.value);
+	if( Check_if_Blank == '')
+		{
+		alert ("State is required.");
+		document.Education.State.focus();
+		}
+	}
+function CheckZip()
+	{
+	var Zipcode = LTrim(document.Education.Zip_Code.value);
+	if (Zipcode = '' || Zipcode.length < 5)
+		{
+		alert('Invalid Zip Code');
+		document.Education.Zip_Code.focus();
+		}
+	}
+function CheckEmail()
+	{
+	var Check_if_Blank = (document.Education.Email_Address.value);
+	var str = (document.Education.Email_Address.value);
+	if( Check_if_Blank == '')
+		{
+		alert ("E-Mail Address is required.");
+		document.Education.Email_Address.focus();
+		}
+	else
+		{
+		  var reg1 = /(@.*@)|(\.\.)|(@\.)|(\.@)|(^\.)/;														 // not valid
+		  var reg2 = /^.+\@(\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,5}|[0-9]{1,5})(\]?)$/;	 // valid
+		  if (!reg1.test(str) && reg2.test(str))																 // if reg1 false and reg2 true (valid)
+			{ 
+			return true;
+			 }
+			else
+			{
+			alert('Invalid E-Mail Address');
+			document.Education.Email_Address.focus();
+			return false;
+			}
+		}
+	}
+
+function Valid_Form(Voption)
+{
+<!$MGIF_CC_DEPOSIT_REQUIRED>
+		if(document.Education.Card_Number)
+		{
+			if(creditCardInvalid())
+				{
+					alert(creditCardErrorMsg);
+					document.Education.Expiration_Month_ComboBox.focus();
+				}
+							
+			<!$MGIF_ACK_REQUIRED>
+				if(document.Education.Check_Confirmation.checked == false)
+				{
+					alert('Please read the information and acknowledge by\nclicking the check box near the bottom of the form.');
+					document.Education.Check_Confirmation.focus();
+				}
+				if(!creditCardInvalid() && document.Education.Check_Confirmation.checked == true)				
+				{
+					if(CheckEmail() == true)
+					{
+						document.Education.Option.value = Voption;
+						document.Education.submit();
+					}
+					else
+					{
+						return false;
+					}
+				}
+			<!$MGELSE>    <!-- CC deposit required, but ACK not required -->
+				if(!creditCardInvalid())
+				{
+					if(CheckEmail() == true)
+					{
+						document.Education.Option.value = Voption;
+						document.Education.submit();
+					}
+					else
+					{
+						return false;
+					}
+				}
+			<!$MGENDIF>
+		}
+<!$MGELSE>    <!--  CC deposit NOT required -->
+	<!$MGIF_ACK_REQUIRED>
+				if(document.Education.Check_Confirmation.checked == false)
+				{
+				alert('Please read the information and acknowledge by\nclicking the check box near the bottom of the form.');
+				}
+				if(document.Education.Check_Confirmation.checked == true)
+				{
+					if(CheckEmail() == true)
+					{
+						document.Education.Option.value = Voption;
+						document.Education.submit();
+					}
+					else
+					{
+						return false;
+					}
+				}
+	<!$MGELSE>    <!-- CC deposit  NOT required and ACK not required -->
+				if(CheckEmail() == true)
+				{
+					document.Education.Option.value = Voption;
+					document.Education.submit();
+				}
+				else
+				{
+					return false;
+				}
+				
+	<!$MGENDIF>     <!--  CC deposit NOT required -->
+<!$MGENDIF>
+}
+
+function creditCardInvalid()
+{
+	var bError = false;
+	creditCardErrorMsg = '';
+
+	if(validateCard(document.Education.Card_Number.value,document.Education.Card_Type_ComboBox.value,1) == false){
+		creditCardErrorMsg += "Please enter a valid card number.\n";
+			bError = true;
+			}
+	if(expired(document.Education.Expiration_Month_ComboBox.value,document.Education.Expiration_Year_ComboBox.value,1) == false){
+	creditCardErrorMsg += "Sorry! This card is expired.\n";
+		bError = true;
+	}
+	if(CardName(1) == false){
+	creditCardErrorMsg += "Name on credit card cannot be blank.\n";
+		bError = true;
+	}
+	if(CheckCardAddress2(1) == false){
+	creditCardErrorMsg += "Address cannot be blank.\n";
+		bError = true;
+	}
+	if(CheckCardCity(1) == false){
+	creditCardErrorMsg += "City cannot be blank.\n";
+		bError = true;
+	}
+	if(CheckCardState(1) == false){
+	creditCardErrorMsg += "State cannot be blank.\n";
+		bError = true;
+	}
+	if(CheckCardZip(1) == false){
+	creditCardErrorMsg += "Zip Code cannot be blank.\n";
+		bError = true;
+	}
+	
+		return bError;
+}
+
+//-->
+</SCRIPT>
+
+<FORM NAME="Education" action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="IMSClassRegistration">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-A<!$MG_Class_ID>,-N1">
+	<INPUT type="hidden" name="Option" value="0">
+	<INPUT type="hidden" name="Education_Card_Price" value="<!$MG_Education_Card_Price>">
+	<INPUT type="hidden" name="GoBack_PRG" value="<!$MG_GoBack_PRG>">
+	<INPUT type="hidden" name="GoBack_ARG" value="<!$MG_GoBack_ARG>">
+	<!-- Allow All Bill = N then Empty before Adding to Cart -->
+	<INPUT type="hidden" name="Empty_Cart_Before_Add" value="<!$MGIF_DIFFERENT_BILL_GROUP>YES<!$MGENDIF>">
+
+<TABLE border="0" width="85%" cellpadding="0" cellspacing="2">
+	<TR>
+		<TD CLASS="bigTextMarine" align="left" nowrap>&nbsp;<!$MG_Course_Name><BR>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" nowrap>&nbsp;Class ID</TD>
+		<TD CLASS="nnText" nowrap><!$MG_Class_ID></TD>
+		<TD>&nbsp;</TD>
+		<TD CLASS="bText" nowrap>Date</TD>
+		<TD CLASS="nnText" nowrap><!$MG_Class_Date></TD>
+		<TD>&nbsp;</TD>
+		<TD CLASS="bText" nowrap>Time</TD>
+		<TD CLASS="nnText" nowrap><!$MG_Class_Time></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" nowrap>&nbsp;Price</TD>
+		<TD CLASS="nnTextBlue" nowrap><!$MG_Class_Price></TD>
+		<TD>&nbsp;</TD>
+		<TD CLASS="bText" nowrap>Location</TD>
+		<TD CLASS="nnText" colspan="2" nowrap><!$MG_Location></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" nowrap>&nbsp;Class Status/Spaces Available</TD>
+		<TD CLASS="bText" nowrap><FONT color="<!$MG_Class_Status_Color>"><!$MG_Class_Status> / <!$MG_Space_Available></FONT></TD>
+		<TD>&nbsp;</TD>
+		<TD>&nbsp;</TD>
+		<TD CLASS="bText" colspan="4" align="right" nowrap><!$MG_Savings_Message></TD>
+	</TR>
+</TABLE>
+<!$MGIF_HAVE_EDUCATION_CARD>
+	<TABLE border="0" width="75%" cellpadding="2" cellspacing="0">
+		<TR>
+			<TD CLASS="bText" align="left" nowrap>&nbsp;<!$MG_Educ_Card_Desc>&nbsp;Credits Required</TD>
+			<TD CLASS="nnTextBlue" align="left" nowrap><!$MG_Education_Card_Price></TD>
+			<TD CLASS="bText" align="left" nowrap>&nbsp;&nbsp;<!$MG_Educ_Card_Desc>&nbsp;Credits Available</TD>
+			<TD CLASS="nnTextBlue" align="left" nowrap><FONT color="<!$MG_Education_Card_Color>"><!$MG_Education_Card_Balance></FONT><!$MGIF_HAVE_CREDITS_IN_CART>&nbsp;&nbsp;(<!$MG_Education_Credits_In_Cart> used in Cart)<!$MGENDIF></TD>
+		</TR>
+<!$MGENDIF>
+</TABLE>
+<!$MGIF_CLASS_OPEN>    <!-- added for use by outside link directly to registration - only  show if class is open -->
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="2">
+	<TR CLASS="bgbar" >
+		<TD CLASS="nnText" nowrap>&nbsp;Verify or change address for this registration only</TD>
+	</TR>
+</TABLE>
+<BR>
+<INPUT type="Hidden" name="Add_Info_Name" value="<!$MG_Member_Name>">
+<INPUT type="Hidden" name="Add_Info_Office" value="<!$MG_Office_Name>">
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="bText" align="left" nowrap valign="top">Member Name</TD>
+		<TD CLASS="nnText" align="left" nowrap valign="top"><!$MG_Member_Name></TD>
+		<TD CLASS="bText" align="left" nowrap valign="top">Member #</TD>
+		<TD CLASS="nnText" align="left" nowrap valign="top"><!$MG_Member_Number></TD>
+		<TD CLASS="bText" align="left" nowrap valign="top">License State/Number</TD>
+		<TD CLASS="nnText" nowrap valign="top"><!$MG_Member_License_State>&nbsp;<!$MG_Member_License_Number>
+			<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+				<!$MGREPEAT>
+				<TR>
+					<TD CLASS="nnText" nowrap valign="top"><!$MG_Addl_License_State>&nbsp;<!$MG_Addl_License_Number></TD>
+				</TR>
+				<!$MGENDREPEAT>
+			</TABLE>
+		</TD>		
+	<TR>
+		<TD CLASS="bText" width="20%" align="left" nowrap>&nbsp;Office Name</TD>
+		<TD CLASS="nnText" colspan="3" align="left" nowrap>&nbsp;<!$MG_Office_Name></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="20%" nowrap>&nbsp;Attn/Care of</TD>
+		<TD colspan="3" nowrap><INPUT CLASS="input" type="text" name="Attn_CO" size="31" maxlength="30" value="<!$MG_Attn_CO_Now>"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="20%" nowrap>&nbsp;Address</TD>
+		<TD colspan="3" nowrap><INPUT CLASS="input" type="text" name="Street_Addr" size="31" maxlength="30" onBlur="CheckAddress()"		 value="<!$MG_Street_Addr_Now>"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="20%" nowrap>&nbsp;City, State Zip</TD>
+		<TD nowrap><INPUT CLASS="input" type="text" name="City" size="23" maxlength="21" onBlur="CheckCity()"  value="<!$MG_City_Now>"></TD>
+		<TD align="right" nowrap><INPUT CLASS="input" type="text" name="State" size="2" maxlength="2" onBlur="CheckState()" value="<!$MG_State_Now>"></TD>
+		<TD nowrap>&nbsp;<INPUT CLASS="input" type="text" name="Zip_Code" size="5" maxlength="5" onBlur="CheckZip()" value="<!$MG_Zip_Code_Now>">-<INPUT CLASS="input" type="text" name="Zip_Plus_4" size="4" maxlength="4" value="<!$MG_Zip_Plus_4_Now>"></TD>
+	</TR>
+	<TR>
+		<TD colspan="4">&nbsp;</TD>
+	</TR>
+</TABLE>
+
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="2">
+	<TR CLASS="bgbar">
+		<TD CLASS="nnText" nowrap>&nbsp;Confirmation will be sent to the following e-mail address. You may change your e-mail address on file below, if desired.</TD>
+	</TR>
+</TABLE>
+
+<BR>
+<TABLE border="0" width="60%" cellpadding="0" cellspacing="2">
+	<TR>
+		<TD CLASS="bText" width="30%" nowrap>&nbsp;E-Mail Address</TD>
+		<TD nowrap>
+
+			<!$MGIF_MODIFY_EMAIL>
+				<INPUT CLASS="input" type="text" name="Email_Address" size="50" maxlength="80" value="<!$MG_Email_Address_Now>" onBlur="CheckEmail()">
+			<!$MGELSE>
+				<DIV CLASS="input">
+					<INPUT type="hidden" name="Email_Address" value="<!$MG_Email_Address_Now>" onBlur="CheckEmail()"><!$MG_Email_Address_Now>
+				</DIV>
+			<!$MGENDIF>
+		
+		<!--<INPUT CLASS="input" type="text" name="Email_Address" size="50" maxlength="80" onBlur="CheckEmail()" value="<!$MG_Email_Address_Now>">--></TD>
+	</TR>
+</TABLE>
+
+<BR>
+<!$MGIF_CC_DEPOSIT_REQUIRED>
+<SCRIPT LANGUAGE="JavaScript">
+function mod10( cardNumber ) { // LUHN Formula for validation of credit card numbers.
+	var ar = new Array( cardNumber.length );
+	var i = 0,sum = 0;
+   	for( i = 0; i < cardNumber.length; ++i ) 
+	{
+    	ar[i] = parseInt(cardNumber.charAt(i));
+    }
+    for( i = ar.length -2; i >= 0; i-=2 ) { // you have to start from the right, and work back.
+    		ar[i] *= 2;							 // every second digit starting with the right most (check digit)
+    		if( ar[i] > 9 ) ar[i]-=9;			 // will be doubled, and summed with the skipped digits.
+    	}										 // if the double digit is > 9, ADD those individual digits together 
+
+        	for( i = 0; i < ar.length; ++i ) {
+        		sum += ar[i];						 // if the sum is divisible by 10 mod10 succeeds
+        	}
+			return (((sum%10)==0)?true:false);	 	
+    }
+
+function expired( month, year, displayAlert ) {
+        	var now = new Date();							// this function is designed to be Y2K compliant.
+        	var expiresIn = new Date(year,month,0,0,0);		// create an expired on date object with valid thru expiration date
+        	expiresIn.setMonth(expiresIn.getMonth()+1);	    // adjust the month, to first day, hour, minute & second of expired month
+        	if( now.getTime() >= expiresIn.getTime() ) { 		// run the check digit algorithm
+				if(!displayAlert){alert("Sorry! This card is expired.")};
+				document.Education.Expiration_Month_ComboBox.focus();
+				return false;
+			};
+        	return true;									// then we get the miliseconds, and do a long integer comparison
+    }
+
+function validateCard(cardNumber,cardType,displayAlert) {
+	if( cardNumber.length == 0 ) {						//most of these checks are self explanatory
+		if(!displayAlert){alert("Please enter a valid card number.")};
+		document.Education.Card_Type_ComboBox.focus();
+		return false;				
+	}
+	for( var i = 0; i < cardNumber.length; ++i ) {		// make sure the number is all digits.. (by design)
+		var c = cardNumber.charAt(i);
+			if( c < '0' || c > '9' ) {
+				alert("Please enter a valid card number. Use only digits. Do not use spaces or hyphens.");
+				return false;
+			}
+		}
+	var length = cardNumber.length;			//perform card specific length and prefix tests
+
+	switch( cardType ) {
+		case 'A':
+			if( length != 15 ) {
+				alert("Please enter a valid American Express Card number.");
+				document.Education.Card_Type_ComboBox.focus();
+				return;
+			}
+			var prefix = parseInt( cardNumber.substring(0,2));
+			if( prefix != 34 && prefix != 37 ) {
+				alert("Please enter a valid American Express Card number.");
+				document.Education.Card_Type_ComboBox.focus();
+				return;
+				}
+			break;
+		case 'D':
+			if( length != 16 ) {
+				alert("Please enter a valid Discover Card number.");
+				document.Education.Card_Type_ComboBox.focus();
+				return;
+			}
+			var prefix = parseInt( cardNumber.substring(0,4));
+			if( prefix != 6011 ) {
+				alert("Please enter a valid Discover Card number.");
+				document.Education.Card_Type_ComboBox.focus();
+				return;
+			}
+			break;
+		case 'M':
+			if( length != 16 ) {
+				alert("Please enter a valid MasterCard number.");
+				document.Education.Card_Type_ComboBox.focus();
+				return;
+			}
+			var prefix = parseInt( cardNumber.substring(0,2));
+			if( prefix < 51 || prefix > 55) {
+				alert("Please enter a valid MasterCard Card number.");
+				document.Education.Card_Type_ComboBox.focus();
+				return;
+			}
+			break;
+		case 'V':
+			if( length != 16 && length != 13 ) {
+				alert("Please enter a valid Visa Card number.");
+				document.Education.Card_Type_ComboBox.focus();
+				return;
+			}
+			var prefix = parseInt( cardNumber.substring(0,1));
+			if( prefix != 4 ) {
+				alert("Please enter a valid Visa Card number.");
+				document.Education.Card_Type_ComboBox.focus();
+				return;
+			}
+			break;
+		}
+		if( !mod10( cardNumber ) ) { 		// run the check digit algorithm
+			alert("Sorry! this is not a valid credit card number.");
+			document.Education.Card_Number.focus();
+			return false;
+		}
+			
+		return true; // at this point card has not been proven to be invalid
+}
+
+function LTrim(str) 
+	{
+	for (var i=0; str.charAt(i)==" "; i++);
+	return str.substring(i,str.length);
+	}
+
+// this function not called at this time --- waiting for Discover to require CID field
+function checkCID(cardType,Card_CID)
+		{
+		if(cardType == 'D' && Card_CID < 001)
+			{
+				alert ("CID required for Discover Card.");
+				document.Education.Card_CID.focus();
+				return false;
+			}
+		return true;
+		}
+
+function CardName(displayAlert)
+		{
+		var Check_if_Blank = LTrim(document.Education.Name_on_Card.value);
+		if( Check_if_Blank == '')
+			{
+			if(!displayAlert){alert ("Name on credit card cannot be blank.")};
+			document.Education.Name_on_Card.focus();
+			}
+		}
+
+function CheckCardAddress2(displayAlert)
+		{
+		var Check_if_Blank = LTrim(document.Education.Billing_Address_2.value);
+		if( Check_if_Blank == '')
+			{
+			if(!displayAlert){alert ("Address Card cannot be blank.")};
+			document.Education.Billing_Address_2.focus();
+			}
+		}
+
+function CheckCardCity(displayAlert)
+		{
+		var Check_if_Blank = LTrim(document.Education.Card_City.value);
+		if( Check_if_Blank == '')
+			{
+			if(!displayAlert){alert ("City Card cannot be blank.")};
+			document.Education.Card_City.focus();
+			}
+		}	
+
+function CheckCardState(displayAlert)
+		{
+		var Check_if_Blank = LTrim(document.Education.Card_State.value);
+		if( Check_if_Blank == '')
+			{
+			if(!displayAlert){alert ("State Card cannot be blank.")};
+			document.Education.Card_State.focus();
+			}
+		}
+
+function CheckCardZip(displayAlert)
+		{
+		var Zipcode = LTrim(document.Education.Card_Zip_Code.value);
+		if (Zipcode == '')
+			{
+			if(!displayAlert){alert("Zip Code cannot be blank")};
+			document.Education.Card_Zip_Code.focus();
+			}
+		if (Zipcode != '' && Zipcode.length < 5 && Zipcode !='N')
+			{
+			if(!displayAlert){alert("Invalid Card Zip Code")};
+			document.Education.Card_Zip_Code.focus();
+			}
+		}
+//-->
+</SCRIPT>
+
+	<TABLE border="0" width="100%" cellpadding="0" cellspacing="2">
+		<TR CLASS="bgbar">
+			<TD CLASS="nnText" nowrap>&nbsp;Enter credit card information below</TD>
+		</TR>
+	</TABLE>
+
+	<BR>
+	<INPUT type="hidden" name="Card_Number_Required" value="Y">
+	<INPUT type="hidden" name="Existing_Card_Number" value="<!$MG_Card_Number>">
+	<INPUT type="hidden" name="Existing_Card_ID" value="<!$MG_Card_ID>">
+	<TABLE border="0" width="60%" cellpadding="0" cellspacing="2">
+		<TR>
+			<TD CLASS="bText" nowrap width="30%">&nbsp;Credit Card Type</TD>
+			<TD nowrap  width="70%">
+				<SELECT name="Card_Type_ComboBox" size="1">
+					<!$MGREPEAT>
+						<OPTION CLASS="input" value="<!$MG_Card_Type>" <!$MG_Card_Type_Selected>><!$MG_Card_Description></OPTION>
+					<!$MGENDREPEAT>
+				</SELECT>
+			</TD>
+		</TR>
+		<TR>
+			<TD CLASS="bText" nowrap>&nbsp;Credit Card Number</TD>
+			<TD nowrap><INPUT CLASS="input" type="text" name="Card_Number" size="19" maxlength="19" value="<!$MG_Card_Number>"onBlur="validateCard(document.Education.Card_Number.value,document.Education.Card_Type_ComboBox.value)"></TD>
+			<TD CLASS="bText" align="left" nowrap>Card Security ID&nbsp;&nbsp;</TD>
+			<TD align="left" nowrap><INPUT CLASS="input" type="text" name="Card_CID" size="3" maxlength="4" value="<!$MG_Card_CID>">&nbsp;&nbsp;<A CLASS="sTextBlue" href="javascript://#LookUp" onclick=" var picWindow = window.open('<!$MG_ImageAlias>CID.jpg','newWin','menubar=no,toolbar=no,resizable=yes,directories=no,scrollbars=no,status=no,height=360,width=550,left=10,top=80');">Card Security ID help</A></TD>
+			<!-- add this after input value of CID to validate that CID not blank for Discover card -->
+			<!-- onBlur="checkCID(document.Education.Card_Type_ComboBox.value,document.Education.Card_CID.value)" -->
+		</TR>
+		<TR>
+			<TD CLASS="bText" nowrap>&nbsp;Expiration Date</TD>
+			<TD valign="middle" nowrap><SELECT name="Expiration_Month_ComboBox" size="1">
+				<!$MGREPEAT>
+					<OPTION CLASS="input" value="<!$MG_Expiration_Mo>" <!$MG_Exp_Mo_Selected>><!$MG_Expiration_Mo></OPTION>
+				<!$MGENDREPEAT>
+				</SELECT>&nbsp;<B>/</B>&nbsp;<SELECT name="Expiration_Year_ComboBox" size="1" onChange="expired(document.Education.Expiration_Month_ComboBox.value,document.Education.Expiration_Year_ComboBox.value)">
+				<!$MGREPEAT>
+					<OPTION CLASS="input" value="<!$MG_Expiration_Yr>" <!$MG_Exp_Year_Selected>><!$MG_Expiration_Yr></OPTION>
+				<!$MGENDREPEAT>
+				</SELECT>
+			</TD>
+			<TR>
+				<TD CLASS="bText" nowrap>&nbsp;Name on Credit Card</TD>
+				<TD  nowrap><INPUT CLASS="input" type="text" name="Name_on_Card" size="31" maxlength="30" value="<!$MG_Name_On_Card>" onBlur="CardName()"></TD>
+			</TR>
+			<TR>
+				<TD CLASS="bText" nowrap>&nbsp;Attn/Care of</TD>
+				<TD nowrap><INPUT CLASS="input" type="text" name="Billing_Address_1" size="31" maxlength="30" value="<!$MG_Billing_Address_1>"></TD>
+			</TR>
+			<TR>
+				<TD CLASS="bText" nowrap>&nbsp;Address</TD>
+				<TD nowrap><INPUT CLASS="input" type="text" name="Billing_Address_2" size="31" maxlength="30" value="<!$MG_Billing_Address_2>" onBlur="CheckCardAddress2()"></TD>
+			</TR>
+			<TR>
+				<TD CLASS="bText" nowrap>&nbsp;City, State ZIP</TD>
+				<TD nowrap>
+					<INPUT CLASS="input" type="text" name="Card_City" size="23" maxlength="21" value="<!$MG_City>" onBlur="CheckCardCity()">&nbsp;&nbsp;
+					<INPUT CLASS="input" type="text" name="Card_State" size="2" maxlength="2" value="<!$MG_State>" onBlur="CheckCardState()">&nbsp;
+					<INPUT CLASS="input" type="text" name="Card_Zip_Code" size="5" maxlength="5" value="<!$MG_Zip>" onBlur="CheckCardZip()">-<INPUT CLASS="input" type="text" name="Card_Zip_Plus_4" size="4" maxlength="4" value="<!$MG_Zip_Plus4>">
+				</TD>
+			</TR>
+		</TR>
+	</TABLE>
+<!$MGENDIF>   <!--  End IF CC deposit is required -->
+
+<!-- This also includes condition for NOT_ON_INVOICE -->
+<!$MGIF_DOC_EXIST>
+	<BR>
+	<!$MGINCLUDE><!$MG_Web_Doc_Path><!$MGENDINCLUDE>
+	
+	
+<!$MGENDIF>    <!-- END if document exists -->
+
+<!$MGIF_ACK_REQUIRED>
+		<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+			<TR CLASS="bTextRed" align="center">
+				<TD nowrap><INPUT TYPE="checkbox" NAME="Check_Confirmation" ><!$MG_Ack_Label></TD>
+			</TR>
+			<TR>
+				<TD>&nbsp;</TD>
+			</TR>
+		</TABLE>
+	<!$MGENDIF>
+
+<!-- This Test is true when the flag on invoice in table rate ='N' -->
+<!$MGIF_NOT_ON_INVOICE>
+<BR>
+	<TABLE border="0" width="50%" cellpadding="0" cellspacing="0">
+		<TR>
+			<TD CLASS="bTextRed" align="left" nowrap>Registration for this class is not available on the Web.</TD>
+		</TR>
+		<TR>
+			<TD CLASS="bTextRed" align="left" nowrap>Please call the association office to register at <!$MG_Assoc_Phone>.</TD>
+		</TR>
+	</TABLE>
+<!$MGENDIF>
+<!$MGIF_ON_INVOICE>
+	<!$MGIF_CHARGE_EDUC_CARD>
+<TABLE border="0" cellpadding="0" cellspacing="0" width="100%">
+	<TR CLASS="bTextRed" align="center">
+				<TD nowrap>Credits for this class will be deducted from your Education Card balance.</TD>
+	</TR>	
+</TABLE>
+<BR>
+	<!$MGENDIF>
+<TABLE border="0" cellpadding="0" cellspacing="0" width="100%">
+	<TR align="center">
+				<TD nowrap><INPUT type="button" name="AddCart" value="Add to Cart" onClick="<!$MGIF_DIFFERENT_BILL_GROUP>if(confirm('The class you are trying to register for must be paid for separately from the items currently in your cart. Select OK to Empty Cart and Add New Item or Cancel This Item and Checkout')){Valid_Form('1')}<!$MGELSE>Valid_Form('1')<!$MGENDIF>"></TD>
+	</TR>	
+</TABLE>
+<!$MGENDIF>
+<!$MGELSE>   <!-- ELSE class is FULL -->
+	<BR>
+	<TABLE border="0" cellpadding="0" cellspacing="0" width="100%">
+	<TR align="center">
+			<TD CLASS="bTextRed" nowrap>Sorry, this class is full.</TD>
+	</TR>
+	<TR>
+			<TD>&nbsp;</TD>
+	</TR>
+	<TR align="center">
+		<TD nowrap><INPUT TYPE="button" VALUE="Previous Screen" onClick="history.go(-1)"></TD>
+	</TR>	
+	</TABLE>
+<BR>
+<!$MGENDIF>   <!-- End IF CLASS_OPEN-->
+
+</FORM>
+

@@ -1,0 +1,83 @@
+<CENTER>
+<!$MGIF_REGISTERED>
+
+<!$MGREPEAT>
+	<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+		<TR>
+			<TD colspan="7" nowrap>&nbsp;</TD>
+		</TR>
+		<TR>
+			<TD CLASS="bbText" colspan="7" align="left" nowrap><FONT color="<!$MG_Name_Color>"><!$MG_Event_ID_Name></FONT></TD>
+		</TR>
+	</TABLE>
+
+	<TABLE border="0" width="100%" cellpadding="0" cellspacing="1">
+		<TR CLASS="bgbar">
+			<TD CLASS="btext" align="left" nowrap>&nbsp;Registration ID</TD>
+			<TD CLASS="bText" align="left" nowrap>&nbsp;Event ID</TD>
+			<TD CLASS="bText" align="center" nowrap>Start Date</TD>
+			<TD CLASS="bText" align="center" nowrap>End Date</TD>
+			<TD CLASS="bText" align="center" nowrap>Start Time</TD>
+			<TD CLASS="bText" align="center" nowrap>End Time</TD>
+			<TD CLASS="bText" align="right" nowrap>Amount&nbsp;</TD>
+		</TR>
+		<TR>
+			<TD CLASS="nnText" align="left" nowrap>&nbsp;<!$MG_Registration_ID></TD>
+			<TD CLASS="nnText" align="left" nowrap>&nbsp;<!$MG_Event_ID></TD>
+			<TD CLASS="nnText" align="center" nowrap><!$MG_Start_Date></TD>
+			<TD CLASS="nnText" align="center" nowrap><!$MG_End_Date></TD>		
+			<TD CLASS="nnText" align="center" nowrap><!$MG_Start_Time></TD>
+			<TD CLASS="nnText" align="center" nowrap><!$MG_End_Time></TD>
+			<TD CLASS="nnText" align="right" nowrap><!$MG_Amount>&nbsp;</TD>
+		</TR>
+		<!$MGIF_MEAL>
+		<TR>
+			<TD CLASS="bText"  nowrap>&nbsp;Meal Selected</TD>
+			<TD CLASS="nnText">&nbsp;<!$MG_Meal_Choice_Descr></TD>
+		</TR>
+		<!$MGENDIF>
+		<TR>
+			<TD CLASS="bText" align="left" nowrap>&nbsp;Location</TD>
+			<TD align="left" nowrap colspan=<!$MG_Colspan>>&nbsp;
+			<!$MGIF_LOCATION_EXIST>
+				<A CLASS="bTextBlue"  href="/scripts/mgrqispi.dll?APPNAME=<!$MG_L_App_Name>&PRGNAME=IMSDisplayLocation&ARGUMENTS=-N<!$MG_L_Session_Number>,-A<!$MG_Code_Location>"><!$MG_Location></A>
+			<!$MGENDIF>
+			<!$MGIF_LOC_DOC_EXIST>
+				<!$MG_Loc_Web_Doc><!$MG_Location></A>
+			<!$MGENDIF>
+			</TD>
+			
+			<!$MGIF_CANCELLATION>
+				<TD align="Right" nowrap colspan=3><A CLASS="bTextBlue"  href="/scripts/mgrqispi.dll?APPNAME=<!$MG_C_App_Name>&PRGNAME=IMSCancelRegistration&ARGUMENTS=-N<!$MG_C_Session_Number>,-A0,-A<!$MG_C_Convention_ID>,-A<!$MG_C_Registration_ID>,-A<!$MG_C_Class_ID>,-N<!$MG_C_Receipt_ID>,-N<!$MG_C_Invoice_ID>,-A<!$MG_Cancellation_Type>,-AE>">Registration Cancellation</A></TD>
+			<!$MGENDIF>
+		</TR>
+		
+	</TABLE>
+	<BR>
+<!$MGENDREPEAT>
+
+
+<!$MGELSE>
+<BR>
+<BR>
+	<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+		<TR>
+		<!$MGIF_NO_REGISTERED>
+				<TD CLASS="bigTextMarine" width="100%" align="Center">You are not currently registered for any events.</TD>
+		<!$MGENDIF>
+		<!$MGIF_NO_PARTICIPATED>
+				<TD CLASS="bigTextMarine" width="100%" align="Center">You have not participated in any events.</TD>
+		<!$MGENDIF>
+		</TR>
+<!$MGENDIF>
+</TABLE>
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<!-- Commented out the link below on 7/9/08 because the events by billing group could not be correctly displayed -->
+		<!-- <TD width="50%" align="center" nowrap><A CLASS="bTextBlue"  href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSEventCalendar&ARGUMENTS=-N<!$MG_Session_Number>,-A,-AE,-AEV">Events Available / Registration</A></TD>-->
+	</TR>
+</TABLE>
+
+</CENTER>
+<BR>

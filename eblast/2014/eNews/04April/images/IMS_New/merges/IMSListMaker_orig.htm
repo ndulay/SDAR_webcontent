@@ -1,0 +1,75 @@
+<SCRIPT LANGUAGE="JavaScript">
+<!---
+var category = '<!$MG_List_Category>'; //Magic merge tag
+var strdesc= '<!$MG_New_List_Code_description>'; //Magic merge tag 
+function SubmitForm()
+{
+	document.getElementById('ARGUMENTS').value;
+
+	document.ListMaker.submit();
+	window.close();
+	window.opener.focus();
+}
+function setDesc(strValue)
+{
+	//alert('Set Desc to '+strValue);
+	strdesc = strValue;
+}
+function CloseWindow()
+{
+	window.close();
+}
+
+//--->
+</SCRIPT>
+<CENTER>
+<FORM name="ListMaker" action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="IMSListMaker">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-A<!$MG_List_Category>">
+
+<TABLE Align="Center" border="0" cellspacing="1" cellpadding="0" width="50%">
+	<TR>
+		<TD CLASS="bText" width="20%" nowrap>Code</TD>
+		<TD nowrap>&nbsp;&nbsp;&nbsp;</TD>
+		<TD width="80%" valign="top" align="Left" nowrap>
+			<SELECT CLASS="input" name="New_List_Code" SIZE="1" onBlur="setDesc(this.options[this.options.selectedIndex].id)">
+	     	  <!$MGIF_CODE_EXIST>
+			   		<OPTION CLASS="input" id="<!$MG_New_List_Code>" SELECTED VALUE="<!$MG_New_List_Code>"><!$MG_New_List_Code_description>
+	     	  <!$MGENDIF>
+			  <!$MGREPEAT>
+	     			<OPTION CLASS="input" id="<!$MG_New_List_Code_description1>" VALUE="<!$MG_New_List_Code1>"> <!$MG_New_List_Code_description1>
+	     	  <!$MGENDREPEAT>
+	     	</SELECT>
+		</TD>
+	</TR>
+	<TR>	
+		<TD CLASS="bText" width="20%" nowrap>Comments</TD>
+		<TD nowrap>&nbsp;&nbsp;&nbsp;</TD>
+		<TD CLASS="input" width="80%"  valign="top" align="Left" nowrap><INPUT CLASS="input" type="text" size="30" maxlength="30" name="Comments" value="<!$MG_Comments>"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="20%" nowrap>Status</TD>
+		<TD nowrap>&nbsp;&nbsp;&nbsp;</TD>
+		<TD width="80%" valign="top" align="Left" nowrap>
+			<SELECT CLASS="input" name="Status" SIZE=1>
+			<OPTION CLASS="input" SELECTED  VALUE="A">Active 
+			<OPTION CLASS="input" VALUE="I">Inactive
+			</SELECT>
+		</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="20%" nowrap>Delete</TD>
+		<TD nowrap>&nbsp;&nbsp;&nbsp;</TD>
+		<TD nowrap><INPUT type="checkbox" name="Delete_List" size="1" value="checked" onBlur="setDesc('Add a new code')"></TD>
+	</TR>
+</TABLE>
+<BR><BR>
+<TABLE align="center" border="0" width="80%" cellpadding="0" cellspacing="0">
+	<TR>
+	    <TD align="center" nowrap><INPUT TYPE="button" VALUE="Update" onClick="SubmitForm()"></TD>
+		<TD align="center" colspan="3" nowrap><INPUT TYPE="Button" VALUE="Close this window" onClick="CloseWindow()"></TD>
+	</TR>
+</TABLE>
+</FORM>
+</CENTER>

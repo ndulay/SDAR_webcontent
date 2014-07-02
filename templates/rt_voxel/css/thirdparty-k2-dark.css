@@ -1,0 +1,132 @@
+/**
+ * @version   $Id: thirdparty-k2-dark.css 594 2012-05-01 23:56:29Z josh $
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - ${copyright_year} RocketTheme, LLC
+ * @license   http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+*/
+
+/**
+ * @version   $Id: thirdparty-k2-dark.css 594 2012-05-01 23:56:29Z josh $
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - ${copyright_year} RocketTheme, LLC
+ * @license   http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+*/
+
+/* K2 Global */
+#k2Container h3, #k2Container h2, #k2Container h1, #k2Container h4 {color: #333;font-weight: normal;font-family: 'PTSerifRegular',Helvetica,Arial,sans-serif;}
+
+/* K2 Font Controls */
+div.itemToolbar ul li a#fontDecrease img, div.itemToolbar ul li a#fontIncrease img {background-image: url(../images/overlays/dark/arrows.png);}
+div.itemToolbar ul li a#fontDecrease img:hover, div.itemToolbar ul li a#fontIncrease img:hover {background-color: #4A4A4A;}
+div.itemToolbar ul li {border-color: #222;}
+
+
+/* K2 Readon */
+#k2Container .button, .k2UserBlock .button, span.catItemAddLink a, span.userItemAddLink a, span.userItemEditLink a, span.catItemEditLink a, span.itemEditLink a {background-image: url(../images/overlays/dark/readon.png) !important;}
+span.catItemAddLink a:hover, span.userItemAddLink a:hover, span.userItemEditLink a:hover, span.catItemEditLink a:hover, span.itemEditLink a:hover {background: transparent;}
+
+/* K2 Tags */
+div.k2TagCloudBlock a, div.k2ItemsBlock ul li div.moduleItemTags a {background-color:#2D2D2D;border: 1px solid #222;background-image: url(../images/overlays/dark/readon.png);color: #898789;text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);}
+.module-content .k2TagCloudBlock a:hover, div.k2ItemsBlock ul li div.moduleItemTags a:hover {background-image: url(../images/overlays/dark/readon.png);color: white;text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);background-position: 0 0;border-color: transparent;}
+div.catItemTagsBlock ul.catItemTags li, div.itemTagsBlock ul.itemTags li, div.userItemTagsBlock ul.userItemTags li, div.latestItemTagsBlock ul.latestItemTags li {background-color:#2D2D2D;border: 1px solid #222;background-image: url(../images/overlays/dark/readon.png);}
+div.catItemTagsBlock ul.catItemTags li a, div.itemTagsBlock ul.itemTags li a, div.userItemTagsBlock ul.userItemTags li a, div.latestItemTagsBlock ul.latestItemTags li a {color: #898789;text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);}
+div.catItemTagsBlock ul.catItemTags li:hover, div.itemTagsBlock ul.itemTags li:hover, div.userItemTagsBlock ul.userItemTags li:hover, div.latestItemTagsBlock ul.latestItemTags li:hover {background-image: url(../images/overlays/dark/readon.png);color: white;text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);background-position: 0 0;border-color: transparent;}
+div.catItemTagsBlock ul.catItemTags li:hover a,div.itemTagsBlock ul.itemTags li:hover a, div.userItemTagsBlock ul.userItemTags li:hover a, div.latestItemTagsBlock ul.latestItemTags li:hover a {color: white;}
+
+/* K2 Arrow Items */
+#k2Container .groupLinks .catItemTitle a, div.k2UserBlock ul.k2UserBlockActions li a, div.k2LatestCommentsBlock ul li span.lcComment {padding-left: 12px;background: url(../images/overlays/dark/arrows.png) 2px -305px no-repeat;font-size: 13px;}
+
+/* K2 Author */
+#k2Container .catItemView .catItemAuthor, #k2Container span.itemAuthor, div.k2ItemsBlock ul li div.moduleItemAuthor  {background-color: #2D2D2D;border-top: 1px solid #222;background-image: url(../images/overlays/dark/dude-icon.png);}
+
+/* K2 Categories */
+#k2Container  div.latestItemsCategory, #k2Container .itemListCategory, #k2Container .userBlock, #k2Container .subCategory {box-shadow: -1px 1px 4px rgba(0,0,0,0.1);background-color: #333;border: 1px solid #222;}
+div.latestItemsCategory:before,#k2Container div.itemListCategory:before, #k2Container .userBlock:before, #k2Container .subCategory:before {background-image: url(../images/overlays/dark/mod-shadow-l.png);}
+div.latestItemsCategory:after,#k2Container div.itemListCategory:after, #k2Container .userBlock:after, #k2Container .subCategory:after {background-image: url(../images/overlays/dark/mod-shadow-b.png);}
+ 
+/* K2 Item Links */
+#k2Container .userItemLinks, #k2Container .itemLinks, #k2Container .catItemLinks, #k2Container .latestItemLinks, #k2Container div.itemAuthorBlock, div.k2ItemsBlock ul li div.moduleItemTags {border: 1px solid #333;background: #2D2D2D;outline: 1px solid #000;}
+
+/* K2 Block Items */
+div.k2LatestCommentsBlock ul li, div.k2TopCommentersBlock ul li, div.k2ItemsBlock ul li, div.k2UserBlock ul.k2UserBlockActions li, div.k2UserBlock ul.k2UserBlockRenderedMenu li {border-bottom: 1px dashed #222;}
+
+/* K2 Inputboxes */
+#k2Container .inputbox, div.k2SearchBlock form input.inputbox, div.k2LoginBlock fieldset.input p input {border: 1px solid #111;background-color: #444;color: #DDD;}
+
+/* K2 Item View */
+#k2Container div.itemIntroText {color: #999;font-size: 100%;font-weight: bold;line-height: 24px;padding: 4px 0 0px 0;}
+#k2Container div.itemTwitterButton,#k2Container  div.itemGooglePlusOneButton {margin: 2px -24px 0 0;}
+#k2Container div.itemContentFooter, {border: 0 none;}
+#k2Container div.itemAuthorBlock {padding: 10px;}
+#k2Container div.tagItemView {border: 0 none;}
+
+/* K2 Category */
+#k2Container .catItemRatingBlock span {color: #666;}
+#k2Container .catItemCategory span {background: url(../images/overlays/dark/publish-icon.png) 0 3px no-repeat;color: #999;}
+#k2Container .catItemTagsBlock, div.k2ItemsBlock ul li div.moduleItemTags b  {background: url(../images/overlays/dark/tag-icon.png) 0 7px no-repeat;}
+#k2Container .catItemCommentsLink {background: url(../images/overlays/dark/comments-icon.png) 0 3px no-repeat;border: 0;}
+#k2Container .catItemTagsBlock span {color: #999;}
+
+/* K2 Items */
+#k2Container .itemDateModified {border: 0;color: #666;}
+#k2Container .itemRatingBlock span {color: #666;}
+#k2Container .itemContentFooter, div.userItemCommentsLink, div.k2ItemsBlock ul li a.moduleItemComments, div.k2ItemsBlock ul li span.moduleItemHits  {border-color: #222;}
+#k2Container .itemCategory span, #k2Container .itemTagsBlock span, div.latestItemCategory span, div.latestItemTagsBlock span, div.tagItemCategory span, #k2Container .userItemCategory span, #k2Container .userItemTagsBlock span  {color: #999;}
+
+/* K2 Items - Links */
+#k2Container .itemTagsBlock span {background: url(../images/overlays/dark/tag-icon.png) 0 2px no-repeat;}
+#k2Container .itemCategory span {background: url(../images/overlays/dark/publish-icon.png) 0 3px no-repeat;}
+
+/* K2 Items - Author / Related */
+#k2Container .itemAuthorLatest ul li a, #k2Container .itemRelated ul li a {background: url(../images/overlays/dark/arrows.png) 2px -305px no-repeat;font-size: 100%;}
+#k2Container .itemAuthorLatest {float: left;margin-right: 20px;}
+
+/* K2 User */
+#k2Container .userItemCategory span {background: url(../images/overlays/dark/publish-icon.png) 0 3px no-repeat;}
+#k2Container .userItemTagsBlock {background: url(../images/overlays/dark/tag-icon.png) 0 7px no-repeat;}
+#k2Container .userItemDateCreated {color: #666;}
+
+/* K2 Generic */
+#k2Container .genericItemDateCreated {color: #666;}
+#k2Container .genericItemCategory {background: url(../images/overlays/dark/publish-icon.png) 0 3px no-repeat;}
+#k2Container .genericItemTagsBlock {background: url(../images/overlays/dark/tag-icon.png) 0 7px no-repeat;}
+
+/* K2 Content Module */
+div.k2ItemsBlock ul li span.moduleItemDateCreated {}
+div.k2ItemsBlock ul li div.moduleItemTags b {background: url(../images/overlays/dark/tag-icon.png) 0 -1px no-repeat;}
+
+/* K2 Comments Module */
+.k2LatestCommentsBlock ul li, #k2Container .itemCommentsList li {background: none;border-bottom: 1px dashed #222;}
+
+/* K2 Users Module */
+.k2UsersBlock ul.ubUserItems li a {background: url(../images/overlays/dark/arrows.png) 2px -305px no-repeat;font-size: 100%;}
+
+/* K2 Categories Module */
+.k2CategoriesListBlock ul li a {background: url(../images/overlays/dark/paging-arrows.png) -3px -133px no-repeat;color: #707070;}
+div.k2CategoriesListBlock ul li.activeCategory > a {box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);background: #222 url(../images/overlays/dark/paging-arrows.png) 4px -128px no-repeat;}
+
+/* K2 Calendar Module */
+.k2CalendarBlock table.calendar {background:#000;}
+.k2CalendarBlock table.calendar tr td {border:1px solid #4A4A4A;background:#000;}
+.k2CalendarBlock table.calendar tr td.calendarNavMonthPrev {background:#434343;}
+.k2CalendarBlock table.calendar tr td.calendarCurrentMonth {background:#434343;}
+.k2CalendarBlock table.calendar tr td.calendarNavMonthNext {background:#434343;}
+.k2CalendarBlock table.calendar tr td.calendarDayName {background:#2D2D2D;}
+.k2CalendarBlock table.calendar tr td.calendarDateEmpty {background:transparent;}
+.k2CalendarBlock table.calendar tr td.calendarDateLinked a {background:#eee;}
+.k2CalendarBlock table.calendar tr td.calendarDateLinked a:hover {background:#2D2D2D;color:#fff;}
+.k2CalendarBlock table.calendar tr td.calendarToday {background:#135cae;color:#fff;background-image: url(../images/overlays/dark/readon.png);color: white;text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);background-position: 0 0;border-color: transparent;}
+.k2CalendarBlock table.calendar tr td.calendarTodayLinked {background:#135cae;color:#fff}
+.k2CalendarBlock table.calendar tr td.calendarTodayLinked a {color:#fff;}
+.k2CalendarBlock table.calendar tr td.calendarTodayLinked a:hover {background:#2D2D2D;}
+
+/* K2 Archives */
+div.k2ArchivesBlock ul li a {background: url(../images/overlays/dark/arrows.png) 2px -305px no-repeat;font-size: 100%;}
+
+/* K2 Login */
+div.k2LoginBlock ul li a {background: url(../images/overlays/dark/arrows.png) 2px -305px no-repeat;font-size: 100%;}
+
+/* K2 Latest*/
+#k2Container .latestItemCategory span {background: url(../images/overlays/dark/tag-icon.png) 0 2px no-repeat;}
+#k2Container .latestItemTagsBlock span {background: url(../images/overlays/dark/publish-icon.png) 0 3px no-repeat;}
+

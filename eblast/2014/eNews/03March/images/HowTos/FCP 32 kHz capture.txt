@@ -1,0 +1,8 @@
+FCP 32 kHz capture
+
+Go the FCP Menu and choose Audio/Video Settings......
+Go to Capture Presets and choose the Codec you want to capture with then hit Duplicate. For example, if you're using DV NTSC 48k then rename the duplicate DV NTSC 12 bit 32k. Down on the lower right of the dialogue box change the the format to 32,000 KHz 16 bit 2 channels. Click OK.
+
+Still within Audio/Video Settings go to A/V Devices. Click the Options button beside Firewire DV. Change the bit depth to 12 bit. You'll notice that the sample rate automatically changes to 32,000 KHz and in the channels box above make sure you've got it set to 4 instead of the usual 2. The important thing to remember here is that changing the items in the A/V settings is not part of your new capture preset. After you're done capturing your 32 KHz audio you need to come back to the A/V Devices settings and manually change everything back to 16 bit 48 KHz.
+
+Now you can go back to the settings in your new capture preset and set the first 2 channels or the second 2 channels for capturing. Following the above routine I've successfully captured over 80 minutes of 12 bit 32 KHz audio in one shot with no audio drift. Once your capturing is done you can drop your 12 bit 32 Khz audio into a DV NTSC 48 Khz timeline and it will play fine without having to render. Just remember to render everything under safe RT and the high quality audio setting (in User Preferences) prior to final output.

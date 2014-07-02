@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <script type="text/javascript">
+    // Set the domain dept value for the XSS workaround. Minimum is 2. 0 = off.
+    var AOCrossSiteDomainDepth = 2;
+
+    // Identify the input fields by ID.
+    //     -- the order presented here is the order in which the values
+    //        will be passed up to the parent page.
+    var scoutInputField1ID = "scoutField1",
+        scoutInputField2ID = "scoutField2",
+        scoutInputField3ID = "scoutField3";
+
+    // Set the frame dimensions for the parent page's dynamically generated aoframe element.
+    var clientHeight = 60,
+        clientWidth = 210;
+    </script>
+
+    <script src="js/AdmitOneLogonControlScripts.js" type="text/javascript"></script>
+
+    <style type="text/css">
+        body, form, span, table, tr, td
+        {
+            padding: 0px;
+            margin: 0px;
+            cellspacing: 0px;
+            cellpadding: 0px;
+            background-color: #CCC;
+        }
+    </style>
+</head>
+<body style="margin: 0px; padding: 0px; border: 0px;">
+    <form id="form1" name="form1" style="margin: 0px; padding: 0px; border: 0px;
+    clear: none;">
+    <div id="htmllogin" style="height: 60px; width: 210px; overflow: hidden; margin: 0px;
+        padding: 0px; border: 0px; clear: none;">
+        <div align="left" class="logintext" style="height: 60px; width: 250px; overflow: hidden;
+            margin: 0px; padding: 0px; border: 0px; clear: none;">
+            <table cellspacing="0" cellpadding="5" border="0">
+                <tr>
+                    <td align="right" style="padding-top: 2px;">
+                        <div style="height: 22px;">
+                            &nbsp;</div>
+                    </td>
+                    <td align="left" style="padding-top: 2px;">
+                        <input type="text" name="scoutField1" id="scoutField1" style="font-size: 11pt; width: 190px; color: #000000"
+                            autocomplete="off" onkeypress="return checkEnter(event);" />
+                        <div style="height: 4px;">
+                            &nbsp;</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                    </td>
+                    <td align="left">
+                        <input type="password" name="scoutField2" id="scoutField2" style="font-size: 11pt; width: 190px; color: #000000"
+                             autocomplete="off" onkeypress="return checkEnter(event);" />
+                    </td>
+                </tr>
+                <tr style="display: none;">
+                    <td align="right">
+                        <b>ExtraField:&nbsp;&nbsp;</b>
+                    </td>
+                    <td align="left">
+                        <input type="text" name="scoutField3" id="scoutField3" size="22" autocomplete="off"
+                            onkeypress="return checkEnter(event);" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <div style="height: 8px;">
+                            &nbsp;</div>
+                        <input type="button" value="Log On to System" name="loginbutton" id="loginbutton"
+                            onclick="htmlLogon()" style="display: none;" />
+                        <input name="session" id="session" type="hidden" />
+                        <input name="data" id="data" type="hidden" />
+                        <div id="logonmessage">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </form>
+    <script type="text/javascript">
+    try {
+        parent.document.getElementById("j_logintype").value = "local";
+    } catch (err) {}
+	</script>
+</body>
+</html>

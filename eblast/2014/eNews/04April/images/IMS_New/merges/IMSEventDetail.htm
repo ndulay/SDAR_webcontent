@@ -1,0 +1,141 @@
+<CENTER>
+
+
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="bigTextMarine" align="left" colspan="3" nowrap><!$MG_Event_Name></TD>
+	</TR>
+</TABLE>
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="bText" align="left" nowrap width="30%">Event ID</TD>
+		<TD CLASS="nnText" align="left" nowrap width="20%"><!$MG_Event_ID></TD>
+		<TD CLASS="bText" align="left" nowrap width="30%">Event Type</TD>
+		<TD CLASS="nnText" align="left" nowrap width="20%"><!$MG_Event_Type></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" align="left" nowrap>Event Date</TD>
+		<TD CLASS="nnText" align="left" nowrap><!$MG_Event_Date></TD>
+		<TD CLASS="bText" align="left" nowrap>Time</TD>
+		<TD CLASS="nnText" align="left" nowrap><!$MG_Event_Time></TD>
+	</TR>
+	<TR>
+		<!$MGIF_NO_DEADLINE>
+			<TD CLASS="bText" align="left" nowrap>Price</TD>
+			<TD CLASS="nnText" align="left" nowrap><!$MG_Price_Before></TD>
+		<!$MGELSE>
+			<TD CLASS="bText" align="left" nowrap>Price On/Before&nbsp;<!$MG_Deadline_Date></TD>
+			<TD CLASS="nnText" align="left" nowrap><!$MG_Price_Before></TD>
+		<!$MGENDIF>
+		<TD CLASS="bText" align="left" nowrap>Speaker</TD>
+		<TD CLASS="nnText" align="left" nowrap><!$MG_Speaker></TD>
+	</TR>
+	<TR>
+		<!$MGIF_NO_DEADLINE>
+			<TD align="left" nowrap Colspan=2>&nbsp;</TD>
+		<!$MGELSE>
+			<TD CLASS="bText" align="left" nowrap>Price After&nbsp;<!$MG_Deadline_Date></TD>
+			<TD CLASS="nnText" align="left" nowrap><!$MG_Price_After></TD>
+		<!$MGENDIF>
+		<TD CLASS="bText" align="left" nowrap>Location</TD>
+		<TD align="left" nowrap>
+		<!$MGIF_LOCATION_EXIST>
+			<A CLASS="bTextBlue"   href="/scripts/mgrqispi.dll?APPNAME=<!$MG_L_App_Name>&PRGNAME=IMSDisplayLocation&ARGUMENTS=-N<!$MG_L_Session_Number>,-A<!$MG_Code_Location>"><!$MG_Location></A>
+		<!$MGENDIF>
+		<!$MGIF_LOC_DOC_EXIST>
+			<!$MG_Loc_Web_Doc><!$MG_Location></A>
+		<!$MGENDIF>
+		</TD>
+	</TR>
+	<TR>
+		<TD align="left" nowrap Colspan=2>&nbsp;</TD>
+		<TD CLASS="bText" align="left" nowrap>Event Status/Spaces Available</TD>
+		<TD CLASS="bText" align="left" nowrap><FONT color="<!$MG_Event_Status_Color>"><!$MG_Event_Status>&nbsp;/&nbsp;<!$MG_Spaces_Available></FONT></TD>
+	</TR>
+	<!$MGIF_CANCELLATION_FEE>
+	<TR>
+		<TD CLASS="bText" align="left" nowrap>Cancellation Fee On/Before&nbsp;<!$MG_Deadline_Date></TD>
+		<TD CLASS="nnText" align="left" nowrap><!$MG_Cancel_Fee_Before></TD>
+		<!$MGIF_REGISTERED>
+			<TD CLASS="bText" align="left" nowrap>Registration Status</TD>
+			<TD CLASS="bText" align="left" nowrap><FONT color="<!$MG_Registration_Color>"><!$MG_Registration_Status></FONT></TD>
+		<!$MGELSE>
+			<TD align="left" nowrap Colspan=2>&nbsp;</TD>
+		<!$MGENDIF>
+	</TR>
+	<TR>
+		<TD CLASS="bText" align="left" nowrap>Cancellation Fee After&nbsp;<!$MG_Deadline_Date></TD>
+		<TD CLASS="nnText" align="left" nowrap><!$MG_Cancel_Fee_After></TD>
+		<!$MGIF_MORE_INFO>
+				<TD nowrap Colspan=1>&nbsp;</TD>
+				<TD><!$MG_Event_More_Info>Additional Event Info</A></TD>
+		<!$MGELSE>
+				<TD align="left" nowrap Colspan=2>&nbsp;</TD>
+		<!$MGENDIF>
+	</TR>
+	<!$MGELSE>
+		<!$MGIF_REGISTERED>
+		<TR>
+			<TD align="left" nowrap Colspan=2>&nbsp;</TD>
+			<TD CLASS="bText" align="left" nowrap>Registration Status</TD>
+			<TD CLASS="bText" align="left" nowrap><FONT color="<!$MG_Registration_Color>"><!$MG_Registration_Status></FONT></TD>
+		</TR>
+			<!$MGIF_MORE_INFO>
+			<TR>
+				<TD align="left" nowrap Colspan=3>&nbsp;</TD>
+				<TD><!$MG_Event_More_Info>Additional Event Info</A></TD>
+			<!$MGELSE>
+				<TD align="left" nowrap Colspan=2>&nbsp;</TD>
+			</TR>
+			<!$MGENDIF>
+		<!$MGELSE>
+			<!$MGIF_MORE_INFO>
+			<TR>
+				<TD align="left" nowrap Colspan=3>&nbsp;</TD>
+				<TD><!$MG_Event_More_Info>Additional Event Info</A></TD>
+			<!$MGELSE>
+				<TD align="left" nowrap Colspan=2>&nbsp;</TD>
+			</TR>
+			<!$MGENDIF>
+		<!$MGENDIF>
+	<!$MGENDIF>
+	<!$MGIF_HAS_MEALS>
+		<TR>
+			<TD CLASS="bText" nowrap width="20%">Meal Choice</TD>
+			<TD CLASS="nnText" nowrap colspan=3><!$MG_Meal_Choice></TD>
+		</TR>
+	<!$MGENDIF>
+</TABLE>
+<BR>
+<!$MGIF_EVENT_IS_FULL>
+	<TABLE border="0" width="50%" cellpadding="0" cellspacing="0">
+		<TR>
+			<TD CLASS="bTextRed" align="center" nowrap>This event is full.
+			</TD>
+		</TR>
+	</TABLE>
+<!$MGELSE>
+	<BR>
+	<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+		<TR>
+			<!$MGIF_REGISTERED>
+				<TD CLASS="bTextBlue" align="left" nowrap>You are already registered for this event.</TD>
+			
+				<!$MGIF_CANCELLATION>
+					<TD align="Right" nowrap><A CLASS="bTextBlue"  href="/scripts/mgrqispi.dll?APPNAME=<!$MG_C_App_Name>&PRGNAME=IMSCancelRegistration&ARGUMENTS=-N<!$MG_C_Session_Number>,-A0,-A<!$MG_C_Convention_ID>,-A<!$MG_C_Registration_ID>,-A<!$MG_C_Event_ID>,-N<!$MG_C_Receipt_ID>,-N<!$MG_C_Invoice_ID>,-A<!$MG_Cancellation_Type>,-AE>">Registration Cancellation</A></TD>
+				<!$MGENDIF>
+			<!$MGELSE>
+				<!$MGIF_REGISTRATION_ALLOWED>
+					<TD align="left" nowrap><A CLASS="bTextBlue"  href="https://<!$MG_Server_Name>/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSEventRegistration&ARGUMENTS=-N<!$MG_Session_Number>,-A<!$MG_Event_ID>,-A0&GoBack_PRG=<!$MG_GoBack_PRG>&GoBack_ARG=<!$MG_GoBack_ARG>">Proceed to Registration</A></TD>
+				<!$MGENDIF>
+				<!$MGIF_IN_CART>
+					<TD align="left" nowrap><A CLASS="bTextBlue" href="https://<!$MG_Server_Name>/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSRegistrationCart&ARGUMENTS=-N<!$MG_Session_Number>&GoBack_ARG=<!$MG_GoBack_PRG>&GoBack_ARG=<!$MG_GoBack_ARG>">Event In Cart - View Cart</A></TD>
+				<!$MGENDIF>
+			<!$MGENDIF>
+		</TR>
+	</TABLE>
+<!$MGENDIF>
+<BR>
+</CENTER>

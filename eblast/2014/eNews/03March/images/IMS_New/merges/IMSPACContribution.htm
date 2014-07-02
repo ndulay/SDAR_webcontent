@@ -1,0 +1,283 @@
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	function modifyAmount(Label,Amount,VariableName,RecommendedAmount,HTMCode)
+	{
+		document.ValidPayment.Modify_Label.value = Label;
+		document.ValidPayment.Modify_Amount.value = Amount;
+		document.ValidPayment.Modify_Variable_Name.value = VariableName;
+		document.ValidPayment.Modify_Recommended_Amount.value = RecommendedAmount;
+		document.ValidPayment.Modify_HTM_Code.value = HTMCode;
+		var myHeight = 300;
+		var myWidth = 600;
+		var myTop = (window.screen.height - myHeight ) / 2;
+		var myLeft = (window.screen.width - myWidth ) / 2;
+
+		var winURL = 'IMSUpdateContribution.htm';
+		var sAddToCart = window.open(winURL , 'modifyAmount', 'menubar=no,toolbar=no,resizable=no,directories=no,scrollbars=no,status=no,width='+myWidth+',height='+myHeight+',left=' + myLeft + ',top=' + myTop)
+	}
+
+	function updateModifiedAmount(VariableName,Amount)
+	{
+	document.getElementById(document.ValidPayment.Modify_Variable_Name.value).value = Amount; 
+<!$MGIF_FROM_A/R_1>
+	document.ValidPayment[document.ValidPayment.Modify_Variable_Name.value].value = Calculate(ValidPayment,document.ValidPayment[document.ValidPayment.Modify_Variable_Name.value].value); 
+<!$MGENDIF>
+	document.getElementById('Display_'+VariableName).innerHTML= document.ValidPayment[document.ValidPayment.Modify_Variable_Name.value].value
+	}
+
+	function includeAmount(checked,Amount,VariableName)
+	{
+		if (checked)
+			{
+					document.ValidPayment[VariableName].value = Amount; 
+			}
+		else
+			{
+					document.ValidPayment[VariableName].value = '0.00'; 
+			}
+<!$MGIF_FROM_A/R_1>
+	document.ValidPayment[VariableName].value = Calculate(ValidPayment,document.ValidPayment[VariableName].value); 
+<!$MGENDIF>
+	document.getElementById('Display_'+VariableName).innerHTML= document.ValidPayment[VariableName].value;
+
+	}
+//-->
+</SCRIPT>
+
+
+<!$MGIF_NOT_FROM_A/R>
+<SCRIPT LANGUAGE="JavaScript">
+function InitForm()
+{
+	f = ValidPayment;
+	// reset amount labels from Inputs for Pac direct access
+	for(i=0; i<f.elements.length; i++)
+	{
+		ExtractString = f.elements[i].name;
+		if(ExtractString.substr(0,19) == 'Contribution_Amount')
+		{
+		document.getElementById('Display_'+f.elements[i].name).innerHTML= f.elements[i].value;
+		}
+	}
+}
+function Valid_CreditCard()
+{
+		document.ValidPayment.Option.value = "1";
+		document.ValidPayment.submit();
+}
+
+function Valid_Telecheck()
+{
+	document.ValidPayment.Option.value = "2";
+	document.ValidPayment.submit();
+}
+
+//-->
+</SCRIPT>
+
+<FORM NAME="ValidPayment" action="https://<!$MG_Server_Name>/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME"   value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME"   value="IMSPACContribution">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,Option,-A<!$MG_Billing_Group>">
+	<INPUT type="hidden" name="Option" value="0">
+	
+<CENTER>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD align="left" nowrap></TD>
+	</TR>
+	<TR CLASS="bgbar">
+		<TD CLASS="nnText" nowrap>&nbsp;Enter Contribution Below</TD>
+	</TR>
+</TABLE>
+<BR>
+</CENTER>
+<!-- -------------------END NOT FROM AR------------------------- -->
+<!$MGENDIF>
+
+<!$MGIF_FROM_A/R_1>
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+<!$MGELSE>
+<CENTER>
+<TABLE border="0" width="50%" cellpadding="0" cellspacing="0">
+<!$MGENDIF>
+	<!-- Hidden Variables updated when calling Popup with parent.window.opener. functions- IMSUpdateContribution.htm -->
+	<INPUT type="hidden" name="Modify_Label" value="">
+	<INPUT type="hidden" name="Modify_Amount" value="">
+	<INPUT type="hidden" name="Modify_Variable_Name" value="">
+	<INPUT type="hidden" name="Modify_Recommended_Amount" value="">
+	<INPUT type="hidden" name="Modify_HTM_Code" value="">
+	<!$MGREPEAT>
+		<TR>
+			<TD CLASS="bText" nowrap align="right" width="50%"><!$MG_Contribution_Type_R>&nbsp;</TD>
+			<TD CLASS="nnTextBlue" align="left" nowrap width="25%">
+				<!$MGIF_CONTRIBUTION_R>(Recommended Amount&nbsp;<!$MG_Contribution_Amount_R>)&nbsp;<!$MGENDIF>
+			</TD>
+			<TD CLASS="nnTextBlue" align="right" nowrap width="10%">
+			<!$MGIF_CONTRIBUTION_R>
+				<A CLASS="nnTextBlue" onClick="modifyAmount('<!$MG_Contribution_Type_R>',document.ValidPayment.Contribution_Amount<!$MG_Contrib_Amt_Counter>.value,'Contribution_Amount<!$MG_Contrib_Amt_Counter>','<!$MG_Contribution_Amount_R>','<!$MG_Contribution_HTM_R>')" href="javascript://#Modify">Modify</A>&nbsp;
+			<!$MGELSE>
+				<!$MGIF_NEGATIVE_R>
+				<!$MGELSE>
+					&nbsp;&nbsp;&nbsp;<INPUT type="checkbox" name="Checkbox_Name_<!$MG_Contrib_Amt_Counter>" checked onclick="includeAmount(this.checked,'<!$MG_Contribution_Amount_R>','Contribution_Amount<!$MG_Contrib_Amt_Counter>')">Include&nbsp;
+				<!$MGENDIF>
+			<!$MGENDIF>
+			</TD>
+			<TD>
+				<INPUT type="hidden" name="Contribution_Charge_Code<!$MG_Chg_Code_Counter>" value="<!$MG_Contribution_Charge_Code_R>">
+			</TD>
+			<TD nowrap align="right" width="15%">
+				<INPUT id="Contribution_Amount<!$MG_Contrib_Amt_Counter>" readOnly CLASS="input" align="right" type="hidden" name="Contribution_Amount<!$MG_Contrib_Amt_Counter>"  size="13" maxlength="13"  value="<!$MG_Contribution_Amount_R>" onChange="<!$MGIF_FROM_A/R_2>Contribution_Amount<!$MG_Contrib_Amt_Counter>.value=Calculate(ValidPayment,this.form.Contribution_Amount<!$MG_Contrib_Amt_Counter>.value);<!$MGENDIF>">
+				<font CLASS="nnText" id="Display_Contribution_Amount<!$MG_Contrib_Amt_Counter>"><!$MG_Contribution_Amount_R></font>
+			</TD>
+		</TR>
+	<!$MGENDREPEAT>
+</TABLE>
+<!$MGIF_FROM_A/R_1>
+<!-- Not in use -->
+<!$MGELSE>
+</CENTER>
+<!$MGENDIF>
+
+<!$MGIF_FROM_A/R>
+<SCRIPT language="javascript">
+function Calculate(f,val)
+{
+	TestVal = isNumeric(val);
+	
+	if(TestVal == false)
+	{
+		val = 0;
+	}
+
+	var TotalCont = 0.0;
+	var TotalToPay = 0.0;
+	TotalToPay = f.TotalSelected.value - 0.0;
+	var ExtractString = ''
+	var ExtractValue = 0.0
+	for(i=0; i<f.elements.length; i++)
+	{
+		ExtractString = f.elements[i].name;
+		ExtractValue = f.elements[i].value - 0.0;
+		if(ExtractString.substr(0,19) == 'Contribution_Amount')
+		{
+		//alert(f.elements[i].name+' '+f.elements[i].value);
+		document.getElementById('Display_'+f.elements[i].name).innerHTML= f.elements[i].value;
+		TotalToPay += f.elements[i].value - 0.0;
+		TotalCont += f.elements[i].value - 0.0;
+		//alert(TotalCont);
+		}
+	}
+	f.TotalToBePaid.value = MoneyFormatWithCommas(TotalToPay);
+	document.getElementById('Display_TotalToBePaid').innerHTML = '<B>'+f.TotalToBePaid.value+'</B>';
+	f.TotalContribution.value = MoneyFormatWithCommas(TotalCont);
+	document.getElementById('Display_TotalContribution').innerHTML = '<B>'+f.TotalContribution.value+'</B>';
+	val = MoneyFormat(val)
+	return val;
+}
+
+//-------------------------------------------------------------------
+// MoneyFormat (value)
+//   Pass a value to be converted to money format - 2 decimal places.
+//   Returns the formatted value
+//-------------------------------------------------------------------
+function MoneyFormat(amount,bAllowNegative) 
+{
+	if (!bAllowNegative)
+		{
+			bAllowNegative=true;
+		}
+	var val = parseFloat(amount);
+	if (isNaN(val)) { return "0.00"; }
+	if (val <= 0 && !bAllowNegative) { return "0.00"; }
+	else { val = Math.round(val*100)/100; }
+	val = (val == Math.floor(val)) ? val + '.00' : ((val*10 == Math.floor(val*10)) ? val + '0' : val);
+	return val;
+}
+function MoneyFormatWithCommas(amount,bAllowNegative) 
+{
+	if (!bAllowNegative)
+		{
+			bAllowNegative=true;
+		}
+	var delimeter = ",";
+	var val = parseFloat(amount);
+	var val = MoneyFormat(amount,bAllowNegative);
+	if (isNaN(val)) { return "0.00"; }
+	if (val <= 0 && !bAllowNegative) { return "0.00"; }
+	val = val+"";
+	var i = val.indexOf('.');
+	while (i>3) {
+		val = val.substring(0,i-3)+delimeter+val.substring(i-3);
+		i = i-3;
+		}
+	return val;
+	}
+
+function isNumeric(val) 
+{
+	// no longer used-amount checked in Modify popup
+	if(isNaN(val))
+	{
+		alert('Wrong entry! Only a numeric value is allowed');
+		return false
+	}
+	return true;
+}
+
+</SCRIPT>
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<!$MGIF_MORE_THAN_ONE>
+	<TR>
+		<TD CLASS="bText" width="75%" align="right">Total Additional Charges</TD>
+		<TD  width="25%" align="right"><INPUT CLASS="input" type="hidden" name="TotalContribution" size="13" maxlength="13" readOnly value="<!$MG_Total_Contribution>"><font CLASS="nnText" id="Display_TotalContribution"><B><!$MG_Total_Contribution></B></font></TD>
+	</TR>
+	<TR>
+		<TD colspan=2>
+			&nbsp;
+		</TD>
+	</TR>
+	<!$MGELSE>
+		<TR>
+		<TD colspan=2>
+			&nbsp;<INPUT type="hidden" name="TotalContribution" value="<!$MG_Total_Contribution>">
+			<font style="display:none" id="Display_TotalContribution"></font>
+		</TD>
+	</TR>
+	<!$MGENDIF>
+	<TR>
+		<TD  CLASS="bText" width="75%" align="right">Total To Be Paid</TD>
+		<TD  width="25%" align="right"><INPUT CLASS="input" type="hidden" name="TotalToBePaid" size="13" maxlength="13" readOnly value="<!$MG_Total_Amt>"><font CLASS="nnText" id="Display_TotalToBePaid"><B><!$MG_Total_Amt></B></font></TD>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+<!$MGIF_NOT_FROM_A/R>
+<CENTER>
+<BR>
+<TABLE border="0" cellspacing="0" cellpadding="0" width="100%">
+	<TR align="center">
+		<TD align="Center" nowrap width="48%">
+			<!$MGIF_PAY_BY_CC>
+				<INPUT type="button" name="CreditCard" value="Pay by Credit Card" onClick="Valid_CreditCard()">
+			<!$MGENDIF>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<!$MGIF_PAY_BY_TELECHECK>
+				<INPUT type="button" name="Telecheck" value="Pay by TeleCheck" onClick="Valid_Telecheck()"> 
+			<!$MGENDIF>
+		</TD>
+	</TR>
+</TABLE>
+<!$MGIF_PRINT_DISCLOSURE>
+<BR>
+<TABLE align="center" border="0" width="60%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="sTextBrown" align="Left" nowrap><!$MG_Contrib_Disclosure><BR>&nbsp;</TD>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+</FORM>
+</CENTER>
+<BR><BR>
+<!$MGENDIF>

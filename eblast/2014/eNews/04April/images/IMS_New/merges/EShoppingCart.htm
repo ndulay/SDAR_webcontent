@@ -1,0 +1,107 @@
+<SCRIPT language="javascript">
+function Check_qte(ThisItem,qteAvailable)
+{
+var itemText = ''
+if (parseFloat(qteAvailable) > 1 )
+{
+	itemText = ' items are';
+}
+else
+{
+	itemText = ' item is';
+}
+var objElements = document.forms["InputForm"].elements;
+if (parseFloat(ThisItem.value) > parseFloat(qteAvailable))
+	{
+	alert('Only '+parseFloat(qteAvailable)+itemText+' available in stock');	
+	ThisItem.value = 1;
+	ThisItem.focus();
+	}
+}
+</SCRIPT>
+
+<FORM name="InputForm" action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name_R1>">
+	<INPUT type="hidden" name="PRGNAME" value="EShoppingCart">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Num_R1>,-A,-N,-A,-A<!$MG_Billing_Group>,-LFalse">
+
+
+<CENTER>
+
+<!$MGIF_EMPTY>
+
+	<BR>
+	<TABLE border="0" width="100%" cellpadding="0" cellspacing="1">
+		<TR>
+			<TD CLASS="bTextMarine" align="center" nowrap>Your Shopping Cart is empty.<BR><BR><BR></TD> 
+		</TR>
+	</TABLE>
+
+<!$MGELSE>
+
+	<TABLE border=0 cellspacing="1" width="100%">
+		<TR CLASS="bgbar">
+			<TD CLASS="bText" align="center" nowrap width="10%">Delete</TD>
+			<TD CLASS="bText" nowrap width="40%">&nbsp;Description</TD>
+			<TD CLASS="bText" nowrap  width="10%">&nbsp;Item ID</TD>
+			<TD CLASS="bText" align="center" nowrap width="10%">Qty</TD>
+			<TD CLASS="bText" align="right" nowrap width="14%">Price&nbsp;</TD>
+			<TD CLASS="bText" align="right" nowrap width="16%">Total&nbsp;</TD>
+		</TR>
+		<!$MGREPEAT>
+			<TR <!$MG_Line_Color>>
+				<TD width="10%" align="center" nowrap><A href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R2>&PRGNAME=EShoppingCart&ARGUMENTS=-N<!$MG_Session_Number_R2>,-A<!$MG_Charge_Code>,-N0,-A,-A<!$MG_Billing_Group_R2>"><IMG src="<!$MG_Store_Images_Path_R1>b_trash.gif" border="0"></A></TD>
+				<TD width="40%" nowrap>&nbsp;<A CLASS="bTextMarine"  href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R2>&PRGNAME=ERealtorStore&ARGUMENTS=-N<!$MG_Session_Number_R2>,-N3,-A<!$MG_Billing_Group_R2>,-A<!$MG_Item_Code>,-L<!$MG_Is_Group_Header>"><!$MG_Product_Description></A></TD>
+				<TD CLASS="bText" nowrap width="10%">&nbsp;<!$MG_Item_ID></TD>
+				<TD CLASS="nnText" width="10%" align="center" nowrap><INPUT CLASS="input" type="text" name="<!$MG_Charge_Code_Qty>" size="3" maxlength="3" value="<!$MG_Quantity>" onBlur="Check_qte(this,'<!$MG_Quantity_Available>')"></TD>
+				<TD CLASS="nnText" nowrap width="14%" align="right"><!$MG_Price>&nbsp;</TD>
+				<TD CLASS="nnText" nowrap width="16%" align="right"><!$MG_Line_Total>&nbsp;</TD>
+			</TR>
+		<!$MGENDREPEAT>
+		<TR>
+			<TD colspan="6" nowrap><HR></TD>
+		</TR>
+		<TR>
+			<TD CLASS="bText" align="right" valign="bottom" colspan="3" nowrap><!$MG_Message_Savings>&nbsp;&nbsp;<!$MG_Savings>&nbsp;&nbsp;</TD>
+			<TD CLASS="nnText" align="right" colspan="2" nowrap>Sub-Total:&nbsp;</TD>
+			<TD CLASS="nnText" align="right" nowrap><!$MG_Sub_Total>&nbsp;</TD>
+		</TR>
+		<TR>
+			<TD colspan="3" nowrap>&nbsp;</TD>
+			<TD CLASS="nnText" align="right" colspan="2" nowrap>Tax:&nbsp;</TD>
+			<TD CLASS="nnText" align="right" nowrap><!$MG_Tax>&nbsp;</TD>
+		</TR>
+		<TR>
+			<TD colspan="4" nowrap>&nbsp;</TD>
+			<TD align="right" colspan="2" nowrap><HR></TD>
+		</TR>
+		<TR>
+			<TD colspan="2" nowrap>&nbsp;</TD>
+			<TD align="right" valign="bottom" nowrap><INPUT type="submit" name="submit" value="Update Totals"></TD>
+			<TD CLASS="bText" align="right" colspan="2" nowrap>Total:&nbsp;</TD>
+			<TD class="bgbar" align="right" nowrap><FONT class="bText"><!$MG_Cart_Total>&nbsp;</FONT></TD>
+		</TR>
+		<TR>
+			<TD colspan="6" nowrap>&nbsp;</TD>
+		<TR>
+	</TABLE>
+
+<!$MGENDIF>	
+</FORM>
+
+
+<TABLE border="0" cellspacing="1" width="100%">
+	<TR>
+		<!$MGIF_NOT_EMPTY>
+			<TD nowrap width="33%" align="left"><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=ERealtorStore&ARGUMENTS=-N<!$MG_Session_Number>,-N<!$MG_Product_View>,-A<!$MG_Billing_Group>,-A<!$MG_Last_Category>">Continue Shopping</A></TD>
+			<TD nowrap width="33%" align="center"><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=ECheckOut&ARGUMENTS=-N<!$MG_Session_Number>,-A<!$MG_Billing_Group>,-N<!$MG_Total_Cart>,-N<!$MG_Check_Out_Option>,-A<!$MG_Shipping_Code>">Check Out</A></TD>
+			<TD nowrap width="33%" align="right"><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=EShoppingCart&ARGUMENTS=-N<!$MG_Session_Number>,-A,-N,-A<!$MG_Last_Category>,-A<!$MG_Billing_Group>,-LTrue">Empty Cart</A></TD>
+		<!$MGELSE>
+			<TD align="center" nowrap><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=ERealtorStore&ARGUMENTS=-N<!$MG_Session_Number>,-N<!$MG_Product_View>,-A<!$MG_Billing_Group>,-A<!$MG_Last_Category>">Continue Shopping</A></TD>
+		<!$MGENDIF>
+	</TR>
+</TABLE>
+
+
+<BR>
+</CENTER>

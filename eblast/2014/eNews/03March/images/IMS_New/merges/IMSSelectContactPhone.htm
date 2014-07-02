@@ -1,0 +1,67 @@
+<SCRIPT LANGUAGE="JavaScript">
+<!---
+var strPhone = '<!$MG_Selected_Phone_Number>'; //Magic merge tag
+function SubmitForm()
+{
+	document.SelectContactPhone.submit();
+	window.opener.document.getElementById('ContactPhone').innerText = strPhone;
+	window.close();
+	window.opener.focus();
+}
+function setPhone(strValue)
+{
+	//alert('Set Phone to '+strValue);
+	strPhone = strValue;
+}
+//--->
+</SCRIPT>
+<CENTER>
+<FORM name="SelectContactPhone" ACTION="/scripts/mgrqispi.dll" METHOD="POST">
+	<INPUT type="hidden" name="APPNAME"   value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME"   value="IMSSaveSelectContactPhone">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>">
+
+<TABLE border="0" cellpadding="0" cellspacing="0" width="100%">
+	<TR height="2" ></TR>
+	<TR CLASS="bgbar">
+		<TD CLASS="nnText">&nbsp;Select contact phone number</TD>
+	</TR>
+</TABLE>
+
+<BR>
+<TABLE border="0" cellspacing="0" cellpadding="0" width="70%">
+	<TR align="center">
+		<TD>&nbsp;</TD>
+	</TR>
+   	<TR align="center">
+		<TD CLASS="bText" align="left">Home Phone</TD>
+		<TD align="left"><INPUT CLASS="input" type="radio" id="ContactPhone" name="Contact_Phone" value="H" onClick="setPhone('<!$MG_Home_Phone_Number>')"<!$MG_Home_Selected>></TD>
+		<TD CLASS="nnText" align="left"><!$MG_Home_Phone_Number></TD>
+	</TR>
+   	<TR align="center">
+		<TD CLASS="bText" align="left">Office Phone</TD>
+		<TD align="left"><INPUT CLASS="input" type="radio" id="ContactPhone" name="Contact_Phone" value="O" onClick="setPhone('<!$MG_Office_Phone_Number>')"<!$MG_Office_Selected>></TD>
+		<TD CLASS="nnText" align="left"><!$MG_Office_Phone_Number></TD>
+	</TR>
+	<!$MGIF_HAS_ADDL_PHONE>
+	<TR align="center">
+		<TD CLASS="bText" align="left">Additional Phone</TD>
+		<TD align="left"><INPUT CLASS="input" type="radio" id="ContactPhone" name="Contact_Phone" value="A" onClick="document.SelectContactPhone.Phone_Type_ComboBox.focus(); " <!$MG_Additional_Selected>></TD>
+		<TD align="left"><SELECT CLASS="nnText" name="Phone_Type_ComboBox" size="1" onBlur="setPhone(this.options[this.options.selectedIndex].id)">
+			<!$MGREPEAT>
+				<OPTION CLASS="nnText" value="<!$MG_Phone_Type>" id="<!$MG_Phone_Description>" <!$MG_Phone_Type_Selected>> <!$MG_Phone_Description></OPTION>
+			<!$MGENDREPEAT>
+			</SELECT>
+		</TD>
+	</TR>
+	<!$MGENDIF>
+</TABLE>
+
+<BR>
+<TABLE border="0" cellspacing="0" cellpadding="0" width="100%">
+	<TR align="center">
+		<TD align="center" colspan="3" nowrap><INPUT TYPE="Button" VALUE="Submit" onClick="SubmitForm()"></FORM></TD>
+	</TR>
+</TABLE>
+
+</CENTER>

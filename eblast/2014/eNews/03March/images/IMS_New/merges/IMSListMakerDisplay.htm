@@ -1,0 +1,51 @@
+
+<CENTER>
+<BR>
+<TABLE border="0" cellspacing="0" cellpadding="0" width="100%">
+	<TR>
+		<TD CLASS="nnText" nowrap>You are on the following lists in this category:</TD>
+	</TR>
+</TABLE>
+<BR>
+<TABLE border="0" cellspacing="0" cellpadding="0" width="100%">
+	<TR CLASS="bgbar">
+		<TD CLASS="bText" valign="top" nowrap>List Code</TD>
+		<TD CLASS="bText" valign="top" nowrap>Description</TD>
+		<TD CLASS="bText" valign="top" nowrap>Comment</TD>
+		<TD CLASS="bText" valign="top" nowrap>Status</TD>
+		<TD CLASS="bText" valign="top" nowrap>Date</TD>
+		<TD CLASS="bText" valign="top" nowrap>Amount</TD>
+	</TR>
+	<!$MGREPEAT>
+		<TR>
+			<TD valign="top" nowrap><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R1>&PRGNAME=IMSListMaker&ARGUMENTS=-N<!$MG_Session_Number_R1>,-A<!$MG_List_Category_R1>,-A<!$MG_List_Code_R1>,-N1"><!$MG_List_Code></A></TD>
+			<TD CLASS="nnText" valign="top" nowrap><!$MG_List_Description></TD>
+			<TD CLASS="nnText" valign="top" nowrap><!$MG_Comment></TD>
+			<TD CLASS="nnText" valign="top" align="center" nowrap><!$MG_Status></TD>
+			<TD CLASS="nnText" valign="top" nowrap><!$MG_Date></TD>
+			<TD CLASS="nnText" valign="top" nowrap><!$MG_Amount></TD>
+		</TR>
+	<!$MGENDREPEAT>
+</TABLE>
+
+
+<BR><BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR align="left">
+		<TD align="center" nowrap><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSListMaker&ARGUMENTS=-N<!$MG_Session_Number>,-A<!$MG_List_Category>,-A,-N2">Add another list in this category</A></TD>
+		
+		<TD align="center" colspan="3" nowrap><INPUT TYPE="Button" VALUE="Close this window" onClick="CloseWindow()"></TD>
+		<SCRIPT LANGUAGE="JavaScript">
+				<!---
+				function CloseWindow()
+				{
+				window.close();
+				}
+				//--->
+		</SCRIPT>
+	</TR>
+</TABLE>
+
+
+<BR>
+</CENTER>

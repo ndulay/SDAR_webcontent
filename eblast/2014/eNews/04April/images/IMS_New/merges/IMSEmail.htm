@@ -1,0 +1,303 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<style type="text/css">
+	.bText {
+	font-size : 10pt;
+	font-weight : bold;
+	color : #000000;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+	.nnText {
+	font-size : 10pt;
+	font-weight : normal;
+	color : #000000;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+	.nnTextMarine {
+	font-size : 10pt;
+	font-weight : normal;
+	color : #004080;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+	.bTextMarine {
+	font-size : 10pt;
+	font-weight : bold;
+	color : #004080;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+	.bTextRed {
+	font-size : 10pt;
+	font-weight : bold;
+	color : Red;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+	.bTextBlue {
+	font-size : 10pt;
+	font-weight : bold;
+	color : Blue;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+	.bTextGreen {
+	font-size : 10pt;
+	font-weight : bold;
+	color : ForestGreen;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+	.bigTextRed {
+	font-size : 12pt;
+	font-weight : bold;
+	color : Red;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+</style>
+
+<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+	<TR align="left">
+		<TD CLASS="bTextMarine">Thank you for using the&nbsp;<!$MG_Assoc_Name>&nbsp;IMS Web site.</TD>
+	</TR>
+</TABLE>
+<BR>
+<!-- Charge to account for store purchase (pgm 82) -->
+<!$MGIF_STORE_INVOICE>
+	<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+		<TR align="left">
+			<TD CLASS="bTextMarine">Your store charge has been processed!</TD>
+		</TR>
+	</TABLE>
+	<BR>
+	<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+		<TR align="left">
+			<TD CLASS="bTextMarine">Attached is the invoice confirming your store purchase.  Note that this invoice will also appear<BR>
+								on your statement.&nbsp;&nbsp;<!--You may double-click the icon to view the	details of your store purchase.--></TD>
+		</TR>
+		<TR align="left">
+			<TD CLASS="bTextMarine">Please save or print the invoice for your records.</TD>
+		</TR>
+		<TR align="left">
+			<TD>&nbsp;</TD>
+		</TR>
+	</TABLE>
+<!$MGENDIF>
+<!-- Registration Charge (pgm 82) -->
+<!$MGIF_FROM_REG_CHARGE>
+	<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+		<TR align="left">
+			<TD CLASS="bTextMarine">Your charge has been processed!</TD>
+		</TR>
+	</TABLE>
+	<BR>
+	<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+		<TR align="left">
+			<TD CLASS="bTextMarine">Attached is the invoice confirming your charge.  Note that this invoice will also appear<BR>
+								on your statement.&nbsp;&nbsp;<!--You may double-click the icon to view or print the invoice.--></TD>
+		</TR>
+	</TABLE>
+<!$MGENDIF>
+<!-- Registration Cancellation (pgm 82)-->
+<!$MGIF_FROM_REG_CANCEL>
+	<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+		<TR align="left">
+			<TD CLASS="bTextRed">Your cancellation has been processed!</TD>
+		</TR>
+	</TABLE>
+	<BR>
+	<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+		<TR align="left">
+			<TD CLASS="bTextMarine">Attached is the invoice confirming your cancellation.  Note that this invoice will also appear<BR>
+								on your statement.&nbsp;&nbsp;<!--You may double-click the icon to view or print the invoice.--></TD>
+		</TR>
+	</TABLE>
+<!$MGENDIF>
+<!-- Display Receipt (pgm 108)-->
+<!$MGIF_FROM_CC_TCHK>
+	<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+		<!$MGIF_TEMP_RECEIPT>
+			<TR align="left">
+				<TD CLASS="bigTextRed">Your transaction has NOT completed processing.</TD>
+			</TR>
+		<!$MGELSE>
+		<TR align="left">
+			<TD CLASS="bTextMarine">Your transaction has been processed!</TD>
+		</TR>
+		<!$MGENDIF>
+	</TABLE>
+	<BR>
+	<!$MGIF_SUSPENDED>
+		<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+			<TR align="left">
+				<TD CLASS="bTextGreen">Thank you for your payment.  You should be able to access your account within a few hours.  <BR>However, this can take up to 48 hours during periods of heavy activity.  <BR>If you need further assistance, contact the association office at the number below.
+				<!$MGIF_SUSPENDED_AGENTS><BR>Access has been re-enabled for: <!$MG_Restored_Member_Names><!$MGENDIF>
+			</TD>
+			</TR>
+		</TABLE>
+	<BR>
+	<!$MGENDIF>
+
+	<!$MGIF_STORE_RECEIPT>
+	<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+		<!$MGIF_TEMP_RECEIPT>
+			<TR align="left">
+				<TD CLASS="bTextRed">Attached is the TEMPORARY receipt confirming your store purchase.  Please <!--double-click<BR>the icon of the attached receipt and -->print or save a copy for future reference, as this is the<BR>only receipt you will receive.  This temporary receipt also contains the details of your<BR>store purchase.  Once the transaction has completed processing, you will receive<BR>E-Mail notification of the receipt status.</TD>
+			</TR>
+		<!$MGELSE>
+			<TR align="left">
+				<TD CLASS="bTextMarine">Attached is the receipt confirming your store purchase.  <!--Please verify that the payment was accepted<BR>
+				by double-clicking the icon of the attached receipt.  You may also view the details of your store purchase.--></TD>
+			</TR>
+		<!$MGENDIF>
+	<!$MGELSE>
+	<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+		<!$MGIF_TEMP_RECEIPT>
+			<TR align="left">
+				<TD CLASS="bTextRed">Attached is the TEMPORARY receipt for your transaction.  Please <!--double-click the icon<BR>of the attached receipt and -->print or save a copy for future reference, as this is the only<BR>receipt you will receive.  Once the transaction has completed processing, you will receive E-Mail<BR>notification of the receipt status.</TD>
+			</TR>
+		<!$MGELSE>
+			<TR align="left">
+				<TD CLASS="bTextMarine">Attached is the receipt for your transaction.  <!--Please verify that the transaction was accepted by<BR>double-clicking the icon of the attached receipt.--></TD>
+			</TR>
+		<!$MGENDIF>
+	</TABLE>
+	<!$MGENDIF>
+
+	<!$MGIF_USING_NAR_NOT_TEMP>
+	<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+		<BR>
+		<TR align="left">
+			<!$MGIF_TELECHECK>
+				<TD CLASS="bTextMarine">If the transaction was accepted, it will appear on your bank statement under the name<BR>
+							 "<!$MG_Stmt_Print_Name>".</TD>
+			<!$MGELSE>
+				<TD CLASS="bTextMarine">If the transaction was accepted, it will appear on your credit card statement under the name<BR>
+							 "<!$MG_Stmt_Print_Name>".</TD>
+			<!$MGENDIF>
+		</TR>
+	</TABLE>
+	<!$MGENDIF>
+
+	<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+		<TR align="left">
+			<TD CLASS="bTextMarine">Please save or print the receipt for your records.</TD>
+		</TR>
+		<TR align="left">
+			<TD>&nbsp;</TD>
+		</TR>
+	</TABLE>
+	<!-- End of FROM_CC_TCHK-->
+<!$MGENDIF>
+<!-- Display Invoice (82) or Cancel Registration (92) or Display Receipt (pgm 108)-->
+<!$MGIF_FROM_ED_OR_EV>
+	<TABLE width="100%" cellpadding="0" cellspacing="1" border="0">
+		<TR align="left">
+			<TD CLASS="nnTextMarine">Member #:&nbsp;&nbsp;<!$MG_Member_Number></TD>
+		</TR>
+		<TR align="left">
+			<TD CLASS="nnTextMarine">Member Name:&nbsp;&nbsp;<!$MG_Member_Name></TD>
+			<TD CLASS="nnTextMarine">&nbsp;</TD>
+		</TR>
+	</TABLE>
+<!$MGREPEAT>
+<!$MGIF_IS_INSIDE_LOOP>
+	<BR>
+	<TABLE width="100%" cellpadding="0" cellspacing="1" border="0">
+		<TR align="left">
+			<TD CLASS="nnTextMarine"><!$MG_Reg_Status_Msg>&nbsp;<!$MG_EDEV_Name>&nbsp;detailed below:</TD><TD CLASS="nnTextMarine">&nbsp;Registration ID:&nbsp;&nbsp;<!$MG_Registration_ID></TD>
+		</TR>
+	</TABLE>
+	<!-- Class Registration (29) or Cancel Registration (92)-->
+	<!$MGIF_EDUCATION_CARD>
+		<TABLE width="100%" cellpadding="0" cellspacing="1" border="0">
+			<TR align="left">
+				<TD CLASS="nnTextMarine"><B>Your education card has been&nbsp;<!$MG_EC_Action>&nbsp;<!$MG_EC_Amount>&nbsp;credit(s).</B></TD>
+			</TR>
+		</TABLE>
+	<!$MGENDIF>
+	<TABLE width="75%" cellpadding="0" cellspacing="1" border="0">
+	<!$MGIF_FROM_ED>
+		<TR align="left">
+			<TD CLASS="nnTextMarine">Course:</TD>
+			<TD CLASS="nnTextMarine"><!$MG_Course_ID>&nbsp;&nbsp;<!$MG_Course_Name></TD>
+		</TR>
+	<!$MGENDIF>
+
+	<TR align="left">
+		<TD CLASS="nnTextMarine"><!$MG_EDEV_Up_Name>:</TD>
+		<TD CLASS="nnTextMarine"><!$MG_Event_ID>&nbsp;&nbsp;<!$MG_Event_Name></TD>
+	</TR>
+	<!$MGIF_TICKETS>
+		<TR align="left">
+			<TD CLASS="nnTextMarine">Number of tickets:</TD>
+			<TD CLASS="nnTextMarine"><!$MG_Ticket_Qty></TD>
+		</TR>
+	<!$MGENDIF>
+
+	<!$MGIF_GUESTS>
+		<TR align="left">
+			<TD CLASS="nnTextMarine">Number of guests:</TD>
+			<TD CLASS="nnTextMarine"><!$MG_Guest_Ticket_Qty></TD>
+		</TR>
+	<!$MGENDIF>
+	
+	<TR align="left">
+		<TD CLASS="nnTextMarine">Date:</TD>
+		<TD CLASS="nnTextMarine"><!$MG_Event_Date></TD>
+	</TR>
+	<!$MGIF_NOT_CONVENTION>
+		<TR align="left">
+			<TD CLASS="nnTextMarine">Time:</TD>
+			<TD CLASS="nnTextMarine"><!$MG_Start_Time>&nbsp;-&nbsp;<!$MG_End_Time></TD>
+		</TR>
+	<!$MGENDIF>
+
+		<TR align="left">
+			<TD CLASS="nnTextMarine">Location:</TD>
+			<TD CLASS="nnTextMarine"><!$MG_Loc_Desc1>&nbsp;<!$MG_Loc_Desc2></TD>
+		</TR>
+		<TR align="left">
+			<TD CLASS="nnTextMarine">&nbsp;</TD>
+			<TD CLASS="nnTextMarine"><!$MG_Loc_Address></TD>
+		</TR>
+		<TR align="left">
+			<TD CLASS="nnTextMarine">&nbsp;</TD>
+			<TD CLASS="nnTextMarine"><!$MG_Loc_CityStZip></TD>
+		</TR>
+	</TABLE>
+<!$MGENDIF>
+<!$MGENDREPEAT>
+<!-- End of FROM_ED_OR_EV-->
+<!$MGENDIF>
+
+<!-- Display Void (pgm 107)-->
+<!$MGIF_FROM_VOID>
+	<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+		<TR align="left">
+			<TD CLASS="bTextRed">Your transaction was not completed.</TD>
+		</TR>
+		<TR align="left">
+			<TD>&nbsp;</TD>
+		</TR>
+		<TR align="left">
+			<TD CLASS="bTextMarine">Attached is the transaction message explaining your voided transaction.<BR>
+								Please double-click the icon to view the error message.</TD>
+		</TR>
+	</TABLE>
+<!$MGENDIF>
+
+<BR>
+<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+	<TR align="left">
+		<TD CLASS="bTextMarine">If you have any questions you may call the association office at&nbsp;<!$MG_Assoc_Phone></TD>
+	</TR>
+</TABLE>
+</CENTER>
+</BODY>
+</HTML>

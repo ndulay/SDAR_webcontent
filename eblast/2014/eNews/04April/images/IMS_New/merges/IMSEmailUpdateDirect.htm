@@ -1,0 +1,159 @@
+<SCRIPT LANGUAGE="JavaScript">
+<!---
+function LTrim(str) 
+{
+	for (var i=0; str.charAt(i)==" "; i++);
+	return str.substring(i,str.length);
+}
+
+function RTrim(str) 
+{
+	for (var i=str.length-1; str.charAt(i)==" "; i--);
+	return str.substring(0,i+1);
+}
+
+function Trim(str) 
+{
+	return LTrim(RTrim(str));
+}
+
+function validateEmail()
+{
+<!$MGIF_MODIFY_EMAIL_TOP>
+	if(document.InputForm.Member_Email)
+	{
+	var Email = Trim(document.InputForm.Member_Email.value);
+		if (Email == '')
+		{
+			alert('Association E-Mail Address is required');
+			document.InputForm.Member_Email.focus();
+			return false;
+		}
+		if (Email != '')
+		{
+			var str = (Email);
+			var reg1 = /(@.*@)|(\.\.)|(@\.)|(\.@)|(^\.)/;														 // not valid
+			var reg2 = /^.+\@(\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,5}|[0-9]{1,5})(\]?)$/;		 // valid
+				 if (!reg1.test(str) && reg2.test(str))															 // if reg1 false and reg2 true (valid)
+					{ 
+					// alert('Good E-Mail Address');
+					}
+					else
+					{
+					alert('Invalid Association E-Mail Address');
+					document.InputForm.Member_Email.focus();
+					return false;
+					 }
+		}
+	}
+<!$MGENDIF>
+<!$MGIF_MODIFY_NAR_EMAIL_TOP>
+	if(document.InputForm.Member_NAR_Email)
+	{
+	var Email = Trim(document.InputForm.Member_NAR_Email.value);
+		if (Email == '')
+		{
+			alert('<!$MG_MN_Email_Label_TOP> E-Mail Address is required');
+			document.InputForm.Member_NAR_Email.focus();
+			return false;
+		}
+		if (Email != '')
+		{
+			var str = (Email);
+			var reg1 = /(@.*@)|(\.\.)|(@\.)|(\.@)|(^\.)/;														 // not valid
+			var reg2 = /^.+\@(\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,5}|[0-9]{1,5})(\]?)$/;		 // valid
+				 if (!reg1.test(str) && reg2.test(str))															 // if reg1 false and reg2 true (valid)
+					{ 
+					// alert('Good E-Mail Address');
+					}
+					else
+					{
+					alert('Invalid <!$MG_MN_Email_Label_TOP> E-Mail Address');
+					document.InputForm.Member_NAR_Email.focus();
+					return false;
+					 }
+		}
+	}
+<!$MGENDIF>
+SubmitForm();
+}
+
+function SubmitForm()
+{
+	//No errors submit the form
+	document.InputForm.submit();
+}
+
+-->
+</SCRIPT>
+
+<CENTER>
+<FORM name="InputForm" action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME"   value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME"   value="IMSEmailUpdate">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-N1">
+	<INPUT type="hidden" name="previousemail" value="<!$MG_Previous_Email>">
+
+<!-- START REPEAT ON PROFILE HEADER -->
+<!$MGREPEAT>
+<!$MGIF_PROFILE_HEADER>
+<BR>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR CLASS="bgbar">
+		<TD CLASS="bText" nowrap>&nbsp; <!$MG_Header_Text></TD>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+<!$MGIF_PROFILE_LABEL>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR>
+		<TD CLASS="nnText" nowrap>&nbsp; <!$MG_Header_Text></TD>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+<!$MGIF_PROFILE_EMAIL_ASSOC>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="15%" nowrap <!$MGIF_MODIFY_EMAIL><!$MGELSE>DISABLED<!$MGENDIF>>&nbsp;Association E-Mail</TD>
+		<TD nowrap>
+				&nbsp;&nbsp;<INPUT CLASS="input" type="text" name="Member_Email" size="80" maxlength="80" value="<!$MG_Member_Email>" <!$MGIF_MODIFY_EMAIL><!$MGELSE>DISABLED<!$MGENDIF>>
+		</TD>
+		<TD CLASS="bText" nowrap>
+			Last Modified:&nbsp;<!$MG_Last_Modified>
+		</TD>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+<!$MGIF_PROFILE_EMAIL_NAR>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="15%" nowrap <!$MGIF_MODIFY_NAR_EMAIL><!$MGELSE>DISABLED<!$MGENDIF>>&nbsp;<!$MG_MN_Email_Label> E-Mail</TD>
+		<TD nowrap>
+				&nbsp;&nbsp;<INPUT CLASS="input" type="text" name="Member_NAR_Email" size="80" maxlength="80" value="<!$MG_Member_NAR_Email>" <!$MGIF_MODIFY_NAR_EMAIL><!$MGELSE>DISABLED<!$MGENDIF>>
+		</TD>
+		<TD CLASS="bText" nowrap>
+			Last Modified:&nbsp;<!$MG_NAR_Last_Modified>
+		</TD>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+<!$MGENDREPEAT>
+<!-- END REPEAT ON PROFILE HEADER -->
+
+<TABLE border="0" cellspacing="0" cellpadding="0" width="100%">
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TR align="center">
+		<TD nowrap><INPUT TYPE="Button" VALUE="Submit" onClick="validateEmail()"></TD>
+	</TR>
+</TABLE>
+</FORM>
+
+</CENTER>

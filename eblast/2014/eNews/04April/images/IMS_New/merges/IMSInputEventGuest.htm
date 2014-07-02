@@ -1,0 +1,68 @@
+
+<FORM action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="IMSEventGuest">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-A<!$MG_Event_ID>,-AC,-N<!$MG_Guest_Number>">
+	<INPUT type="hidden" name="Guest_Price" value="<!$MG_Guest_Price>">
+	<INPUT type="hidden" name="Charge_Code" value="<!$MG_Charge_Code>">
+	<INPUT type="hidden" name="GoBack_PRG" value="<!$MG_GoBack_PRG>">
+	<INPUT type="hidden" name="GoBack_ARG" value="<!$MG_GoBack_ARG>">
+
+<CENTER>
+
+<BR>
+<TABLE border="0" cellspacing="0" cellpadding="0" width="100%">
+	<TR CLASS="bgbar">
+		<TD CLASS="nnText" nowrap>Add a New Guest</TD>
+	</TR>
+</TABLE>
+
+
+<BR>
+<TABLE border="0" width="80%" cellpadding="2" cellspacing="0">
+	<TR>
+		<TD CLASS="bText" width="30%" nowrap>First Name</TD>
+		<TD nowrap><INPUT CLASS="input" type="text" name="Fisrt_Name" size="12" face="arial" maxlength="12" value="<!$MG_First_Name>">&nbsp;</TD>
+		<TD CLASS="bText" width="30%" nowrap>Middle Initial&nbsp;<INPUT CLASS="input" type="text" name="Middle_Initial" size="1" face="arial" maxlength="1" value="<!$MG_Middle_Initial>">&nbsp;</TD>
+		<TD CLASS="bText" width="30%" nowrap>Last Name&nbsp;<INPUT CLASS="input" type="text" name="Last_Name" size="17" face="arial" maxlength="17" value="<!$MG_Last_Name>"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="30%" nowrap>Nickname</TD>
+		<TD nowrap colspan=5><INPUT CLASS="input" type="text" name="Nick_Name" size="12" face="arial" maxlength="12" value="<!$MG_Nick_Name>"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="30%" nowrap>Company Name</TD>
+		<TD nowrap colspan=5><INPUT CLASS="input" type="text" name="Company_Name" size="30" face="arial" maxlength="30" value="<!$MG_Company_Name>"></TD>
+	</TR>
+	<!$MGIF_GOLF_EVENT>
+		<TR>
+			<TD CLASS="bText" width="30%" nowrap>Golf Handicap</TD>
+			<TD nowrap colspan=5><INPUT CLASS="input" type="text" name="Golf_Handicap" size="3" face="arial" maxlength="3" value="<!$MG_Golf_Handicap>"></TD>
+		</TR>
+	<!$MGENDIF>
+	<!$MGIF_MEAL_CHOICE>
+		<TR>
+			<TD CLASS="bText" width="30%" nowrap>Meal Choice</TD>
+			<TD  colspan=5>
+				<SELECT CLASS="nnText" name="Meal_Choice">
+					<!$MGREPEAT>
+						<OPTION CLASS="input" value="<!$MG_Meal_Code>"  <!$MG_Meal_Code_Selected>> <!$MG_Meal_Description></OPTION>
+					<!$MGENDREPEAT>
+				</SELECT>
+			</TD>
+		</TR>
+	<!$MGENDIF>
+	
+</TABLE>
+
+
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR align="center">
+		<TD nowrap><INPUT type="submit" name="" value="Submit"></TD>
+	</TR>
+</TABLE>
+</FORM>
+
+
+</CENTER>

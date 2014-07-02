@@ -1,0 +1,597 @@
+/* ...............................LINKS........................ */
+a {
+	text-decoration: underline;
+	color: #000000;
+}
+
+.Indent {
+	Margin-left: 25px;
+	Margin-top: 4px;
+	Margin-right: 25px;
+	Margin-bottom: 4px;
+	list-style: url(http://ims.sdar.com:9000/images/bulletBlue.gif);
+	font-size: smaller;
+	list-style-position: outside;	
+}
+a.white {
+
+	text-decoration: underline;
+	color: #FFFFFF;
+}
+a.white:hover {
+
+	text-decoration: underline;
+	color: #FFFFFF;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #00239D;
+}
+
+a:visited {
+	text-decoration: underline;
+}
+a.altnav {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height : normal;
+	color: #00239D;
+	text-decoration : underline;
+	list-style-position: inside;
+	list-style-type: none;
+	list-style-image: none;
+	display: compact;
+}
+a.altnav:visited {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height : normal;
+	color: #758BB7;
+	text-decoration : underline;
+	list-style-position: inside;
+	list-style-type: none;
+	list-style-image: none;
+	display: compact;
+}
+a.subnav {
+    font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+    line-height : 110%;
+    color: #663300;
+    text-decoration : underline;   
+}
+a.subnav:active {
+   font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height : 110%;
+    color: #663300;
+    text-decoration : underline;   
+}
+a.subnav:hover {
+   font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height : 110%;
+    color: #663300;
+    text-decoration : underline;   
+}
+a.subnav:visited {
+   font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height : 110%;
+    color: #663300;
+    text-decoration : underline;   
+}
+a.altsubnav {
+    font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+    line-height : 110%;
+    color: #663300;
+    text-decoration : underline;   
+}
+a.altsubnav:hover {
+   font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    line-height : 110%;
+    color: #663300;
+    text-decoration : underline;   
+}
+a.altsubnav:visited {
+   font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    line-height : 110%;
+    color: #663300;
+    text-decoration : underline;   
+}
+a.altsubnav:active {
+   font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    line-height : 110%;
+    color: #663300;
+    text-decoration : underline;   
+}
+H1.blue
+{
+	color: #00239D
+}
+H2.blue
+{
+	color: #00239D
+}
+H3.blue
+{
+	color: #00239D
+}
+/* ...............................HEADINGS........................ */
+
+h1 {
+	font: bolder normal 16pt Arial, Helvetica, sans-serif;
+	margin: 5px;
+	padding: 5px;
+
+}
+
+h2 {
+	font: bold 14pt Arial, Helvetica, sans-serif;
+	margin: 5px;
+	padding: 5px;
+
+}
+
+h3 {
+	font: bold 12pt Arial, Helvetica, sans-serif;
+	margin: 5px;
+	padding: 5px;
+
+}
+
+.txwhiteb {
+	font: bold 10pt Verdana, Geneva, Arial, Helvetica, sans-serif;
+	color : White;
+}
+
+/* ...............................HORIZONTAL RULE........................ */
+
+HR {
+	border : solid;
+}
+
+/* ...............................TEXT........................ */
+.T0{
+	font-size: 14px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+
+}
+.T0B{
+	font-size: 14px;
+	font-weight : 800;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+
+}
+
+.T1 {
+	font-size : 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	list-style: circle;
+	margin: 3px;
+
+}
+
+.T1B{
+	font-size: 12px;
+	font-weight : 800;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+
+}
+
+.T2 {
+	font-size : 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	list-style: circle;
+
+}
+.T2B{
+	font-size: 10px;
+	font-weight : 800;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+
+}
+
+.T3 {
+	font-size : 9px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+
+}
+.T3B {
+	font-size : 9px;
+	font-weight : 800;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+
+}
+
+.L0 {
+	font-size : 14px;
+	color: black;
+	font-family: Arial, Helvetica, sans-serif;
+
+}
+.L0B {
+	font-size : 14px;
+	font-weight : 800;
+	color: black;
+	font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.L1 {
+	font-size : 12px;
+	color: black;
+	font-family: Arial, Helvetica, sans-serif;
+	clip:    rect(auto auto auto auto);
+	line-height: 21px;
+	margin: 5px;
+	border: none;
+	padding: 5px;
+}
+.L1ALT {
+	font-size : 12px;
+	color: black;
+	font-family: Arial, Helvetica, sans-serif;
+	clip:    rect(auto auto auto auto);
+	margin: 5px;
+	border: none;
+	padding: 5px;
+}
+.L1B {
+	font-size : 12px;
+	font-weight : 800;
+	color: black;
+	font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.L2 {
+	font-size : 10px;
+	color: black;
+	font-family: Arial, Helvetica, sans-serif;
+
+}
+.L2B {
+	font-size : 10px;
+	font-weight : 800;
+	color: black;
+	font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.L3 {
+	font-size : 9px;
+	color: black;
+	font-family: Arial, Helvetica, sans-serif;
+
+}
+.L3B {
+	font-size : 9px;
+	font-weight : 800;
+	color: black;
+	font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+.W1 {
+	font-size : 14px;
+	font-weight : normal;
+	color : white;
+	line-height : normal;
+	font-family: Arial, Helvetica, sans-serif;
+
+}
+.W2 {
+	font-size : 10px;
+	font-weight : normal;
+	color : white;
+	line-height : normal;
+	font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.txmdb{
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	color : #000000;
+	font-weight: 800;
+}
+.txmdb{
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	color : #000000;
+	font-weight: 800;
+}
+.txsmb{
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	color : #000000;
+	font-weight: 800;
+}
+.txsmb{
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	color : #000000;
+	font-weight: 800;
+}
+.txsm{
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	color : #000000;
+}
+.txsm{
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	color : #000000;
+}
+.txrow{
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 14px;
+	color : Black;
+	font-weight: 800;
+}
+.txrow{
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 14px;
+	color : Black;
+	font-weight: 800;
+}
+
+/* ............................ALL TABLES................................*/
+table.table1 {
+	background:  #FFFFFF;
+	padding: 5pt;
+	border-left-width : 1px;
+	border-right-width : 1px;
+	border-top-width : 1px;
+	border-bottom-width : 1px;
+	border-color : #000000;
+	border-style : solid;
+	font-family: Arial, Helvetica, sans-serif;
+	list-style-type: circle;
+	font-size: 12px;
+	margin: 5px;
+
+
+
+
+}
+
+table.table2 {
+	background: #CCD7FF;
+	padding: 5;
+	border-left-width : 4px;
+	border-right-width : 4px;
+	border-top-width : 4px;
+	border-bottom-width : 4px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin: 5px;
+
+}
+table.table3 {
+	background:  #FFFFFF;
+	padding: 3pt;
+	border-left-width : 1px;
+	border-right-width : 1px;
+	border-top-width : 1px;
+	border-bottom-width : 1px;
+	border-color : #000000;
+	border-style : solid;
+	font-family: Georgia, "Times New Roman", Times, serif;
+
+}
+/* ............................TABLE ROWS................................*/
+
+.rowdk{
+	background: #EBEBEB;
+}
+
+.rowcolor{
+	background: #959D56;
+}
+
+.rowlt{
+	background: #FFFFFF;
+}
+.rowLtBlue {
+	background: #CCD7FF;
+}
+.rowDkBlue {
+	background: #00239D bottom;
+	color : #FFFFFF;
+	white-space: normal;
+	text-indent: 15pt;
+	border-top: #CCFFFF;
+	border-right: #CCFFFF;
+	border-bottom: #CCFFFF;
+	border-left: #CCFFFF;
+	padding: 4px;
+	margin-right: 15px;
+	margin-left: 15px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	height: auto;
+
+
+
+}
+.rowLtRed {
+	background: #CB1A3D;
+}
+.rowDkRed {
+	background: #B33F3F;
+	color : White;
+}
+.rowLtGrayWarm {
+	background: #CBC6C8;
+}
+.rowDkGrayWarm {
+	background: #B4ADAF;
+	color : White;
+}
+.rowLtGrayCool{
+	background: #CCCCCC;
+}
+.rowDkGrayCool {
+	background: #999999;
+	color : White;
+}
+.rowLtBlueGray {
+	background: #B9C7E5;
+}
+.rowDkBlueGray {
+	background: #758BB7;
+	color : White;
+}
+.rowLtOlive {
+	background: #99AE9B;
+}
+.rowDkOlive {
+	background: #6B886E;
+	color : White;
+}
+.rowLtTan{
+	background: #E2DCC5;
+}
+.rowDkTan {
+	background: #CCBE99;
+}
+.rowLtYellow {
+	background: #FFFFCC;
+}
+.rowDkYellow {
+	background: #FFFF66;
+}
+.rowLtGreen {
+	background: #BEE3A6;
+}
+.rowDkGreen {
+	background: #007D00;
+	color : #BEE3A6;
+}
+
+.A1 {
+	font-size : 12px;
+	color: black;
+	font-family: Arial, Helvetica, sans-serif;
+
+}
+.A1B {
+	font-size : 12px;
+	font-weight : 800;
+	color: black;
+	font-family: "Courier New", Courier, mono;
+
+}
+.A0 {
+	font-size : 14px;
+	color: black;
+	font-family: "Courier New", Courier, mono;
+
+}
+.A0B {
+	font-size : 14px;
+	font-weight : 800;
+	color: black;
+	font-family: "Courier New", Courier, mono;
+
+}
+.A2 {
+	font-size : 10px;
+	color: black;
+	font-family: "Courier New", Courier, mono;
+
+}
+.A2B {
+	font-size : 10px;
+	font-weight : 800;
+	color: black;
+	font-family: "Courier New", Courier, mono;
+
+}
+.A3 {
+	font-size : 9px;
+	color: black;
+	font-family: "Courier New", Courier, mono;
+
+}
+.A3B {
+	font-size : 9px;
+	font-weight : 800;
+	color: black;
+	font-family: "Courier New", Courier, mono;
+}
+.txwhiteb-1 {
+	font: normal 9pt Verdana, Geneva, Arial, Helvetica, sans-serif;
+	color : White;
+}
+.txwhite-1 {
+	font: normal 9pt Verdana, Geneva, Arial, Helvetica, sans-serif;
+	color : White;
+}
+.redLt {
+	color : #CB1A3D;
+}
+
+.redDk {
+	color : #B33F3F;
+}
+.GreenDk{
+	color : #007D00;
+}
+.GreenLt {
+	color : #BEE3A6;
+}
+.GreenOliveLt {
+	color : #99AE9B;
+}
+.GreenOliveDk {
+	color : #6B886E;
+}
+.BlueDk  {
+	color : #00239D;
+}
+.BlueLt {
+	color : #CCD7FF;
+}
+.BlueGrayLt {
+	color : #B9C7E5;
+}
+.BlueGrayDk {
+	color : #758BB7;
+}
+.YellowDk {
+	color : #FFFF66;
+}
+.YellowLt {
+	color : #FFFFCC;
+}
+.TanDk {
+	color : #CCBE99;
+}
+.TanLt {
+	color : #E2DCC5;
+}
+.GrayCoolDk {
+	color : #B4ADAF;
+}
+.GrayCoolLt {
+	color : #CBC6C8;
+}
+.GrayWarmLt {
+	color : #CCCCCC;
+}
+.GrayWarmDk {
+	color : #999999;
+}
+blockquote {
+	margin: 3px 27px;
+	padding: 3px;
+}

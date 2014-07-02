@@ -1,0 +1,84 @@
+<CENTER>
+<!$MGIF_REGISTERED>
+
+
+<!$MGREPEAT>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD colspan="7" nowrap>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bbText" colspan="7" align="left" nowrap><FONT color="<!$MG_Name_Color>"><!$MG_Course_ID_Name></FONT></TD>
+	</TR>
+</TABLE>
+
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="1">
+	<TR CLASS="bgbar">
+		<TD CLASS="bText" align="left" nowrap>&nbsp;Registration ID</TD>
+		<TD CLASS="bText" align="left" nowrap>&nbsp;Class ID</TD>
+		<TD CLASS="bText" align="center" nowrap>Start Date</TD>
+		<TD CLASS="bText" align="center" nowrap>End Date</TD>
+		<TD CLASS="bText" align="center" nowrap>Start Time</TD>
+		<TD CLASS="bText" align="center" nowrap>End Time</TD>
+		<TD CLASS="bText" align="right" nowrap>Amount&nbsp;</TD>
+	</TR>
+	<!$MGREPEAT>
+
+	<TR>
+		<TD CLASS="nnText" align="left" nowrap>&nbsp;<!$MG_Registration_ID></TD>
+		<TD CLASS="nnText" align="left" nowrap>&nbsp;<!$MG_Class_ID></TD>
+		<TD CLASS="nnText" align="center" nowrap><!$MG_Start_Date></TD>
+		<TD CLASS="nnText" align="center" nowrap><!$MG_End_Date></TD>		
+		<TD CLASS="nnText" align="center" nowrap><!$MG_Start_Time></TD>
+		<TD CLASS="nnText" align="center" nowrap><!$MG_End_Time></TD>
+		<TD CLASS="nnText" align="right" nowrap><!$MG_Amount>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" align="left" nowrap>&nbsp;Format</TD>
+		<TD CLASS="nnText" align="left" nowrap><!$MG_Format></TD>
+		<TD CLASS="bText" align="left" nowrap>Instructor</TD>
+		<TD CLASS="nnText" align="left" nowrap><!$MG_Instructor></TD>
+
+		<TD align="right" nowrap colspan=3>
+		<!$MGIF_CANCELLATION>
+			<A CLASS="bTextBlue"  href="/scripts/mgrqispi.dll?APPNAME=<!$MG_C_App_Name>&PRGNAME=IMSCancelRegistration&ARGUMENTS=-N<!$MG_C_Session_Number>,-A0,-A<!$MG_C_Convention_ID>,-A<!$MG_C_Registration_ID>,-A<!$MG_C_Class_ID>,-N<!$MG_C_Receipt_ID>,-N<!$MG_C_Invoice_ID>,-A<!$MG_Cancellation_Type>,-AC>">Registration Cancellation</A>
+		<!$MGENDIF>
+		</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" align="left" nowrap>&nbsp;Location</TD>
+		<TD align="left" nowrap colspan=3>&nbsp;
+		<!$MGIF_LOCATION_EXIST>
+			<A CLASS="bTextBlue"  href="/scripts/mgrqispi.dll?APPNAME=<!$MG_L_App_Name>&PRGNAME=IMSDisplayLocation&ARGUMENTS=-N<!$MG_L_Session_Number>,-A<!$MG_Code_Location>"><!$MG_Location></A>
+		<!$MGENDIF>
+		<!$MGIF_LOC_DOC_EXIST>
+			<!$MG_Loc_Web_Doc><!$MG_Location></A>
+		<!$MGENDIF>
+		</TD>
+	</TR>
+
+	<!$MGENDREPEAT>
+</TABLE>
+<BR>
+<!$MGENDREPEAT>
+
+
+<!$MGELSE>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="bigTextMarine" width="100%" align="left">You are not currently registered for any classes.</TD>
+	</TR>
+	<BR>
+<!$MGENDIF>
+</TABLE>
+
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<!-- Commented out the link below on 7/9/08 because the classes by billing group could not be correctly displayed -->
+		<!-- <TD width="50%" align="center" nowrap><A CLASS="bTextBlue"  href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSCourseList&ARGUMENTS=-N<!$MG_Session_Number>">Courses Available / Registration</A></TD>-->
+	</TR>
+</TABLE>
+
+
+</CENTER>
+<BR>

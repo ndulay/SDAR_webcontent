@@ -1,0 +1,42 @@
+
+<CENTER>
+
+<BR>
+<TABLE border="0" cellspacing="0" cellpadding="0" width="100%">
+	<TR CLASS="bgbar">
+		<TD CLASS="bText" valign="top" nowrap>License Number</TD>
+		<TD CLASS="bText" valign="top" nowrap>State</TD>
+		<TD CLASS="bText" valign="top" nowrap>Type</TD>
+		<TD CLASS="bText" valign="top" nowrap>Expiration</TD>
+	</TR>
+	<!$MGREPEAT>
+		<TR>
+			<TD valign="top" nowrap><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R1>&PRGNAME=IMSAdditionalLicense&ARGUMENTS=-N<!$MG_Session_Number_R1>,-N1,-A<!$MG_State>,-A<!$MG_License_Type>"><!$MG_License_Number></A></TD>
+			<TD CLASS="nnText" valign="top" nowrap><!$MG_State></TD>
+			<TD CLASS="nnText" valign="top" nowrap><!$MG_Type_Description></TD>
+			<TD CLASS="nnText" valign="top" nowrap><!$MG_Expiration></TD>
+		</TR>
+	<!$MGENDREPEAT>
+</TABLE>
+
+
+<BR><BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR align="left">
+		<TD align="center" nowrap><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSAdditionalLicense&ARGUMENTS=-N<!$MG_Session_Number>,-N2">Create New License</A></TD>
+
+		<TD align="center" colspan="3" nowrap><INPUT TYPE="Button" VALUE="Close this window" onClick="CloseWindow()"></TD>
+		<SCRIPT LANGUAGE="JavaScript">
+				<!---
+				function CloseWindow()
+				{
+				window.close();
+				}
+				//--->
+		</SCRIPT>
+	</TR>
+</TABLE>
+
+
+<BR>
+</CENTER>

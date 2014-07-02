@@ -1,0 +1,66 @@
+<SCRIPT language="javascript" src="IMSTrimUtilities.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+<!---
+function checkFilename(filename)
+{
+	if(TrimSpaces(filename) == '') 
+	{
+		alert('File name cannot be blank.');
+		return false; 
+	}
+	var ext = filename //document.f.pic.value;
+	ext = ext.substring(ext.length-4,ext.length);
+	ext = ext.toLowerCase();
+	if(filename == '') 
+	{
+		alert('File name cannot be blank.');
+		return false; 
+	}
+
+	if(ext != '.jpg') 
+		{
+			alert('You selected a '+ext+' file; please select a .jpg file instead.');
+			return false; 
+		}
+	return true;
+}
+//--->
+</SCRIPT>
+
+<FORM name="InputForm" action="/scripts/mgrqispi.dll" method="POST" ENCTYPE="multipart/form-data" onSubmit="return(checkFilename(document.InputForm.Picture_Path.value))">
+	<INPUT type="hidden" name="APPNAME"   value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME"   value="IMSPictureProcess">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-N1,Picture_Path">
+<CENTER>
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR CLASS="bgbar">
+		<TD CLASS="titleText">
+			&nbsp;Click on the Browse button to locate the picture on your computer. Picture must be in .jpg format.
+		</TD>
+	</TR>
+</TABLE>
+
+
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD>&nbsp;</TD>
+		<TD align="left" width="75%"><FONT face="arial" size="2"><B>The recommended picture size is <!$MG_Pixels_Wide> pixels wide by <!$MG_Pixels_High> pixels high (at 72 pixels/inch).</B></FONT></TD>
+		<TD>&nbsp;</TD>
+	</TR>
+</TABLE>
+
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD align="center">
+			<INPUT type="file" name="Picture_Path" size="60" face="arial" maxlength="100"><BR><BR>
+			<INPUT type="submit" value="Upload Picture">
+	</TD>
+</TABLE>
+<BR>
+<BR>
+</CENTER>
+</FORM>
+

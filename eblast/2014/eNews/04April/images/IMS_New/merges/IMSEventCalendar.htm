@@ -1,0 +1,67 @@
+<CENTER>
+<BR>
+<!$MGIF_COUNTER_NOT_0>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+    <TR>
+        <TD class="bTextRed" align="left" nowrap>Click on any <!$MG_Event_Type_2> description below to begin the registration process</TD>
+    </TR>
+	<TR>
+		<!$MGIF_SHOW_RED>
+		<TD CLASS="snTextRed" align="right" nowrap><B>RED</B> indicates <!$MG_Event_Type> you are registered for.</TD>
+		<!$MGENDIF>
+	</TR>
+</TABLE>
+
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="1">
+	<!$MGREPEAT>
+		<TR>
+			<TD CLASS="bigTextMarine" align="left" nowrap colspan="5">&nbsp;<!$MG_Month_Name_R></TD>
+		</TR>
+		<TR CLASS="bgbar">
+			<TD CLASS="bText" align="left" colspan="2" nowrap>&nbsp;Description</TD>
+			<TD CLASS="bText" align="left" nowrap>&nbsp;Location</TD>
+			<TD CLASS="bText" align="left" nowrap>&nbsp;Date</TD>
+			<TD CLASS="bText" align="left" nowrap>&nbsp;Time</TD>
+		</TR>
+		<!$MGREPEAT>
+			<TR valign="top">
+				<TD align="left" nowrap><A CLASS="<!$MG_Line_Color_R>" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R>&PRGNAME=<!$MG_Prg_Name_R>&ARGUMENTS=-N<!$MG_Session_Number_R>,-A<!$MG_Event_ID_R>,-A<!$MG_Convention_ID_R>&GoBack_PRG=<!$MG_GoBack_PRG_R>&GoBack_ARG=<!$MG_GoBack_ARG_R>">
+				<!$MG_Description_R></A><!$MGIF_Class_Full><FONT CLASS="bText"> - <i>No spaces available</i></FONT><!$MGENDIF></TD>
+				<TD align="Center" nowrap><!$MG_More_Info>&nbsp;&nbsp;</TD>
+				<TD CLASS="<!$MG_Line_Color_R>" nowrap>
+				<!$MGIF_LOCATION_EXIST>
+					<A CLASS="<!$MG_Line_Color_R>" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R>&PRGNAME=IMSDisplayLocation&ARGUMENTS=-N<!$MG_Session_Number_R>,-A<!$MG_LocationID>">
+					<!$MG_Location_Desc1_R><BR><!$MG_Location_Desc2_R></A></TD>
+				<!$MGENDIF>
+				<!$MGIF_LOC_DOC_EXIST>
+					<!$MG_Loc_Web_Doc_R><!$MG_Location_Desc1_R><BR>
+					<!$MG_Location_Desc2_R></A></TD>
+				<!$MGENDIF>
+				<TD CLASS="<!$MG_Table_Color_R>" align="left" nowrap>&nbsp;<!$MG_Start_Date_R><!$MG_End_Date_R></TD>
+				<TD CLASS="<!$MG_Table_Color_R>" align="left" nowrap>&nbsp;<!$MG_Start_Time_R><!$MG_End_Time_R></TD>
+			</TR>
+			<TR>
+				<TD>&nbsp;</TD>
+			</TR>
+		<!$MGENDREPEAT>
+	<!$MGENDREPEAT>
+</TABLE>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<!$MGIF_SHOW_RED>
+		<TD CLASS="snTextRed" align="right" nowrap><B>RED</B> indicates <!$MG_Event_Type> you are registered for.</TD>
+		<!$MGENDIF>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+
+<!$MGIF_COUNTER_0>
+	<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+		<TR>
+			<TD CLASS="nnText" align="left" nowrap>There are no upcoming <!$MG_Event_Type> scheduled.</TD>
+		</TR>
+	</TABLE>
+<!$MGENDIF>
+<BR>
+<BR>
+</CENTER>

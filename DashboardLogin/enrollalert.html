@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<title>REALTOR Dash Login</title>
+<link id="logincss" rel="stylesheet" href="style/login.css">
+<link id="sdar" rel="stylesheet" href="style/sdar.css">
+<style type="text/css">
+<!--
+.center
+{
+    text-align: center;
+}
+.center table
+{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+-->
+</style>
+
+</head>
+<body onload="javascript:InitializeTimer();">
+<div align="center">
+
+<table width="960px" border="0" cellpadding="0" cellspacing="0">
+	<tbody><tr style="background-image: url('images/Sandicor/dashheader.png'); height: 130px; background-position: center top; background-color:#CCC;">
+		<td height="130">&nbsp;</td>
+	</tr>
+	<tr bgcolor="white">
+		<td bgcolor="#E5E5E5" class="body_copy_span"><div><p>You must complete Scout for SAFEMLS enrollment process before you may access your MLS system.</p>
+		<p>You will be automatically redirected to the enrollment system in 0 seconds.</p>
+		</div>
+		</td>
+	</tr>
+
+	<tr bgcolor="white">
+		<td height="56"><img src="images/Sandicor/dashfooter.png" alt="Footer" width="960" height="56" usemap="#Map" border="0" />
+		  <map name="Map" id="Map">
+		    <area shape="rect" coords="15,16,105,42" href="mailto:membership@sdar.com?subject=REALTOR Dash Question" target="_blank" alt="Email" />
+		    <area shape="rect" coords="294,14,588,42" href="http://www.sdar.com/" target="_blank" />
+		    <area shape="rect" coords="885,15,915,43" href="http://www.linkedin.com/company/greater-san-diego-association-of-realtors-?trk=cp_followed_name_greater-san-diego-association-of-realtors-" target="_blank" alt="Linkedin" />
+		    <area shape="circle" coords="855,31,16" href="http://twitter.com/RealtorsSD" target="_blank" alt="Twitter" />
+		    <area shape="rect" coords="799,13,818,44" href="http://www.facebook.com/pages/San-Diego-Association-of-REALTORSR/45318014199?ref=search&amp;sid=1350361668.1351412168..1" target="_blank" alt="Facebook" />
+        </map></td>
+	  </tr>
+</tbody></table>
+</div>
+
+<script type="text/javascript">
+	var secs = 10;
+	var timerID = null;
+	var timerRunning = false;
+	var delay = 1000;
+
+	function InitializeTimer() {
+		document.getElementById("secsdisplay").innerHTML = secs;
+    	StopTheClock();
+    	StartTheTimer();
+	}
+
+	function StopTheClock() {
+    if (timerRunning) {
+        clearTimeout(timerID);
+        }
+    timerRunning = false;
+	}
+
+	function StartTheTimer() {
+    	if (secs == 0) {
+        	StopTheClock();
+	        // Here's where you put something useful that's
+    	    // supposed to happen after the allotted time.
+        	// For example, you could display a message:
+        	location.href = "null"
+        	return;
+    	} else {
+	        self.status = secs;
+    	    secs = secs - 1;
+			document.getElementById("secsdisplay").innerHTML = secs;
+        	timerRunning = true;
+        	timerID = self.setTimeout("StartTheTimer()", delay);
+    	}
+	}
+
+</script>
+
+</body></html>

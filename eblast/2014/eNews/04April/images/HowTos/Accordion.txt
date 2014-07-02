@@ -1,0 +1,5 @@
+<p>{mooblock=Title}</p>
+<div class="accord-inner">
+
+</div>
+<p>{/mooblock}</p>

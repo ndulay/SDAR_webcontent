@@ -1,0 +1,30 @@
+<CENTER>
+<FORM ACTION="/scripts/mgrqispi.dll" METHOD="POST">
+	<INPUT type="hidden" name="APPNAME"   value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME"   value="IMSReadUseAgreement">
+	<INPUT type="hidden" name="ARGUMENT" value="<!$MG_ARGUMENT>">
+
+<BR>
+
+<TABLE border="0" cellpadding="0" cellspacing="0" width="600">
+	<TR CLASS="bgbar">
+		<TD CLASS="nnText">&nbsp;Please read the usage agreement below and then click the Accept button</TD>
+	</TR>
+</TABLE>
+
+
+<!--******************************
+        AGREEMENT INSERTED HERE
+    ******************************
+-->
+<BR>
+<!$MGINCLUDE><!$MG_Usage_Agreement><!$MGENDINCLUDE>
+<BR>
+<BR>
+<TABLE border="0" cellpadding="0" cellspacing="0" width="100%">
+	<TR CLASS="input" align="center">
+       	<TD nowrap><INPUT type="submit" name="Accept_Agreement" value="Accept"></TD>
+   	</TR>
+</TABLE>
+</FORM>
+</CENTER>

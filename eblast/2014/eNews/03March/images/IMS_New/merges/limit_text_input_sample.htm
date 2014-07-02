@@ -1,0 +1,98 @@
+<!-- MLS Agent Notices (141) -->
+<!-- AA 04/30/03 -->
+<SCRIPT LANGUAGE="JavaScript">
+
+function updateCharacterCount()
+{
+	if(event.srcElement.type == "textarea")
+	{
+		if(event.type == "paste")
+		{
+			document.getElementById("characterCount" + event.srcElement.name).innerText = event.srcElement.value.length + clipboardData.getData("Text").length - document.selection.createRange().text.length;
+		}
+		else if(event.type == "cut")
+		{
+			document.getElementById("characterCount" + event.srcElement.name).innerText = event.srcElement.value.length - document.selection.createRange().text.length;
+		}
+		else
+		{
+			document.getElementById("characterCount" + event.srcElement.name).innerText = event.srcElement.value.length;
+		}
+	}
+	return true;
+}
+</SCRIPT>
+
+
+	<TABLE width="100%">
+		<TR>
+			<TD align="center" nowrap>
+				<TABLE width="1%" >
+					<TR class="mBlackTextB">
+						<TD nowrap>
+						Message Number&nbsp;
+						<FONT class="mNavyText"><!$MG_Admin_Message_Number></FONT><BR>
+						</TD>
+						<TD align="right" nowrap>
+						Posting Date&nbsp;
+						<FONT class="mNavyText"><!$MG_Admin_Posting_Date></FONT>
+						</TD>
+					</TR>
+					<TR class="mBlackTextB">
+						<TD align="left" colspan="2" nowrap><BR>
+						Agent ID<BR>
+							<INPUT type="text" size="20" maxlength="12" name="Agent_ID" value="">
+						</TD>
+					</TR>
+					<TR class="mBlackTextB">
+						<TD align="left" nowrap colspan="2" nowrap><BR>
+						Title<BR>
+							<INPUT type="text" size="30" maxlength="30" name="Notice_Header" value="">
+						</TD>
+					</TR>
+					<TR class="mBlackTextB" onkeyup="updateCharacterCount();" onpaste="updateCharacterCount()" oncut="updateCharacterCount();">
+						<TD colspan="2" nowrap><BR>
+						Message Body&nbsp;<FONT class="sRedText" id="characterCountNotice_Body">0</FONT><FONT class="sRedText">&nbsp;characters&nbsp;&nbsp;(Maximum 1000 Characters)</FONT><BR>
+						<TEXTAREA name="Notice_Body" cols="50" rows="5" wrap></TEXTAREA>
+						</TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	
+-- second email from Thomas with alert
+function updateCharacterCount(maxCharacterCount)
+ {
+  var objElements = document.InputForm.elements;
+   
+  if(objElements["Enable_Character_Count"].checked == true)
+  {
+   if(event.srcElement.type == "textarea")
+   {
+    if(event.type == "paste")
+    {
+     document.getElementById("characterCount" + event.srcElement.name).innerText = event.srcElement.value.length + clipboardData.getData("Text").length - document.selection.createRange().text.length;
+    }
+    else if(event.type == "cut")
+    {
+     document.getElementById("characterCount" + event.srcElement.name).innerText = event.srcElement.value.length - document.selection.createRange().text.length;
+    }
+    else
+    {
+     document.getElementById("characterCount" + event.srcElement.name).innerText = event.srcElement.value.length 
+    }
+   }
+   
+  }
+  return true;
+ }
+ 
+ function maxCharacterCount(maxCharacterCount)
+ {
+  if(event.srcElement.value.length > maxCharacterCount)
+  {
+   alert('You have exceeded the maximum allowed character count. Please shorten the text.')
+   event.srcElement.focus();
+  }
+ }

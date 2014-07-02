@@ -1,0 +1,40 @@
+/**
+* @version   $Id: template-rtl.css 490 2012-05-01 04:04:23Z btowles $
+* @author    RocketTheme http://www.rockettheme.com
+* @copyright Copyright (C) 2007 - ${copyright_year} RocketTheme, LLC
+* @license   http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+*/
+
+/* Core */
+body.rtl .item-page ul,body.rtl .item-page ol, body.rtl .module-content ul,body.rtl .module-content ol {padding-right: 15px;}
+
+/* Logo */
+body.rtl #logo-inner {right: 75px;left: inherit;}
+body.rtl #logo-icon {right: -9px;left: inherit;}
+body.rtl.logo-icon-0 #logo-inner {right: -10px;}
+body.rtl.logo-icon-1 #rt-navigation .rt-block {margin: 0 114px 0 0;}
+
+/* Navigation */
+body.rtl .rt-menubar {float: right;}
+body.rtl .menutop li.root .item, body.rtl .rt-menubar .menutop li .item {border-left-width: 0;border-right-width: 1px;}
+body.rtl .menutop > .fusion-js-subs > .fusion-submenu-wrapper.level2 .rt-arrow-pointer {right: 10px;left: inherit;}
+body.rtl .menutop li.root > .item .item-border, body.rtl .rt-splitmenu .menutop li > .item .item-border {margin: 0 2px 0 0;}
+body.rtl .menutop li.root > .item, body.rtl .rt-splitmenu .menutop li > .item {background-position: right 110%;}
+body.rtl #rt-navigation .rt-container {background-position: 100% -4px;}
+
+/* Side Menus */
+body.rtl .module-content ul.menu li li a span, body.rtl .module-content ul.menu li li .separator, body.rtl .module-content ul.menu li li .item span {padding: 5px 20px 5px 10px;}
+body.rtl .module-content ul.menu .image img {float: right;}
+body.rtl .module-content ul.menu .item.image {padding-left: inherit;padding-right: 8px;}
+body.rtl .module-content ul.menu ul {padding: 10px 15px 15px 0;}
+body.rtl .module-content ul.menu li a span, body.rtl .module-content ul.menu li .separator, body.rtl .module-content ul.menu li .item span {background-position: 100% -436px;}
+body.rtl .module-content ul.menu li a:hover span, body.rtl .module-content ul.menu li .separator:hover, body.rtl .module-content ul.menu li .item:hover span, body.rtl .module-content ul.menu li.active > a span, body.rtl .module-content ul.menu li.active > .separator, body.rtl .module-content ul.menu li.active > .item span {background-position: 100% -216px;}
+body.rtl .module-content ul.menu li.parent li a span, body.rtl .module-content ul.menu li.parent li .item span, body.rtl .module-content ul.menu li.parent li .separator span {background-position: 97% -190px;}
+body.rtl .module-content ul.menu li.parent li.active > a > span, body.rtl .module-content ul.menu li.parent li.active > .item > span, body.rtl .module-content ul.menu li.parent li.active > .separator > span {background-position: 97% -190px;}
+body.rtl .module-content ul.menu li.parent li a:hover span, body.rtl .module-content ul.menu li.parent li .item:hover span, body.rtl .module-content ul.menu li.parent li .separator:hover span {background-position: 97% -190px;}
+
+/* Branding */
+body.rtl #rocket {float: right;}
+
+/* Copyright */
+body.rtl .copytext {text-align: right;}

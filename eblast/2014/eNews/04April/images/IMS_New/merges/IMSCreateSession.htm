@@ -1,0 +1,210 @@
+<HTML>
+<HEAD>
+<META name="Rapattoni Corporation" content="Magic 8 Web IMS">
+<TITLE>IMS Create Session</TITLE>
+<link href="/boardimages/style.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY text="black" onLoad="initForm();">
+
+<CENTER>
+
+<TABLE border="0" height="30" width="100%" cellpadding="0" cellspacing="0">
+	<TR CLASS="bgmain" >
+	
+		<TD CLASS="sBannerText" align="center" nowrap>&nbsp;<B>REALTOR&reg; Member Services</TD>
+		<TD class="sTextWheat" align="right" nowrap></TD>
+	</TR>
+</TABLE>
+</CENTER>
+<!-- VERSION 8.18.02 Merge -->
+<SCRIPT LANGUAGE="JavaScript">
+function initForm()
+{
+	//Do the login here
+	document.forms[0].LoginID.value = "Julie";
+	document.forms[0].VPassword.value = "123";
+	window.setTimeout ("document.getElementById('btnSubmit').click();", 500);
+}
+function checkBrowserVersion(){
+	var browser     = '';
+	var version     = '';
+	if (browser == ''){
+		if (navigator.appName.indexOf('Microsoft') != -1)
+			browser = 'IE'
+		else if (navigator.appName.indexOf('Netscape') != -1)
+			browser = 'Netscape'
+		else browser = 'NN';
+	}
+	if (version == ''){
+		version= navigator.appVersion;
+		paren = version.indexOf('(');
+		whole_version = navigator.appVersion.substring(0,paren-1);
+		version         = parseInt(whole_version);
+	}
+}
+
+	function clearCookie(name)
+	{
+		var treeDays = 3*24*60*60*1000;
+		var expDate = new Date();
+		expDate.setTime(expDate.getTime() - treeDays);
+		document.cookie = name +"=Cancel; expires="+expDate.toGMTString();
+	}
+
+	function setCookie (name,value,expires,path,domain,secure) 
+			{
+				document.cookie = name + "=" + escape (value) +
+				((expires) ? "; expires=" + expires.toGMTString() : "") +
+				((path) ? "; path=" + path : "") +
+				((domain) ? "; domain=" + domain : "") +
+				((secure) ? "; secure" : "");
+			}
+
+
+	function fieldFocus() 
+		{
+			checkBrowserVersion();
+			var treeDays = 3*24*60*60*1000;
+			var expDate = new Date();
+			var secondExpire = expDate.getTime() - treeDays;
+			// To clear the cookie
+			//clearCookie("ims_id");
+			//clearCookie("imssession");
+			setCookie("imslastConnect",secondExpire,expDate,"/",null,false);
+			
+			document.Menu.LoginID.focus();
+		}
+
+
+	function validLogin()
+		{
+			var twoHours =  1800*1000;
+			var expDate = new Date();
+			var loginstate = true;
+			
+			expDate.setTime(expDate.getTime() + twoHours);
+			setCookie("ims_id",document.Menu.LoginID.value,expDate,"/",false);	
+			setCookie("billing_type","AG03",expDate,"/",false);
+		
+			var MyPassword = Trim(document.Menu.VPassword.value);
+			if ( MyPassword == '')
+			{    
+	   			alert ("The Password can not be blank.");
+				document.Menu.VPassword.focus();
+				loginstate = false;
+			}
+			return loginstate;
+		}
+	function LTrim(str) 
+		{
+		for (var i=0; str.charAt(i)==" "; i++);
+		return str.substring(i,str.length);
+		}
+	function RTrim(str) 
+		{
+		for (var i=str.length-1; str.charAt(i)==" "; i--);
+		return str.substring(0,i+1);
+		}
+	function Trim(str) 
+		{
+		return LTrim(RTrim(str));
+		}
+</SCRIPT>
+
+<TABLE width="100%">
+	<TR  align="center">
+		<TD style="font-size : 18pt; font-weight : bold;color : #A52A2A; font-family : arial; text-decoration : none;" nowrap>Creating Session</TD>
+	</TR>
+	<TR  align="center">
+			<TD style="font-size : 18pt; font-weight : bold;color : #A52A2A; font-family : arial; text-decoration : none;" nowrap>Please wait...</TD>
+	</TR>
+</TABLE>
+
+<DIV id="Loaded" style="visibility:hidden">
+<TABLE>
+	<TR>
+		<TD>
+			<FORM NAME="Menu" ACTION="/scripts/mgrqispi.dll" METHOD="POST" OnSubmit="return validLogin()">
+			<INPUT type="hidden" name="APPNAME"   value="IMS">
+			<INPUT type="hidden" name="PRGNAME"   value="IMSMemberLogin">
+			<INPUT type="hidden" name="ARGUMENTS" value="-APBR,LoginID,VPassword,-LF&PopupWindow=Y">
+			<INPUT type="hidden" name="SessionType" value="M">
+			<INPUT type="hidden" name="ServiceName" value="">
+			<INPUT type="hidden" name="BillingGroup" value="">
+			<INPUT type="hidden" name="ClassID" value="">
+			<INPUT type="hidden" name="EventID" value="">
+			<INPUT type="hidden" name="ConvID" value="<!$MG_ConvID>">
+		</TD>
+	</TR>		
+</TABLE>
+
+
+<CENTER>
+
+
+<BR>
+
+
+
+<BR><BR>
+<TABLE border="0" cellspacing="0" cellpadding="0" width="30%">
+		<TR>
+			<TD CLASS="bText" nowrap>Logon ID</TD>
+			<TD nowrap>&nbsp;<INPUT CLASS="input" type="text" name="LoginID" size="30" maxlength="30" value=""></TD>
+		</TR>
+		<TR>
+			<TD CLASS="bText" nowrap>Password</TD>
+			<TD nowrap>&nbsp;<INPUT CLASS="input" type="password"  name="VPassword" size="30" maxlength="8" value=""></TD>
+		</TR>
+				<TABLE border="0" cellspacing="0" cellpadding="0" width="100%">
+		<TR align="center">
+				<TD CLASS="snTextRed" nowrap>Log in the same as TReND</TD>
+		<TR>
+		</TABLE>
+			<TD height="2" colspan="2" nowrap>&nbsp;</TD>
+		</TR>
+		<TR align="center">
+			<TD colspan="2" nowrap><BR><INPUT type="submit" name="submit" id="btnSubmit" value="Submit" onsubmit="validLogin()"></TD>
+		</TR>
+		<TR align="center">
+			<TD colspan="2" align="center" nowrap><BR><A CLASS="snTextRed"  href="/scripts/mgrqispi.dll?APPNAME=IMS&PRGNAME=IMSSendPassword&ARGUMENTS=-APBR,-A&SessionType=M&ServiceName=&BillingGroup=&ClassID=&EventID=&ConvID=<!$MG_ConvID>">Forgot your password?</A></TD>
+		</TR>
+</TABLE>
+</FORM>
+<TABLE border="0" cellpadding="0" cellspacing="0" width="100%">
+	</TABLE>
+
+
+<BR>
+<BR>
+<TABLE border="0" cellpadding="0" cellspacing="0" width="100%">
+	<TR align="center">
+		<TD nowrap><A href="http://www.rapattoni.com"><IMG SRC="/rapimages/pwrmagic.jpg" border="0"></A></TD>
+	</TR>
+</TABLE>
+<BR>
+</CENTER>
+
+<CENTER>
+<TABLE CLASS="bgmain" height="30" border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD class="sTextWheat" align="center" nowrap>
+																							</TD>
+	</TR>
+</TABLE>
+
+
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR align="center">
+		<TD CLASS="Footer" nowrap>Greater Philadelphia Association of REALTORS</TD>
+	</TR>
+	<TR align="center">
+		<TD CLASS="Footer" nowrap>E-mail:<a href=mailto:support@gpar.org>support@gpar.org</TD>
+	</TR>
+	<TR align="center">
+		<TD CLASS="Footer" nowrap></TD>
+	</TR>
+</CENTER>
+</DIV>
+</BODY>
+</HTML>

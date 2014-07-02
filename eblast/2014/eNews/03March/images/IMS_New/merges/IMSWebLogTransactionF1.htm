@@ -1,0 +1,55 @@
+<BR>
+<!$MGIF_NO_INVOICES_EXIST>
+	  <CENTER>
+	  <TABLE border="0" cellspacing="0" width="100%">
+		<TR>
+			<TD CLASS="bigTextMarine" align="Center" nowrap width="100%">&nbsp;No Transactions In This Range</TD>
+		</TR>
+	  </TABLE>
+	  </CENTER>
+<!$MGELSE>
+	<!$MGIF_NEED_TOTAL_REPORT>
+		<HR>
+		<TABLE border="0" width="100%" cellpadding="0" cellspacing="0" align="Left">
+			<TR>
+				<TD CLASS="bTextBrown" align="center" nowrap>Total Transactions For All Merchants</TD>
+			</TR>
+		</TABLE>
+		<BR>
+		<TABLE border="0" cellspacing="1" cellpadding="0" width="100%">
+			<TR  CLASS="bgbar">
+				<TD CLASS="sText" width="54%" align="Right" nowrap>Total Transactions&nbsp;&nbsp;</TD>
+				<TD CLASS="snText" width="9%"  align="right" nowrap><!$MG_Total_report></TD>
+				<!-- <TD CLASS="snText" width="9%"  align="right" nowrap><!$MG_Total_report_Fee></TD> -->
+				<TD CLASS="snText" width="37%"  align="Left" nowrap>&nbsp;&nbsp;<!$MG_Total_Counter>&nbsp;Records</TD>
+			</TR>
+		</TABLE>
+		<BR>
+		<TABLE border="0" cellspacing="1" cellpadding="0"  width="30%">
+			<TR>
+				<TD CLASS="bText" width="15%"  align="Left" nowrap>Authorized Transaction Total&nbsp;&nbsp;</TD>
+				<TD CLASS="bText" width="15%"  align="Right" nowrap><!$MG_Total_Authorized></TD>
+			</TR>
+			<TR>
+				<TD CLASS="bText"  width="15%"  align="Left" nowrap>Pending Transaction Total&nbsp;&nbsp;</TD>
+				<TD CLASS="bText" width="15%"  align="Right" nowrap><!$MG_Total_Pending></TD>
+			</TR>
+			<TR>
+				<TD CLASS="bText" width="15%"  align="Left" nowrap>Unapproved Transaction Total&nbsp;&nbsp;</TD>
+				<TD CLASS="bText" width="15%"  align="Right" nowrap><!$MG_Total_Unapproved></TD>
+			</TR>
+		</TABLE>
+	 <!$MGENDIF>
+	
+<!$MGENDIF>
+	
+	
+<BR>
+<TABLE border="0" width="100%">
+<TR align="left">
+	<TD  nowrap>
+		<A  CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMS_Web_Log_Parameter&ARGUMENTS=-N<!$MG_Session_Number>,-A<!$MG_Process_Type>,-A,-A,-A<!$MG_From_Date>,-A<!$MG_Until_Date>,-A<!$MG_Batch_ID>,-A<!$MG_Transaction_Type_Code>,-A<!$MG_Transaction_Status_Code>,-A<!$MG_From_Time>,-A<!$MG_Until_Time>">Create a New Transaction Report</A>
+	</TD>
+</TR>
+</TABLE>
+<BR><BR>

@@ -1,0 +1,56 @@
+
+<CENTER>
+<FORM method="get" action="/scripts/picupload.asp">
+	<INPUT type="hidden" name="Session_Number" value="<!$MG_Session_Number>">
+
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR> 
+		<TD CLASS="bigTextMarine" align="left" nowrap  colspan="2" height="30" valign="middle"> &nbsp;Upload Pictures</TD>
+	</TR>
+
+</TABLE>
+
+
+<!$MGIF_BAD_ML_NUMBER>
+	<BR>
+	<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+		<TR>
+			<TD CLASS="bTextRed" align="center" nowrap>
+				Listing # <!$MG_ML_Number> cannot be found. <BR> Please enter a valid Listing #.
+			</TD>
+		</TR>
+	</TABLE>
+<!$MGENDIF>
+
+
+<BR><BR>
+<TABLE width="25%" cellpadding="0" cellspacing="0" border="0">
+	<TR>
+		<TD CLASS="bText" align="left" nowrap><!$MG_Listing_Office_Agent_ID></TD>
+		<TD CLASS="input" align="center" nowrap>&nbsp;<INPUT CLASS="input" type="text" name="ML_Number_Office_Agent_ID" size="12" maxlength="12" value=""></TD>
+	</TR>
+	<!$MGIF_AGENT_OR_OFFICE_UPLOAD>
+		<TR>
+			<TD nowrap><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=MLSAgentsandOffices&ARGUMENTS=-N<!$MG_Session_Number>" target="new_window">Look up ID</A></TD>
+			<TD>&nbsp;</TD>
+			<TD>&nbsp;</TD>
+		</TR>
+	<!$MGENDIF>
+</TABLE>
+
+
+<INPUT type="hidden" name="App_Name" value="<!$MG_App_Name>">
+<INPUT type="hidden" name="Page_Header" value="<!$MG_Banner_Filename>">
+<INPUT type="hidden" name="TargetURL" value="<!$MG_TargetURL>">
+<INPUT type="hidden" name="Upload_Type" value="<!$MG_Upload_Type>">
+
+
+<BR><BR>
+<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+	<TR>
+		<TD align="center" nowrap><INPUT type="submit" value="Next"></TD>
+	</TR>
+</TABLE>
+</FORM>
+
+</CENTER>

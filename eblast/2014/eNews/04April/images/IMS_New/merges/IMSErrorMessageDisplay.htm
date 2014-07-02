@@ -1,0 +1,69 @@
+<BR>
+<CENTER>
+<TABLE width="85%" cellpadding="2" cellspacing="0">
+	<TR>
+	    <TD>
+	        &nbsp;
+	    </TD>
+	</TR>
+	<TR CLASS="bgbar">
+	    <TD CLASS="bTextMarine" nowrap>Reference ID</TD>
+	    <TD CLASS="bTextMarine" nowrap>Error</TD>
+	    <TD CLASS="bTextMarine">Description</TD>
+	</TR>
+
+	<!$MGREPEAT>
+	<TR>
+	    <TD CLASS="bTextMarine" nowrap valign="top"><!$MG_Reference_ID></TD>
+	    <TD CLASS="bText" nowrap valign="top"><!$MG_Error></TD>
+	    <TD CLASS="bText" valign="top"><!$MG_Description></TD>
+	</TR>
+	<!$MGENDREPEAT>
+</TABLE>
+<BR><BR><BR>
+<!$MGIF_DISPLAY_CLOSE>
+		<SCRIPT LANGUAGE="JavaScript">
+				<!---
+				<!-- parent.window.moveBy(150,150); parent.window.resizeBy(-150,-150); -->
+				function CloseWindow()
+				{
+					parent.window.close();
+				}
+				//--->
+		</SCRIPT>
+<TABLE>
+	<TR>
+		<TD align="center"><INPUT TYPE="Button" VALUE="Close this window" onClick="CloseWindow()"></TD>
+		</TR>
+	</TABLE>
+</TABLE>
+
+<!$MGELSE>
+
+<TABLE>
+	<TR>
+	    <TD CLASS="bTextRed" colspan="3" Align=center>
+		    Click the Previous Screen button to correct any errors listed here and resubmit the page.
+	    </TD>
+	</TR>
+	<TR>
+	    <TD colspan="3" Align=center>
+		    &nbsp;
+	    </TD>
+	</TR>
+	<TR>
+	    <TD colspan="3" Align=center>
+		    &nbsp;
+	    </TD>
+	</TR>
+	<TABLE cellpadding="0" cellspacing="0" width="100%">
+		<TR align="center">
+			<TD align="CENTER" width="56%"><INPUT TYPE="button" VALUE="Previous Screen" onClick="history.go(-1)"></TD>
+		</TR>
+	</TABLE>
+</TABLE>
+<!$MGENDIF>
+<BR>
+<BR>
+<BR>
+</CENTER>

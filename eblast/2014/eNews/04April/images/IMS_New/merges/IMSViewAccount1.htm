@@ -1,0 +1,205 @@
+<!-- IMSViewAccount -->
+
+<SCRIPT language="javascript">
+function CheckAll(f)
+{
+	for(i=0; i<f.elements.length; i++)
+	{
+		f.elements[i].checked=true;
+	}
+	return true;
+}
+function CheckAllType(f,invoiceType,checkedValue)
+{
+	var ExtractString = '';
+	for(i=0; i<f.elements.length; i++)
+	{
+		ExtractString = f.elements[i].name;
+		if(ExtractString.substr(0,13) == 'Checkbox_Name' && ExtractString.substr(21,23) == invoiceType) 
+		{
+			f.elements[i].checked=checkedValue;
+		}
+	}
+	return true;
+}
+
+function UncheckAll(f)
+	{
+	for(i=0; i<f.elements.length; i++)
+	{
+		f.elements[i].checked=false;
+	}
+	return true;
+}
+</SCRIPT>
+
+<FORM action="/scripts/mgrqispi.dll" method="POST" name="InputForm">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="IMSViewAccount">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-N3,-N,-N<!$MG_Total_Amt_Ckd>,-A<!$MG_Billing_Group>,-AM">
+
+
+<CENTER>
+
+
+<!$MGIF_INVOICES_EXIST>
+	<TABLE border="0" cellpadding="0" cellspacing="1" width="100%">
+		<!$MGIF_OS_ONLY>
+		<TR>
+			<TD CLASS="bigTextMarine" align="center"  nowrap>Unpaid Invoices</TD>
+		</TR>
+		<TR>
+			<TD  align="right"  nowrap><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSViewAccount&ARGUMENTS=-N<!$MG_Session_Number>,-N1,-N,-N,-A<!$MG_Billing_Group>,-AM">View Paid and Unpaid Invoices</A></TD>
+		</TR>
+		<!$MGELSE>
+		<TR>
+			<TD CLASS="bigTextMarine"  align="center"  nowrap>Paid and Unpaid Invoices</TD>
+		</TR>
+		<TR>
+			<TD  align="right"  nowrap><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSViewAccount&ARGUMENTS=-N<!$MG_Session_Number>,-N0,-N,-N,-A<!$MG_Billing_Group>,-AM">View Unpaid Invoices</A></TD>
+		</TR>
+		<!$MGENDIF>
+	</TABLE>
+	<!$MGIF_CALC_BALANCE_DUE>
+		<!$MGIF_PAY_BY_CC>
+			<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+				<TR CLASS="bgbar">
+					<TD CLASS="nnText" align="left" nowrap>Check the Pay Now box below for invoices you want to pay&nbsp;</TD>
+				</TR>
+			</TABLE>
+		<!$MGENDIF>
+	<!$MGENDIF>
+	<BR>
+	<!$MGREPEAT>
+	<TABLE border="0" cellspacing="0" width="100%">
+		<TR>
+			<TD CLASS="bigTextMarine" align="left" nowrap width="30%">&nbsp;<!$MG_Invoice_Type_Description></TD>
+			<TD CLASS="bTextBrown" align="left" nowrap><!$MGIF_PAY_ALL_TITLE>Note: Invoices in this category may not be paid off separately.<!$MGENDIF></TD>
+		</TR>
+	</TABLE>
+	<TABLE border="0" cellspacing="1" cellpadding="0" width="100%">
+		<TR CLASS="bgbar">
+			<TD CLASS="bText" width="10%" valign="bottom" align="center" nowrap>&nbsp;Invoice</TD>
+			<TD CLASS="bText" width="10%" valign="bottom" align="center" nowrap>Date</TD>
+			<TD CLASS="bText" width="35%"  valign="bottom" align="left" nowrap>&nbsp;Office / Incurring Member</TD>
+			<TD CLASS="bText" width="13%"  align="right" nowrap>Invoice&nbsp;<BR>Total&nbsp;</TD>
+			<TD CLASS="bText" width="13%" align="right" nowrap>Amount&nbsp;<BR>Applied&nbsp;</TD>
+			<TD CLASS="bText" width="13%"  align="right" nowrap>Balance&nbsp;<BR> Due&nbsp;</TD>
+			<TD CLASS="bText" width="6%"  align="center" nowrap><!$MGIF_PAY_BY_CC_1><B>Pay<BR>Now<!$MGENDIF></TD>
+		</TR>
+		<!$MGREPEAT>
+			<!$MGIF_ANY_INVOICES_R1>
+				<TR <!$MG_Line_Color>>
+					<TD CLASS="nnText" width="10%" valign="top" align="center" nowrap><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R1>&PRGNAME=IMSDisplayInvoice&ARGUMENTS=-N<!$MG_Session_Number_R1>,-N<!$MG_Invoice>,-A,-A<!$MG_Server_Name>,-A,-LT,-LF,-LF,-A,-N,-L<!$MG_Add_Memo_Charges>"><!$MG_Invoice></A></TD>
+					<TD CLASS="nnText" width="10%" valign="top" align="center" nowrap><!$MG_Date></TD>
+					<TD CLASS="nnText" width="35%"  valign="top" align="left" nowrap>
+						<!$MGIF_SHOW_STATUS_R1><B><font color="red">(<!$MG_Incurring_Member_Status>)</font></B><!$MGENDIF>
+						&nbsp;<!$MG_Office_Name>&nbsp;/&nbsp;<!$MG_Incur_Member>
+					</TD>
+					<TD CLASS="nnText" width="13%"  valign="top" align="right" nowrap><!$MG_WAIT_AUTH_CC>&nbsp;<!$MG_Total>&nbsp;</TD>
+					<TD CLASS="nnText" width="13%" valign="top" align="right" nowrap><!$MG_Applied>&nbsp;</TD>
+					<TD CLASS="nnText" width="13%"  valign="top" align="right" nowrap><!$MG_Due>&nbsp;</TD>
+					<!$MGIF_BALANCE_DUE>
+						<!$MGIF_PAY_BY_CC_2>
+							<TD valign="top" align="center" nowrap>
+								<INPUT type="hidden" name="InvoiceType_<!$MG_Invoice>" value="<!$MG_Invoice_Type>">
+								<INPUT type="checkbox" name="Checkbox_Name_<!$MG_InvoiceAndType>" value="on" <!$MGIF_PAY_ALL>onClick="CheckAllType(InputForm,this.form.InvoiceType_<!$MG_Invoice>.value,this.form.Checkbox_Name_<!$MG_InvoiceAndType>.checked)"<!$MGENDIF>></TD>
+						<!$MGENDIF>
+					<!$MGENDIF>
+				</TR>
+			<!$MGENDIF>
+			
+		<!$MGENDREPEAT>
+	</TABLE>	
+			
+	<BR>
+<!$MGENDREPEAT>
+
+<TABLE border="0" cellpadding="0" cellspacing="1" width="100%">
+	<TR>
+		<TD CLASS="bText" width="81%" align="right" nowrap>Total Due</TD>
+		<TD CLASS="bTextBlue" width="13%" align="right"><!$MG_Total_Due>&nbsp;</TD>
+		<TD width="6%">&nbsp;</TD>
+	</TR>
+	<!$MGIF_FOUND_CC_PROCESS>
+		<TR>
+			<TD CLASS="bText" width="81%" align="right" nowrap>**Total In Credit Card Process (Not approved yet)</TD>
+			<TD CLASS="bText" width="13%" align="right"><!$MG_Total_In_Process>&nbsp;</TD>
+			<TD width="6%">&nbsp;</TD>
+		</TR>
+	<!$MGENDIF>
+	<TR>
+		<TD colspan="3" nowrap>&nbsp;</TD>
+	</TR>
+</TABLE>
+<!$MGIF_SHOW_AGING>
+<TABLE border="1" cellpadding="0" cellspacing="1" width="75%">
+	<TR align="center">
+		<TD CLASS="bText" nowrap>Aging</TD>
+		<TD CLASS="bText" nowrap>Current</TD>
+		<TD CLASS="bText" nowrap>Over 30 Days</TD>
+		<TD CLASS="bText" nowrap>Over 60 Days</TD>
+		<TD CLASS="bText" nowrap>Over 90 Days</TD>
+	</TR>
+	<TR align="center">
+		<TD CLASS="bText" nowrap>Amount</TD>
+		<TD CLASS="nnTextBlue" nowrap><!$MG_Invoice_0-30></TD>
+		<TD CLASS="nnTextBlue" nowrap><!$MG_Invoice_31-60></TD>
+		<TD CLASS="nnTextBlue" nowrap><!$MG_Invoice_61-90></TD>
+		<TD CLASS="nnTextBlue" nowrap><!$MG_Invoice_Over90></TD>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+<BR>
+<!$MGIF_CALC_BALANCE_DUE>
+	<!$MGIF_PAY_BY_CC>
+		<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+			<TR>
+				<TD  align="center" nowrap><INPUT type="submit" name="" value="Choose Payment Options"></FORM></TD>
+			</TR>
+		</TABLE>
+	<!$MGENDIF>
+<!$MGENDIF>
+</FORM>
+
+<!$MGIF_BALANCE>
+	<FORM name="RadioForm" action="">
+		<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+			<TR align="center">
+				<TD CLASS="sText" nowrap>
+					<INPUT type="radio" name="Radio1" onClick="return (CheckAll(InputForm))">Check All
+					<INPUT type="radio" name="Radio1" onClick="return (UncheckAll(InputForm))">Uncheck All
+				</TD>
+			</TR>
+		</TABLE>
+	</FORM>
+<!$MGENDIF>
+
+<TABLE border="0" cellpadding="3" cellspacing="3" height="25" width="100%">
+	<TR align="left">
+		<TD   nowrap><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSARActivityReport&ARGUMENTS=-N<!$MG_Session_Number>,-N0">Account Activity Report</A></TD>
+	</TR>
+</TABLE>
+<BR>
+
+<!$MGENDIF>
+<!$MGIF_NO_INVOICES_EXIST>
+	<TABLE border="0" cellspacing="0" width="100%">
+		<!$MGIF_OS_ONLY>
+			<TR>
+				<TD CLASS="bigTextMarine" align="center" nowrap>&nbsp;No Unpaid Invoices Exist</TD>
+			</TR>
+			<TR>
+			<TD align="right"  nowrap><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSViewAccount&ARGUMENTS=-N<!$MG_Session_Number>,-N1,-N,-N,-A<!$MG_Billing_Group>,-AM"><FONT color="blue" face="Arial" size="2">View Paid and Unpaid Invoices</A></TD>
+			</TR>
+		<!$MGELSE>
+			<TR>
+				<TD CLASS="bigTextMarine" align="left" nowrap>&nbsp;No Invoices Exist</TD>
+			</TR>
+		<!$MGENDIF>
+	</TABLE>
+<!$MGENDIF>
+
+<BR>
+
+</CENTER>

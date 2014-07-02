@@ -1,0 +1,15 @@
+/**
+* @version   $Id: error.css 490 2012-05-01 04:04:23Z btowles $
+* @author    RocketTheme http://www.rockettheme.com
+* @copyright Copyright (C) 2007 - ${copyright_year} RocketTheme, LLC
+* @license   http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+*/
+
+#rt-navigation .rt-container {height: 55px;}
+#rt-main-container {padding: 15px 200px;}
+#rt-body-surround {padding: 15px;}
+.component-content .title span {font-size: 3em;}
+.component-content .title {margin: 50px 0 15px;text-align: center;font-size: 2.2em;}
+h2 {font-weight: normal;font-size: 2.8em;}
+.rt-error-box {width: 500px;margin: 0 auto;}
+.error-content {width: 325px;margin: 0 auto;}

@@ -1,0 +1,1 @@
+[15-Nov-2012 14:00:54] PHP Fatal error:  Call to a member function get() on a non-object in /home/netadmin/public_html/Stage1/templates/rt_voxel/roksprocket/layouts/features/themes/slideshow/index.php on line 16

@@ -1,0 +1,33 @@
+<FORM name="InputForm" action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME"   value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME"   value="IMSPictureProcess">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-N2">
+
+<CENTER>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR CLASS="bgbar">
+		<TD CLASS="titleText">&nbsp;Click OK to confirm the picture attachment</TD>
+	</TR>
+</TABLE>
+<TABLE border="0" cellspacing="0" cellpadding="5" width="100%">
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD width="50%" align="center" nowrap><IMG src="<!$MG_Picture_Filename>">&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TR >
+		<TD align="center">
+			<BR>
+			<INPUT type="submit" name="submit" value="OK">
+			&nbsp;&nbsp;&nbsp;<INPUT type="submit" name="submit" value="Cancel">
+			<BR>
+			<BR>
+		</TD>
+	</TR>
+</TABLE>
+</CENTER>
+</FORM>

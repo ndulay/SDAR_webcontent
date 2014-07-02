@@ -1,0 +1,41 @@
+<HTML>
+<HEAD>
+<SCRIPT LANGUAGE="JavaScript">
+<!---
+function setCookie (name,value,expires,path,domain,secure) 
+{
+  document.cookie = name + "=" + escape (value) +
+    ((expires) ? "; expires=" + expires.toGMTString() : "") +
+    ((path) ? "; path=" + path : "") +
+    ((domain) ? "; domain=" + domain : "") +
+    ((secure) ? "; secure" : "");
+}
+function updSession()
+{
+	var twoHours = <!$MG_TimeOut>*1000;
+	var expDate = new Date();
+	var secondExpire = expDate.getTime();
+	//alert(secondExpire);
+	expDate.setTime(expDate.getTime() + twoHours);
+	setCookie("imssession",<!$MG_Session_Number>,expDate,"/",null,false);	
+	setCookie("imslastConnect",secondExpire,expDate,"/",null,false);	
+	document.Menu.submit();
+}
+/////////////////////////////////////////////////////////////////////
+//--->
+</SCRIPT>
+</HEAD>
+
+<BODY onLoad="updSession();">
+
+<FORM NAME="Menu" ACTION="/scripts/mgrqispi.dll" METHOD="POST" >
+	<INPUT type="hidden" name="APPNAME"   value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME"   value="<!$MG_Prg_Name>">
+	<INPUT type="hidden" name="ARGUMENTS" value="<!$MG_Arguments>">
+
+	<INPUT type="Hidden" name="Submit" value="Submit">
+	<!-- <INPUT type="Submit" name="Submit" value="Submit"> -->
+
+
+</BODY>
+</HTML>

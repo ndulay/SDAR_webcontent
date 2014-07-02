@@ -1,0 +1,355 @@
+<SCRIPT LANGUAGE="JavaScript">
+function LTrim(str) 
+	{
+	for (var i=0; str.charAt(i)==" "; i++);
+	return str.substring(i,str.length);
+	}
+function CheckAddress()
+		{
+		var Check_if_Blank = (document.Event.Street_Addr.value);
+		if( Check_if_Blank == '')
+			{
+			alert ("Address is required.");
+			document.Event.Street_Addr.focus();
+
+			}
+		}
+function CheckCity()
+		{
+		var Check_if_Blank = (document.Event.City.value);
+		if( Check_if_Blank == '')
+			{
+			alert ("City is required.");
+			document.Event.City.focus();
+
+			}
+		}	
+function CheckState()
+		{
+		var Check_if_Blank = (document.Event.State.value);
+		if( Check_if_Blank == '')
+			{
+			alert ("State is required.");
+			document.Event.State.focus();
+
+			}
+		}
+function CheckZip()
+		{
+		var Zipcode = LTrim(document.Event.Zip_Code.value);
+		if (Zipcode = '' || Zipcode.length < 5)
+			{
+			alert('Invalid Zip Code');
+			document.Event.Zip_Code.focus();
+
+			}
+		}
+function CheckEmail()
+		{
+		var Check_if_Blank = (document.Event.Email_Address.value);
+		var str = (document.Event.Email_Address.value);
+		if( Check_if_Blank == '')
+			{
+			alert ("E-Mail Address is required.");
+			document.Event.Email_Address.focus();
+			}
+		else
+			{
+				  var reg1 = /(@.*@)|(\.\.)|(@\.)|(\.@)|(^\.)/;														 // not valid
+				  var reg2 = /^.+\@(\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,5}|[0-9]{1,5})(\]?)$/;	 // valid
+				  if (!reg1.test(str) && reg2.test(str))																 // if reg1 false and reg2 true (valid)
+					{ 
+					  return true;
+					 }
+					else
+					{
+					alert('Invalid E-Mail Address');
+					document.Event.Email_Address.focus();
+					return false;
+					 }
+		    }
+		}
+		
+
+function Valid_Form(Voption)
+{
+	<!$MGIF_ACK_REQUIRED>
+				if(document.Event.Check_Confirmation.checked == false)
+				{
+				alert('Please read the information and acknowledge by\nclicking the check box near the bottom of the form.');
+				}
+				if(document.Event.Check_Confirmation.checked == true)
+				{
+				document.Event.Option.value = Voption;
+				document.Event.submit();
+				}
+	<!$MGELSE>    <!-- CC deposit  NOT required and ACK not required -->
+				document.Event.Option.value = Voption;
+				document.Event.submit();
+				
+	<!$MGENDIF>     <!--  CC deposit NOT required -->
+}
+
+function CheckTicket()
+		{
+		var ticketNum = document.Event.Ticket.value;
+		var guestTicket = document.Event.Guest_Ticket.value;
+		if( ticketNum == '' || ticketNum == '0')
+			{
+			alert ("Wrong number of tickets.");
+			document.Event.Ticket.focus();
+
+			}
+		else
+			{
+			document.Event.TotalCharged.value = MoneyFormat(document.Event.TicketPrice.value * ticketNum + document.Event.Guest_Price.value * guestTicket);
+			}
+		}
+//-------------------------------------------------------------------
+// MoneyFormat (value)
+//   Pass a value to be converted to money format - 2 decimal places.
+//   Returns the formatted value
+//-------------------------------------------------------------------
+function MoneyFormat(amount) 
+{
+	var val = parseFloat(amount);
+	if (isNaN(val)) { return "0.00"; }
+	if (val <= 0) { return "0.00"; }
+	else { val = Math.round(val*100)/100; }
+	val = (val == Math.floor(val)) ? val + '.00' : ((val*10 == Math.floor(val*10)) ? val + '0' : val);
+	return val;
+}
+
+//function Valid_Form(Voption)
+//{
+//	document.Event.Option.value = Voption;
+//	document.Event.submit();
+//}
+function Valid_Form_Guest(Voption)
+{
+	document.Event.PrgOption.value = Voption;
+	document.Event.submit();
+}
+//-->
+</SCRIPT>
+
+<FORM NAME="Event" action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="IMSEventRegistration">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-A<!$MG_Event_ID>,PrgOption">
+	<INPUT type="hidden" name="PrgOption" value="1">
+	<INPUT type="hidden" name="Option" value="0">
+	<INPUT type="hidden" name="TicketPrice" value="<!$MG_Ticket_Price>">
+	<INPUT type="hidden" name="Guest_Price" value="<!$MG_Guest_Price>">
+	<INPUT type="hidden" name="Guest_Ticket" value="<!$MG_Guest_Number>">
+	<INPUT type="hidden" name="Charge_Code" value="<!$MG_Guest_Charge_Code>">
+	<INPUT type="hidden" name="GoBack_PRG" value="<!$MG_GoBack_PRG>">
+	<INPUT type="hidden" name="GoBack_ARG" value="<!$MG_GoBack_ARG>">
+	<!-- Allow All Bill = N then Empty before Adding to Cart -->
+	<INPUT type="hidden" name="Empty_Cart_Before_Add" value="<!$MGIF_DIFFERENT_BILL_GROUP>YES<!$MGENDIF>">
+
+
+<TABLE border="0" width="85%" cellpadding="0" cellspacing="2">
+	<TR>
+		<TD CLASS="bigTextMarine" align="left" colspan="6" nowrap>&nbsp;<!$MG_Event_Name><BR>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" nowrap>&nbsp;Event ID</TD>
+		<TD CLASS="nnText" nowrap><!$MG_Event_ID></TD>
+		<TD>&nbsp;</TD>
+		<TD CLASS="bText" nowrap>Date</TD>
+		<TD CLASS="nnText" nowrap><!$MG_Event_Date></TD>
+		<TD>&nbsp;</TD>
+		<TD CLASS="bText" nowrap>Time</TD>
+		<TD CLASS="nnText" nowrap><!$MG_Event_Time></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" nowrap>&nbsp;Price</TD>
+		<TD CLASS="nnTextBlue" nowrap><!$MG_Ticket_Price></TD>
+		<TD>&nbsp;</TD>
+		<TD CLASS="bText" nowrap>Location</TD>
+		<TD CLASS="nnText" colspan="2" nowrap><!$MG_Location></TD>
+		<TD>&nbsp;</TD>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" nowrap>&nbsp;Event Status/Spaces Available</TD>
+		<TD CLASS="bText" nowrap><FONT color="<!$MG_Event_Status_Color>"><!$MG_Event_Status> / <!$MG_Space_Avail></FONT></TD>
+		<TD>&nbsp;</TD>
+		<TD>&nbsp;</TD>
+		<TD CLASS="bText" align="right" colspan="4" nowrap><!$MG_Savings_Message></TD>
+	</TR>
+</TABLE>
+
+<CENTER>
+
+<!$MGIF_EVENT_OPEN>    <!-- added for use by outside link directly to registration - only  show if event is open -->
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="2">
+	<TR CLASS="bgbar">
+		<TD CLASS="nnText" nowrap>&nbsp;Verify or change address for this registration only</TD>
+	</TR>
+</TABLE>
+<BR>
+<INPUT type="Hidden" name="Add_Info_Name" value="<!$MG_Member_Name>">
+<INPUT type="Hidden" name="Add_Info_Office" value="<!$MG_Office_Name>">
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="2">
+	<TR>
+		<TD CLASS="bText" align="left" width="20%" nowrap>&nbsp;Member Name</TD>
+		<TD CLASS="nnText" colspan="2" width="5%" align="left" nowrap>&nbsp;<!$MG_Member_Name></TD>
+		<TD CLASS="nnText" align="left" nowrap><B>Member #</B>&nbsp;&nbsp;<!$MG_Member_Number></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" align="left" width="20%" nowrap>&nbsp;Office Name</TD>
+		<TD CLASS="nnText" colspan="2" align="left" nowrap>&nbsp;<!$MG_Office_Name></TD>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="150" nowrap nowrap>&nbsp;Attn/Care of</TD>
+		<TD colspan="2" nowrap><INPUT CLASS="input" type="text" name="Attn_CO" size="31" maxlength="30" value="<!$MG_Attn_CO_Now>"></TD>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="150" nowrap>&nbsp;Address</TD>
+		<TD colspan="2" nowrap><INPUT CLASS="input" type="text" name="Street_Addr" size="31" maxlength="30" onBlur="CheckAddress()"	 value="<!$MG_Street_Addr_Now>"></TD>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="150" nowrap>&nbsp;City, State Zip</TD>
+		<TD nowrap><INPUT CLASS="input" type="text" name="City" size="23" maxlength="21" onBlur="CheckCity()" value="<!$MG_City_Now>"></TD>
+		<TD align="right" nowrap><INPUT CLASS="input" type="text" name="State" size="2" maxlength="2" onBlur="CheckState()" value="<!$MG_State_Now>"></TD>
+		<TD nowrap>&nbsp;<INPUT CLASS="input" type="text" name="Zip_Code" size="5" maxlength="5" onBlur="CheckZip()"  value="<!$MG_Zip_Code_Now>">-<INPUT CLASS="input" type="text" name="Zip_Plus_4" size="4" maxlength="4" value="<!$MG_Zip_Plus_4_Now>"></TD>
+	</TR>
+</TABLE>
+<BR>
+<!$MGIF_GOLF_EVENT>
+<TABLE border="0" width="50%" cellpadding="0" cellspacing="2">
+	<TR>
+		<TD CLASS="bText" width="150" nowrap>&nbsp;Golf Handicap</TD>
+		<TD><INPUT CLASS="input" type="text" name="Handicap" size="4" maxlength="4" value="<!$MG_Handicap>"></TD>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+<!$MGIF_MEAL_CHOICE>
+	<TABLE border="0" width="50%" cellpadding="0" cellspacing="2">
+		<TR>
+			<TD CLASS="bText" width="150" nowrap>&nbsp;Meal Choice</TD>
+			<TD nowrap>
+				<SELECT name="Meal_Choice" size="1" face="arial">
+					<!$MGREPEAT>
+						<OPTION CLASS="input" value="<!$MG_Meal_Code>" <!$MG_Meal_Code_Selected>><!$MG_Meal_Description></OPTION>
+					<!$MGENDREPEAT>
+				</SELECT>
+			</TD>
+		</TR>
+	</TABLE>
+<!$MGENDIF>
+<!$MGIF_MEMBER_TICKET_ALLOWED>
+	<TABLE border="0" width="50%" cellpadding="0" cellspacing="2">
+		<TR>
+			<TD CLASS="bText" width="150" nowrap>&nbsp;Number of Tickets</TD>
+			<TD><INPUT CLASS="input" type="text" name="Ticket" size="2" maxlength="2" onBlur="CheckTicket()" value="<!$MG_Num_Tickets>"></TD>
+		</TR>
+	</TABLE>
+<!$MGELSE>
+	<TABLE border="0" width="50%" cellpadding="0" cellspacing="2">
+		<TR>
+			<TD CLASS="bText" width="150" nowrap>&nbsp;Number of Tickets</TD>
+			<TD CLASS="bTextBlue"><INPUT type="Hidden" name="Ticket" value="<!$MG_Num_Tickets>"><!$MG_Num_Tickets></TD>
+		</TR>
+	<TABLE>
+<!$MGENDIF>
+<!$MGIF_GUEST_TICKET_ALLOWED>
+	<TABLE border="0" width="50%" cellpadding="0" cellspacing="2">
+		<TR>
+			<TD nowrap><INPUT CLASS="sText" type="button" name="Telecheck" value="Click here to add guests tickets ($<!$MG_Guest_Price> each) <!$MGIF_GUEST_REGISTERED>- <!$MG_Guest_Number> Guest(s) registered<!$MGENDIF>  " onClick="Valid_Form_Guest('2')"></TD>
+		</TR>
+	</TABLE>
+<!$MGENDIF>
+<TABLE border="0" width="50%" cellpadding="0" cellspacing="2">
+		<TR>
+			<TD CLASS="bText" width="150" nowrap>&nbsp;Total Charge</TD>
+			<TD CLASS="bText" nowrap><INPUT CLASS="bTextBlue" type="text" name="TotalCharged" size="10" maxlength="10" readOnly value="<!$MG_Event_Price>"></TD>
+		</TR>
+	</TABLE>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="2">
+	<TR CLASS="bgbar">
+		<TD CLASS="nnText" nowrap>&nbsp;Confirmation will be sent to the following e-mail address. You may change your e-mail address on file below, if desired.</TD>
+	</TR>
+</TABLE>
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="2">
+	<TR>
+		<TD CLASS="bText" width="150" nowrap>&nbsp;E-Mail Address</TD>
+		<TD>
+					<!$MGIF_MODIFY_EMAIL>
+				<INPUT CLASS="input" type="text" name="Email_Address" size="50" maxlength="80" value="<!$MG_Email_Address_Now>" onBlur="CheckEmail()">
+			<!$MGELSE>
+				<DIV CLASS="input">
+					<INPUT type="hidden" name="Email_Address" value="<!$MG_Email_Address_Now>" onBlur="CheckEmail()"><!$MG_Email_Address_Now>
+				</DIV>
+			<!$MGENDIF>
+		
+		
+		<!--<INPUT CLASS="input" type="text" name="Email_Address" size="50" maxlength="80" onBlur="CheckEmail()" value="<!$MG_Email_Address_Now>">--></TD>
+	</TR>
+</TABLE>
+<!$MGIF_DOC_EXIST>
+	<BR>
+	<!$MGINCLUDE><!$MG_Web_Doc_Path><!$MGENDINCLUDE>
+	
+<!$MGENDIF>
+
+<!$MGIF_ACK_REQUIRED>
+		<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+			<TR CLASS="bTextRed" align="center">
+				<TD nowrap><INPUT TYPE="checkbox" NAME="Check_Confirmation" ><!$MG_Ack_Label></TD>
+			</TR>
+			<TR>
+				<TD>&nbsp;</TD>
+			</TR>
+		</TABLE>
+	<BR>
+	<!$MGENDIF>
+
+<!-- This Test is true when the flag on invoice in table rate ='N' -->
+<!$MGIF_NOT_ON_INVOICE>
+	<BR>
+	<TABLE border="0" width="50%" cellpadding="0" cellspacing="0">
+		<TR>
+			<TD CLASS="bTextRed" align="left" nowrap>Registration for this event is not available on the Web.</TD>
+		</TR>
+		<TR>
+			<TD CLASS="bTextRed" align="left" nowrap>Please call the association office to register.</TD>
+		</TR>
+	</TABLE>
+<!$MGENDIF>
+
+<!$MGIF_ON_INVOICE>
+<BR>
+<TABLE border="0" cellpadding="0" cellspacing="0" width="100%">
+	<TR align="center">
+		<!-- This Test is true when the flag on invoice in table rate ='Y' -->
+				<TD nowrap><INPUT type="button" name="AddCart" value="Add to Cart" onClick="<!$MGIF_DIFFERENT_BILL_GROUP>if(confirm('The event you are trying to register for must be paid for separately from the items currently in your cart. Select OK to Empty Cart and Add New Item or Cancel This Item and Checkout')){Valid_Form('1')}<!$MGELSE>Valid_Form('1')<!$MGENDIF>"></TD>
+		<TD nowrap><INPUT TYPE="button" VALUE="Previous Screen" onClick="history.go(-1)"></TD>
+	</TR>	
+</TABLE>
+<!$MGENDIF>
+<!$MGELSE>   <!-- ELSE event is FULL -->
+	<BR>
+	<TABLE border="0" cellpadding="0" cellspacing="0" width="100%">
+	<TR align="center">
+			<TD CLASS="bTextRed" nowrap>Sorry, this event is full.</TD>
+	</TR>
+	<TR>
+			<TD>&nbsp;</TD>
+	</TR>
+	<TR align="center">
+		<TD nowrap><INPUT TYPE="button" VALUE="Previous Screen" onClick="history.go(-1)"></TD>
+	</TR>	
+	</TABLE>
+<BR>
+<!$MGENDIF>   <!-- End IF EVENT_OPEN-->
+</FORM>
+
+
+</CENTER>

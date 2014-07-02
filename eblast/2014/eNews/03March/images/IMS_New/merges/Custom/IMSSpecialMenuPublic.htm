@@ -1,0 +1,102 @@
+<HTML>
+<HEAD>
+<META name="Rapattoni Corporation" content="Magic 8 Web IMS">
+<TITLE>Specific Menu</TITLE>
+<link href="/scripts/IMS/style.css" rel="stylesheet" type="text/css">
+<SCRIPT LANGUAGE="JavaScript">
+<!---
+function setCookie (name,value,expires,path,domain,secure) 
+{
+  document.cookie = name + "=" + escape (value) +
+    ((expires) ? "; expires=" + expires.toGMTString() : "") +
+    ((path) ? "; path=" + path : "") +
+    ((domain) ? "; domain=" + domain : "") +
+    ((secure) ? "; secure" : "");
+}
+function updSession()
+{
+	var twoHours = <!$MG_TimeOut>*1000;
+	var expDate = new Date();
+	var secondExpire = expDate.getTime();
+	//alert(secondExpire);
+	expDate.setTime(expDate.getTime() + twoHours);
+	setCookie("imssession",<!$MG_Session_Number>,expDate,"/",null,false);	
+	setCookie("imslastConnect",secondExpire,expDate,"/",null,false);	
+}
+/////////////////////////////////////////////////////////////////////
+//--->
+</SCRIPT>
+</HEAD>
+<BODY  BACKGROUND="/boardimages/background.jpg" text="black" onLoad="updSession();">
+
+<CENTER>
+<TABLE border="0" width="100%" cellpadding="3" cellspacing="0">
+	<TR  bgcolor="#004080" align="center">
+		<TD><IMG src="/boardimages/IMSbanner.jpg" align="bottom"></TD>
+	</TR>
+	<TR height="2" ></TR>
+</TABLE>
+
+<TABLE border="0" bgcolor="#004080" height="30" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD nowrap>&nbsp;<FONT color="white" face="arial" size="2"><B>Custom Public IMS Menu</B></FONT></TD>
+		<TD align="right" nowrap>
+							<A href="http://dev01/scripts/mgrqispi.dll?APPNAME=IMS&PRGNAME=IMSMenuDirectCall&ARGUMENTS=-N<!$MG_Session_Number>&SessionType=<!$MG_Session_Type>&ServiceName=LGOU"><FONT size="1" face="arial" color="wheat"><B>Log Off</B></FONT></A><FONT size="1" face="arial" color="wheat">&nbsp;|&nbsp;</FONT><A href="http://dev01/scripts/mgrqispi.dll?APPNAME=IMS&PRGNAME=IMSMainMenu&ARGUMENTS=-N<!$MG_Session_Number>,-LT"><FONT size="1" face="arial" color="wheat"><B>Services</B></FONT></A><FONT size="1" face="arial" color="wheat">&nbsp;|&nbsp;</FONT><A href="http://dev01/default.htm"><FONT size="1" face="arial" color="wheat"><B>Home</B></FONT></A>
+				</TD>
+	</TR>
+</TABLE>
+</CENTER>
+<CENTER>
+<BR>
+
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="1">
+	<TR>
+		<TD width="100%" align="left" bgcolor="wheat" nowrap><FONT face="arial" size="3">&nbsp;Services for <!$MG_Member_Name>&nbsp;(ID:<!$MG_Login_ID>)</FONT></TD>
+	</TR>
+</TABLE>
+<BR>
+<TABLE border="0" cellpadding="3" cellspacing="2" height="25" width="100%">
+	<TR>
+		<TD width="100%" colspan=2 align="left"  nowrap height="40" ><HR width="100%"></TD>
+	</TR>
+	<TR>
+		<TD width="100%" colspan=2 align="left"  nowrap><FONT face="arial" size="3" color="#004080">&nbsp;<B>Personal Services</B></FONT></TD>
+	</TR>
+	<TR>
+		<TD width="50%" nowrap rowspan=" 2">
+			&nbsp;&nbsp;&nbsp;<A href="http://dev01/scripts/mgrqispi.dll?APPNAME=IMS&PRGNAME=IMSMenuDirectCall&ARGUMENTS=-N<!$MG_Session_Number>&SessionType=<!$MG_Session_Type>&ServiceName=PERS"><FONT face="Arial" color="black" size="2"><B>Personal Information</B></FONT></A>
+		</TD>
+		<TD width="50%" nowrap>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD width="50%" nowrap>
+			&nbsp;&nbsp;&nbsp;<A href="http://dev01/scripts/mgrqispi.dll?APPNAME=IMS&PRGNAME=IMSMenuDirectCall&ARGUMENTS=-N<!$MG_Session_Number>&SessionType=<!$MG_Session_Type>&ServiceName=AR&BillingGroup=MLS"><FONT face="Arial" color="black" size="2"><B>Your Account - MLS Charges</B></FONT></A>
+		</TD>
+	</TR>
+	<TR>
+		<TD width="50%" nowrap>
+			&nbsp;&nbsp;&nbsp;<A href="http://dev01/scripts/mgrqispi.dll?APPNAME=IMS&PRGNAME=IMSMenuDirectCall&ARGUMENTS=-N<!$MG_Session_Number>&SessionType=<!$MG_Session_Type>&ServiceName=AR&BillingGroup=ASOC"><FONT face="Arial" color="black" size="2"><B>Your Account - ASOC Charges</B></FONT></A>
+		</TD>
+	</TR>
+	<TR>
+		<TD width="50%" nowrap>
+			&nbsp;&nbsp;&nbsp;<A href="http://www.gotomypc.com" ><FONT face="Arial" color="black" size="2"><B>GoTo My PC</B></FONT></A>
+		</TD>
+	</TR>
+</TABLE>
+
+</CENTER>
+<p>
+<BR><CENTER>
+<TABLE bgcolor="#004080" height="30" border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD align="center" nowrap><FONT color="wheat" size="-2">
+			<A href="http://dev01/scripts/mgrqispi.dll?APPNAME=IMS&PRGNAME=IMSMenuDirectCall&ARGUMENTS=-N<!$MG_Session_Number>&SessionType=<!$MG_Session_Type>&ServiceName=OSRH"><FONT size="1" face="arial" color="wheat"><B>Agents/Offices</B></FONT></A>&nbsp;|&nbsp;<A href="http://dev01/default.htm"><FONT size="1" face="arial" color="wheat"><B>Home</B></FONT></A>
+		</TD>
+	</TR>
+</TABLE>
+
+
+</CENTER>
+</BODY>
+</HTML>

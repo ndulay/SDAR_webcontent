@@ -1,0 +1,158 @@
+<SCRIPT LANGUAGE="JavaScript">
+<!---
+
+function MoneyFormat(amount) 
+{
+	var val = parseFloat(amount);
+	if (isNaN(val)) { return "0.00"; }
+	if (val <= 0) { return "0.00"; }
+	else { val = Math.round(val*100)/100; }
+	val = (val == Math.floor(val)) ? val + '.00' : ((val*10 == Math.floor(val*10)) ? val + '0' : val);
+	return val;
+}
+
+function setDate(strValue)
+{
+	strdesc3 = validateForm(strValue); //strValue;
+//	alert(strValue);
+//	validateForm(strdesc3);
+//	alert(strdesc3);
+	//alert('Set Date to '+strdesc3);
+//	window.opener.document.getElementById('Date_For_<!$MG_List_Category><!$MG_List_Code>').innerText = strdesc3;
+}
+
+function SubmitForm()
+{
+    if (document.ListCodeAdd.Comment)
+    {
+	    singleQuote = document.ListCodeAdd.Comment.value.split('\'');
+	    doubleQuote = document.ListCodeAdd.Comment.value.split('\"');
+	    if (singleQuote.length>1 || doubleQuote.length>1)
+	    {
+		    alert('Apostrophes and/or double quotes are not allowed in the comment field.');
+		    document.ListCodeAdd.Comment.focus();
+
+		    return false;
+	    }
+	}
+
+    if (document.getElementById('ARGUMENTS'))
+    {
+	document.getElementById('ARGUMENTS').value;
+	}
+	document.ListCodeAdd.submit();
+		<!$MGIF_FROM_DIRECT>
+		window.opener.location.href="/scripts/mgrqispi.dll?APPNAME=IMS&PRGNAME=IMSListMakerDirect&ARGUMENTS=-N<!$MG_Session_Number>,-A<!$MG_List_Category>,-A,-N0";
+		<!$MGELSE>
+		window.opener.document.location.reload(true);
+		<!$MGENDIF>
+	//window.opener.location.=window.opener.location;
+	//window.opener.history.go(0);
+	//window.opener.document.location.reload(true);
+	//parent.opener.document.location.reload();
+	window.close();
+	window.opener.focus();
+}
+
+function CloseWindow()
+{
+	window.close();
+}
+
+function validateForm(strDate)
+{
+	// ============ Date Shown validation ==============
+	// Validate date for correct format. If not in correct format, correct it.
+	var cDate = new Date();
+	cDate = isValidDate(strDate);
+	if(strDate != "")
+	{
+		if(cDate == null)
+		{
+			alert("Invalid date");
+			document.ListCodeAdd.Date.focus();
+			return false;
+		}
+		else
+		{
+			document.ListCodeAdd.Date.value = dateToString(cDate);
+			strDate = document.ListCodeAdd.Date.value;
+		}
+	}
+	//==============================
+	return strDate;
+}
+//--->
+</SCRIPT>
+<SCRIPT language="javascript" src="DateUtilities.js"></SCRIPT>
+<SCRIPT language="javascript" src="MLSCalendar.js">
+</SCRIPT>
+<IFRAME ID="CalFrame" style="display:none;position:absolute;width:204;z-index:555;height:178;" marginheight=0 marginwidth=0 noresize frameborder=0 scrolling=no src="MLSCalendarIFrame.htm" onChange="setDate(this.value)"></IFRAME>
+
+<FORM name="ListCodeAdd" action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="IMSListMaker">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-A<!$MG_List_Category>,-A<!$MG_List_Code>,-N3,-AA">
+
+<CENTER>
+<BR>
+<TABLE border="0" cellspacing="0" cellpadding="0" width="100%">
+	<TR CLASS="bgbar">
+		<TD CLASS="nnText" nowrap>&nbsp;Add Item</TD>
+	</TR>
+	</TABLE>
+<BR>
+<TABLE border="0" width="100%" cellpadding="2" cellspacing="0">
+	<TR>
+		<TD nowrap>&nbsp;&nbsp;</TD>
+		<TD CLASS="bText" width="15%" nowrap>Code</TD>
+		<TD nowrap>&nbsp;&nbsp;<SELECT CLASS="input" name="Add_List_Code" face="arial">
+		   	 <!$MGREPEAT>
+					<OPTION CLASS="input" VALUE="<!$MG_New_List_Code1>"> <!$MG_New_List_Code_Description1></OPTION> 
+		  	  <!$MGENDREPEAT>
+	     	</SELECT>
+		</TD>
+	<TR>
+		<!$MGIF_ALLOW_COMMENT>
+		<TD nowrap>&nbsp;&nbsp;</TD>
+		<TD CLASS="bText" width="15%" nowrap>Comment</TD>
+		<TD nowrap>&nbsp;&nbsp;<INPUT CLASS="input" type="text" size="30" maxlength="30" name="Comment" value="<!$MG_Comment>"></TD>
+		<!$MGENDIF>
+	</TR>
+	<TR>
+		<!$MGIF_ALLOW_STATUS>
+		<TD nowrap>&nbsp;&nbsp;</TD>
+		<TD CLASS="bText" width="15%" nowrap>Status</TD>
+		<TD nowrap>&nbsp;&nbsp;<SELECT CLASS="input" name="Status" face="arial">
+				<!$MGREPEAT>
+					<OPTION CLASS="input" value="<!$MG_New_Status_1>"> <!$MG_New_Status_Description1></OPTION>
+				<!$MGENDREPEAT>
+			</SELECT>
+		</TD>
+		<!$MGENDIF>
+	</TR>
+	<TR>
+		<!$MGIF_ALLOW_DATE>
+		<TD nowrap>&nbsp;&nbsp;</TD>
+		<TD CLASS="bText" width="15%" nowrap>Date</TD>
+		<TD nowrap>&nbsp;&nbsp;<INPUT class="input" type="text" name="Date" id="Date_For_<!$MG_List_Category><!$MG_List_Code>" style="position: relative" size="15" maxlength="15" value="<!$MG_Date>" onChange="setDate(this.value)">
+		<IMG align=top border=0 src="<!$MG_Images_Path>popCalendar.gif" style="position: relative; cursor: hand " title="View Calendar" onClick="CalFrame.getCalendarFor(Date)"></TD>
+		<!$MGENDIF>
+	</TR>
+	<TR>
+		<!$MGIF_ALLOW_AMOUNT>
+		<TD nowrap>&nbsp;&nbsp;</TD>
+		<TD CLASS="bText" width="15%" nowrap>Amount</TD>
+		<TD nowrap>&nbsp;&nbsp;<INPUT CLASS="input" type="text" size="10" maxlength="10" name="Amount" value="<!$MG_Amount>" onChange=" MoneyFormat(this.value)"></TD>
+		<!$MGENDIF>
+	</TR>
+</TABLE>
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD align="center" nowrap><INPUT TYPE="button" VALUE="   Add Item   " onClick="SubmitForm()"></TD>
+		<TD align="center" colspan="3" nowrap><INPUT TYPE="Button" VALUE="Close this window" onClick="CloseWindow()"></TD>
+	</TR>
+</TABLE>
+</FORM>
+</CENTER>

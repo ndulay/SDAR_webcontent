@@ -1,0 +1,150 @@
+<SCRIPT LANGUAGE="JavaScript">
+<!--	
+//////////////////////////////////////////////////
+function Valid_Shipping()
+{
+	document.CheckOut.action = "https://<!$MG_Server_Name>/scripts/mgrqispi.dll";
+	document.CheckOut.Option.value = "2";
+	document.CheckOut.submit();
+} 
+function Valid_Charge()
+{
+	if (document.CheckOut.Shipping_Code.value == ' ' || document.CheckOut.Option.value == '2')
+	{
+		alert('Please Select The Shipping Mode Before Validation !');
+	}
+	else
+	{
+		document.CheckOut.action = "https://<!$MG_Server_Name>/scripts/mgrqispi.dll";
+		document.CheckOut.Option.value = "3";
+		document.CheckOut.submit();
+	};
+}
+function Valid_CreditCard()
+{
+	if (document.CheckOut.Shipping_Code.value == ' ' || document.CheckOut.Option.value == '2')
+	{
+		alert('Please Select The Shipping Mode Before Validation !');
+	}
+	else
+	{
+		document.CheckOut.action = "https://<!$MG_Server_Name>/scripts/mgrqispi.dll";
+		document.CheckOut.Option.value = "4";
+		document.CheckOut.submit();
+	};
+}
+function Valid_Telecheck()
+{
+	if (document.CheckOut.AMT_OVER_MAX.value == true)
+	{
+		alert('Total amount cannot be greater than $2,500.00');
+		document.CheckOut.focus();
+		return false;
+	}
+	if (document.CheckOut.Shipping_Code.value == ' ' || document.CheckOut.Option.value == '2')
+	{
+		alert('Please Select The Shipping Mode Before Validation !');
+	}
+	else
+	{
+		document.CheckOut.action = "https://<!$MG_Server_Name>/scripts/mgrqispi.dll";
+		document.CheckOut.Option.value = "5";
+		document.CheckOut.submit();
+	};
+}
+//-->
+</SCRIPT>
+
+<FORM NAME="CheckOut" action="https://<!$MG_Server_Name>/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="ECheckOut">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-A<!$MG_Billing_Group>,-N<!$MG_Total_Due>,Option,Shipping_Code">
+	<INPUT type="hidden" name="Option" value="1">
+	<INPUT type="hidden" name="AllowedPoBox" value="<!$MG_AllowedPoBox>">
+	<INPUT type="hidden" name="Shipping_Mode" value="<!$MG_Shipping_Mode>">
+	<INPUT type="hidden" name="Ship_Code" value="<!$MG_Ship_Code>">
+	<INPUT type="hidden" name="AMT_OVER_MAX" value="<!$MG_AMT_OVER_MAX>">
+
+<CENTER>
+
+<BR>
+<TABLE border=0 cellspacing="1" width="100%">
+	<TR CLASS="bgbar">
+		<TD CLASS="bText" nowrap>&nbsp;Description</TD>
+		<TD CLASS="bText" nowrap>&nbsp;Item ID</TD>
+		<TD CLASS="bText" align="center" nowrap>Qty</TD>
+		<TD CLASS="bText" align="right" nowrap>Price&nbsp;</TD>
+		<TD CLASS="bText" align="right" nowrap>Total&nbsp;</TD>
+	</TR>
+	<!$MGREPEAT>
+		<TR <!$MG_Line_Color>>
+			<TD CLASS="bText" width="40%" nowrap height="25">&nbsp;<!$MG_Product_Description></TD>
+			<TD CLASS="bText" nowrap width="15%" height="25">&nbsp;<!$MG_Product_ID></TD>
+			<TD CLASS="bText" width="5%" align="right" nowrap height="25"><!$MG_Quantity>&nbsp;</TD>
+			<TD CLASS="nnText" nowrap width="10%" align="right" height="25"><!$MG_Price>&nbsp;</TD>
+			<TD CLASS="nnText" nowrap width="12%" align="right" height="25"><!$MG_Line_Total>&nbsp;</TD>
+		</TR>
+	<!$MGENDREPEAT>
+	<TR>
+		<TD colspan="5"><HR></TD>
+	</TR>
+	<TR>
+		<TD CLASS="nnText" align="right" colspan="4" nowrap>Sub-Total:&nbsp;</TD>
+		<TD CLASS="nnText" align="right" nowrap><!$MG_Sub_Total>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="nnText" align="right" colspan="4" nowrap>
+				<!-- Display Error When the Shipping Code Is not Selected -->
+				<!$MGIF_SHIPPING_NOT_SELECTED>
+					<B><FONT color="Red">
+					**Shipping Must Be Selected&nbsp;&nbsp;
+					</B></FONT>
+				<!$MGENDIF>
+				<B><FONT color="#004080">
+				Shipping Mode&nbsp;</B></FONT>
+				<SELECT name="Shipping_Code" onchange="Valid_Shipping()" SIZE=1>
+				<!$MGIF_NO_DEFAULT_SHIPPING>
+					<OPTION CLASS="input" VALUE=" ">
+				<!$MGENDIF>
+				<!$MGIF_SHIPPING_EXIST>
+					<!$MGREPEAT>
+						<OPTION CLASS="input" VALUE="<!$MG_Shipping_Code>" <!$MG_Selected_value>><!$MG_Shipping_Desc>
+					<!$MGENDREPEAT>
+				<!$MGENDIF>
+				</SELECT>
+		</TD>
+		<TD CLASS="nnText" align="right" nowrap><!$MG_Shipping>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="nnText" align="right" colspan="4" nowrap>Tax:&nbsp;</TD>
+		<TD CLASS="nnText" align="right" nowrap><!$MG_Tax>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD align="right" colspan="5" nowrap><HR width="20%"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" align="right" colspan="4" nowrap>Total:&nbsp;</TD>
+		<TD align="right" CLASS="bText" bgcolor="Wheat" nowrap><!$MG_Cart_Total>&nbsp;</TD>
+	</TR>
+</TABLE>
+
+
+<BR>
+<TABLE cellpadding="0" cellspacing="0" width="100%">
+	<TR align="center">
+		<!$MGIF_CHARGE_AUTHORIZATION>
+			<TD align="center" nowrap><INPUT type="button" name="Charge" value="Charge to My Account" onClick="Valid_Charge()"</TD>
+		<!$MGENDIF>
+		<!$MGIF_PAY_BY_CC>
+			<TD align="center" nowrap><INPUT type="button" name="CreditCard" value="Pay by Credit Card" onClick="Valid_CreditCard()"</TD> 
+		<!$MGENDIF>
+		<!$MGIF_PAY_BY_TELECHECK>
+			<TD align="center" nowrap><INPUT type="button" name="Telecheck" value="Pay by TeleCheck" onClick="Valid_Telecheck()"</TD> 
+		<!$MGENDIF>
+		<TD nowrap><INPUT TYPE="button" VALUE="Previous Screen" onClick="history.go(-1)"></TD>
+	</TR>
+</TABLE>
+</FORM>
+
+
+</CENTER>

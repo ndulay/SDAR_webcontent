@@ -1,0 +1,56 @@
+/**
+ * @package   Diametric Template - RocketTheme
+ * @version   ${project.version} ${build_date}
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+
+/* Structure */
+#rt-bg-image {left: 49% !important;}
+
+/* Joomla Core */
+.button {border: none;}
+.menutop li {zoom: 1;position: relative;}
+.rt-social-buttons {margin-top: -20px;}
+.title5 h2.title:before {width: 0;height: 0;border: none;}
+.login-fields input {width: 144px;}
+
+/* Menus */
+.menutop #form-login .input .inputbox {width: 100%;}
+#rt-navigation {margin-bottom: 4px;}
+#rt-navigation, .menutop .fusion-submenu-wrapper.level2  {zoom: 1;}
+.fusion-submenu-wrapper {margin-left: 1px;}
+.fusion-js-subs {margin-top: -1px !important;zoom: 1;}
+.menutop.fusion-js-container ul li > .item:hover, .menutop.fusion-js-container li.f-menuparent-itemfocus > .item, .menutop.fusion-js-container ul li.active > .item, .menutop.fusion-js-container li.active.f-menuparent-itemfocus > .item {border: none;margin: -1px;zoom: 1;padding: 1px;}
+.accent-overlay-dark .rt-menubar .menutop li:hover > .item, .accent-overlay-dark .rt-menubar .menutop li.f-mainparent-itemfocus > .item {zoom: 1;margin: 0 0 0 -1px;padding: 0 0 0 2px;border: none;}
+.rt-menubar .menutop li:hover, .rt-menubar .menutop li.f-mainparent-itemfocus {zoom: 1;margin: 0;padding: 0;border: none;}
+.menutop li.parent.root:hover .item .daddyicon, .menutop li.parent.root.f-mainparent-itemfocus .item .daddyicon, .menutop li.root:hover .daddy.item .daddyicon {top: 22px !important;zoom: 1;}
+.rt-menubar .menutop li:hover > .item, .rt-menubar .menutop li.f-mainparent-itemfocus > .item {padding-left: 1px !important;padding-right: 1px !important;}
+.rt-menubar .menutop li.active:hover .item, .rt-menubar .menutop li.active.f-mainparent-itemfocus .item {padding-right: 2px !important;}
+.menutop li.root > .subtext.item {line-height: 15px !important;}
+.rt-menubar .menutop li:hover, .rt-menubar .menutop li.f-mainparent-itemfocus {margin-right: -8px;margin-left: 5px;zoom: 1;position: relative;}
+.rt-menubar .menutop li:hover a span, .rt-menubar .menutop li.f-mainparent-itemfocus a span {padding-left: 21px;}
+.menutop li.parent.root:hover .item .daddyicon, .menutop li.root:hover .daddy.item .daddyicon, .menutop li.parent.root.f-mainparent-itemfocus .item .daddyicon, .menutop li.root.f-mainparent-itemfocus .daddy.item .daddyicon {zoom: 1;right: -12px !important;width: 8px;}
+.menutop li.root > .item > span {padding-bottom: 5px !important;}
+.menutop li.root:first-child:hover {margin-right: -4px !important;}
+.style-panel-toggle.turkey span {filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);}
+
+/* Sprocket */
+.sprocket-lists .sprocket-corner-badge {bottom: -5px !important;}
+.sprocket-mosaic-hovercontent {display: none;}
+.sprocket-mosaic-image-container:hover .sprocket-mosaic-hovercontent {display: block;zoom: 1;}
+.sprocket-mosaic-hovercontent, .menutop li {zoom: 1;}
+.sprocket-headlines-badge:after {display: none !important;}
+
+/* K2 */
+#k2Container div.subCategory a.subCategoryImage img,#k2Container div.subCategory a.subCategoryImage img:hover {zoom: 1;}
+
+
+#rt-header .rt-container .rt-omega .topnav-menu .rt-block {
+	margin: 5px 0 !important;
+}
+.menu-block #js-mainnav .js-megamenu .mega a span {
+	padding: 10px 9px;
+	font-size: 13px;
+}

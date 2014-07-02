@@ -1,0 +1,87 @@
+<SCRIPT LANGUAGE="JavaScript">
+function CalculatePrice(PackageCode) 
+	{
+	<!$MGREPEAT>
+	if (PackageCode == '<!$MG_Package_Code_R>')
+		{
+			document.Guest.Package_Price_Selected.value =MoneyFormat(<!$MG_Package_Price_R>);
+		}
+	<!$MGENDREPEAT>
+	}
+//-------------------------------------------------------------------
+// MoneyFormat (value)
+//   Pass a value to be converted to money format - 2 decimal places.
+//   Returns the formatted value
+//-------------------------------------------------------------------
+function MoneyFormat(amount) 
+{
+	var val = parseFloat(amount);
+	if (isNaN(val)) { return "0.00"; }
+	if (val <= 0) { return "0.00"; }
+	else { val = Math.round(val*100)/100; }
+	val = (val == Math.floor(val)) ? val + '.00' : ((val*10 == Math.floor(val*10)) ? val + '0' : val);
+	return val;
+}
+
+</SCRIPT>
+
+<FORM name="Guest" action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="IMSConventionGuest">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-A<!$MG_Convention_ID>,-AC,-N<!$MG_Guest_Number>">
+	
+<CENTER>
+
+<BR>
+<TABLE border="0" cellspacing="0" cellpadding="0" width="100%">
+	<TR CLASS="bgbar">
+		<TD CLASS="nnText" nowrap>Add a New Guest</TD>
+	</TR>
+</TABLE>
+
+
+<BR>
+<TABLE border="0" width="60%" cellpadding="2" cellspacing="0">
+	<TR>
+		<TD CLASS="bText" width="30%" nowrap>First Name</TD>
+		<TD nowrap><INPUT CLASS="input" type="text" name="Fisrt_Name" size="12" face="arial" maxlength="12" value="<!$MG_First_Name>"></TD>
+		<TD CLASS="bText" width="30%" nowrap>Middle Initial</TD>
+		<TD nowrap><INPUT CLASS="input" type="text" name="Middle_Initial" size="1" face="arial" maxlength="1" value="<!$MG_Middle_Initial>"></TD>
+		<TD CLASS="bText" width="30%" nowrap>Last Name</TD>
+		<TD nowrap><INPUT CLASS="input" type="text" name="Last_Name" size="17" face="arial" maxlength="17" value="<!$MG_Last_Name>"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="30%" nowrap>Nickname</TD>
+		<TD nowrap colspan=5><INPUT CLASS="input" type="text" name="Nick_Name" size="12" face="arial" maxlength="12" value="<!$MG_Nick_Name>"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="30%" nowrap>Company Name</TD>
+		<TD nowrap colspan=5><INPUT CLASS="input" type="text" name="Company_Name" size="30" face="arial" maxlength="30" value="<!$MG_Company_Name>"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="30%" nowrap>Package Choice</TD>
+		<TD  colspan=5>
+			<SELECT CLASS="nnText" name="Package_Choice" onchange="CalculatePrice(this.options[this.selectedIndex].value)">
+				<!$MGREPEAT>
+					<OPTION CLASS="input" value="<!$MG_Package_Code_R1>"  <!$MG_Package_Code_Selected_R1>> <!$MG_Package_Description_R1>&nbsp;-&nbsp;<!$MG_Package_Price_R1></OPTION>
+				<!$MGENDREPEAT>
+			</SELECT>
+		</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="30%" nowrap>Package Price</TD>
+		<TD nowrap colspan=5><INPUT CLASS="bTextBlue" type="text" name="Package_Price_Selected" size="10" maxlength="10" readOnly value="<!$MG_Package_Price_Selected>"></TD>
+	</TR>
+</TABLE>
+
+
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR align="center">
+		<TD nowrap><INPUT type="submit" name="" value="Submit"></TD>
+	</TR>
+</TABLE>
+</FORM>
+
+
+</CENTER>

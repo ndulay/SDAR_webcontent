@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>REALTOR Dash Secure Login</title>
+<script type="text/javascript">
+var scoutKDPageUrl = "http://scout.safemls.net/bch9k/authenticate.aspx"
+var localLogonIframeSrcUrl = "login.html";
+var secondsToWaitForRemoteLogonControl = 5;
+var AOCrossSiteDomainDepth = 2;
+var AOFrameContainerID = "aoFrameDiv";
+</script>
+<script src="js/AdmitOneStandardScripts.js" type="text/javascript"></script>
+<script type="text/javascript">
+function checkForFrames() {
+   	if(top != self) {
+     	top.location = "/idp/frames.jsp?tic=1321969755948";
+    }
+}
+function doLoad() {
+	checkForFrames();
+}
+function disableButton() {
+  	document.getElementById("login").value = "Please Wait";
+  	document.getElementById("login").disabled = true;
+  	document.forms[0].submit();
+}
+</script>
+<style type="text/css">
+<!--
+body {
+	background-color: #CCCCCC;
+}
+.style1 {color: #ff0000}
+
+.entrybox {
+	width: 210px;
+	height: 22px;
+}
+.center
+{
+	text-align: center;
+}
+.center table
+{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top:auto;
+	text-align: center;
+}
+-->
+</style>
+<link id="logincss" rel="stylesheet" href="style/login.css">
+<link id="sdar" rel="stylesheet" href="style/sdar.css">
+</head>
+<body onload="javascript:doLoad();">
+<form name="loginform" method="post" action="/idp/Authn/UserPassword" id="loginform">
+<!-- the hidden form fields for Scout to fill out -->
+<div style="display:none">
+<input id="j_username" name="j_username" type="hidden">
+<input id="j_password" name="j_password" type="hidden">
+<input id="j_pin" name="j_pin" type="hidden">
+<input id="j_transactionid" name="j_transactionid" type="hidden">
+<input id="j_logintype" name="j_logintype" value="scout" type="hidden">
+<input onclick="disableButton();" id="j_submitHidden" name="j_submitHidden" type="button">
+</div>
+<div align="center">
+
+<table width="960px" border="0" cellpadding="0" cellspacing="0">
+	<tbody><tr style="background-image: url('images/Sandicor/dashheader.png'); height: 130px; background-position: center top; background-color:#CCC;">
+		<td height="130" colspan="2">&nbsp;</td>
+	</tr>
+	  <tr bgcolor="white">
+	    <td height="34" bgcolor="#E5E5E5">&nbsp;</td>
+	    <td bgcolor="#E5E5E5">&nbsp;</td>
+	    </tr>
+	  <tr bgcolor="white">
+
+		<td width="530" height="188" align="left" bgcolor="#E5E5E5"><div align="center">
+		<table bgcolor="white" class="td_box">
+			<tbody><tr>
+          		<td class="headline" colspan="2">REALTOR&reg;Dash Secure Login</td>
+          	</tr>
+			<tr>
+				<td width="142" height="17" align="right" class="white_copy">MLS Login:</td>
+				<td width="296" align="right" class="rightpad"><input name="Login" type="text" id="Login" size="45" /></td>
+			</tr>
+			<tr>
+				<td align="right" class="white_copy">Password:</td>
+				<td width="296" align="right" class="rightpad">
+				  <input name="Login2" type="text" id="Login2" size="45" />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="right" class="rightpad"><input id="login" onclick="javascript:postScoutData();" value="Login" tabindex="0" type="image" src="images/Sandicor/login.png"></td>
+			</tr>
+		</tbody></table>
+		
+		</div>
+		  <div class="error_copy" style=" padding-top: 12px;"> Error message area here</div>
+		</td>
+
+		<td width="430" align="left" valign="top" bgcolor="#E5E5E5">
+        <div class="body_copy" style=" padding-bottom: 12px;"> Please sign in using your MLS login and password. This will give you access to the MLS (Tempo/Fusion), zipForm&reg; (transaction forms), REALTORS&reg; Property Resource (R​PR), and allow you to pay MLS and SDAR invoices. You may also add your own widgets to bookmark the tools you use every day.</div>
+        <div style=" padding-bottom: 12px;">
+        <a href="http://safeaccess.miborsecurity.com/changepwd/" class="redlink" tabindex="20">I Need to Change My Password <img style="display: inline; outline: none; border: none;" src="images/Sandicor/redarrow.png" width="4" height="8" alt="arrow" /></a> 
+        </div>
+		  <div style=" padding-bottom: 12px;">
+          <a href="http://safeaccess.miborsecurity.com/forgotpwd/" class="redlink" tabindex="21">I Forgot My Password</a> <a href="http://safeaccess.miborsecurity.com/changepwd/" class="redlink" tabindex="20"><img style="display: inline; outline: none; border: none;" src="images/Sandicor/redarrow.png" width="4" height="8" alt="arrow" /></a></div>
+		  <div class="require">If you cannot see the Login  or Password fields, 
+		    <a class="require" id="getFlashURLLink" href="http://get.adobe.com/flashplayer/" title="Redirect to Adobe for flash player">click here</a></div>
+
+		</td>
+	</tr>
+
+	<tr bgcolor="white">
+		<td align="left" valign="top" bgcolor="#E5E5E5">&nbsp;</td>
+		<td align="left" valign="top" bgcolor="#E5E5E5">&nbsp;		</td>
+	</tr>
+
+	<tr style="height: 56px; background-color:#FFF;">
+		<td height="56" colspan="2"><img src="images/Sandicor/dashfooter.png" alt="Footer" width="960" height="56" usemap="#Map" border="0" /></td>
+		</tr>
+</tbody></table>
+</div>
+</form>
+
+
+
+<map name="Map" id="Map">
+  <area shape="rect" coords="15,16,105,42" href="mailto:membership@sdar.com?subject=REALTOR Dash Question" target="_blank" alt="Email" />
+  <area shape="rect" coords="294,14,588,42" href="http://www.sdar.com/" target="_blank" />
+  <area shape="rect" coords="885,15,915,43" href="http://www.linkedin.com/company/greater-san-diego-association-of-realtors-?trk=cp_followed_name_greater-san-diego-association-of-realtors-" target="_blank" alt="Linkedin" />
+  <area shape="circle" coords="855,31,16" href="http://twitter.com/RealtorsSD" target="_blank" alt="Twitter" />
+  <area shape="rect" coords="799,13,818,44" href="http://www.facebook.com/pages/San-Diego-Association-of-REALTORSR/45318014199?ref=search&amp;sid=1350361668.1351412168..1" target="_blank" alt="Facebook" />
+</map>
+</body></html>

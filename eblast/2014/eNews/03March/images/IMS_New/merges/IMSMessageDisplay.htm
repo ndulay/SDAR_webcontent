@@ -1,0 +1,43 @@
+<FORM>
+<CENTER>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD bgcolor="<!$MG_BGColor>" align="<!$MG_Align>"><FONT  color="<!$MG_Color>" face="arial" size="<!$MG_Size>"><!$MG_Message></FONT></TD> 
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+</TABLE>
+<BR>
+<BR>
+<TABLE cellpadding="0" cellspacing="0" width="100%">
+	<TR align="center">
+<!$MGIF_DISPLAY_CLOSE>
+		<SCRIPT LANGUAGE="JavaScript">
+				<!---
+				parent.window.moveBy(150,150); parent.window.resizeBy(-350,-350);
+				function CloseWindow()
+				{
+					parent.window.close();
+				}
+				//--->
+		</SCRIPT>
+		<TD align="center"><INPUT TYPE="Button" VALUE="Close this window" onClick="CloseWindow()"></TD>
+<!$MGELSE>
+	<!$MGIF_NOT_DISPLAY_PREVIOUS>
+		<TD align="CENTER" width="56%"><INPUT TYPE="button" VALUE="Previous Screen" onClick="history.go(-1)"></TD>
+	<!$MGELSE>
+		<TD align="center" nowrap><FONT size="2" face="arial" color="white">
+				<A href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSMainMenu&ARGUMENTS=-N<!$MG_Session_Number>"><FONT size="2" face="arial" color="blue"><B>Back to Main Menu</B></FONT></A></TD>
+	<!$MGENDIF>
+<!$MGENDIF>
+	</TR>
+</TABLE>
+
+<BR><BR>
+
+</CENTER>
+</FORM>

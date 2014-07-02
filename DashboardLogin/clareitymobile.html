@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width = device-width">
+
+<title>REALTOR Dash Mobile Login</title>
+<link id="logincss" rel="stylesheet" href="style/login.css">
+
+<script type="text/javascript">
+	if (top.frames.length!=0) {
+    	top.location=self.document.location;
+	}
+	try {
+	(function() {
+    	var sa = document.createElement('script'); sa.type = 'text/javascript';
+    	sa.src = 'http://scout.safemls.net/bch9k/sat.ashx#1321970149223';
+    	(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(sa);
+  	})();
+	} catch (err) {};
+	function send2Scout() {
+	  	document.getElementById("login").value = "Please Wait ";
+	  	document.getElementById("login").disabled = true;
+	  	try {
+  			document.getElementById("j_transactionid").value = $AOC.getTransactionID();
+  			$AOC.expireSessionID(); // clear currents session from all storage locations
+  			$AOC.expireTransactionID(); // clears current transaction id from all storage locations
+	  	} catch (err) {};
+	  	document.forms[0].submit();
+	}
+	function checkEnter(e)
+	{
+	  var characterCode;
+
+	  characterCode = e.keyCode;
+
+	  if (characterCode == 13)
+	  { //if generated character code is equal to ascii 13 (if enter key)
+	    send2Scout();
+	    return false;
+	  }
+	}
+
+</script>
+
+<body bgcolor="#CCCCCC">
+<form name="loginform" method="post" action="/idp/Authn/UserPassword" id="loginform">
+<input id="j_transactionid" name="j_transactionid" type="hidden">
+<input id="j_logintype" name="j_logintype" value="mobile" type="hidden">
+
+<table class="allline" bgcolor="black" width="100%">
+	<tbody><tr bgcolor="white">
+		<td colspan="2" class="title">REALTOR®Dash Secure Login</td>
+	</tr>
+	<tr bgcolor="white">
+		<td colspan="2">
+		<table bgcolor="white">
+			<tbody><tr>
+				<td width="106" class="login">MLS Login ID:</td>
+				<td width="187" class="login"><input id="j_username" name="j_username" autocapitalize="off" type="text"></td>
+			</tr>
+			<tr>
+				<td class="login">Password:</td>
+				<td class="login"><input id="j_password" name="j_password" onkeypress="return checkEnter(event);" type="password"></td>
+			</tr>
+			<tr>
+				<td class="login" colspan="2" align="right"><input value="Login" id="login" name="login" onclick="javascript:send2Scout();" type="button"></td>
+			</tr>
+		</tbody></table>
+		 <span class="failure">
+		</span> 
+		</td>
+	</tr>
+
+	<tr bgcolor="white">
+		<td class="footerleft"><span class="note">© 2013 Greater San Diego Association of REALTORS®</span></td>
+		<td class="footerright">&nbsp;</td>
+	</tr>
+</tbody></table>
+</form>
+
+</body></html>

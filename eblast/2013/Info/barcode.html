@@ -1,0 +1,631 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Barcode Realty</title>
+		
+    <style type="text/css">
+		#outlook a{
+			padding:0;
+		}
+		.ReadMsgBody{
+			width:100%;
+		}
+		.ExternalClass{
+			width:100%;
+		}
+		body{
+			margin:0;
+			padding:0;
+		}
+		img{
+			border:0;
+			height:auto;
+			line-height:100%;
+			outline:none;
+			text-decoration:none;
+		}
+		table,td{
+			border-collapse:collapse;
+			mso-table-lspace:0pt;
+			mso-table-rspace:0pt;
+		}
+		#bodyTable{
+			height:100% !important;
+			margin:0;
+			padding:0;
+			width:100% !important;
+		}
+	/*
+	@tab Page
+	@section heading 1
+	@tip Set the styling for all first-level headings in your emails. These should be the largest of your headings.
+	@style heading 1
+	*/
+		h1{
+			/*@editable*/color:#FFFFFF;
+			display:block;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:26px;
+			/*@editable*/font-style:normal;
+			/*@editable*/font-weight:bold;
+			/*@editable*/line-height:100%;
+			/*@editable*/letter-spacing:normal;
+			margin-top:0;
+			margin-right:0;
+			margin-bottom:10px;
+			margin-left:0;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Page
+	@section heading 2
+	@tip Set the styling for all second-level headings in your emails.
+	@style heading 2
+	*/
+		h2{
+			/*@editable*/color:#000000;
+			display:block;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:20px;
+			/*@editable*/font-style:normal;
+			/*@editable*/font-weight:bold;
+			/*@editable*/line-height:100%;
+			/*@editable*/letter-spacing:normal;
+			margin-top:0;
+			margin-right:0;
+			margin-bottom:10px;
+			margin-left:0;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Page
+	@section heading 3
+	@tip Set the styling for all third-level headings in your emails.
+	@style heading 3
+	*/
+		h3{
+			/*@editable*/color:#606060;
+			display:block;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:16px;
+			/*@editable*/font-style:normal;
+			/*@editable*/font-weight:bold;
+			/*@editable*/line-height:100%;
+			/*@editable*/letter-spacing:normal;
+			margin-top:0;
+			margin-right:0;
+			margin-bottom:10px;
+			margin-left:0;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Page
+	@section heading 4
+	@tip Set the styling for all fourth-level headings in your emails. These should be the smallest of your headings.
+	@style heading 4
+	*/
+		h4{
+			/*@editable*/color:#808080;
+			display:block;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:12px;
+			/*@editable*/font-style:normal;
+			/*@editable*/font-weight:bold;
+			/*@editable*/line-height:100%;
+			/*@editable*/letter-spacing:normal;
+			margin-top:0;
+			margin-right:0;
+			margin-bottom:10px;
+			margin-left:0;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Header
+	@section preheader style
+	@tip Set the background color and bottom border for your email's preheader area.
+	@theme page
+	*/
+		#templatePreheader{
+			/*@editable*/background-color:#FFFFFF;
+			/*@editable*/border-bottom:0px solid #505050;
+		}
+	/*
+	@tab Header
+	@section preheader text
+	@tip Set the styling for your email's preheader text. Choose a size and color that is easy to read.
+	*/
+		.preheaderContent{
+			/*@editable*/color:#000000;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:10px;
+			/*@editable*/line-height:125%;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Header
+	@section preheader link
+	@tip Set the styling for your email's preheader links. Choose a color that helps them stand out from your text.
+	*/
+		.preheaderContent a:link,.preheaderContent a:visited,.preheaderContent a .yshortcuts {
+			/*@editable*/color:#FFFFFF;
+			/*@editable*/font-weight:normal;
+			/*@editable*/text-decoration:underline;
+		}
+	/*
+	@tab Header
+	@section header style
+	@tip Set the background color and border for your email's header area.
+	@theme header
+	*/
+		#templateHeader{
+			/*@editable*/background-color:#FFFFFF;
+			/*@editable*/border-top:0;
+			/*@editable*/border-bottom:0;
+		}
+	/*
+	@tab Header
+	@section header text
+	@tip Set the styling for your email's header text. Choose a size and color that is easy to read.
+	*/
+		.headerContent{
+			/*@editable*/color:#232323;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:20px;
+			/*@editable*/font-weight:bold;
+			/*@editable*/line-height:100%;
+			/*@editable*/padding-top:20px;
+			/*@editable*/padding-right:0;
+			/*@editable*/padding-bottom:20px;
+			/*@editable*/padding-left:0;
+			/*@editable*/text-align:left;
+			/*@editable*/vertical-align:middle;
+		}
+	/*
+	@tab Header
+	@section header link
+	@tip Set the styling for your email's header links. Choose a color that helps them stand out from your text.
+	*/
+		.headerContent a:link,.headerContent a:visited,.headerContent a .yshortcuts {
+			/*@editable*/color:#EE3A23;
+			/*@editable*/font-weight:normal;
+			/*@editable*/text-decoration:underline;
+		}
+	/*
+	@tab Body
+	@section body style
+	@tip Set the background color for your email's body area.
+	*/
+		#templateBody{
+			/*@editable*/background-color:#FFFFFF;
+			/*@editable*/border-top:0;
+			/*@editable*/border-bottom:0;
+			padding:20px;
+		}
+	/*
+	@tab Body
+	@section body text
+	@tip Set the styling for your email's main content text. Choose a size and color that is easy to read.
+	@theme main
+	*/
+		.bodyContent{
+			/*@editable*/color:#000000;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:14px;
+			/*@editable*/line-height:150%;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Body
+	@section body link
+	@tip Set the styling for your email's main content links. Choose a color that helps them stand out from your text.
+	*/
+		.bodyContent a:link,.bodyContent a:visited,.bodyContent a .yshortcuts {
+			/*@editable*/color:#EE3A23;
+			/*@editable*/font-weight:normal;
+			/*@editable*/text-decoration:underline;
+		}
+		.bodyContent img{
+			display:inline;
+			height:auto;
+			max-width:600px !important;
+		}
+	/*
+	@tab Footer
+	@section footer style
+	@tip Set the top border for your email's footer area.
+	@theme footer
+	*/
+		#templateFooter{
+			/*@editable*/border-top:1px solid #232323;
+			padding:20px;
+		}
+	/*
+	@tab Footer
+	@section footer style
+	@tip Set the top border for your email's footer area.
+	@theme footer
+	*/
+		body,#bodyTable{
+			/*@editable*/background-color:#FFFFFF;
+		}
+	/*
+	@tab Footer
+	@section footer text
+	@tip Set the styling for your email's footer text. Choose a size and color that is easy to read.
+	@theme footer
+	*/
+		.footerContent{
+			/*@editable*/color:#000000;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:10px;
+			/*@editable*/line-height:150%;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Footer
+	@section footer link
+	@tip Set the styling for your email's footer links. Choose a color that helps them stand out from your text.
+	*/
+		.footerContent a:link,.footerContent a:visited,.footerContent a .yshortcuts {
+			/*@editable*/color:#606060;
+			/*@editable*/font-weight:normal;
+			/*@editable*/text-decoration:underline;
+		}
+		.footerContent img{
+			display:inline;
+		}
+		#monkeyRewards img{
+			max-width:190px !important;
+		}
+	@media only screen and (max-width: 600px){
+		body,table,td,p,a,li,blockquote{
+			-webkit-text-size-adjust:none !important;
+		}
+
+}	@media only screen and (max-width: 600px){
+		body{
+			width:100% !important;
+			min-width:100% !important;
+		}
+
+}	@media only screen and (max-width: 600px){
+		td[id=templateBody],td[id=templateFooter]{
+			padding-right:10px !important;
+			padding-left:10px !important;
+		}
+
+}	@media only screen and (max-width: 600px){
+	/*
+	@tab Mobile Styles
+	@section template width
+	@tip Make the template fluid for portrait or landscape view adaptability. If a fluid layout doesn't work, set width to 300px instead.
+	*/
+		table[class=templateContainer]{
+			/*@tab Mobile Styles
+@section template width
+@tip Make the template fluid for portrait or landscape view adaptability. If a fluid layout doesn't work, set width to 300px instead.*/max-width:600px !important;
+			/*@editable*/width:100% !important;
+		}
+
+}	@media only screen and (max-width: 600px){
+		table[id=templatePreheader]{
+			display:none;
+		}
+
+}	@media only screen and (max-width: 600px){
+	/*
+	@tab Mobile Styles
+	@section heading 1
+	@tip Make the first-level headings larger in size for better readability on small screens.
+	*/
+		h1{
+			/*@editable*/font-size:28px !important;
+			/*@editable*/line-height:100% !important;
+		}
+
+}	@media only screen and (max-width: 600px){
+	/*
+	@tab Mobile Styles
+	@section heading 2
+	@tip Make the second-level headings larger in size for better readability on small screens.
+	*/
+		h2{
+			/*@editable*/font-size:24px !important;
+			/*@editable*/line-height:100% !important;
+		}
+
+}	@media only screen and (max-width: 600px){
+	/*
+	@tab Mobile Styles
+	@section heading 3
+	@tip Make the third-level headings larger in size for better readability on small screens.
+	*/
+		h3{
+			/*@editable*/font-size:20px !important;
+			/*@editable*/line-height:100% !important;
+		}
+
+}	@media only screen and (max-width: 600px){
+	/*
+	@tab Mobile Styles
+	@section heading 4
+	@tip Make the fourth-level headings larger in size for better readability on small screens.
+	*/
+		h4{
+			/*@editable*/font-size:16px !important;
+			/*@editable*/line-height:100% !important;
+		}
+
+}	@media only screen and (max-width: 600px){
+	/*
+	@tab Mobile Styles
+	@section header image
+	@tip Make the main header image fluid for portrait or landscape view adaptability. If a fluid layout doesn't work, set width to 300px or half-size instead.
+	*/
+		img[id=headerImage]{
+			/*@tab Mobile Styles
+@section header image
+@tip Make the main header image fluid for portrait or landscape view adaptability. If a fluid layout doesn't work, set width to 300px or half-size instead.*/height:auto !important;
+			/*@editable*/max-width:400px !important;
+			/*@editable*/width:100% !important;
+		}
+
+}	@media only screen and (max-width: 600px){
+	/*
+	@tab Mobile Styles
+	@section header text
+	@tip Make the header content text larger in size for better readability on small screens.
+	*/
+		.headerContent{
+			/*@editable*/font-size:21px !important;
+			/*@editable*/line-height:150% !important;
+			/*@editable*/padding-top:20px !important;
+			/*@editable*/padding-right:10px !important;
+			/*@editable*/padding-bottom:20px !important;
+			/*@editable*/padding-left:10px !important;
+		}
+
+}	@media only screen and (max-width: 600px){
+	/*
+	@tab Mobile Styles
+	@section body image
+	@tip Make the main body image fluid for portrait or landscape view adaptability. If a fluid layout doesn't work, set width to 300px or half-size instead.
+	*/
+		img[class=bodyImage]{
+			/*@tab Mobile Styles
+@section body image
+@tip Make the main body image fluid for portrait or landscape view adaptability. If a fluid layout doesn't work, set width to 300px or half-size instead.*/height:auto !important;
+			/*@editable*/max-width:600px !important;
+			/*@editable*/width:100% !important;
+		}
+
+}	@media only screen and (max-width: 600px){
+	/*
+	@tab Mobile Styles
+	@section body text
+	@tip Make the body content text larger in size for better readability on small screens.
+	*/
+		.bodyContent{
+			/*@editable*/font-size:17px !important;
+			/*@editable*/line-height:150% !important;
+		}
+
+}	@media only screen and (max-width: 600px){
+	/*
+	@tab Mobile Styles
+	@section footer text
+	@tip Make the footer content text larger in size for better readability on small screens.
+	*/
+		.footerContent{
+			/*@editable*/font-size:13px !important;
+			/*@editable*/line-height:150% !important;
+		}
+
+}	@media only screen and (max-width: 600px){
+		td[class=footerContent] a{
+			display:block !important;
+		}
+
+}		.bodyContent a:link,.bodyContent a:visited,.bodyContent a .yshortcuts{
+			color:#f05a22;
+		}
+		.preheaderContent a:link,.preheaderContent a:visited,.preheaderContent a .yshortcuts{
+			color:#000000;
+		}
+</style></head>
+    <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
+    	<center>
+        	<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
+            	<tr>
+                	
+
+
+
+<td align="center" valign="top">
+                    	<!-- // BEGIN PREHEADER -->
+                        <table border="0" cellpadding="10" cellspacing="0" width="100%" id="templatePreheader">
+                        	<tr>
+                            	
+
+
+
+<td align="center" valign="top">
+                                	<table border="0" cellpadding="0" cellspacing="0" width="600">
+                                    	<tr>
+                                        	
+
+
+
+<td valign="top" class="preheaderContent" mc:edit="preheader_content">Mobile first marketing solutions.</td>
+                                            <!-- *|IFNOT:ARCHIVE_PAGE|* -->
+											
+
+
+
+<td valign="top" width="220" class="preheaderContent" style="padding-left:20px;" mc:edit="preheader_links">
+                                                Email not displaying correctly?<br><a href="http://www.sdar.com/eblast/2013/Info/barcode.html" target="_blank">View it in your browser</a>.
+                                            </td>
+											<!-- *|END:IF|* -->
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                        <!-- END PREHEADER  -->
+                    	<!-- // BEGIN TEMPLATE SECTIONS -->
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        	<tr>
+                            	
+
+
+
+<td align="center" valign="top">
+                                	<!-- // BEGIN HEADER -->
+                                	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    	<tr>
+                                        	
+
+
+
+<td align="center" valign="top" id="templateHeader">
+                                            	<table border="0" cellpadding="0" cellspacing="0" width="600" class="templateContainer">
+                                                	<tr>
+                                                        
+
+
+
+<td class="headerContent">
+                                                            <img src="http://gallery.mailchimp.com/36dc1f10b34350895cbf84b1e/images/mailchimp_header_onwhite.png" style="max-width:400px;" id="headerImage" mc:label="header_image" mc:edit="header_image" mc:allowdesigner="" mc:allowtext="">
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- END HEADER  -->
+                                </td>
+                            </tr>
+                        	<tr>
+                            	
+
+
+
+<td align="center" valign="top">
+                                	<!-- // BEGIN BODY -->
+                                	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    	<tr>
+                                        	
+
+
+
+<td align="center" valign="top" id="templateBody">
+                                            	<table border="0" cellpadding="0" cellspacing="0" width="600" class="templateContainer">
+                                                	<tr>
+                                                    	
+
+
+
+<td>
+                                                        	<img src="http://gallery.mailchimp.com/36dc1f10b34350895cbf84b1e/images/mailchimp_banner1.2.png" class="bodyImage" style="max-width:600px;" mc:label="image" mc:edit="body_image">
+                                                        </td>
+                                                    </tr>
+                                                	<tr>
+                                                        
+
+
+
+<td valign="top" class="bodyContent" style="padding-top:20px;">Hi, 
+
+	<span><br />
+	Thank you for joining us at the Greater San Diego Association of REALTORS&reg; Membership Appreciation Day and 5th Annual Summit!  We hope you had a great event.</span><br>
+	<br />
+	 </p>
+	<a target='_self' href='https://app.mobilestorm.com/cp/redirect.php?id=18654748'>Barcode Realty</a> was honored to sponsor the event!  Thank you for taking the time to stop by our table and for giving us the opportunity to demo our <a target='_self' href='https://app.mobilestorm.com/cp/redirect.php?id=18654748'>Barcode Realty</a> technology solutions. As a reminder, Barcode Realty offers:<br />
+	<br />
+	<ul style="font-family: arial, sans-serif; font-size: 13px; line-height: normal; margin-top: 0pt; margin-bottom: 0pt;">
+	  <li dir="ltr" style="margin-left: 15px; vertical-align: baseline; list-style-type: disc; background-color: transparent; font-family: Arial;">
+		<span style="background-color: transparent; vertical-align: baseline;">Customized State-of-the-Art Desktop & Mobile Websites</span>	</li>
+	<li dir="ltr" style="margin-left: 15px; vertical-align: baseline; list-style-type: disc; background-color: transparent; font-family: Arial;">
+		<p dir="ltr" style="line-height: 1.5; margin-top: 0pt; margin-bottom: 0pt;">
+			<span style="background-color: transparent; vertical-align: baseline;">iOS and Android Web Apps</span></p>
+	</li>
+	<li dir="ltr" style="margin-left: 15px; vertical-align: baseline; list-style-type: disc; background-color: transparent; font-family: Arial;">
+		<p dir="ltr" style="line-height: 1.5; margin-top: 0pt; margin-bottom: 0pt;">
+			<span style="background-color: transparent; vertical-align: baseline;">Advanced QR code management</span></p>
+	</li>
+	<li dir="ltr" style="margin-left: 15px; vertical-align: baseline; list-style-type: disc; background-color: transparent; font-family: Arial;">
+		<p dir="ltr" style="line-height: 1.5; margin-top: 0pt; margin-bottom: 0pt;">
+			<span style="background-color: transparent; vertical-align: baseline;">Google Analytics Integration and Analysis</span></p>
+	</li>
+	<li dir="ltr" style="margin-left: 15px; vertical-align: baseline; list-style-type: disc; background-color: transparent; font-family: Arial;">
+		<p dir="ltr" style="line-height: 1.5; margin-top: 0pt; margin-bottom: 0pt;">
+			<span style="background-color: transparent; vertical-align: baseline; ">Free Training and Support</span></p>
+	</li>
+	<li dir="ltr" style="margin-left: 15px; vertical-align: baseline; list-style-type: disc; background-color: transparent; font-family: Arial;">
+		<p dir="ltr" style="line-height: 1.5; margin-top: 0pt; margin-bottom: 0pt;">
+			<span style="background-color: transparent; vertical-align: baseline;">SDAR Member Discounts</span><br>
+			<br />
+			 </p>
+	</li>
+</ul>
+<span style="vertical-align: baseline; background-color: transparent; font-family: Arial;">We'd love the opportunity to show you our <a target='_self' href='https://app.mobilestorm.com/cp/redirect.php?id=18654748'>Barcode Realty</a> platform. Please let me know some days and times that would work for you and I'd be happy to arrange a personalized webinar.</span><br>
+<br />
+<span style="vertical-align: baseline;  background-color: transparent; font-family: Arial;">I look forward to your response and hope we have the chance to work together!  </span><br>
+<br />
+<span style="vertical-align: baseline; background-color: transparent; font-family: Arial;">The <a target='_self' href='https://app.mobilestorm.com/cp/redirect.php?id=18654748'>Barcode Realty</a> Team</span></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- END BODY  -->
+                                </td>
+                            </tr>
+                        	<tr>
+                            	
+
+
+
+<td align="center" valign="top">
+                                	<!-- // BEGIN FOOTER -->
+                                	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    	<tr>
+                                        	
+
+
+
+<td align="center" valign="top" id="templateFooter" style="padding-bottom:40px;">
+                                            	<table border="0" cellpadding="0" cellspacing="0" width="600" class="templateContainer">
+                                                    <tr>
+                                                    	
+
+
+
+<td valign="top" class="footerContent" mc:edit="footer_social"><div style="text-align: left;">
+	<br>
+	<img align="left" height="32" src="https://gallery.mailchimp.com/36dc1f10b34350895cbf84b1e/images/facebook.png" style="width: 32px; height: 32px;" width="32"><a class='tpl-content-highlight' target='_blank' href='https://app.mobilestorm.com/cp/redirect.php?id=18654749'><img align="left" height="32" src="https://gallery.mailchimp.com/36dc1f10b34350895cbf84b1e/images/twitter.png" style="width: 32px; height: 32px;" width="32"></a><a class='tpl-content-highlight' target='_blank' href='https://app.mobilestorm.com/cp/redirect.php?id=18654750'><img align="left" height="32" src="https://gallery.mailchimp.com/36dc1f10b34350895cbf84b1e/images/google_color.png" style="width: 32px; height: 32px;" width="32"></a><a class='tpl-content-highlight' target='_blank' href='https://app.mobilestorm.com/cp/redirect.php?id=18654751'><img align="left" height="32" src="https://gallery.mailchimp.com/36dc1f10b34350895cbf84b1e/images/linkedin.png" style="width: 32px; height: 32px;" width="32"></a><a class='tpl-content-highlight' target='_blank' href='https://app.mobilestorm.com/cp/redirect.php?id=18654752'><img align="left" height="32" src="https://gallery.mailchimp.com/36dc1f10b34350895cbf84b1e/images/youtube.png" style="width: 32px; height: 32px;" width="32"></a><a class="tpl-content-highlight" href="*|FORWARD|*"><img align="left" height="32" src="https://gallery.mailchimp.com/36dc1f10b34350895cbf84b1e/images/email_icon.png" style="width: 32px; height: 32px;" width="32"></a><br>
+	<br>
+	<br>
+	<a class='tpl-content-highlight' target='_blank' href='https://app.mobilestorm.com/cp/redirect.php?id=18654753'><img align="none" height="200" src="https://gallery.mailchimp.com/36dc1f10b34350895cbf84b1e/images/mailchimp_bcr_template.png" style="height: 200px; line-height: 10px; width: 200px;" width="200"></a><br>
+	<br>
+	<span style="font-size:24px;"><a class='tpl-content-highlight' target='_blank' href='https://app.mobilestorm.com/cp/redirect.php?id=18654753'>http://barcoderealty.com</a></span><br>
+	<br>
+	<span style="font-size: 24px; text-align: center;"><span class="gc-cs-link" id="gc-number-0" title="Call with Google Voice">(707) 893-7226</span></span></div>
+</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- END FOOTER  -->
+                                </td>
+                            </tr>
+                        </table>
+                        <!-- END TEMPLATE SECTIONS  -->
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </body>
+</html>

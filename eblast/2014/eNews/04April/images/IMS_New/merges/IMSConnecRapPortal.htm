@@ -1,0 +1,37 @@
+<HTML>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	<!$MGIF_HAS_SESSION>updSession();<!$MGENDIF>
+	document.location.href="<!$MG_URL_Link>"
+
+	function openRapPortal()
+	{
+		//this.window.history.go(-1)
+		var SSOWindow = window.open("<!$MG_URL_Link>","RapattoniPortal","status=1,toolbar=no,location=no,menubar=no,width=800,height=600,resizable=yes");
+		//SSOWindow.focus();
+		//onLoad="openRapPortal();"
+
+	}
+function setCookie (name,value,expires,path,domain,secure) 
+{
+  document.cookie = name + "=" + escape (value) +
+    ((expires) ? "; expires=" + expires.toGMTString() : "") +
+    ((path) ? "; path=" + path : "") +
+    ((domain) ? "; domain=" + domain : "") +
+    ((secure) ? "; secure" : "");
+}
+function updSession()
+{
+	var twoHours = <!$MG_TimeOut>*1000;
+	var expDate = new Date();
+	var secondExpire = expDate.getTime();
+	//alert(secondExpire);
+	expDate.setTime(expDate.getTime() + twoHours);
+	setCookie("imssession",<!$MG_Session_Number>,expDate,"/",null,false);	
+	setCookie("imslastConnect",secondExpire,expDate,"/",null,false);	
+}
+//-->
+</SCRIPT>
+<BODY>
+</BODY>
+</HTML>

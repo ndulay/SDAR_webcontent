@@ -1,0 +1,215 @@
+<SCRIPT LANGUAGE="JavaScript">
+<!---
+function DeleteAcc()
+{
+	document.CheckAccount.DeleteAccount.value="1";
+}
+
+function LTrim(str) 
+{
+	for (var i=0; str.charAt(i)==" "; i++);
+	return str.substring(i,str.length);
+}
+
+function isUSStateAbbr(val)
+	{
+	val = val+"";
+        if (val.length != 2) { return false; }
+        if (val.charAt(0) == ' ' || val.charAt(1) == ' ') { return false; }
+	var string="AK AL AR AZ CA CO CT DC DE FL GA HI IA ID IL IN KS KY LA MA MD ME MI MN MO MS MT NC ND NE NH NJ NM NV NY OH OK OR PA PR RI SC SD TN TX UT VA VI VT WA WI WV WY";
+	if (string.indexOf(val.toUpperCase()) != -1) {
+		return true;
+		}
+	return false;
+	}
+
+function SubmitForm()
+{
+	var check = "true";
+	var Name = LTrim(document.CheckAccount.Name_on_Account.value);
+	var Address = LTrim(document.CheckAccount.Address_1.value);
+	var City = LTrim(document.CheckAccount.CheckCity.value);
+	var State = LTrim(document.CheckAccount.CheckState.value);
+	var Zipcode = LTrim(document.CheckAccount.CheckZip.value);
+
+	if ( document.CheckAccount.AccountNumber.value == '')
+	{ 
+		alert('Bank Account Number cannot be blank');
+		document.CheckAccount.AccountNumber.focus();
+		return false;
+	}
+	if ( document.CheckAccount.DriverLicenseID.value == '' )
+	{ 
+		alert('Drivers License Number cannot be blank');
+		document.CheckAccount.DriverLicenseID.focus();
+		return false;
+	}
+	if ( Name == '' )
+	{ 
+		alert('Name On Account cannot be blank');
+		document.CheckAccount.Name_on_Account.focus();
+		return false;
+	}
+	if ( Address == '' )
+	{ 
+		alert('Address cannot be blank');
+		document.CheckAccount.Address_1.focus();
+		return false;
+	}
+	if ( City == '' )
+	{ 
+		alert('City cannot be blank');
+		document.CheckAccount.CheckCity.focus();
+		return false;
+	}
+	if ( State == '' )
+	{ 
+		alert('State cannot be blank');
+		document.CheckAccount.CheckState.focus();
+		return false;
+	}
+	if (State != '' && isUSStateAbbr(State) == false)
+	{
+		alert('The State Does not exist');
+		document.CheckAccount.CheckState.focus();
+		return false;
+	}
+	if ( Zipcode == '' || Zipcode.length < 5 )
+	{ 
+		alert('Invalid Zip Code');
+		document.CheckAccount.CheckZip.focus();
+		return false;
+	}
+	
+// No errors submit the form
+//removed this submit because of conflict of 2 submit buttons on form -- document.CheckAccount.submit();
+}
+
+//--->
+</SCRIPT>
+
+<CENTER>
+<FORM Name="CheckAccount" action="/scripts/mgrqispi.dll" method="POST" onsubmit="return SubmitForm()">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="IMSCheckAccount">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-N<!$MG_Amount_Due>,-N1,-A<!$MG_Transaction_Type>,-A<!$MG_Billing_Group>,-A<!$MG_Registration_ID>,-N<!$MG_Came_From>,-AT">
+	<INPUT type="hidden" name="CheckAccountId" value="<!$MG_CheckAccountId>">
+	<INPUT type="hidden" name="DeleteAccount" value="0">
+	<!-- From Registration Form -->
+	<INPUT type="Hidden" name="Add_Info_Name" value="<!$MG_Add_Info_Name>">
+	<INPUT type="Hidden" name="Add_Info_Office" value="<!$MG_Add_Info_Office>">
+	<INPUT type="Hidden" name="Attn_CO" value="<!$MG_Attn_CO>">
+	<INPUT type="Hidden" name="Street_Addr" value="<!$MG_Street_Addr>">
+	<INPUT type="Hidden" name="City" value="<!$MG_City>">
+	<INPUT type="Hidden" name="State" value="<!$MG_State>">
+	<INPUT type="Hidden" name="Zip_Code" value="<!$MG_Zip_Code>">
+	<INPUT type="Hidden" name="Zip_Plus_4" value="<!$MG_Zip_Plus_4>">
+
+<CENTER>
+
+<BR>
+<TABLE border="0" width="100%" cellpadding="2" cellspacing="0">
+	<TR  CLASS="bgbar">
+		<TD CLASS="nnText" align="left" nowrap>&nbsp;Please <!$MGIF_ACCOUNT_EXISTS>update<!$MGELSE>enter<!$MGENDIF> your Bank Account information below</TD>
+	</TR>
+</TABLE>
+
+
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="2">
+	<TR  align="Left">
+		<TD Rowspan="13" valign="Top"><IMG src="<!$MG_ImageAlias>telecheck.jpg" align="bottom"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" nowrap>&nbsp;Bank Account Number</TD>
+		<TD nowrap><INPUT CLASS="input" type="text" name="AccountNumber" size="31" maxlength="19" value="<!$MG_Check_Account_Number>"></TD>
+			</TR>
+	<TR>
+		<TD CLASS="bText" nowrap>&nbsp;Drivers License Number</TD>
+		<TD CLASS="bText" nowrap><INPUT CLASS="input" type="text" name="DriverLicenseID" size="31" maxlength="19" value="<!$MG_Driver_License_Number>">&nbsp;&nbsp;State&nbsp;
+			<SELECT name="DriverLicenseState" size="1">
+					<!$MGREPEAT>
+						<OPTION CLASS="input" value="<!$MG_States_Code>"   <!$MG_Selected_States>><!$MG_States_Description></OPTION>
+					<!$MGENDREPEAT>
+			</SELECT>
+		</TD>
+		
+	</TR>
+	<!$MGIF_KEEP_ON_FILE>
+		<TR>
+			<TD CLASS="bText" nowrap>&nbsp;Keep On File</TD>
+			<TD valign="middle" nowrap><SELECT name="Keep_In_File" size="1">
+					<OPTION CLASS="input" value="Y">Yes</OPTION>
+					<OPTION CLASS="input" value="N">No</OPTION>
+			</SELECT>
+			</TD>
+		</TR>
+	<!$MGELSE>
+		<INPUT type="hidden" name="Keep_In_File" value="N">
+	<!$MGENDIF>
+	<TR>
+		<TD align="left" colspan="2" nowrap>&nbsp;</TD>
+		<TD CLASS="sText" align="left" nowrap>Please use your check to find your bank account <BR>number as shown below:</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bigTextMarine" align="left" colspan="2" nowrap>&nbsp;Account Information</TD>
+		<TD Rowspan="20" valign="Top"><IMG src="<!$MG_ImageAlias>bankacct.gif" align="bottom"></TD>
+	</TR>
+	<TR>
+		<TD align="left" colspan="2" nowrap>&nbsp;</TD>
+		
+	</TR>
+	<TR>
+		<TD CLASS="bText" nowrap>&nbsp;Name on Bank Account</TD>
+		<TD  nowrap><INPUT CLASS="input" type="text" name="Name_on_Account" size="31" maxlength="30" value="<!$MG_Name_Check_Account>"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" nowrap>&nbsp;Address</TD>
+		<TD nowrap><INPUT CLASS="input" type="text" name="Address_1" size="31" maxlength="30" value="<!$MG_Address_1>"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" nowrap>&nbsp;City, State ZIP</TD>
+		<TD nowrap>
+			<INPUT CLASS="input" type="text" name="CheckCity" size="23" maxlength="21" value="<!$MG_CheckCity>">&nbsp;&nbsp;
+			<INPUT CLASS="input" type="text" name="CheckState" size="2" maxlength="2" value="<!$MG_CheckState>">&nbsp;
+			<INPUT CLASS="input" type="text" name="CheckZip" size="5" maxlength="5" value="<!$MG_CheckZip>">-<INPUT CLASS="input" type="text" name="CheckZip_Plus4" size="4" maxlength="4" value="<!$MG_CheckZip_Plus4>">
+		</TD>
+	</TR>
+	<!$MGIF_HAS_ACCOUNT>
+		<TR>
+			<TD colspan="2">&nbsp;</TD>
+		</TR>
+		<TR>
+			<TD>&nbsp;</TD>
+			<TD CLASS="bText" align="left" nowrap><INPUT type="checkbox" name="Default_CheckBox" <!$MG_Default_CheckBox_On>>&nbsp;&nbsp;Set as my Default Bank Account</TD>
+		</TR>
+	<!$MGELSE>
+		<INPUT type="hidden" name="Default_CheckBox" value="on">
+	<!$MGENDIF>
+</TABLE>
+
+
+<BR>
+<!--<TABLE border="0" width="60%" cellpadding="0" cellspacing="2">
+	<TR>
+		<TD align="center" nowrap>
+			<INPUT type="submit" name="submit" value="Submit" onClick="validForm()">
+		<!$MGIF_HAS_ACCOUNT>
+			&nbsp;&nbsp;
+			<INPUT type="submit" name="submit" value="Delete This Account" onClick="DeleteAcc()">
+		<!$MGENDIF>
+		</TD>
+	</TR>
+</TABLE>
+  -->
+<TABLE border="0" width="30%" cellpadding="0" cellspacing="2">
+	<TR align="center">
+		<TD><INPUT type="submit" name="check" value="Submit"></TD>
+		<!$MGIF_HAS_ACCOUNT>
+		<TD><INPUT type="submit" name="submit" value="Delete this Account" onClick="DeleteAcc()">
+		<!$MGENDIF>
+		</TD>
+	</TR>
+</TABLE>
+</FORM>
+</CENTER>

@@ -1,0 +1,135 @@
+<CENTER>
+<!$MGIF_NO_PRODUCTS>
+<BR>
+	<TABLE border="0" width="100%" cellpadding="0" cellspacing="1">
+		<TR>
+			<TD CLASS="bigTextRed" nowrap align="Center"><BR><BR>
+			<!$MGIF_TEXT_SEARCH>
+				Sorry, no items match your search criteria.  <BR><BR>Please use the BACK button on your browser to enter a new search.
+			<!$MGELSE>
+			No products are currently available in the Category you have chosen. <BR><BR>Please use the BACK button on your browser to select again.
+			<!$MGENDIF>
+		</TR>
+	</TABLE>
+	<BR><BR>\
+	
+<!$MGELSE>
+<!$MGIF_GALLERY>
+	<TABLE border="0" width="100%" cellpadding="0" cellspacing="1">	
+		<TR>
+<!$MGELSE>
+	<TABLE border="0" width="100%" cellpadding="0" cellspacing="1">	
+		<TR CLASS="bgbar" >
+<!-- 			<TD CLASS="bText" align="left" width="7%" nowrap>&nbsp;Item ID</TD> -->
+			<TD CLASS="bText" align="left" width="*%">&nbsp;Description</TD>
+			<TD CLASS="bText" align="left" wid
+			th="<!$MG_Picture_Width>" nowrap>&nbsp;</TD>
+			<!$MGIF_DETAILED_PRICES>
+				<TD CLASS="bText" align="center" width="10%">&nbsp;Non-Member Price&nbsp;</TD>
+				<TD CLASS="bText" align="center" width="10%" nowrap>Discount&nbsp;</TD>
+				<TD CLASS="bText" align="center" width="10%" nowrap>Your Price&nbsp;</TD>
+			<!$MGELSE>
+				<TD CLASS="bText" align="center" width="10%" nowrap>Price&nbsp;</TD>
+			<!$MGENDIF>
+			<TD CLASS="bText" align="center" width="20%" nowrap>Buy</TD>
+		</TR>
+<!$MGENDIF>
+	<!$MGREPEAT>
+		<!$MGIF_GALLERY_R1>
+		<TD class="<!$MG_Line_Color>" align="center"  valign="bottom" width="<!$MG_Gallery_Width>%">
+			<div style="overflow:auto; width:100%; height:100%; border: 1px solid whitesmoke">
+			<TABLE border="0" cellpadding="0" cellspacing="1" valign="bottom" width="100%" style="border: 1px solid whitesmoke;">
+					<TR height="<!$MG_Row_Height>">
+						<TD cellpadding="5" align="center" style="border: 3px outset whitesmoke;background:white; vertical-align:middle;">
+							<A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R1>&PRGNAME=ERealtorStore&ARGUMENTS=-N<!$MG_Session_Number_R1>,-N3,-A<!$MG_Billing_Group_R1>,-A<!$MG_Charge_Code>,-L<!$MG_Is_Group_Header>" title="View Product Detail">
+							<IMG src="<!$MG_Item_Picture>" height="<!$MG_Picture_Height>" border="0"></A>
+						</TD>
+					</TR>
+					<TR>
+						<TD align="center">&nbsp;<!-- <A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R1>&PRGNAME=ERealtorStore&ARGUMENTS=-N<!$MG_Session_Number_R1>,-N3,-A<!$MG_Billing_Group_R1>,-A<!$MG_Charge_Code>,-L<!$MG_Is_Group_Header>"><!$MG_Item_ID_Text></A> -->
+						<font class="nnTextMarine"><B><!$MG_Product_Name></B></font>
+					</TR>
+						<!$MGIF_DETAILED_PRICES_REPEAT>
+					<TR>
+						<TD CLASS="nnTextMarine" align="center">&nbsp;Non-Member Price&nbsp;<!$MG_NonMember_Price>&nbsp;</TD>
+					</TR>
+					<TR>
+						<TD CLASS="nnTextMarine" align="center">Discount&nbsp;<!$MG_Discount>&nbsp;</TD>
+					</TR>
+						<!$MGENDIF>
+					<TR>
+							<TD CLASS="bTextMarine" align="center">
+								<!$MGIF_GROUP_HEADER>&nbsp;<!$MG_Item_ID_Text> -&nbsp;<!$MGENDIF><!$MGIF_DETAILED_PRICES_REPEAT>Your <!$MGENDIF>Price&nbsp;<!$MG_Your_Price>&nbsp
+								
+							</TD>
+					</TR>
+					<TR height="5">
+						<TD></TD>
+					</TR>
+					<TR>
+						<!$MGIF_IN_STOCK>
+							<TD align="center">
+							<!$MGIF_GROUP_HEADER>
+								<A CLASS="sTextWhite" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R1>&PRGNAME=ERealtorStore&ARGUMENTS=-N<!$MG_Session_Number_R1>,-N3,-A<!$MG_Billing_Group_R1>,-A<!$MG_Charge_Code>,-L<!$MG_Is_Group_Header>"><img src="<!$MG_imagealias>select.gif" border="0">
+							<!$MGELSE>
+								<A CLASS="sTextWhite" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R1>&PRGNAME=EShoppingCart&ARGUMENTS=-N<!$MG_Session_Number_R1>,-A<!$MG_Charge_Code>,-N1,-A<!$MG_Last_Category_R1>,-A<!$MG_Billing_Group_R1>"><img src="<!$MG_imagealias>addtocart.gif" border="0">
+							<!$MGENDIF>
+								</A>
+							</TD>
+						<!$MGELSE>
+							<TD CLASS="sTextWhite" align="center">
+								<img src="<!$MG_imagealias>outofstock.gif" border="0">
+							</TD>
+						<!$MGENDIF>
+					</TR>
+			<TR height="10">
+				<TD></TD>
+			</TR>
+			</TABLE>
+		</TD>
+<!$MGIF_NEW_GALLERY_ROW>
+	</TR>
+	<TR>
+<!$MGENDIF>
+		<!$MGELSE><!-- NOT GALLERY -->
+		<TR height="<!$MG_Row_Height>" class="<!$MG_Line_Color>">
+<!-- 			<TD align="left">&nbsp;<A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R1>&PRGNAME=ERealtorStore&ARGUMENTS=-N<!$MG_Session_Number_R1>,-N3,-A<!$MG_Billing_Group_R1>,-A<!$MG_Charge_Code>,-L<!$MG_Is_Group_Header>"><!$MG_Item_ID_Text></A></TD>
+ -->
+			<TD CLASS="nnTextMarine" align="left"><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R1>&PRGNAME=ERealtorStore&ARGUMENTS=-N<!$MG_Session_Number_R1>,-N3,-A<!$MG_Billing_Group_R1>,-A<!$MG_Charge_Code>,-L<!$MG_Is_Group_Header>" title="View Product Detail"><!$MG_Product_Name></A>&nbsp;<!$MG_Item_Count></TD>
+			<TD cellpadding="5" align="center">
+				<A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R1>&PRGNAME=ERealtorStore&ARGUMENTS=-N<!$MG_Session_Number_R1>,-N3,-A<!$MG_Billing_Group_R1>,-A<!$MG_Charge_Code>,-L<!$MG_Is_Group_Header>" title="View Product Detail"><IMG src="<!$MG_Item_Picture>" height="<!$MG_Picture_Height>" border="0"></A>
+			</TD>
+			<!$MGIF_DETAILED_PRICES_REPEAT>
+			<TD CLASS="nnTextMarine" align="right">&nbsp;<!$MG_NonMember_Price>&nbsp;</TD>
+			<TD CLASS="nnTextMarine" align="right">&nbsp;<!$MG_Discount>&nbsp;</TD>
+			<!$MGENDIF>
+				<TD CLASS="bTextMarine" align="Right">&nbsp;<!$MG_Your_Price>&nbsp</TD>
+			<!$MGIF_IN_STOCK>
+				<TD align="center">
+				<!$MGIF_GROUP_HEADER>
+					<A CLASS="sTextWhite" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R1>&PRGNAME=ERealtorStore&ARGUMENTS=-N<!$MG_Session_Number_R1>,-N3,-A<!$MG_Billing_Group_R1>,-A<!$MG_Charge_Code>,-L<!$MG_Is_Group_Header>"><img src="<!$MG_imagealias>select.gif" border="0">
+				<!$MGELSE>
+					<A CLASS="sTextWhite" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R1>&PRGNAME=EShoppingCart&ARGUMENTS=-N<!$MG_Session_Number_R1>,-A<!$MG_Charge_Code>,-N1,-A<!$MG_Last_Category_R1>,-A<!$MG_Billing_Group_R1>"><img src="<!$MG_imagealias>addtocart.gif" border="0">
+				<!$MGENDIF>
+					</A>
+				</TD>
+			<!$MGELSE>
+				<TD CLASS="sTextWhite" align="center">
+					<img src="<!$MG_imagealias>outofstock.gif" border="0">
+				</TD>
+			<!$MGENDIF>
+		</TR>
+		<!$MGENDIF>
+	<!$MGENDREPEAT>
+	</TABLE>
+
+<!$MGENDIF>
+<!$MGIF_GALLERY>
+	</TR>
+</TABLE>
+</DIV>
+<!$MGENDIF>
+
+<BR>
+
+</CENTER>

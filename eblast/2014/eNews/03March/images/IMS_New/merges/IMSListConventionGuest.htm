@@ -1,0 +1,59 @@
+
+<!$MGIF_EMPTY>
+
+	<BR>
+	<TABLE border="0" width="100%" cellpadding="0" cellspacing="1">
+		<TR>
+			<TD CLASS="bTextMarine" align="center" nowrap>No Guests Found<BR><BR><BR></TD> 
+		</TR>
+	</TABLE>
+
+<!$MGELSE>
+
+	<BR>
+	<TABLE align="Center" border=0 cellspacing="1" width="80%">
+		<TR CLASS="bgbar">
+			<TD CLASS="bText" align="center" width="10%" nowrap>Delete</TD>
+			<TD CLASS="bText" align="center" width="10%" nowrap>Guest No</TD>
+			<TD CLASS="bText" align="center" width="23%" nowrap>Name</TD>
+			<TD CLASS="bText" align="center" width="15%" nowrap>Nickname</TD>
+			<TD CLASS="bText" align="center" width="20%" nowrap>Company</TD>
+			<TD CLASS="bText" align="center" width="8%" nowrap>Package</TD>
+			<TD CLASS="bText" align="center" width="15%" nowrap>Price</TD>
+		</TR>
+		<!$MGREPEAT>
+			<TR <!$MG_Line_Color>>
+				<TD align="center" nowrap><A href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R1>&PRGNAME=IMSConventionGuest&ARGUMENTS=-N<!$MG_Session_Number_R1>,-A<!$MG_Convention_ID_R1>,-AD,-A<!$MG_Guest_Number_R1>"><IMG src="<!$MG_Store_Images_Path_R1>b_trash.gif" border="0"></A></TD>
+				<TD nowrap align="center"><A CLASS="bTextMarine"  href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R1>&PRGNAME=IMSConventionGuest&ARGUMENTS=-N<!$MG_Session_Number_R1>,-A<!$MG_Convention_ID_R1>,-AM,-A<!$MG_Guest_Number_R1>"><!$MG_Guest_Number_R1></A></TD>
+				<TD CLASS="nnText" nowrap><!$MG_Name_R1></TD>
+				<TD CLASS="nnText" nowrap><!$MG_Nick_Name_R1></TD>
+				<TD CLASS="nnText" nowrap><!$MG_Company_R1></TD>
+				<TD CLASS="nnText" align="center" nowrap><!$MG_Package_R1></TD>
+				<TD CLASS="nnText" align="right" nowrap><!$MG_Price_R1></TD>
+			</TR>
+		<!$MGENDREPEAT>
+		<TR>
+			<TD Colspan=6>&nbsp;</TD>
+		</TR>
+		<!$MGIF_TOTAL_NOT_ZERO>
+			<TR>
+				<TD Colspan=4>&nbsp;</TD>
+				<TD Align="Right" CLASS="bText" Colspan=2>Total Guest Charge&nbsp;&nbsp;</TD>
+				<TD CLASS="bTextMarine" align="right"><!$MG_Total_Registration></TD>
+			</TR>
+		<!$MGENDIF>
+	</TABLE>		
+<!$MGENDIF>	
+
+<BR><BR>
+<TABLE border="0" cellspacing="1" width="100%">
+	<TR>
+	
+			<TD nowrap><A CLASS="bTextMarine"  href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSConventionGuest&ARGUMENTS=-N<!$MG_Session_Number>,-A<!$MG_Convention_ID>,-AM,-A<!$MG_Guest_Number>">Create a New Guest</A></TD>
+			<TD nowrap width="33%" align="center"><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSConvRegistration&ARGUMENTS=-N<!$MG_Session_Number>,-A<!$MG_Convention_ID>,-A<!$MG_Package_ID>,-N<!$MG_Package_Price>,-A0,-LT">Back to Convention Registration</A></TD>
+	</TR>
+</TABLE>
+
+
+<BR>
+</CENTER>

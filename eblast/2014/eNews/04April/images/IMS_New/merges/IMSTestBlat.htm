@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<TITLE> New Document </TITLE>
+<META NAME="Generator" CONTENT="EditPlus 1.2">
+<META NAME="Author" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+<META NAME="Description" CONTENT="">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF">
+<FORM NAME="Menu" ACTION="/scripts/mgrqispi.dll" METHOD="POST">
+			<INPUT type="hidden" name="APPNAME"   value="<!$MG_App_Name>">
+			<INPUT type="hidden" name="PRGNAME"   value="IMSTestBlat">
+			<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session>,-N1">
+
+<CENTER><H1>Blat Test Program</H1></CENTER>
+<CENTER><TABLE>
+<TR>
+	<TD>File Name</TD>
+	<TD><INPUT type="text" name="FileName" size="40" maxlength="40" value="c:\rap\internet\ims.ini"></TD>
+</TR>
+<TR>
+	<TD>Sender</TD>
+	<TD><INPUT type="text" name="AssocEmail" size="40" maxlength="40" value="<!$MG_Assoc_Email>"></TD>
+</TR>
+<TR>
+	<TD>Recipient</TD>
+	<TD><INPUT type="text" name="MemberEmail" size="40" maxlength="40" value="<!$MG_Member_Email>"></TD>
+</TR>
+<TR>
+	<TD>bcc</TD>
+	<TD><INPUT type="text" name="BccEmail" size="40" maxlength="40" value="RapIMS@rapattoni.com"></TD>
+</TR>
+<TR>
+	<TD>Log File</TD>
+	<TD><INPUT type="text" name="LogPath" size="40" maxlength="40" value="<!$MG_ReportPath>"></TD>
+</TR>
+</TABLE></CENTER>
+<CENTER><INPUT type="submit" value="Submit"></CENTER>
+</BODY>
+</HTML>

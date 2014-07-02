@@ -1,0 +1,79 @@
+<!-- IMSAdditionalLicenseModify (139) -->
+<SCRIPT language="javascript" src="IMSTrimUtilities.js"></SCRIPT>
+<FORM name="InputForm" action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="IMSAdditionalLicense">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-N<!$MG_Option>,-A<!$MG_State>,-A<!$MG_License_Type>">
+	<INPUT type="hidden" name="Initial_Type" value="<!$MG_License_Type>">
+	<INPUT type="hidden" name="Initial_State" value="<!$MG_State>">
+<CENTER>
+<TABLE border="0" width="100%" cellpadding="2" cellspacing="0">
+	<TR>
+		<TD CLASS="bText" width="25%" nowrap>License Number&nbsp;</TD>
+		<TD nowrap><INPUT CLASS="input" type="text" name="License_Number" size="11" maxlength="11" value="<!$MG_License_Number>"  onChange="javascript:if (TrimSpaces(this.value) == ''){alert('License Number is required');return false;}"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="25%" nowrap>State&nbsp;</TD>
+		<TD nowrap><INPUT CLASS="input" type="text" name="State" size="2" maxlength="2" value="<!$MG_State>" onChange="javascript:if (TrimSpaces(this.value) == ''){alert('State is required');return false;}"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="25%" nowrap>License Type&nbsp;</TD>
+		<TD>
+			<SELECT name="License_Type_ComboBox" size="1" face="arial">
+				<!$MGREPEAT>
+					<OPTION CLASS="input" value="<!$MG_License_Type_R1>" <!$MG_License_Type_Selected_R1>> <!$MG_License_Type_Description_R1> </OPTION>
+				<!$MGENDREPEAT>
+			</SELECT>
+		</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="25%" nowrap>Expiration&nbsp;</TD>
+		<TD nowrap><INPUT CLASS="input" type="text" name="Expiration" size="6" maxlength="8" value="<!$MG_Expiration>"></TD>
+	</TR>
+
+	<TR>
+		<TD></TD>
+		<TD nowrap><BR><INPUT type="submit" name="" value="Submit" onclick="return CheckValidForm()">
+<!$MGIF_MODIFY>
+		&nbsp;&nbsp;<INPUT type="submit" name="" value="Delete" onclick="if (CheckValidForm()){document.InputForm.ARGUMENTS.value='-N<!$MG_Session_Number>,-N3,-A<!$MG_State>,-A<!$MG_License_Type>'}">
+<!$MGENDIF>
+		</TD>
+	</TR>
+</TABLE>
+</FORM>
+</CENTER>
+
+<SCRIPT language="javascript">
+function CheckValidForm()
+{
+	if (TrimSpaces(document.InputForm.License_Number.value) == '')
+	{
+		alert('License Number is required');
+		return false
+	}
+	if (TrimSpaces(document.InputForm.State.value) == '')
+	{
+		alert('State is required');
+		return false
+	}
+	if (!isUSStateAbbr(document.InputForm.State.value))
+	{
+		alert('Invalid State');
+		return false
+	}	
+	return true
+}
+
+function isUSStateAbbr(val)
+{
+	val = val+"";
+        if (val.length != 2) { return false; }
+        if (val.charAt(0) == ' ' || val.charAt(1) == ' ') { return false; }
+	var string="AK AL AR AZ CA CO CT DC DE FL GA HI IA ID IL IN KS KY LA MA MD ME MI MN MO MS MT NC ND NE NH NJ NM NV NY OH OK OR PA PR RI SC SD TN TX UT VA VI VT WA WI WV WY";
+	if (string.indexOf(val.toUpperCase()) != -1)
+	{
+		return true;
+	}
+	return false;
+}
+</SCRIPT>

@@ -1,0 +1,364 @@
+<!-- IMS Enter Revise Member (87) -->
+
+<SCRIPT language="javascript">
+
+function CheckValidForm()
+{
+	 //No errors submit the form
+	document.EnterMember.submit();
+
+	return true;
+	}
+
+</SCRIPT>
+
+<TABLE>
+	<TR>
+		<TD>
+			<FORM Name="EnterMember" action="https://<!$MG_Server_Name>/scripts/mgrqispi.dll" method="POST" >
+				<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+				<INPUT type="hidden" name="PRGNAME" value="IMSEnterReviseMember">
+				<INPUT type="hidden" name="ARGUMENTS" value="-A<!$MG_Association>,-N3,-N<!$MG_Session_Number>,-N<!$MG_Member_Number>,-L<!$MG_New_Member_Invoice>">
+				<INPUT type="hidden" name="SessionType" value="<!$MG_SessionType>">
+				<INPUT type="hidden" name="ServiceName" value="<!$MG_ServiceName>">
+				<INPUT type="hidden" name="BillingGroup" value="<!$MG_BillingGroup>">
+				<!-- <INPUT type="hidden" name="NotLogin" value="<!$MG_NotLogin>"> -->
+				<INPUT type="hidden" name="ClassID" value="<!$MG_ClassID>">
+				<INPUT type="hidden" name="EventID" value="<!$MG_EventID>">
+				<INPUT type="hidden" name="ConvID" value="<!$MG_ConvID>">
+				<INPUT type="hidden" name="CategID" value="<!$MG_CategID>">
+				<INPUT type="hidden" name="currentpass" value="<!$MG_Current_Password>">
+				<INPUT type="hidden" name="minpasslength" value="<!$MG_Min_Pass_Length>">
+				<INPUT type="hidden" name="Agent_ID" value="<!$MG_Display_Agent_ID>">
+				<INPUT type="hidden" name="GroupID" value="<!$MG_GroupID>">
+
+		</TD>
+	</TR>
+</TABLE>
+
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR>
+		<TD CLASS="bTextMarine" width="13%" nowrap height="30" valign="middle">&nbsp;<!$MGIF_MODIFY_MEMBER>Review and print new account information<!$MGENDIF><!$MGIF_CREATE_MEMBER>New Account<!$MGENDIF>
+		</TD>
+	</TR>
+	<TR>
+		<TD align="center">
+			<script language="Javascript">
+			<!--
+			function printpage()
+			{
+			window.print();  
+			}
+
+			document.write("<form><input type=button value=\"Print this Page\" onClick=\"printpage()\"></form>");
+			-->
+			</script>
+		</TD>
+	</TR>
+</TABLE>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR CLASS="bgbar" >
+		<TD CLASS="bText" nowrap>&nbsp;Account Name Information</TD>
+	</TR>
+</TABLE>
+
+<TABLE align="center" border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="bTextMarine" width="12.5%" nowrap>Logon ID:</FONT></TD>
+		<TD CLASS="nnText" nowrap width="12.5%"><!$MG_Display_Agent_ID></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bTextMarine" nowrap width="12.5%">Title:</TD>
+		<TD CLASS="nnText" nowrap align="Left" width="12.5%"><!$MG_Display_Title></TD>
+		
+		<TD CLASS="bTextMarine" nowrap width="12.5%" align="right">First Name:&nbsp;&nbsp;</TD>
+		
+		<TD CLASS="nnText" nowrap width="17%"><!$MG_Display_First_Name></TD>
+		
+		<TD CLASS="bTextMarine" nowrap width="12.5%" align="right">Middle Initial:&nbsp;&nbsp;</TD>
+
+		<TD CLASS="nnText" nowrap width="4%"><!$MG_Display_Middle_Initial></TD>
+		
+		<TD CLASS="bTextMarine" nowrap width="12.5%" align="right">Last Name:&nbsp;&nbsp;</TD>
+
+		<TD CLASS="nnText" nowrap width="16.5%"><!$MG_Display_Last_Name></TD>
+	</TR>
+	<TR>
+		<!--5%-->
+		<TD CLASS="bTextMarine" nowrap width="12.5%">Generation:&nbsp;</TD>
+		<TD CLASS="nnText" nowrap width="12.5%">
+
+			<!$MG_Display_Generation>
+		</TD>
+		
+		<TD CLASS="bTextMarine" width="12.5%" nowrap align="right">Nickname:&nbsp;&nbsp;</TD>
+		
+		<TD CLASS="nnText" nowrap width="12.5%">
+		
+		<!$MG_Display_Nickname>
+		</TD>
+		
+		<TD CLASS="bTextMarine" nowrap width="12.5%" align="right">Gender:&nbsp;&nbsp;</TD>
+	
+		<TD CLASS="nnText" nowrap width="12.5%">
+
+			<!$MG_Display_Gender>
+		</TD>
+		<TD nowrap colspan=4>&nbsp;</TD>
+	</TR>
+</TABLE>
+
+<TABLE align="center" border="0" width="100%" cellpadding="0" cellspacing="0">
+	<!$MGIF_MEMBER_SESSION>
+		<TR>
+			<TD nowrap width="100%" colspan=8>&nbsp;</TD>
+		</TR>
+		<TR>
+			<TD CLASS="bTextMarine" width="10%" nowrap>Office ID:&nbsp;</TD>
+			<TD CLASS="nnText" width="8%" nowrap>
+
+			<!$MG_Display_Office_ID>
+			</TD>&nbsp;&nbsp;&nbsp;
+			<TD CLASS="nnText" nowrap colspan=3>
+			<!$MG_Display_Office_Name>
+			</TD>&nbsp;&nbsp;&nbsp;
+			<TD CLASS="bTextMarine" width="10%" nowrap>&nbsp;&nbsp;Member Type:&nbsp;&nbsp;&nbsp;</TD>
+			<TD CLASS="input" width="30%" valign="top" align="Left" nowrap>
+			<!$MG_Display_Bill_Type>
+	     	</TD>
+	  		<TD nowrap colspan=1>&nbsp;</TD>	
+		</TR>
+	<!$MGELSE>
+		<INPUT type="Hidden" name="Office_ID" value="<!$MG_Office_MLS_ID_Now>">
+		<INPUT type="Hidden" name="Office_Name" value="<!$MG_Office_Name>">
+	<!$MGENDIF>
+</TABLE>
+
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR CLASS="bgbar" >
+		<TD CLASS="bText" nowrap>&nbsp;Internet Information</TD>
+	</TR>
+</TABLE>
+
+<TABLE align="center" border="0" width="100%" cellpadding="2" cellspacing="0">
+	<TR>
+		<TD CLASS="bTextMarine" width="20%" nowrap>Association E-Mail Address:</TD>
+		<TD CLASS="nnText" nowrap>
+		<!$MG_Display_Email>
+		</TD>
+	</TR>
+<!$MGIF_HAS_NAR_EMAIL>
+	<TR>
+		<TD CLASS="bTextMarine" width="20%" nowrap><!$MG_MN_Email_Label> E-Mail Address:</TD>
+		<TD CLASS="nnText" nowrap>
+		<!$MG_Display_NAR_Email>
+		</TD>
+	</TR>
+<!$MGENDIF>
+	<TR>
+		<TD CLASS="bTextMarine" width="20%" nowrap>Web Page Address:</TD>
+		<TD CLASS="nnText" nowrap>
+	
+		<!$MG_Display_Webpage>
+		</TD>
+	</TR>
+</TABLE>
+
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR CLASS="bgbar" >
+		<TD CLASS="bText" nowrap>&nbsp;Address Information</TD>
+	</TR>
+</TABLE>
+
+<TABLE align="center" border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="bTextMarine" width="20%" nowrap>Attn/Care Of:</TD>
+		<TD CLASS="nnText" nowrap>
+		
+		<!$MG_Display_Attn>
+		</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bTextMarine" width="20%" nowrap>Street Address:</TD>
+		<TD CLASS="nnText" nowrap>
+		
+		<!$MG_Display_Street_Address>
+		</TD>
+	</TR>
+</TABLE>
+
+<TABLE align="center" border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="bTextMarine" width="20%" nowrap>City:</TD>
+		<TD CLASS="nnText" nowrap>
+		
+		<!$MG_Display_City>
+		</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bTextMarine" nowrap>State:&nbsp;</TD>
+		<TD CLASS="nnText" nowrap>
+		
+		<!$MG_Display_State>
+		</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bTextMarine" nowrap>ZIP Code:&nbsp;</TD>
+		<TD CLASS="nnText" nowrap>
+
+		<!$MG_Display_Zip_Code>&nbsp;<!$MG_Display_Zip_Code_4>
+		</TD>
+		<TD width="20%">&nbsp;</TD>
+	</TR>
+</TABLE>
+
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR CLASS="bgbar" >
+		<TD CLASS="bText" nowrap>&nbsp;Phone Information</TD>
+	</TR>
+</TABLE>
+
+<TABLE align="center" border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="bTextMarine" width="20%" nowrap>Phone:</TD>
+		<TD CLASS="nnText" nowrap>
+
+		<!$MG_Display_Home_Phone_Area>-<!$MG_Display_Home_Phone_Prefix>-<!$MG_Display_Home_Phone_Suffix>
+		</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bTextMarine" width="20%" nowrap>Fax:</TD>
+		<TD CLASS="nnText" nowrap>
+
+		<!$MG_Display_Fax_Area>-<!$MG_Display_Fax_Prefix>-<!$MG_Display_Fax_Suffix>
+		</TD>
+	</TR>
+
+</TABLE>
+
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR CLASS="bgbar">
+		<TD CLASS="bText" nowrap>&nbsp;Personal Information</TD>
+	</TR>
+</TABLE>
+
+
+<TABLE align="center" border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="bTextMarine" width="20%" nowrap>Birth Date:</TD>
+		<TD CLASS="nnText" nowrap>
+		
+		<!$MG_Display_Birth_Date>
+		</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bTextMarine" width="20%" nowrap>Social Security #:</TD>
+		<TD CLASS="nnText" nowrap>
+
+		<!$MG_Display_SSN>
+		</TD>
+	</TR>
+	<TR>
+			<TD CLASS="bTextMarine" width="20%" nowrap>Real Estate License #:</TD>
+			<TD CLASS="nnText" nowrap>
+		
+			<!$MG_Display_License_Number>
+			</TD>
+	</TR>
+	<TR>
+			<TD CLASS="bTextMarine" width="20%" nowrap>Expiration Date:</TD>
+			<TD CLASS="nnText" nowrap>
+
+			<!$MG_Display_Expiration_Date>
+			</TD>
+		</TR>
+	<TR>
+		<TD CLASS="bTextMarine" width="20%" nowrap>NRDS ID:</TD>
+		<TD CLASS="nnText" nowrap>
+		
+		<!$MG_Display_NRDS_ID>
+		</TD>
+	</TR>
+</TABLE>
+
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR CLASS="bgbar" >
+		<TD CLASS="bText" nowrap>&nbsp;Preferences</TD>
+	</TR>
+</TABLE>
+
+<TABLE align="center" border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="bTextMarine" width="25%" nowrap>Preferred Media:</TD>
+		<!$MGIF_MEMBER_SESSION>
+		<TD CLASS="bTextMarine" width="25%" nowrap>Preferred Address:</TD>
+		<TD CLASS="bTextMarine" width="25%" nowrap>Preferred Fax:</TD>
+		<!$MGENDIF>
+	</TR>
+	<TR>
+		<TD CLASS="nnText" nowrap>
+
+			<!$MG_Display_Prefmedia_ComboBox>
+		</TD>
+	<!$MGIF_MEMBER_SESSION>
+		<TD CLASS="nnText">
+
+			<!$MG_Display_Prefaddr_ComboBox>
+		</TD>
+		<TD CLASS="nnText">
+
+			<!$MG_Display_Preffax_ComboBox>
+		</TD>
+	</TR>
+	<!$MGELSE>
+		<INPUT type="Hidden" name="Prefaddr_ComboBox" value="H">
+		<INPUT type="Hidden" name="Preffax_ComboBox" value="P">
+	<!$MGENDIF>
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+<!$MGIF_MEMBER_SESSION>
+		<TR>
+			<TD CLASS="bTextMarine" width="30%" nowrap>Include my phone on rosters:</TD>
+			<TD CLASS="bTextMarine" width="30%" nowrap>Include my address on rosters:</TD>
+			<TD CLASS="bTextMarine" width="30%" nowrap>Include on E-Mail mailing list:</TD>
+		</TR>
+		<TR>
+			<TD CLASS="nnText">
+
+				<!$MG_Display_HPRoster_ComboBox>
+			</TD>
+			<TD CLASS="nnText">
+	
+				<!$MG_Display_HARoster_ComboBox>
+			</TD>
+	<!$MGELSE>
+			<INPUT type="Hidden" name="HPRoster_ComboBox" value="N">
+			<INPUT type="Hidden" name="HARoster_ComboBox" value="N">
+			<TD CLASS="bTextMarine" width="30%" nowrap>Include on E-Mail mailing list:</TD>
+		</TR>
+		<TR>
+	<!$MGENDIF>
+		<TD CLASS="nnText">
+	
+			<!$MG_Display_JunkEMail_ComboBox>
+		</TD>
+	</TR>
+</TABLE>
+
+<BR>
+
+<!$MGIF_Not_Create_Member_Invoice>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="2">
+	<TR>
+			<TD align="center" nowrap><INPUT TYPE="Submit" VALUE="Continue to Login" onclick="CheckValidForm()"></TD>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+
+</FORM>

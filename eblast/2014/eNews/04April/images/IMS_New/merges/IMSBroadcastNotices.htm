@@ -1,0 +1,168 @@
+<!-- IMS Broadcast Notices (87) -->
+<!-- JK 8/21/02 -->
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	function InitForm()
+	{
+		return true;
+	}
+function updateCharacterCount(maxCharacterCount)
+ {
+  var objElements = document.InputForm.elements;
+   
+ // if(objElements["Enable_Character_Count"].checked == true)
+  //{
+   if(event.srcElement.type == "textarea")
+   {
+    if(event.type == "paste")
+    {
+     document.getElementById("characterCount" + event.srcElement.name).innerText = event.srcElement.value.length + clipboardData.getData("Text").length - document.selection.createRange().text.length;
+    }
+    else if(event.type == "cut")
+    {
+     document.getElementById("characterCount" + event.srcElement.name).innerText = event.srcElement.value.length - document.selection.createRange().text.length;
+    }
+    else
+    {
+     document.getElementById("characterCount" + event.srcElement.name).innerText = event.srcElement.value.length 
+    }
+   //}
+   
+  }
+  return true;
+ }
+
+	function maxCharacterCount(maxCharacterCount)
+ {
+  if(event.srcElement.value.length > maxCharacterCount)
+  {
+   alert('You have exceeded the maximum allowed character count. Please shorten the text.')
+   event.srcElement.focus();
+  }
+ }
+
+ function SubmitForm()
+{
+	singleQuote = document.InputForm.Notice_Header.value.split('\'');
+	doubleQuote = document.InputForm.Notice_Header.value.split('\"');
+	if (singleQuote.length>1 || doubleQuote.length>1)
+	{
+		alert('Double and single quotes are not allowed in the subject.');
+		document.InputForm.Notice_Header.focus();
+
+		return false;
+	}
+
+	return true;
+}
+//-->
+</SCRIPT>
+
+<CENTER>
+<!$MGIF_DISPLAY_NOTICES>
+<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+	<TR CLASS="bgbar">
+		<TD CLASS="nnText" colspan="2" align="left" nowrap>&nbsp;Please click the OK button when you finish reading the notices below.</TD>
+	</TR>
+</TABLE>
+<BR>
+
+<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+	<!$MGREPEAT>
+	<TR>
+		<TD CLASS="bTextMarine" width="12%" nowrap><!$MG_Posting_Date_R1></TD>
+		<TD CLASS="bTextMarine" nowrap><!$MG_Message_Header_R1></TD>
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+		<TD CLASS="bTextMarine" colspan="2" nowrap>From: <!$MG_Who><TD>
+	</TR>
+	<TR>
+		<TD width="10%">&nbsp;</TD>
+		<TD CLASS="nnText" colspan="2"><!$MG_Message_Body_R1></TD>
+	</TR>
+	<!$MGENDREPEAT>
+</TABLE>
+
+<FORM action="/scripts/mgrqispi.dll" method="post">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="IMSBroadcastNotice">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Update_Session_Number>,-N3,-N<!$MG_Update_Message_Number>">
+	<INPUT type="submit" name="B1" value="OK">
+</FORM>
+<!$MGENDIF>
+
+<!$MGIF_NOTICES_ADMIN>
+<FORM name="InputForm" action="/scripts/mgrqispi.dll" method="post" onsubmit="return SubmitForm()">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="IMSBroadcastNotice">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Add_Session_Number>,-N<!$MG_Option_Number>,-N<!$MG_Add_Message_Number>">
+
+<TABLE width="50%" cellpadding="0" cellspacing="0" border="0">
+	<TR>
+		<TD align="center" nowrap>
+			<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+				<TR>
+					<TD width="20%" CLASS="bText" align="left" nowrap>Message Number&nbsp;</TD>
+					<TD width="30%" CLASS="bTextMarine" align="left" nowrap><!$MG_Admin_Message_Number></TD>
+					<TD width="20%" CLASS="bText" align="left" nowrap>Posting Date&nbsp;</TD>
+					<TD width="30%" CLASS="bTextMarine" align="left" nowrap><!$MG_Admin_Posting_Date></TD>
+				</TR>
+			</TABLE>
+		</TD>
+	</TR>
+</TABLE>
+<BR>
+
+<TABLE width="50%" cellpadding="0" cellspacing="0" border="0">
+	<TR>
+		<TD align="center" nowrap>
+			<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+				<TR>
+					<TD CLASS="bText" width="10%" align="left" nowrap>Billing Type&nbsp;</TD>
+					<TD CLASS="snTextRed" width="90%" align="left" nowrap>(Leave blank to include all Billing Types)</TD>
+				</TR>
+			</TABLE>
+			<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+				<TR>
+					<TD><INPUT CLASS="input" type="text" name="Bill_Type_FillIn" size="50" maxlength="50" value=""><BR>
+					<A CLASS="sTextBlue" href="#JavaLookup" onclick= "window.open ('/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSLookUpMultiSelect&ARGUMENTS=-N<!$MG_Add_Session_Number>,-ABT,-A,-ABill_Type_FillIn')">Select Billing Types</A></TD>
+				</TR>
+			</TABLE>
+			<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+				<TR>
+					<TD>&nbsp;</TD>
+				</TR>
+				<TR>
+					<TD>
+						<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+							<TR>
+								<TD width="10%" CLASS="bText" align="left" nowrap>Subject&nbsp;</TD>
+								<TD width="90%"CLASS="snTextRed" align="left" nowrap>(Required) - (Do not use an apostrophe or double quotes)</TD>
+							</TR>
+						</TABLE>
+					</TD>
+				</TR>
+				<TR>
+					<TD CLASS="nnText" align="left" nowrap>
+						<INPUT CLASS="input" type="text" size="50" maxlength="60" name="Notice_Header" value=""></TD>
+				</TR>
+				<TR>
+					<TD>&nbsp;</TD>
+				</TR>
+				<TR>
+					<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+						<TR class="nnText" onkeyup="updateCharacterCount();" onpaste="updateCharacterCount()" oncut="updateCharacterCount();">
+							<TD colspan="2" nowrap><BR>
+							Message Body&nbsp;<FONT class="snTextRed" id="characterCountNotice_Body">0</FONT><FONT class="snTextRed">&nbsp;characters&nbsp;&nbsp;(Maximum 1500 Characters)</FONT><BR>
+							<TEXTAREA CLASS="input" align="left" name="Notice_Body" rows="16" cols="85" onBlur="maxCharacterCount( 1500);" ></TEXTAREA></TD>
+						</TR>
+					</TABLE>
+				</TR>
+			</TABLE>
+<BR>
+<INPUT type="submit" name="B1" value="Save Notice">
+</FORM>
+<!$MGENDIF>
+
+</CENTER>

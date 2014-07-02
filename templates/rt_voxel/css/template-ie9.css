@@ -1,0 +1,22 @@
+/**
+ * @package   Voxel Template - RocketTheme
+ * @version   ${project.version} ${build_date}
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+
+/* Structure */
+.login-fields input {width: 144px;}
+.button, .readon, .readmore, button.validate, #member-profile a, #member-registration a, .formelm-buttons button {letter-spacing: 1px;}
+.style-panel-toggle.turkey span {filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);}
+
+
+.menu-block #js-mainnav .js-megamenu .mega a span {
+	padding: 10px 8px;
+	font-weight: normal;
+	font-size: 13px !important;
+}
+.js-megamenu .level0 .mega .menu-title {
+	font-weight: normal;
+}

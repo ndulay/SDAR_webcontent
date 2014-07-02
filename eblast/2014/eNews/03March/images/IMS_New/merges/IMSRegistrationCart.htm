@@ -1,0 +1,230 @@
+<script LANGUAGE="javascript" SRC="IMSStickyPopup.js"></Script>
+
+<SCRIPT language="javascript">
+	var FiltersEnabled = 1 // if you're not going to use transitions or filters in any of the tips set this to 0
+
+function InitForm()
+{
+		<!-- Additional Info Sticky -->
+		if (document.getElementById('TipLayer')){applyCssFilter()}
+}
+
+function Check_qte(ThisItem,qteAvailable)
+{
+var itemText = ''
+if (parseFloat(qteAvailable) > 1 )
+{
+	itemText = ' items are';
+}
+else
+{
+	itemText = ' item is';
+}
+var objElements = document.forms["InputForm"].elements;
+if (parseFloat(ThisItem.value) > parseFloat(qteAvailable))
+	{
+	alert('Only '+parseFloat(qteAvailable)+itemText+' available in stock');	
+	ThisItem.value = 1;
+	ThisItem.focus();
+	}
+}
+function Valid_Form(Voption)
+{
+				document.InputForm.Submit_Option.value = Voption;
+				document.InputForm.submit();
+}
+
+	function additionalInfo(RegistrationID,title1,data1,title2,data2,title3,data3,title4,data4,subdivision,aAmenitiesDescriptions,aAmenitiesValues)
+		{
+			var borderColor =  document.styleSheets[0].rules[1].style.backgroundColor;
+			WindowStyle = ["black","black",borderColor,"#FFFFFF","","","","","Arial","Arial","right","sticky","2","2",450,"",5,0,-20,10,46,.2,0,"simple","#aaaaaa"]
+
+			var sRowClass = new Array();
+			sRowClass[0] = '<TR class="bgSmoke"><TD class="nnText">'
+			sRowClass[1] = '<TR class="bgWhite"><TD class="nnText">'
+
+			var WindowText = new Array();
+			WindowText[0] = " &nbsp;&nbsp;Additional Information"
+				WindowText[1] = "<TABLE cellpadding=8 cellspacing=10 width=100%> <TR><TD>"+
+				" <TABLE width=100% cellpadding=3>"+
+					sRowClass[0] +"<B>Registration ID</B></TD><TD class='nnText'>"+RegistrationID+"</TD></TR>"+
+					sRowClass[1] +"<B>"+title1+"</B></TD><TD class='nnText'>"+data1+"</TD></TR>"+
+					sRowClass[0] +"<B>"+title2+"</B></TD><TD class='nnText'>"+data2+"</TD></TR>"+
+					sRowClass[1] +"<B>"+title3+"</B></TD><TD class='nnText'>"+data3+"</TD></TR>"+
+					sRowClass[0] +"<B>"+title4+"</B></TD><TD class='nnText'>"+data4+"</TD></TR>"+
+/*					sRowClass[1] +"<B>Guest</B></TD><TD>"+ListAgent+"</TD></TR>"+
+					sRowClass[0] +"<B>...</B></TD><TD>"+Phone+"</TD></TR>"+
+					sRowClass[1] +"<B>...</B></TD><TD>"+MapCoord+"</TD></TR>"+
+					sRowClass[0] +"<B>...</B></TD><TD>"+SoldDate+"</TD></TR>"+*/
+					"<TR><TD colspan='2'><table><tr><td colspan='2'><hr></TD></TR><TR class='bgWhite'><TD class='nnText' valign='top' align='right'><B>NOTE:</B></TD><TD class='nnText'>To modify this registration, please delete from Cart and Register again.</TD></TR></table>"
+
+			if (aAmenitiesDescriptions[0])
+				{
+					var i=0;
+					while (i < aAmenitiesDescriptions.length)
+					{
+						// modify sRowClass[x + i % 2]  to 0+ or 1- depending on whether the Standard Rows are even or odd
+						WindowText[1] = WindowText[1] + sRowClass[1- i % 2] +"<B>"+aAmenitiesDescriptions[i]+"</B></TD><TD>"+aAmenitiesValues[i]+"</TD></TR>";
+						i = i+1;
+					}
+				}
+
+			WindowText[1] = WindowText[1] + "</TABLE> </TD></TR></TABLE>"
+				stm(WindowText,WindowStyle)
+		}
+
+
+
+</SCRIPT>
+
+<FORM name="InputForm" action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name_R1>">
+	<INPUT type="hidden" name="PRGNAME" value="IMSRegistrationCart">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Num_R1>,-A,-N,-A,-A<!$MG_Billing_Group>,-LFalse">
+
+	<INPUT type="hidden" name="Submit_Option" value="0">
+	<INPUT type="hidden" name="Cart_Total" value="<!$MG_Cart_Total>">
+	<INPUT type="hidden" name="GoBack_PRG" value="<!$MG_GoBack_PRG>">
+	<INPUT type="hidden" name="GoBack_ARG" value="<!$MG_GoBack_ARG>">
+
+	<INPUT type="hidden"  name="Attn_CO" value="<!$MG_Attn_CO>">
+	<INPUT type="hidden"  name="Street_Addr" value="<!$MG_Street_Addr>">
+	<INPUT type="hidden"  name="City" value="<!$MG_City>">
+	<INPUT type="hidden"  name="State" value="<!$MG_State>">
+	<INPUT type="hidden"  name="Zip_Code" value="<!$MG_Zip_Code>">
+	<INPUT type="hidden"  name="Zip_Plus_4" value="<!$MG_Zip_Plus_4>">
+	<INPUT type="hidden" name="Email_Address" value="<!$MG_Email_Address>">
+
+<CENTER>
+	<!-- Additional Info Sticky Popup -->
+	<div ID="TipLayer" STYLE="visibility:hidden;position:absolute;z-index:1000;top:-100" onClick='stickyhide()'></div>
+	<iframe ID="TipLayerIFrame"  SRC="blank.htm" SCROLLING="no" FRAMEBORDER="0" STYLE="position:absolute; top:0px; left:0px; display:none;"></iframe>
+
+<!$MGIF_EMPTY>
+
+	<BR>
+	<TABLE border="0" width="100%" cellpadding="0" cellspacing="1">
+		<TR>
+			<TD CLASS="bTextMarine" align="center" nowrap>Your Cart is empty.<BR><BR><BR></TD> 
+		</TR>
+	</TABLE>
+
+<!$MGELSE>
+<!$MGIF_HAS_MESSAGE>
+	<TABLE border="0" width="100%" cellpadding="0" cellspacing="1">
+		<TR>
+			<TD CLASS="bText" align="center" nowrap><!$MG_Cart_Top_Message></TD> 
+		</TR>
+	</TABLE>
+<!$MGENDIF>
+	<TABLE border=0 cellspacing="1" width="100%">
+		<TR id="HeaderRow" CLASS="bgbar">
+			<TD CLASS="bText" align="center" nowrap width="10%">Delete</TD>
+			<TD CLASS="bText" nowrap width="25%">&nbsp;Description&nbsp;</TD>
+			<TD CLASS="bText" nowrap  width="10%">&nbsp;ID&nbsp;</TD>
+			<TD CLASS="bText" nowrap  width="25%">&nbsp;Location&nbsp;</TD>
+			<TD CLASS="bText" nowrap  width="10%">&nbsp;Date&nbsp;</TD>
+			<TD CLASS="bText" nowrap  width="10%">&nbsp;Time&nbsp;</TD>
+			<TD CLASS="bText" align="center" nowrap width="5%">&nbsp;Guests&nbsp;</TD>
+<!$MGIF_HAS_EDUCATION_CARD>
+			<TD CLASS="bText" align="center" width="5%">&nbsp;Education Card Credits&nbsp;</TD>
+<!$MGENDIF>
+			<TD CLASS="bText" align="right" nowrap width="10%">&nbsp;Total&nbsp;</TD>
+		</TR>
+		<!$MGREPEAT>
+			<TR <!$MG_Line_Color>>
+				<TD align="center" nowrap>
+					<A href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R2>&PRGNAME=IMSRegistrationCart&ARGUMENTS=-N<!$MG_Session_Number_R2>,-A<!$MG_Event_ID>,-N-1,-A,-A&GoBack_PRG=<!$MG_GoBack_PRG_R2>&GoBack_ARG=<!$MG_GoBack_ARG_R2>"><IMG src="<!$MG_Store_Images_Path_R1>b_trash.gif" border="0"></A>
+				</TD>
+				<TD nowrap CLASS="bText">&nbsp;
+					<a HREF="javascript: additionalInfo('<!$MG_Registration_ID>','<!$MG_title1>','<!$MG_data1>','<!$MG_title2>','<!$MG_data2>','<!$MG_title3>','<!$MG_data3>','<!$MG_title4>','<!$MG_data4>','','','')">
+					<!$MG_Description></A>
+				</TD>
+				<TD CLASS="bText" nowrap>&nbsp;<!$MG_Record_Type>&nbsp;<!$MG_Event_ID></TD>
+				<TD CLASS="nnText" nowrap>&nbsp;<!$MG_Location></TD>
+				<TD CLASS="nnText" nowrap>&nbsp;<!$MG_Date></TD>
+				<TD CLASS="nnText" nowrap>&nbsp;<!$MG_Time_Start>&nbsp;-&nbsp;<!$MG_Time_End></TD>
+				<TD CLASS="nnText" nowrap align="right">
+					<!$MG_Guests>&nbsp;
+				</TD>
+<!$MGIF_HAS_EDUCATION_CARD_R0>
+				<TD CLASS="nnText" align="right"><!$MG_Credits>&nbsp;</TD>
+<!$MGENDIF>
+				<TD CLASS="nnText" align="right"><!$MG_Amount>&nbsp;</TD>
+			</TR>
+		<!$MGENDREPEAT>
+		<TR>
+			<TD <!$MGIF_HAS_EDUCATION_CARD>  colspan="9" <!$MGELSE>  colspan="8" <!$MGENDIF> nowrap><HR></TD>
+		</TR>
+
+		<TR>
+			<TD colspan="3" nowrap>&nbsp;</TD>
+			<TD align="right" valign="bottom" nowrap colspan="3"><!-- <INPUT type="submit" name="submit" value="Update Totals"> --></TD>
+			<TD CLASS="bgbar" align="right"  nowrap><font CLASS="bText">Total&nbsp;</font></TD>
+<!$MGIF_HAS_EDUCATION_CARD>
+			<TD  CLASS="bgbar" align="right" colspan="1" nowrap><font CLASS="bText">&nbsp;<!$MG_Cart_Total_Credits>&nbsp;</font></TD>
+<!$MGENDIF>
+			<TD CLASS="bgbar" align="right" colspan="1" nowrap><font CLASS="bText">&nbsp;$<!$MG_Cart_Total>&nbsp;</font></TD>
+		</TR>
+		<TR>
+			<TD colspan="6" nowrap>&nbsp;</TD>
+		<TR>
+	</TABLE>
+
+<!$MGENDIF>	
+
+
+
+<TABLE border="0" cellspacing="1" width="100%">
+	<TR>
+	<!$MGIF_GO_BACK>
+		<TD nowrap align="left">
+			<A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=<!$MG_GoBack_PRG>&ARGUMENTS=<!$MG_GoBack_ARG>&GoBack_PRG=<!$MG_GoBack_PRG>&GoBack_ARG=<!$MG_GoBack_ARG>">Register for More</A>
+		</TD>
+	<!$MGENDIF>
+		<!$MGIF_NOT_EMPTY>
+			<TD nowrap align="right"><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSRegistrationCart&ARGUMENTS=-N<!$MG_Session_Number>,-A,-N,-A<!$MG_Last_Category>,-A<!$MG_Billing_Group>,-LTrue" onclick="">Empty Cart</A></TD><!-- confirm('Are you sure you want to empty your Registration cart?') -->
+		<!$MGENDIF>
+	</TR>
+</TABLE>
+<BR>
+</CENTER>
+
+<!$MGIF_MANDATORY_REQUIRED>
+<TABLE border="0" cellspacing="1" width="100%">
+<!$MGREPEAT>
+	<TR>
+		<TD CLASS="bText" colspan="2">In order to participate in <A href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R3>&PRGNAME=IMSRegistrationGroups&ARGUMENTS=-N<!$MG_Session_Number_R3>,-A<!$MG_Mandatory_Group_R3>&GoBack_PRG=<!$MG_GoBack_PRG_R3>&GoBack_ARG=<!$MG_GoBack_ARG_R3>" class="bTextBlue"><!$MG_Mandatory_Group_Description_R3></A>&nbsp;(<!$MG_Mandatory_Group_R3>), you need to add to your cart the mandatory <!$MG_Mandatory_Event_Type_R3>:&nbsp;<A href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R3>&PRGNAME=IMS<!$MG_Mandatory_Event_Type_R3>Detail&ARGUMENTS=-N<!$MG_Session_Number_R3>,-A<!$MG_Mandatory_Event_R3>&GoBack_PRG=<!$MG_GoBack_PRG_R3>&GoBack_ARG=<!$MG_GoBack_ARG_R3>" class="bTextBlue"><!$MG_Mandatory_Event_Description_R3></A>&nbsp;(<!$MG_Mandatory_Event_R3>)
+		</TD>
+	</TR>
+<!$MGENDREPEAT>
+</TABLE>
+<BR>
+<!$MGENDIF>
+<!-- BUTTONS ARE ALL DISABLED IF MANDATORY EVENT REQUIRED -->
+<TABLE border="0" cellpadding="0" cellspacing="0" width="100%" <!$MGIF_MANDATORY_REQUIRED>DISABLED<!$MGENDIF>>
+	<TR align="center">
+	<!$MGIF_REGISTER_NO_CHARGE>
+				<TD ID="Register_Now"  nowrap><INPUT type="button" name="Register_Now" value="Register Now" onClick="Valid_Form('3')"></TD>
+	<!$MGENDIF>
+	<!-- This Test is true when the flag on invoice in table rate ='Y' -->
+	<!$MGIF_ON_INVOICE>
+		<!$MGIF_CHARGE_EDUC_CARD>
+				<TD ID="Register_Now"  nowrap><INPUT type="button" name="Education_Card" value="Charge Education Card" onClick="Valid_Form('6')"></TD>
+		<!$MGELSE>   <!--  No Education Card -->
+			<!$MGIF_PAY_BY_CC>
+					<TD ID="CreditCard"  nowrap><INPUT type="button" name="CreditCard" value="Pay by Credit Card" onClick="Valid_Form('1')"></TD>
+			<!$MGENDIF>
+			<!$MGIF_PAY_BY_TELECHECK>
+					<TD ID="Telecheck"  nowrap><INPUT type="button" name="Telecheck" value="Pay by TeleCheck" onClick="Valid_Form('5')"></TD>
+			<!$MGENDIF>
+			<!$MGIF_CHARGE_AUTH>
+					<TD ID="ChargeAccount"  nowrap><INPUT type="button" name="ChargeAccount" value="Invoice to My Account" onClick="Valid_Form('2')"></TD>
+			<!$MGENDIF>
+		<!$MGENDIF>    <!-- End If Charge Education card  -->
+	<!$MGENDIF>     <!-- End IF On Invoice  -->
+	</TR>	
+</TABLE>
+
+
+</FORM>

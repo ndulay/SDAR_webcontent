@@ -1,0 +1,59 @@
+<SCRIPT language="javascript" src="IMSopenReportWindow.js"></SCRIPT>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR>
+		<TD>
+			<FORM name="InputForm" action="/scripts/mgrqispi.dll" method="POST">
+				<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+				<INPUT type="hidden" name="PRGNAME" value="IMSARActivityReport">
+				<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-N1,-N<!$MG_Office_Number>">
+		</TD>
+	</TR>
+</TABLE>
+
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR CLASS="bgbar" >
+		<TD CLASS="nnText" nowrap>&nbsp;Please enter your report criteria below</TD>
+	</TR>
+</TABLE>
+
+
+<BR>
+<TABLE border="0" width="400" align="center" cellpadding="2" cellspacing="0">
+	<TR>
+		<TD CLASS="bTextMarine" align="left" nowrap width="200">Report Format</TD>
+		<TD align="left" nowrap width="200">
+			<SELECT name="Format_ComboBox">
+				<OPTION CLASS="input" value="Detailed" <!$MG_Format_Detailed_Selected>> Detailed </OPTION>
+				<OPTION CLASS="input" value="Inv_Detailed" <!$MG_Format_Inv_Detailed_Selected>> Invoice Detailed </OPTION>
+				<OPTION CLASS="input" value="Summary" <!$MG_Format_Summary_Selected>> Summary </OPTION>
+			</SELECT>
+		</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bTextMarine" align="left" nowrap width="200">Activity Date From</TD>
+		<TD CLASS="input" align="left" nowrap width="200"><INPUT CLASS="input" type="text" name="Activity_Date_From" size="8" maxlength="8" value="<!$MG_Activity_Date_From>"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bTextMarine" align="left" nowrap width="200">Activity Date Thru</TD>
+		<TD CLASS="input" align="left" nowrap width="200"><INPUT CLASS="input" type="text" name="Activity_Date_Thru" size="8" maxlength="8" value="<!$MG_Activity_Date_Thru>"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bTextMarine" align="left" nowrap width="200">Billing Group Totals</TD>
+		<TD align="left" nowrap width="200">
+			<SELECT name="Billing_Group_Totals" size="1" face="arial">
+					<OPTION CLASS="input" value="No" <!$MG_Bill_Grp_Totals_No_Selected>> No </OPTION>
+					<OPTION CLASS="input" value="Yes" <!$MG_Bill_Grp_Totals_Yes_Selected>> Yes </OPTION>
+			</SELECT>
+		</TD>
+	</TR>
+</TABLE>
+
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="2">
+	<TR align="center">
+		<TD><INPUT type="submit" value="Submit" onclick="openReportWindow(document.InputForm, ' Account Activity Report', '','','',true)"></TD>
+		</FORM>
+	</TR>
+</TABLE>
+<BR><BR>

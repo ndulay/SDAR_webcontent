@@ -1,0 +1,133 @@
+<HTML>
+<HEAD>
+<TITLE><!$MG_Title></TITLE>
+<link href="/boardimages/style.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR>
+		<TD CLASS="bigTextMarine" nowrap height="30" valign="middle">Find Members</TD>
+	</TR>
+</TABLE>
+<TABLE border="0" cellpadding="0" cellspacing="0" width="100%">
+	<TR CLASS="bgbar">
+		<TD CLASS="nnText" nowrap>&nbsp;Click next to a member to select it</TD>
+	</TR>
+</TABLE>
+
+<form name="radio_form">
+<!$MGIF_FOUND_GT1>
+<script language="JavaScript">
+<!--
+function radio_button_checker()
+{
+// set var radio_choice to false
+var radio_choice = false;
+var Meber_String = ''
+var Member_Number = '';
+
+
+// Loop from zero to the one minus the number of radio button selections
+for (counter = 0; counter < radio_form.radio_button.length; counter++)
+{
+	// If a radio button has been selected it will return true
+	// (If not it will return false)
+	if (radio_form.radio_button[counter].checked)
+	{
+		radio_choice = true;
+		Member_String = LTrim(document.radio_form.radio_button[counter].value);
+		Member_Number = Member_String;
+		window.opener.document.forms.<!$MG_Form_Name>.Agent_ID.value = Member_Number;
+		
+	}
+}
+
+if (!radio_choice)
+{
+// If there were no selections made display an alert box 
+alert("Please select a Member or hit Cancel to close the window.");
+}
+else
+{
+window.close();
+}
+}
+function LTrim(str) 
+			{
+			for (var i=0; str.charAt(i)==" "; i++);
+			return str.substring(i,str.length);
+			}
+-->
+</script>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR>
+		<TD CLASS="nnText" nowrap>
+			<!$MGREPEAT>
+			<input type="radio" value="<!$MG_Member_Number>" name="radio_button" onClick="radio_button_checker()">&nbsp;&nbsp;<b><!$MG_Member_Number></b><BR>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!$MG_Full_Name><BR>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!$MG_Office_Name><BR>
+			<!$MGENDREPEAT>
+		</TD>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+
+<!$MGIF_NOTFOUND>
+	<TABLE border="0" width="50%" cellpadding="0" cellspacing="0">
+		<TR>
+			<TD CLASS="nnTextBlue" align="left" nowrap>No Records Found</TD>
+		</TR>
+		<TR>
+			<TD>&nbsp;</TD>
+		</TR>
+	</TABLE>
+<!$MGENDIF>
+
+<!$MGIF_FOUND_1>
+<script language="JavaScript">
+<!--
+function checkMember()
+{
+	var Member_Number = '';
+	
+	Member_Number = document.radio_form.AgentID.value;
+	window.opener.document.forms.<!$MG_Form_Name>.Agent_ID.value = Member_Number;
+	
+	window.close();
+}
+-->
+</script>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR>
+		<TD CLASS="nnText" nowrap>
+		<INPUT type="checkbox" name="CheckMember"  onclick="checkMember()">
+		<input type="hidden" value="<!$MG_Member_Number1>" name="AgentID">
+		<b><!$MG_Member_Number1></b><BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!$MG_Full_Name1><BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!$MG_Office_Name1><BR>
+		</TD>
+		<BR>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+
+<TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+	<TR><TD colspan="1"><HR noshade size="1"></TD></TR>
+	<TR>
+		<TD nowrap align="Center"><INPUT type="button" value="Cancel" name="btn2Cancel" onClick="window.close()">
+		</TD>
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+</TABLE>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR CLASS="bgMain">
+		<TD>&nbsp;</TD>
+	</TR>
+</TABLE>
+	
+</form>
+</BODY>
+</HTML>
+

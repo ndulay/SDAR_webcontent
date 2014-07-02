@@ -1,0 +1,38 @@
+/**
+* @version   $Id: headlines.css 519 2012-05-01 08:04:59Z kevin $
+* @author    RocketTheme http://www.rockettheme.com
+* @copyright Copyright (C) 2007 - ${copyright_year} RocketTheme, LLC
+* @license   http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+*/
+
+/* Layout - Sprocket Headlines - Core */
+.sprocket-headlines {position: relative;display: table;width: 100%;overflow: hidden;}
+.sprocket-headlines:after {display: table;content: "";clear: both;}
+.sprocket-headlines-container {display: table-row;}
+.sprocket-headlines ul {list-style: none;margin: 0;}
+
+/* Layout - Sprocket Headlines - Badge */
+.sprocket-headlines-badge {float: left;position: relative;}
+.sprocket-headlines-badge:after {content:'';position: absolute;display: block;height: 6px;width: 6px;right: 0;top: 50%;margin-top: -5px;border-style: solid;border-width: 0 2px 2px 0;-webkit-transform: rotate(-45deg);-moz-transform: rotate(-45deg);-o-transform: rotate(-45deg);-ms-transform: rotate(-45deg);transform: rotate(-45deg);}
+.sprocket-headlines-badge span {display: block;padding: 0 10px 0 0;font-size: 1.7em;font-weight: bold;height: 28px;}
+
+/* Layout - Sprocket Headlines - Items */
+.sprocket-headlines-list {float: left;padding: 0 0 0 20px;overflow: hidden;}
+.sprocket-headlines-item {font-size: 1em;position: absolute;opacity: 0;height: 0;width: 0;display: block;visibility: hidden;}
+.sprocket-headlines-item.active {position: relative;opacity: 1;height: auto;width: auto;float: left;visibility: visible;}
+.animation-slideandfade .sprocket-headlines-item {margin-top: -100px;}
+.animation-slideandfade .sprocket-headlines-item.active {margin-top: 0;}
+.sprocket-headlines-image {float: left;margin-right: 10px;}
+
+/* Layout - Sprocket Headlines - Navigation */
+.sprocket-headlines-navigation {display: table-cell;vertical-align: middle;width: 40px;}
+.sprocket-headlines-navigation .arrow {position: relative;display: inline-block;cursor: pointer;margin-left: 6px;text-align: center;font-size:2.4em;}
+
+/* Layout - Sprocket Headlines - Transitions */
+.animation-slideandfade .sprocket-headlines-item.active {-webkit-transition: margin 0.3s ease-out, opacity 0.4s ease-in;-moz-transition: margin 0.3s ease-out, opacity 0.4s ease-in;-o-transition: margin 0.3s ease-out, opacity 0.4s ease-in;-ms-transition: margin 0.3s ease-out, opacity 0.4s ease-in;transition: margin 0.3s ease-out, opacity 0.4s ease-in;}
+.animation-fade .sprocket-headlines-item.active {-webkit-transition: opacity 0.4s ease-in;-moz-transition: opacity 0.4s ease-in;-o-transition: opacity 0.4s ease-in;-ms-transition: opacity 0.4s ease-in;transition: opacity 0.4s ease-in;}
+.sprocket-headlines-navigation .arrow {-webkit-transition: opacity 0.2s ease-in;-moz-transition: opacity 0.2s ease-in;-o-transition: opacity 0.2s ease-in;-ms-transition: opacity 0.2s ease-in;transition: opacity 0.2s ease-in;}
+
+/* RTL */
+body.rtl .sprocket-headlines-badge {float: right;}
+body.rtl .sprocket-headlines-list {float: right;}

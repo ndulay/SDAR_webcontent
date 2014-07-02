@@ -1,0 +1,238 @@
+<SCRIPT language="javascript">
+<!--
+	function InitForm()
+	{	
+		if (document.InputForm)
+		{
+			if (document.InputForm.Search_Type[0].checked)
+			{
+				//document.InputForm.Agent_Lastname.focus();
+				setAgentOfficeDisplay('Agent');
+			}
+			else
+			{
+				//document.InputForm.Office_Name.focus();
+				setAgentOfficeDisplay('Office');
+			}
+		}
+	}
+	function setAgentOfficeDisplay(sSearchType)
+	{
+		//document.getElementById('SearchTypeDisplay').innerText = sSearchType;
+		if (sSearchType == 'Agent')
+		{
+			document.getElementById('LastName').style.display = '';
+			document.getElementById('FirstName').style.display = '';
+			document.getElementById('OfficeName').style.display = 'none';
+		}
+		else
+		{
+			document.getElementById('LastName').style.display = 'none';
+			document.getElementById('FirstName').style.display = 'none';
+			document.getElementById('OfficeName').style.display = '';
+		}
+	<!$MGIF_SEARCHABLE_LISTS>
+		var aMemberCategories = new Array(); 
+			var aOfficeCategories = new Array(); 
+			var strToken = '|';
+			var pIndex = 0;
+
+			// Fetch strings from merge form and put them into arrays
+			aMemberCategories  = document.getElementById('Member_Category_Codes_String').value.split(strToken);
+			aOfficeCategories  = document.getElementById('Office_Category_Codes_String').value.split(strToken);
+			if (aMemberCategories != '')
+				{
+					for(pIndex in aMemberCategories)// Loop through array
+					{
+						document.getElementById(aMemberCategories[pIndex]).style.display = (sSearchType == 'Agent' ? '':'none')
+					}
+				}
+			if (aOfficeCategories != '')
+				{
+					for(pIndex in aOfficeCategories)// Loop through array
+					{
+						document.getElementById(aOfficeCategories[pIndex]).style.display = (sSearchType == 'Office' ? '':'none')
+					}
+				}
+	<!$MGENDIF>
+	}
+	
+	function validatePercentSign(name)
+    {
+        percentSign = name.value.split('\%');
+		if(percentSign.length>1)
+		{
+			alert('Percent signs are not allowed.');
+			 name.focus();
+			return false;
+		}
+		
+    }
+	
+//-->
+</SCRIPT>
+
+<CENTER>
+<!-- <TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<BR>
+	<TR>
+		<TD CLASS="bigTextMarine" align="left" nowrap>Find Members/Offices</TD>
+	</TR>
+</TABLE> -->
+	<TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+		<TR>
+			<TD>&nbsp;</TD>
+		</TR>
+	</TABLE>
+
+<!$MGIF_DISPLAY_CRITERIA>
+	<TABLE width="100%" cellpadding="0" cellspacing="0">
+		<TR CLASS="bgbar">
+			<TD nowrap CLASS="nnText">&nbsp;Enter criteria in one or more fields</TD>
+		</TR>
+	<FORM action="/scripts/mgrqispi.dll" method="POST" name="InputForm">
+		<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+		<INPUT type="hidden" name="PRGNAME" value="IMSAgentsandOffices">
+		<INPUT type="hidden" name="ARGUMENTS" value="-A<!$MG_Parm_Session_Number>,-N2,LastName,(P) Agent Nickname,(P) Office Name,(P) City,(P) Zip Code">
+<!$MGIF_SEARCHABLE_LISTS>
+		<!-- Used to retrive Categories selected in GetParam - SQL Format -->
+		<INPUT type="hidden" name="Member_Where_Category_Codes" value="<!$MG_Member_Where_Category_Codes>">
+		<INPUT type="hidden" name="Office_Where_Category_Codes" value="<!$MG_Office_Where_Category_Codes>">
+		<!-- | Delimited categories for  Member/Office to set/remove display -->
+		<INPUT type="hidden" id="Member_Category_Codes_String" value="<!$MG_Member_Category_Codes_String>">
+		<INPUT type="hidden" id="Office_Category_Codes_String" value="<!$MG_Office_Category_Codes_String>">
+<!$MGENDIF>
+	</TABLE>
+	<TABLE Align=Center cellpadding="0" cellspacing="0" width="50%">
+		<TR>
+			<TD></TD>
+			<TD CLASS="bText">
+				<INPUT type=radio onclick="setAgentOfficeDisplay('Agent')" name="Search_Type" value='A' checked>Member Search &nbsp;
+				<INPUT type=radio onclick="setAgentOfficeDisplay('Office')" value='O' name="Search_Type">Office Search
+				<!$MG_Search_Type_Agent_Checked><!$MG_Search_Type_Office_Checked>
+			</TD>
+		</TR>
+		<TR id="LastName" style="display:">
+			<TD CLASS="bText" width="30%" nowrap align="left">Last Name&nbsp;</TD>
+			<TD CLASS="input" width="70%" nowrap align="left"><INPUT CLASS="input" type="text" size="30" name="LastName" maxlength="17" onBlur="validatePercentSign(this)"></TD>
+		</TR>
+		<TR id="FirstName" style="display:">
+			<TD CLASS="bText" width="30%" nowrap align="left">First Name&nbsp;</TD>
+			<TD CLASS="input" width="70%" nowrap align="left"><INPUT CLASS="input" type="text" size="30" name="(P) Agent Nickname" maxlength=12 value="" onBlur="validatePercentSign(this)"></TD>
+		</TR>
+		<TR id="OfficeName" style="display:">
+			<TD CLASS="bText" width="30%" nowrap align="left">Office Name&nbsp;</TD>
+			<TD CLASS="input" width="70%" nowrap align="left"><INPUT CLASS="input" type="text" name="(P) Office Name" size="30" maxlength="30" value="" onBlur="validatePercentSign(this)"></TD>
+		</TR>
+		<TR>
+			<TD CLASS="bText" width="30%" nowrap align="left">City&nbsp;</TD>
+			<TD CLASS="input" width="70%" nowrap align="left"><INPUT CLASS="input" type="text" size="21" name="(P) City" maxlength=21 value="" onBlur="validatePercentSign(this)"></TD>
+		</TR>
+		<TR>
+			<TD CLASS="bText" width="30%" nowrap align="left">Zip Code&nbsp;</TD>
+			<TD CLASS="input" width="70%" nowrap align="left"><INPUT CLASS="input" type="text" name="(P) Zip Code" size="5" maxlength=5 value="" onBlur="validatePercentSign(this)"></TD>
+		</TR>
+
+<!$MGIF_SEARCHABLE_LISTS>
+	<!$MGREPEAT>
+		<TR id="<!$MG_Category_Code_MO_R1>" style="display:">
+			<TD CLASS="bText" width="30%" nowrap align="left"><!$MG_Category_Description_R1>&nbsp;</TD>
+			<TD CLASS="input" width="70%" nowrap align="left">
+				<SELECT CLASS="input" name="List_Code_<!$MG_Category_Code_R1>">
+					<OPTION value=" " selected></OPTION>
+				<!$MGREPEAT>
+					<OPTION value="<!$MG_List_Code_R2>" ><!$MG_List_Description_R2></OPTION>
+				<!$MGENDREPEAT>
+				</SELECT>
+			</TD>
+		</TR>
+	<!$MGENDREPEAT>
+<!$MGENDIF>
+	</TABLE>
+	<BR>
+	<TABLE cellpadding="0" cellspacing="0" width="50%">
+		<TR>
+			<TD width="100%" nowrap align="center"><INPUT type="submit" value="Submit"></TD>
+		</TR>
+	</TABLE>
+	<BR>
+</FORM>
+<!$MGENDIF>
+
+
+<!$MGIF_MEMBER_RESULTS>
+	<TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+		<TR>
+			<!$MGIF_MEM_HAS_RESULTS>
+				<TD CLASS="bTextMarine" nowrap colspan="4" valign="TOP" align="center">
+					<!$MG_Members_Found>&nbsp;Member(s) found<HR>
+				</TD>
+			<!$MGELSE>
+				<TD CLASS="bTextRed" nowrap colspan="4" valign="TOP">
+					No members were found matching your criteria<HR>
+				</TD>
+			<!$MGENDIF>
+		</TR>
+
+		<!$MGREPEAT>
+			<TR CLASS="<!$MGIF_ODD_ROW>bgWhite<!$MGELSE>bgSmoke<!$MGENDIF>">
+				<!$MGIF_SHOW_MEM_ID>
+					<TD CLASS="nnText" nowrap><!$MG_Member_Login_ID>&nbsp;</TD>
+				<!$MGENDIF>
+				<TD nowrap CLASS="bTextBlue">
+					<A CLASS="bTextBlue" HREF="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R1>&PRGNAME=IMSListingAgentDetail&ARGUMENTS=-N<!$MG_Member_Number_R1>,-N<!$MG_Session_Number_R1>"><!$MG_Last_Name_R1> <!$MG_First_Name_R1> <!$MG_Generation></A><!$MGIF_RESP_MEMBER>&nbsp;&nbsp;**&nbsp;&nbsp;<!$MGENDIF>
+				</TD>
+				<TD CLASS="nnText" nowrap>
+						<A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R1>&PRGNAME=IMSOfficeInformationPublic&ARGUMENTS=-N<!$MG_OFF_NUMBER_R1>,-N<!$MG_Session_Number_R1>"><!$MG_MEM_OFFICE_NAME></A>
+				</TD>
+				<TD nowrap CLASS="nnText">
+					&nbsp;<!$MG_MEM_OFFICE_ADDRESS>
+				</TD>
+			</TR>
+		<!$MGENDREPEAT>
+	</TABLE>
+	<TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+		<TR>
+			<TD>&nbsp;</TD>
+		</TR>
+		<TR>
+		<!-- ITG 557420 JK 1/21/09 modified text from Denotes Designated Broker to Denotes Responsible Member -->
+			<TD CLASS="bTextBlue">&nbsp;&nbsp;&nbsp;&nbsp;**&nbsp;&nbsp;&nbsp;&nbsp;<FONT CLASS="nnText">Denotes Responsible Member</FONT></TD>
+		</TR>
+		<TR>
+			<TD>&nbsp;</TD>
+		</TR>
+	</TABLE>
+<!$MGENDIF>
+
+
+<!$MGIF_OFFICE_RESULTS>
+	<TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+		<TR>
+			<!$MGIF_OFF_HAS_RESULTS>
+				<TD CLASS="bTextMarine" nowrap colspan="3" valign="TOP" align="center">
+					<!$MG_Office_Found>&nbsp;Office(s) found<HR>
+				</TD>
+			<!$MGELSE>
+				<TD CLASS="bTextRed" nowrap colspan="3" valign="TOP">
+					No offices were found matching your criteria<HR>
+				</TD>
+			<!$MGENDIF>
+		</TR>
+
+		<!$MGREPEAT>
+			<TR CLASS="<!$MGIF_ODD_ROW_Office>bgWhite<!$MGELSE>bgSmoke<!$MGENDIF>">
+				<!$MGIF_SHOW_OFF_ID>
+					<TD CLASS="nnText" nowrap><!$MG_Office_MLS_ID></TD>
+				<!$MGENDIF>
+				<TD nowrap>
+					<A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R2>&PRGNAME=IMSOfficeInformationPublic&ARGUMENTS=-N<!$MG_OFF_NUMBER>,-N<!$MG_OFF_RES_SESSION_NUMBER>"><!$MG_OFF_OFFICE_NAME></A>
+				</TD>
+				<TD CLASS="nnText" nowrap><!$MG_OFF_OFFICE_ADDRESS></TD>
+			</TR>
+		<!$MGENDREPEAT>
+	</TABLE>
+<!$MGENDIF>
+
+</CENTER>
+<BR>

@@ -1,0 +1,48 @@
+
+<FORM action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="IMSSaveAdditionalPhones">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-N<!$MG_Mem/Ofc_Number>,-A<!$MG_M/O_Type>,-A<!$MG_Came_From>,-A<!$MG_Phone_Type>">
+
+
+<CENTER>
+
+
+<BR>
+<TABLE border="0" cellspacing="0" cellpadding="0" width="100%">
+	<TR CLASS="bgbar">
+		<TD CLASS="nnText" nowrap>&nbsp;<!$MG_Mem/Ofc_Name>&nbsp;<!$MG_MLS_ID></TD>
+	</TR>
+</TABLE>
+
+
+<BR>
+<TABLE border="0" width="100%" cellpadding="2" cellspacing="0">
+	<TR>
+		<TD CLASS="bText" width="25%" nowrap>Phone Number&nbsp;</TD>
+		<TD nowrap><INPUT CLASS="input" type="text" name="Phone_Area" size="3" maxlength="3" value="<!$MG_Phone_Area_Now>">-<INPUT CLASS="input" type="text" name="Phone_Prefix" size=3 maxlength=3 value="<!$MG_Phone_Prefix_Now>">-<INPUT CLASS="input" type="text" name="Phone_Suffix" size=4 maxlength=4 value="<!$MG_Phone_Suffix_Now>"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="25%" nowrap>Phone Type</TD>
+		<TD CLASS="bText" nowrap><!$MG_Phone_Description></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="25%" nowrap>Sort Sequence&nbsp;</TD>
+		<TD nowrap><INPUT CLASS="input" type="text" name="Phone_Sort_Seq" size="1" maxlength="1" value="<!$MG_Phone_Sort_Seq_Now>"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="25%" nowrap>Delete&nbsp;</TD>
+		<TD nowrap><INPUT type="checkbox" name="Delete_Phone" size="1" value="checked"></TD>
+	</TR>
+</TABLE>
+
+
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR align="center">
+		<TD nowrap><INPUT type="submit" name="" value="Submit"></TD>
+	</TR>
+</TABLE>
+</FORM>
+
+
+</CENTER>

@@ -1,0 +1,21 @@
+<HTML>
+<SCRIPT LANGUAGE="JavaScript">
+	function SubmitForm() 
+	{
+		document.redirect.submit();
+	}
+</SCRIPT>
+
+<BODY onload="SubmitForm();">
+<FORM NAME="redirect" ACTION="/scripts/mgrqispi.dll" METHOD="POST">
+	<INPUT type="hidden" name="APPNAME"   value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME"   value="IMSMemberLogin">
+	<INPUT type="hidden" name="ARGUMENTS" value="-A<!$MG_Association>">
+	<INPUT type="hidden" name="SessionType" value="<!$MG_Session_Type>">
+
+	
+	<INPUT type="HIDDEN" name="Submit" value="Submit">
+	
+</FORM>
+</BODY>
+</HTML>

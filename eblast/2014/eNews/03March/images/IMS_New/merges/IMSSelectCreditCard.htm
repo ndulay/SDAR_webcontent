@@ -1,0 +1,47 @@
+<CENTER>
+<FORM action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="IMSCreditCardInfo">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-N<!$MG_Amount_Due>,-N0,-A<!$MG_Transaction_Type>,-A<!$MG_Billing_Group>,-A<!$MG_Registration_ID>,-N<!$MG_Came_From>,-AP,-LF,-LF,-LF,-N<!$MG_Merchant_Number>">
+	<INPUT type="Hidden" name="Add_Info_Name" value="<!$MG_Add_Info_Name>">
+	<INPUT type="Hidden" name="Add_Info_Office" value="<!$MG_Add_Info_Office>">
+	<INPUT type="Hidden" name="Attn_CO" value="<!$MG_Attn_CO>">
+	<INPUT type="Hidden" name="Street_Addr" value="<!$MG_Street_Addr>">
+	<INPUT type="Hidden" name="City" value="<!$MG_City>">
+	<INPUT type="Hidden" name="State" value="<!$MG_State>">
+	<INPUT type="Hidden" name="Zip_Code" value="<!$MG_Zip_Code>">
+	<INPUT type="Hidden" name="Zip_Plus_4" value="<!$MG_Zip_Plus_4>">
+
+<CENTER>
+
+<BR>
+<TABLE border="0" width="100%" cellpadding="2" cellspacing="0">
+	<TR CLASS="bgbar">
+		<TD CLASS="nnText" align="left"  nowrap>&nbsp;Please select the credit card you wish to modify</TD>
+	</TR>
+</TABLE>
+
+
+<BR>
+<TABLE border="0" width="50%" cellpadding="0" cellspacing="2">
+	<TR>
+		<TD CLASS="bText" nowrap width="30%" >Credit cards on file</TD>
+		<TD nowrap width="70%"><SELECT name="Credit_Card_ComboBox" size="1">
+				<!$MGREPEAT>
+				<OPTION CLASS="<!$MG_Display_Class>" value="<!$MG_Card_Number>" <!$MG_Selected>><!$MG_Card_Description></OPTION>
+				<!$MGENDREPEAT>
+		</SELECT></TD>
+	</TR>
+</TABLE>
+
+
+<BR>
+<TABLE cellpadding="0" cellspacing="0" width="100%">
+	<TR align="center">
+		<TD nowrap><INPUT type="submit" value="Submit"></TD>
+	</TR>
+</TABLE>
+</FORM>
+
+
+</CENTER>

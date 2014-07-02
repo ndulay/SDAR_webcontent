@@ -1,0 +1,107 @@
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="snTextRed" align="left" nowrap><B>RED</B> indicates Convention package you are registered for.</TD>
+	</TR>
+</TABLE>
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="bigTextMarine" align="left" nowrap>&nbsp;<!$MG_Conv_Name>&nbsp;-&nbsp;<!$MG_Start_Date></TD>
+	</TR>
+</TABLE>
+
+<!$MGIF_PACKAGE_EXISTS>
+	<!$MGIF_NO_REGISTRATION>
+		<TABLE border="0" width="100%" cellpadding="0" cellspacing="1">
+			<TR CLASS="bgbar">
+				<TD CLASS="nnText" align="left" nowrap>&nbsp;Select a package to register for this convention.</TD>
+			</TR>
+		</TABLE>
+		<BR>
+	<!$MGENDIF>
+
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<!$MGREPEAT>
+		<TR>
+			<!$MGIF_NO_REGISTRATION_R>
+					<TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A CLASS="bTextBlue" href="https://<!$MG_Server_Name_R>/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R>&PRGNAME=IMSConvRegistration&ARGUMENTS=-N<!$MG_Session_Number_R>,-A<!$MG_Convention_ID_R>,-A<!$MG_Package_ID_R>,-N<!$MG_Package_Price_R>,-A0">&nbsp;<!$MG_Package_Description_R></A>
+					<FONT face="Arial" size="2" color=Blue>&nbsp;&nbsp;<b>Price $<!$MG_Package_Price_R></b></FONT>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!$MG_More_Info_R></TD>
+			<!$MGELSE>
+				<!$MGIF_REGISTERED_PKG_R>
+					<TD CLASS="bTextRed" align="left" nowrap>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!$MG_Package_Description_R>
+					&nbsp;&nbsp;Price $<!$MG_Package_Price_R>&nbsp;&nbsp;<!$MG_Registration_Detail_R>
+				<!$MGELSE>
+					<TD CLASS="bTextBlue" align="left" nowrap>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!$MG_Package_Description_R>
+					&nbsp;&nbsp;Price $<!$MG_Package_Price_R>
+				<!$MGENDIF>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!$MG_More_Info_R></TD>
+			<!$MGENDIF>
+			
+			<!$MGIF_GUEST_PACKAGE>
+					<TD CLASS="sTextBrown" align="left" nowrap>&nbsp;&nbsp;Note: Guest package only. May be added during registration.</TD>
+			<!$MGENDIF>
+		</TR>
+		<TR>	
+			<TD colspan="7">
+				<TABLE border="0" align="left"  width="95%" cellpadding="0" cellspacing="0">
+					<TR CLASS="bgbar">
+						<TD align="left" width="3" nowrap>&nbsp;</TD>
+						<TD CLASS="bText" align="left" width="27" nowrap>Event&nbsp;Description</TD>
+						<TD CLASS="bText" align="left" width="15" nowrap>Meal&nbsp;Selected</TD>
+						<TD CLASS="bText" align="left" width="5" nowrap>&nbsp;</TD>
+						<TD CLASS="bText" align="left" width="25" nowrap>Location</TD>	
+						<TD CLASS="bText" align="left" width="10" nowrap>Date</TD>
+						<TD CLASS="bText" align="left" width="10" nowrap>Time</TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+		<!$MGREPEAT>
+		<TR>
+			<TD colspan="7">
+				<TABLE border="0" align="left" width="95%" cellpadding="0" cellspacing="0">
+					<TR>
+						<TD align="left" width="3" nowrap>&nbsp;</TD>
+						<TD CLASS="nnText" align="left" width="30" nowrap><!$MG_Event_Description_R1></TD>
+						<!$MGIF_MEAL_EXIST_R1>
+						<TD CLASS="nnText" align="left" width="15" nowrap><!$MG_Meal_Selected_R1></TD>
+						<!$MGELSE>
+						<TD align="left" width="15" nowrap>
+						<!$MGENDIF>
+						<!$MGIF_MORE_INFO_EXIST_R1>
+						<TD align="left" width="5" nowrap><!$MG_More_Info_R1></TD>
+						<!$MGELSE>
+						<TD align="left" width="5" nowrap>
+						<!$MGENDIF>
+						<!$MGIF_LOCATION_EXIST_R1>
+							<TD align="left" width="25" nowrap><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R1>&PRGNAME=IMSDisplayLocation&ARGUMENTS=-N<!$MG_Session_Number_R1>,-A<!$MG_LocationID_R1>">	<!$MG_Location_Desc1_R1></A></TD>
+						<!$MGENDIF>
+						<!$MGIF_LOC_DOC_EXIST_R1>
+							<TD CLASS="nnText" align="left" width="25" nowrap><!$MG_Loc_Web_Doc_R1><!$MG_Location_Desc1_R1></A></TD>
+						<!$MGENDIF>
+						<TD CLASS="nnText" align="left" width="10" nowrap><!$MG_Start_Date_R1></TD>
+						<TD CLASS="nnText" align="left" width="10" nowrap><!$MG_Start_Time_R1></TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+		<!$MGENDREPEAT>
+
+		<TR>	
+			<TD height="2" colspan="7">&nbsp;</TD>
+		</TR>
+	<!$MGENDREPEAT>
+	
+</TABLE>
+
+<!$MGELSE>
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="bigTextMarine" align="Center" colspan="3" nowrap>NO PACKAGES ARE AVAILABLE FOR THIS CONVENTION</TD>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+<BR>

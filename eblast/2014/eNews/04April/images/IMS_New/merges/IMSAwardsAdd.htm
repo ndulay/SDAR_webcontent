@@ -1,0 +1,77 @@
+<SCRIPT language="javascript">
+function OpenOfficeWindow()
+{
+	// Open 'Select office' window
+	var objAreaWindow = window.open ('/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSSearchLookUp&ARGUMENTS=-N<!$MG_Session_Number>,-A<!$MG_App_Name>,-AOP,-AAW', 'newWin', 'menubar=no,toolbar=no,resizable=yes,directories=no,scrollbars=yes,status=no,width=600,height=350');
+	return true;
+}
+</SCRIPT>
+
+<FORM Name="AddAward" action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME"   value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME"   value="IMSAwards">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-A<!$MG_Award_Option>,-A<!$MG_Association>,-A<!$MG_Year>">
+<BR>
+<BR>
+
+<TABLE border="0" cellspacing="1" cellpadding="0" width="100%">
+<TR>
+	<TD CLASS="bText" width="20%" nowrap>Association</TD>
+	
+	<TD CLASS="nnText" width="80%" valign="top" align="Left" nowrap>
+		 	<SELECT CLASS="nnText" name="Assoc_Code" SIZE=1>
+				<!$MGREPEAT>
+					<OPTION CLASS="input"  <!$MG_Assoc_Selected> VALUE="<!$MG_Assoc_Code>"><!$MG_Assoc_Name>
+				<!$MGENDREPEAT>
+			</SELECT>
+		 
+	</TD>
+</TR>
+<TR>
+	<TD CLASS="bText" width="20%" nowrap>Year</TD>
+	<TD CLASS="nnText" width="80%" valign="top" align="Left" nowrap>
+	      	<SELECT CLASS="nnText" name="Year" SIZE=1>
+				<OPTION CLASS="input" <!$MG_Year-1_Selected> VALUE="<!$MG_year-1>"><!$MG_year-1>
+				<OPTION CLASS="input"  <!$MG_Year_Selected> VALUE="<!$MG_Current_Year>"><!$MG_Current_Year>
+				<OPTION CLASS="input" <!$MG_Year+1_Selected> VALUE="<!$MG_year+1>"><!$MG_year+1>
+				<OPTION CLASS="input" <!$MG_Year+2_Selected> VALUE="<!$MG_year+2>"><!$MG_year+2>
+	     	</SELECT>
+	</TD>
+</TR>
+<TR>
+	<TD CLASS="bText" width="20%" nowrap>
+		Office&nbsp;(<A CLASS="sTextBlue"  href="javascript://#LookUp" onClick="OpenOfficeWindow()">Select an office</A>)
+	</TD>
+	<TD CLASS="input" width="80%" nowrap>
+		<INPUT CLASS="input" type="text" name="Office_ID" size="12" maxlength="12" value="<!$MG_Office_MLS_ID_Now>" readOnly>&nbsp;<INPUT CLASS="input" type="text" name="Office_Name" size="35" maxlength="35" readOnly value="<!$MG_Office_Name>">
+	</TD>
+	
+</TR>
+<TR>
+	<TD CLASS="bText" width="20%" nowrap>Specialization</TD>
+	<TD CLASS="input" width="80%" valign="top" align="Left" nowrap>
+	     <SELECT name="Spec_Code" SIZE=1>
+	     	  <OPTION CLASS="input"  SELECTED  VALUE="">
+	     		 <!$MGREPEAT>
+	     			<OPTION CLASS="input"  <!$MG_Spec_Selected> VALUE="<!$MG_Spec_Code>"><!$MG_Spec_Description>
+	     		<!$MGENDREPEAT>
+	     	</SELECT>
+	</TD>
+</TR>
+<TR>	
+	<TD CLASS="bText" width="20%" nowrap>Transactions #</TD>
+	<TD CLASS="input" width="80%"  valign="top" align="Left" nowrap><INPUT CLASS="input" type="text" size="6" maxlength="6" name="Transaction" value="<!$MG_Transactions>"></TD>
+</TR>
+<TR>	
+	<TD CLASS="bText" width="20%" nowrap>Amount</TD>
+	<TD CLASS="input" width="80%"  valign="top" align="Left" nowrap><INPUT CLASS="input" type="text" size="12" maxlength="12" name="Amount" value="<!$MG_Amount>"></TD>
+</TR>
+</TABLE>
+ <BR><BR>
+ <TABLE Align="Center" border="0" width="40%">
+<TR>
+	<TD><INPUT type="submit" name="submit" value="Submit">&nbsp;&nbsp;</TD>
+	<TD><INPUT TYPE="button" VALUE="Previous Screen" onClick="history.go(-1)"></TD>
+</TR>
+</TABLE>
+</FORM>

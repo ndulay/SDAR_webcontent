@@ -1,0 +1,66 @@
+<SCRIPT LANGUAGE="JavaScript">
+
+function checkACK()
+{
+<!$MGIF_ACK_REQUIRED>
+				if(document.ReadPolicy.Check_ACK.checked == false)
+				{
+				alert('Please read the information and acknowledge by\nclicking the check box near the bottom of the form.');
+				}
+				//if(document.ReadPolicy.Check_ACK.checked == true)
+				else
+				{
+				document.ReadPolicy.submit();
+				}
+	<!$MGELSE>   
+				document.ReadPolicy.submit();
+				
+	<!$MGENDIF> 
+}
+//-->
+</SCRIPT>
+<TABLE>
+	<TR>
+		<TD>
+			<FORM NAME="ReadPolicy" action="https://<!$MG_Server_Name>/scripts/mgrqispi.dll" METHOD="POST">
+				<INPUT type="hidden" name="APPNAME"   value="<!$MG_App_Name>">
+				<INPUT type="hidden" name="PRGNAME"   value="IMSEnterReviseMember">
+				<INPUT type="hidden" name="ARGUMENTS" value="-A<!$MG_Association>,-N1,-N<!$MG_Session_Number>,-N<!$MG_Member_Number>">
+				<INPUT type="hidden" name="SessionType" value="<!$MG_SessionType>">
+				<INPUT type="hidden" name="ServiceName" value="<!$MG_ServiceName>">
+				<INPUT type="hidden" name="BillingGroup" value="<!$MG_BillingGroup>">
+				<INPUT type="hidden" name="ClassID" value="<!$MG_ClassID>">
+				<INPUT type="hidden" name="EventID" value="<!$MG_EventID>">	
+				<INPUT type="hidden" name="ConvID" value="<!$MG_ConvID>">
+				<INPUT type="hidden" name="CategID" value="<!$MG_CategID>">
+				<INPUT type="hidden" name="GroupID" value="<!$MG_GroupID>">
+			</TD>
+	</TR>
+</TABLE>
+<BR>
+
+<TABLE border="0" cellpadding="0" cellspacing="0" width="100%">
+	<TR CLASS="bgbar">
+		<TD CLASS="nnText">&nbsp;Please take a few moments to read the policy below </TD>
+	</TR>
+</TABLE>
+
+<!$MGIF_POLICY_EXIST>
+	<BR>
+	<!$MGINCLUDE><!$MG_Policy_Agreement><!$MGENDINCLUDE>
+	<!$MGIF_ACK_REQUIRED>
+		<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+			<TR CLASS="bTextRed" align="center">
+				<TD nowrap><INPUT TYPE="checkbox" NAME="Check_ACK" ><!$MG_Ack_Label></TD>
+			</TR>
+			<TR>
+				<TD>&nbsp;</TD>
+			</TR>
+			<TR>
+			<TD ID="Continue"  nowrap align="center"><INPUT type="button" name="Continue" value="Continue" onClick="checkACK()"></TD>
+			</TR>
+		</TABLE>
+	<!$MGENDIF>
+<!$MGENDIF>    
+<BR>
+</FORM>

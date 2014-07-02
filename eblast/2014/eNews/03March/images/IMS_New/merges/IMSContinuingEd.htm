@@ -1,0 +1,41 @@
+<CENTER>
+
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TR CLASS="bgbar" >
+	    <TD CLASS="nnText" align="left" nowrap>&nbsp;To view a report of your<!$MGIF_OFFICE_EDUCATION>&nbsp;member's<!$MGENDIF>&nbsp;current standing, click on an Education Category:</TD> 
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+</TABLE>
+
+
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="1">
+	<TR CLASS="bgbar" >
+		<TD CLASS="bText" align="left" nowrap>&nbsp;Category</TD>
+		<TD CLASS="bText" align="center" nowrap>State</TD>
+		<TD CLASS="bText" align="center" nowrap>Status</TD>
+		<TD CLASS="bText" align="center" nowrap>Start Date</TD>
+		<TD CLASS="bText" align="center" nowrap>Deadline</TD>
+		<TD CLASS="bText" align="center" nowrap>Completed</TD>
+	</TR>
+<!$MGREPEAT>
+	<TR>
+		<TD align="left" height="25" nowrap><A CLASS="bTextBlue"  href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R1>&PRGNAME=IMSContinuingEducation&ARGUMENTS=-N<!$MG_Session_Number_R1>,-N1,-A<!$MG_Category_State>,-A<!$MG_Category_ID>,-A<!$MG_Member_Office>"><!$MG_Category_Desc></A></TD>
+		<TD CLASS="nnText" align="center" height="25" nowrap><!$MG_State></TD>
+		<TD CLASS="nnText" align="center" height="25" nowrap><!$MG_Status></TD>
+		<TD CLASS="nnText" align="center" height="25" nowrap><!$MG_Start_Date></TD>
+		<TD CLASS="nnText" align="center" height="25" nowrap><!$MG_Deadline></TD>
+		<TD CLASS="nnText" align="center" height="25" nowrap><!$MG_Completed></TD>
+		<TD CLASS="nnText" align="center" height="25" nowrap><!$MG_Deadline_Date></TD>
+	</TR>
+<!$MGENDREPEAT>
+</TABLE>
+
+
+<BR>
+
+</CENTER>

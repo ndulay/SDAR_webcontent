@@ -1,0 +1,112 @@
+<CENTER>
+
+<BR>
+<FORM name="BroadcastNoticeHistory" action="/scripts/mgrqispi.dll" method="post">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="IMSBroadcastNoticeHistory">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-N<!$MG_Option>,From_Date,Thru_Date,Agent_ID">
+
+
+<TABLE width="100%" border="0" cellspacing="0" cellpadding="0">
+	<TR>
+		<TD width="100%" align="center" nowrap>
+			<TABLE width="1%" border="0" cellspacing="0" cellpadding="0">
+				<TR>
+					<!$MGIF_SELECT_AGENT_ID>
+						<TD CLASS="bText" nowrap>Member ID&nbsp;</TD>
+						<TD nowrap><INPUT CLASS="input" name="Agent_ID" type="text" size="10" maxlength="9" value="<!$MG_Agent_ID>">&nbsp;</TD>
+					<!$MGENDIF>
+					<!$MGIF_BROADCAST_HISTORY>
+					<TD>
+						<SELECT CLASS="input" name="History_Option">
+							<OPTION value="A" <!$MG_All_Selected>>Broadcast Notices&nbsp;</OPTION>
+							<OPTION value="S"<!$MG_Staff_Selected>>Notices You've Created&nbsp;&nbsp;</OPTION>
+						</SELECT>
+					</TD>
+					<!$MGENDIF>
+
+					<TD CLASS="bText" NOWRAP>&nbsp;&nbsp;From Date&nbsp;</TD>
+					<TD CLASS="input"><INPUT name="From_Date" type="text" size="10" maxlength="8" value="<!$MG_From_Date>">&nbsp;</TD>
+					<TD CLASS="bText" NOWRAP>Thru Date&nbsp;</TD>
+					<TD CLASS="input"><INPUT name="Thru_Date" type="text" size="10" maxlength="8" value="<!$MG_Thru_Date>">&nbsp;</TD>
+				</TR>
+				<!$MGIF_SELECT_AGENT_ID>
+					<TR>
+						<TD width="10%" nowrap><A CLASS="sTextBlue" href="javascript://#LookUp" onClick="OpenMemberWindow()">Select a member</A></TD>
+						<TD nowrap width="90%" colspan=7>&nbsp</TD>
+					</TR>
+				<!$MGENDIF>
+				
+			</TABLE>
+		</TD>
+	</TR>
+</TABLE>
+
+
+<BR>
+<TABLE width="100%">
+	<TR align="center">
+		<TD nowrap><INPUT type="submit" value="Submit"></TD>
+	</TR>
+</TABLE>
+<BR>
+</FORM>
+
+
+<!$MGIF_NO_NOTICES_FOUND>
+	<HR width="600">
+	<TABLE width="100%">
+		<TR align="center">
+			<TD CLASS="bTextRed" nowrap>There were no notices found for the specified date range.</TD>
+		</TR>
+	</TABLE>
+	<BR><BR>
+<!$MGENDIF>
+
+
+<!$MGIF_DISPLAY_NOTICES>
+	<HR>
+
+	<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+		<!$MGREPEAT>
+			<TR>
+
+				<TD CLASS="nnText" width="10%" valign="top" nowrap><!$MG_Posting_Date_R1></TD>
+				<TD CLASS="bTextMarine" valign="top" nowrap><!$MG_Message_Header_R1></TD>
+				<!$MGIF_STAFF>
+				<TD width="8%" align="center"><A href="JavaScript: DeleteMessage('<!$MG_Msg_Number>','<!$MG_Posting_Date>','<!$MG_Msg_Header>','<!$MG_Association>')"><FONT face="arial" size="2" color="blue">Delete </A></FONT></TD>
+				<!$MGENDIF>
+			</TR>
+			<TR>
+				<TD CLASS="bTextRed" valign="top" nowrap><!$MGIF_READ_UNREAD><!$MG_Read_Unread><!$MGENDIF></TD>
+				<TD CLASS="bTextMarine" colspan="2" valign="top" nowrap>From: <!$MG_Who><TD>
+			</TR>
+			<TR>
+				<TD width="10%">&nbsp;</TD>
+				<TD CLASS="nnText" colspan="2"><!$MG_Message_Body_R1></TD>
+			</TR>
+		<!$MGENDREPEAT>
+	</TABLE>
+<!$MGENDIF>
+
+<SCRIPT language="javascript">
+function DeleteMessage(messageNumber,PostingDate,messageHeader,Association) {
+	url='/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSBroadcastNotice&ARGUMENTS=-N<!$MG_Session_Number>,-N5,-A'+messageNumber+',-L,-L,-N0,-A'+Association;
+	//alert (url)
+		if(confirm('Are you sure you want to delete message: \n\n'
+									+'Notice Date: \t'+PostingDate+' \n'
+									+'Message Header: \t'+messageHeader+'\n')) {
+	document.location.href=url;
+	
+	}
+}
+function OpenMemberWindow()
+{
+	// Open 'Select Member' window
+	var objAreaWindow = window.open ('/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSSearchLookUp&ARGUMENTS=-N<!$MG_Session_Number>,-A<!$MG_App_Name>,-AMP,-ANH', 'newWin', 'menubar=no,toolbar=no,resizable=yes,directories=no,scrollbars=yes,status=no,width=600,height=350');
+	return true;
+}
+</SCRIPT>
+
+</CENTER>
+

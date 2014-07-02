@@ -1,0 +1,22 @@
+<!-- onUnLoadChild.html -->
+
+<html>
+<head>
+<title>Child window</title>
+<script language="Javascript">
+function ReloadParent(){
+window.opener.document.location.reload();
+}
+</script>
+</head>
+<body onUnLoad='ReloadParent();'>
+
+onUnLoadChild.html<p>
+
+<a href="#" onClick="ReloadParent();">Reload parent</a>.<p>
+
+<a href="#" onClick="window.close(); ReloadParent();">Close child & reload 
+parent</a>.
+
+</body>
+</html>

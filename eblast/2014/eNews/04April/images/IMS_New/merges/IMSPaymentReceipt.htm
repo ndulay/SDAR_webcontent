@@ -1,0 +1,317 @@
+<!$MGIF_EMAIL>
+<HTML>
+<HEAD>
+
+<style type="text/css">
+	.bgbar  {
+   	background : wheat;
+   	}
+	.bgmain  {
+   	background : #004080;
+   	}
+  	.sTextBrown {
+	font-size : 8pt;
+	font-weight : bold;
+	color : Brown;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+	.bText {
+	font-size : 10pt;
+	font-weight : bold;
+	color : #000000;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+	.nnText {
+	font-size : 10pt;
+	font-weight : normal;
+	color : #000000;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+	.bTextBlue {
+	font-size : 10pt;
+	font-weight : bold;
+	color : Blue;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+	.bTextBrown {
+	font-size : 10pt;
+	font-weight : bold;
+	color : Brown;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+	.bTextMarine {
+	font-size : 10pt;
+	font-weight : bold;
+	color : #004080;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+	.nnTextMarine {
+	font-size : 10pt;
+	font-weight : normal;
+	color : #004080;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+	.bTextRed {
+	font-size : 10pt;
+	font-weight : bold;
+	color : Red;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+	.sBannerText {
+	font-size : 10pt;
+	font-weight : bold;
+	color : White;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+</style>
+</HEAD>
+<BODY>
+<SCRIPT Language="Javascript">
+//<!--
+function printit()
+{  
+	window.print();
+}
+function closeit()
+{  
+	window.close();
+}
+//-->
+</SCRIPT>
+<CENTER>
+<!$MG_AsocHeader>
+</CENTER>
+<BR>
+<!$MGELSE>
+<SCRIPT Language="Javascript">
+//<!--
+	function printit()
+	{  
+		window.print();
+	}
+//-->
+</SCRIPT>
+<!$MGENDIF>
+<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+<!$MGIF_TELECHECK>
+	<!$MGIF_NO_EMAIL>
+		<TR  align="center">
+			<TD>&nbsp;</TD>
+		</TR>
+		<TR  align="Left">
+			<TD Rowspan="4" valign="Top"><IMG src="<!$MG_ImageAlias>telecheck.jpg" align="bottom"></TD>
+		</TR>
+	<!$MGENDIF>
+<!$MGENDIF>
+		
+<!$MGIF_TEMP_RECEIPT>
+	<TR>
+		<TD CLASS="bTextRed" align="center" width="100%">This receipt was not successfully processed.</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bTextRed" align="center" width="100%">This Payment will be confirmed after the process of the authorization has been completed.</TD>
+	</TR>
+<!$MGELSE>
+	<TR>
+		<TD CLASS="bTextBrown" align="center" width="100%"><!$MG_Success_Message></TD>
+	</TR>
+<!$MGENDIF>
+	<TR>
+		<TD CLASS="bTextBrown" align="center" width="100%">Please save or print this page for your records.</TD>
+	</TR>
+	<TR>
+		<TD >&nbsp;</TD>
+	</TR>
+	</TABLE>
+	<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+	<TR>
+		<TD align="Center" nowrap><form><input type="button" value="Print the Receipt" onClick="printit();"></TD>
+	</TR>
+</TABLE>
+	
+<TABLE  border=0 cellpadding="0" cellspacing="1" width="100%">
+	<TR>
+		<TD align="center" nowrap>
+<!$MGIF_NO_EMAIL>
+			<A CLASS="bTextBlue" href="https://<!$MG_Server_Name>/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSMainMenu&ARGUMENTS=-N<!$MG_Session_Number>">Back to Main Menu</A></TD>
+	</TR>
+	<BR>
+	<TR align="center">
+		<TD CLASS="sTextBrown">Click "Back to Main Menu" when you have finished with this page.<BR> (If you select the browser Back button or refresh your screen, you will receive a duplicate E-Mail.)</TD>
+	</TR>
+<!$MGENDIF>
+</TABLE>
+	
+<BR>
+<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+	<TR CLASS="bgmain" height="30">
+		<TD CLASS="sBannerText" align="left"  nowrap width="34%">&nbsp;<!$MG_Receipt_Date_Time></TD>
+		<TD CLASS="sBannerText" align="center"  nowrap width="33%">Receipt #<!$MG_Receipt_Number>&nbsp;</TD>
+		<TD CLASS="sBannerText" align="right" nowrap width="33%">Authorization #<!$MG_Auth_Number>&nbsp;</TD>
+	</TR>
+</TABLE>
+
+<BR>
+<TABLE border=0 cellpadding="0" cellspacing="1" width="100%">
+<!$MGIF_DISPLAY_SHIPMENT>
+	<TR CLASS="bgbar">
+		<TD CLASS="bText" width="65%" colspan="2" nowrap>&nbsp;Bill To</TD>
+		<TD CLASS="bText" width="35%" nowrap>&nbsp;Ship To</TD>
+	</TR>
+	<TR>
+		<TD CLASS="nnText" width="35%" valign="top" nowrap><!$MG_Bill_To></TD>
+		<TD CLASS="nnText" width="30%" valign="top" nowrap><!$MG_Member_Ref></TD>
+		<TD CLASS="nnText" width="35%" valign="top" nowrap><!$MG_Ship_To></TD>
+	</TR>
+<!$MGELSE>
+	<TR CLASS="bgbar">
+		<TD CLASS="bText" width="100%" nowrap colspan=3>&nbsp;Bill To</TD>
+		<TD CLASS="bText" width="300" nowrap>&nbsp;Office Information</TD>
+	</TR>
+	<TR>
+		<TD CLASS="nnText" width="35%" valign="top" nowrap><!$MG_Bill_To></TD>
+		<TD CLASS="nnText" width="65%" valign="top" colspan="2" nowrap><!$MG_Member_Ref></TD>
+		<TD CLASS="nnText" valign="top" nowrap><!$MG_Office_Info></TD>
+	</TR>
+<!$MGENDIF>
+</TABLE>
+
+<BR>
+<TABLE border="0" cellpadding="0" cellspacing="1" width="100%">
+	<TR CLASS="bgbar">
+		<TD CLASS="bText" nowrap>&nbsp;Code</TD>
+		<TD CLASS="bText" nowrap>&nbsp;Description</TD>
+		<TD CLASS="bText" align="right" nowrap>Qty&nbsp;</TD>
+		<TD CLASS="bText" align="right" nowrap>Unit Price&nbsp;</TD>
+		<TD CLASS="bText" align="right" nowrap>Extended&nbsp;</TD>
+	</TR>
+  <!$MGREPEAT>
+	<TR height="23">
+		<TD CLASS="bTextMarine" colspan="5" nowrap><input type="hidden" name="Invoice" value="
+ #<!$MG_Invoice_Number> &nbsp;(<!$MG_Invoice_Date>)">&nbsp;Invoice #<!$MG_Invoice_Number> &nbsp;(<!$MG_Invoice_Date>)&nbsp;&nbsp;<!$MG_Reference>&nbsp;&nbsp;<!$MG_Event_ID></TD>
+	</TR>
+		<!$MGREPEAT>
+		<TR>
+			<TD CLASS="nnText" nowrap width="10%"><input type="hidden" name="Code" value="<!$MG_Code>">&nbsp;<!$MG_Code></TD>
+			<TD CLASS="nnTextMarine" width="30%" nowrap><input type="hidden" name="Description" value="<!$MG_Description>">&nbsp;<!$MG_Description></TD>
+			<TD CLASS="nnText" width="5%" align="right" nowrap><input type="hidden" name="Quantity" value="<!$MG_Quantity>"><!$MG_Quantity>&nbsp;</TD>
+			<TD CLASS="nnText" nowrap width="12%" align="right"><input type="hidden" name="Price" value="<!$MG_Price>"><!$MG_Price>&nbsp;</TD>
+			<TD CLASS="nnText" nowrap width="11%" align="right"><input type="hidden" name="Total" value="<!$MG_Line_Total>"><!$MG_Line_Total>&nbsp;</TD>
+		</TR>
+			<!$MGIF_IS_CLASS>
+				<TR>
+					<TD></TD>
+					<TD CLASS="nnTextMarine">
+						&nbsp;Date:&nbsp;<!$MG_Event_Date>&nbsp;Time:<!$MG_Start_Time>&nbsp;-&nbsp;<!$MG_End_Time>
+					</TD>
+				</TR>
+			<!$MGENDIF>
+		<!$MGENDREPEAT>
+	<!$MGIF_TAX>
+	<TR>
+		<TD CLASS="nnText" align="right" colspan="4" nowrap>Sub-Total:&nbsp;</TD>
+		<TD CLASS="nnText" align="right" nowrap><!$MG_Sub_Total>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="nnText" align="right" colspan="4" nowrap>Tax:&nbsp;</TD>
+		<TD CLASS="nnText" align="right" nowrap><!$MG_Tax>&nbsp;</TD>
+	</TR>
+	<!$MGENDIF>
+	<TR>
+		<TD CLASS="bText" align="right" colspan="4" nowrap>Invoice Total:&nbsp;</TD>
+		<TD CLASS="bText" align="right" nowrap><!$MG_Invoice_Total>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD colspan="5" nowrap>&nbsp;</TD>
+	</TR>
+	
+	<TR>
+		<TD CLASS="nnText" align="right" colspan="4" nowrap>Amount Applied:&nbsp;</TD>
+		<TD CLASS="nnText" align="right" nowrap><!$MG_Applied>&nbsp;</TD>
+	</TR>
+	
+	<!$MGIF_Show_Previous_Payment>
+	<TR>
+		<TD CLASS="nnText" align="right" colspan="4" nowrap>Previous Payments:&nbsp;</TD>
+		<TD CLASS="nnText" align="right" nowrap><!$MG_Previous_Payment>&nbsp;</TD>
+	</TR>
+	<!$MGENDIF>
+	<TR>
+		<TD CLASS="bText" align="right" colspan="4" nowrap>Balance Due:&nbsp;</TD>
+		<TD CLASS="bText" align="right" nowrap><!$MG_Balance_Due>&nbsp;</TD>
+	</TR>
+	
+	<TR>
+		<TD colspan="5" nowrap>&nbsp;</TD>
+	</TR>
+  <!$MGENDREPEAT>
+	  <TR>
+		<TD CLASS="bText" align="left" colspan="5" nowrap><!$MG_Savings_Message></TD>
+	</TR>
+<!$MGIF_MESSAGE>
+	<TR>
+		<TD CLASS="bText" colspan="5" align="Left" nowrap><!$MG_Web_Message><BR>&nbsp;</TD>
+	</TR>
+<!$MGENDIF>
+	<TR CLASS="bgbar">
+		<TD CLASS="bText" colspan="5" align="center" nowrap>Payment Information</TD>
+	</TR>
+	<TR>
+		<TD colspan="5" nowrap>&nbsp;</TD>
+	</TR>
+	<TR>
+<!$MGIF_CREDIT_CARD>
+		<TD CLASS="bText" align="right" colspan="4" nowrap><I><!$MG_Card_Type>&nbsp;(<!$MG_Card_Number>):</I>&nbsp;</TD>
+<!$MGENDIF>
+<!$MGIF_TELECHECK>
+		<TD CLASS="bText" align="right" colspan="4" nowrap><I>Total charged to your Account Number <!$MG_Account_Number> (Check#&nbsp;<!$MG_Check_Number>):</I>&nbsp;</TD>
+<!$MGENDIF>
+		<TD CLASS="bTextBlue" align="right" nowrap><!$MG_Receipt_Total>&nbsp;</TD>
+	</TR>
+</TABLE>
+
+<TABLE  border=0 cellpadding="0" cellspacing="1" width="100%">
+	<TR>
+		<TD align="left" nowrap>
+	<!$MGIF_NO_EMAIL>
+			<A CLASS="bTextBlue" href="https://<!$MG_Server_Name>/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSMainMenu&ARGUMENTS=-N<!$MG_Session_Number>">Back to Main Menu</A></TD>
+	<!$MGENDIF>
+	</TR>
+</TABLE>
+<BR>
+<!$MGIF_CREDIT_CARD_NRDS>
+<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+	<TR>
+		<TD align="center" CLASS="bigTextRed">Payments made by credit card on this site will appear on your<BR>credit card billing statement under the name "<!$MG_Stmt_Print_Name>"</TD>
+	</TR>
+</TABLE>
+<BR>
+<!$MGENDIF>
+<!$MGIF_TELECHECK>
+<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+	<TR align="Left">
+		<TD CLASS="sTextBrown">Thank you for selecting checks as your preferred payment option. TeleCheck has approved this transaction, and your checking</TD>
+	</TR>
+	<TR align="Left">
+		<TD CLASS="sTextBrown">account will be debited electronically through the regular banking system.  If for some reason this transaction cannot be</TD>
+	</TR>
+	<TR align="Left">
+		<TD CLASS="sTextBrown">electronically processed, a paper draft will be created to debit the amount of this transaction from your account.</TD>
+	</TR>
+	<TR align="Left">
+		<TD CLASS="sTextBrown">TeleCheck will confirm this transaction by written notification either by E-Mail or the postal service.<!$MGIF_NO_EMAIL>  For more information on TeleCheck's process - see <A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSTelecheckFAQ&ARGUMENTS=-N<!$MG_Session_Number>,-A1">  Internet Check FAQ</A></TD><!$MGENDIF>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+
+</BODY>
+</HTML>

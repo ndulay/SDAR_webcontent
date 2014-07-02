@@ -1,0 +1,11 @@
+<HTML>
+<BODY onLoad="document.ZipFormOnline.submit();">
+<FORM NAME="ZipFormOnline" ACTION="<!$MG_URL_Link>" METHOD="POST">
+ <INPUT type="hidden" name="Email" value="<!$MG_Email>">
+ <INPUT type="hidden" name="Source" value="rsar_uid">
+ <INPUT type="hidden" name="Id" value="<!$MG_IMS_Login>">
+  <INPUT type="hidden" name="type" value="getstatus">
+ <INPUT type="hidden" name="URL" value="https://<!$MG_Server_Name>/scripts/mgrqispi.dll?APPNAME=<!$MG_AppName>&PRGNAME=IMSZipForms&ARGUMENTS=-N<!$MG_SessionNumber>,-N1,-AO">
+ <INPUT type="Hidden" name="Submit" value="Submit">
+</BODY>
+</HTML>

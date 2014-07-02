@@ -1,0 +1,172 @@
+<HTML>
+<HEAD>
+<META name="Rapattoni Corporation" content="Magic 8 Web IMS">
+<TITLE>IMS Public Custom Login</TITLE>
+<link href="/scripts/IMS/style.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY BACKGROUND="/boardimages/background.jpg" text="black" onLoad="fieldFocus();">
+
+<CENTER>
+<TABLE border="0" width="100%" cellpadding="3" cellspacing="0">
+	<TR  bgcolor="#004080" align="center">
+		<TD><IMG src="/boardimages/IMSbanner.jpg" align="bottom"></TD>
+	</TR>
+	<TR height="2" ></TR>
+</TABLE>
+
+<TABLE border="0" bgcolor="#004080" height="30" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD nowrap>&nbsp;<FONT color="white" face="arial" size="2"><B>Public Services</B></FONT></TD>
+		<TD align="right" nowrap>
+													<A href="http://dev01/default.htm"><FONT size="1" face="arial" color="wheat"><B>Home</B></FONT></A>&nbsp;
+							</TD>
+	</TR>
+</TABLE>
+</CENTER>
+<!-- VERSION 8.13 Merge -->
+<SCRIPT LANGUAGE="JavaScript">
+	function setCookie (name,value,expires,path,domain,secure) 
+			{
+				document.cookie = name + "=" + escape (value) +
+				((expires) ? "; expires=" + expires.toGMTString() : "") +
+				((path) ? "; path=" + path : "") +
+				((domain) ? "; domain=" + domain : "") +
+				((secure) ? "; secure" : "");
+			}
+
+
+	function fieldFocus() 
+		{
+			var treeDays = 3*24*60*60*1000;
+			var expDate = new Date();
+			var secondExpire = expDate.getTime() - treeDays;
+			// To clear the cookie
+			setCookie("imslastConnect",secondExpire,expDate,"/",null,false);
+			
+			document.Menu.LoginID.focus();
+		}
+
+
+	function validLogin()
+		{
+			var twoHours =  <!$MG_TimeOut>*1000;
+			var expDate = new Date();
+			 
+			expDate.setTime(expDate.getTime() + twoHours);
+			setCookie("ims_id",document.Menu.LoginID.value,expDate,"/",false);	
+			setCookie("billing_type","<!$MG_Billing_Type>",expDate,"/",false);
+			//The submit button does sumnit the form
+			//document.Menu.submit();
+		}
+</SCRIPT>
+
+
+<TABLE>
+	<TR>
+		<TD>
+			<FORM NAME="Menu" ACTION="/scripts/mgrqispi.dll" METHOD="POST">
+			<INPUT type="hidden" name="APPNAME"   value="<!$MG_App_Name>">
+			<INPUT type="hidden" name="PRGNAME"   value="IMSMemberLogin">
+			<INPUT type="hidden" name="ARGUMENTS" value="-A<!$MG_Association>,LoginID,VPassword,-LF">
+			<INPUT type="hidden" name="SessionType" value="<!$MG_Session_Type>">
+			<INPUT type="hidden" name="ServiceName" value="<!$MG_Service_Name>">
+			<INPUT type="hidden" name="BillingGroup" value="<!$MG_Billing_Group>">
+		</TD>
+	</TR>		
+</TABLE>
+
+
+<CENTER>
+
+
+<BR>
+<TABLE border="0" cellpadding="0" cellspacing="0" width="100%">
+	<!$MGIF_SESSION_INVALID>
+		<TR>
+			<TD nowrap><FONT face="arial" size="2" color="red"><B>Your session has expired. Please logon.<BR></B></FONT></TD>
+		</TR>
+		<TR>
+			<TD>&nbsp;</TD>
+		</TR>
+	<!$MGENDIF>
+			<TR>
+		<TD bgcolor="wheat" nowrap><FONT size="3" face="arial" color="Red">This Is a Public Customized Login Form</FONT></TD>
+	</TR>
+	</TABLE>
+
+
+<BR><BR>
+<TABLE border="0" cellspacing="0" cellpadding="0" width="40%">
+		<TR>
+			<TD nowrap><FONT face="arial" size="2"><B>Logon ID</B></FONT></TD>
+			<TD nowrap><INPUT type="text" name="LoginID" size="20" maxlength="12" value=""></TD>
+		</TR>
+		<TR>
+			<TD nowrap><FONT face="arial" size="2"><B>Password</B></FONT></TD>
+			<TD nowrap>
+			<INPUT type="password" name="VPassword" size="20" maxlength="8" value="">
+		</TD>
+		</TR>
+		<!$MGIF_INCORRECT_LOGIN>
+			<TR align="center">
+				<TD align="center"  colspan="2" nowrap><FONT face="arial" color="red" size="2"><B><BR><!$MG_Incorrect_Message></B></FONT></TD>
+			</TR>
+		<!$MGENDIF>
+		<TR>
+			<TD height="2" colspan="2" nowrap>&nbsp;</TD>
+		</TR>
+		<TR align="center">
+			<TD colspan="2" nowrap><BR>
+			<INPUT type="submit" name="SubmitB" value="Submit" onClick="validLogin()"></TD>
+		</TR>
+		<TR align="center">
+			<TD colspan="2" align="center" nowrap><BR><A href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSSendPassword&ARGUMENTS=-A<!$MG_Association>,-A&SessionType=<!$MG_Session_Type>&ServiceName=<!$MG_Service_Name>&BillingGroup=<!$MG_Billing_Group>"><FONT face="arial" size="1" color="red">Forgot your password?</FONT></A></TD>
+		</TR>
+</TABLE>
+</FORM>
+<TABLE border="0" cellpadding="0" cellspacing="0" width="100%">
+	<!$MGIF_ADD_NEW_MEMBER>
+		<TR>
+			<TD nowrap><FONT size="2" face="arial" color="Blue">
+				<A href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSEnterReviseMember&ARGUMENTS=-A<!$MG_Association>,-N1&SessionType=<!$MG_Session_Type>&ServiceName=<!$MG_Service_Name>&BillingGroup=<!$MG_Billing_Group>">
+				<!$MGIF_SESSION_MEMBER>
+					<!$MG_New_Member_Message>
+				<!$MGELSE>
+					<!$MG_New_Non_Member_Message>
+				<!$MGENDIF>
+				</A></FONT>
+			</TD>
+		</TR>
+	<!$MGENDIF>
+	</TABLE>
+
+<BR>
+<BR>
+<TABLE border="0" cellpadding="0" cellspacing="0" width="100%">
+	<TR align="center">
+		<TD nowrap><A href="http://www.rapattoni.com"><IMG SRC="/rapmlsimages/pwrmagic.jpg" border="0"></A></TD>
+	</TR>
+</TABLE>
+<BR>
+</CENTER><CENTER>
+<TABLE bgcolor="#004080" height="30" border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD align="center" nowrap>
+			<A href="http://dev01/default.htm"><FONT size="1" face="arial" color="wheat"><B>Home</B></FONT></A>&nbsp;</FONT>
+		</TD>
+	</TR>
+</TABLE>
+
+
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR align="center">
+		<TD nowrap><FONT face="times new roman" size="1"><EM><A HREF="www.rapattoni.com">Rapattoni Internet Member Services<A></EM></FONT></TD>
+	</TR>
+	<TR align="center">
+		<TD nowrap><FONT face="times new roman" size="1"><EM>E-mail: <A HREF="mailto:support@rapattoni.com">support@rapattoni.com</a></EM></FONT></TD>
+	</TR>
+</TABLE>
+
+</CENTER>
+</BODY>
+</HTML>

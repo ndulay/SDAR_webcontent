@@ -1,0 +1,289 @@
+<!$MGIF_EMAIL>
+<HTML>
+<HEAD>
+
+<style type="text/css">
+	.bgbar  {
+   	background : wheat;
+	}
+	.bgmain  {
+   	background : #004080;
+   	}
+  	.sTextBrown {
+	font-size : 8pt;
+	font-weight : bold;
+	color : Brown;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+  	.bText {
+	font-size : 10pt;
+	font-weight : bold;
+	color : #000000;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+	.nnText {
+	font-size : 10pt;
+	font-weight : normal;
+	color : #000000;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+	.bTextBlue {
+	font-size : 10pt;
+	font-weight : bold;
+	color : Blue;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+	.bTextBrown {
+	font-size : 10pt;
+	font-weight : bold;
+	color : Brown;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+	.bTextMarine {
+	font-size : 10pt;
+	font-weight : bold;
+	color : #004080;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+	.nnTextMarine {
+	font-size : 10pt;
+	font-weight : normal;
+	color : #004080;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+	.bTextRed {
+	font-size : 10pt;
+	font-weight : bold;
+	color : Red;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+	.sBannerText {
+	font-size : 10pt;
+	font-weight : bold;
+	color : White;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+</style>
+</HEAD>
+<!$MGENDIF>
+
+<BODY>
+
+<CENTER>
+<!$MG_AsocHeader>
+</CENTER>
+<BR><BR>
+<!$MGIF_FROM_CHARGE>
+<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+	<TR align="center">
+		<TD CLASS="bTextBrown">Thank you, your <!$MGIF_CREDIT>credit<!$MGELSE>invoice<!$MGENDIF> has been processed!</TD>
+	</TR>
+	<TR align="center">
+		<TD CLASS="bTextBrown">Please save or print this page for your records.</TD>
+	</TR>
+</TABLE>
+<BR>
+<!$MGENDIF>
+
+<TABLE  border=0 cellpadding="0" cellspacing="1" width="100%">
+	<TR>
+<!$MGIF_NO_EMAIL>
+	<!$MGIF_FROM_AR>
+		<TD align="Center" width="50%" nowrap><FORM><INPUT TYPE="button" VALUE="Previous Screen" onClick="history.go(-1)"></FORM></TD>
+	<!$MGELSE>
+		<TD align="Left" width="40%" nowrap><A  CLASS="bTextBlue" href="https://<!$MG_Server_Name>/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSMainMenu&ARGUMENTS=-N<!$MG_Session_Number>">Back to Main Menu</A></TD>
+	<!$MGENDIF>	
+<!$MGENDIF>
+	</TR>
+</TABLE>
+<BR>
+
+<TABLE border=0 cellpadding="0" cellspacing="1" width="100%">
+<!$MGIF_DISPLAY_SHIPMENT>
+	<TR CLASS="bgbar">
+		<TD CLASS="bText" width="65%" colspan="2" nowrap>&nbsp;Bill To</TD>
+		<TD CLASS="bText" width="35%" nowrap>Ship To</TD>
+	</TR>
+	<TR>
+		<TD CLASS="nnText" width="35%" valign="top" nowrap><!$MG_Bill_To></TD>
+		<TD CLASS="nnText" width="30%" valign="top" nowrap><!$MG_Member_Ref></TD>
+		<TD CLASS="nnText" width="35%" valign="top" nowrap><!$MG_Ship_To></TD>
+	</TR>
+<!$MGELSE>
+	<TR CLASS="bgbar">
+		<TD CLASS="bText" width="100%" nowrap colspan=3>&nbsp;Bill To</TD>
+	</TR>
+	<TR>
+		<TD CLASS="nnText" width="35%" valign="top" nowrap><!$MG_Bill_To></TD>
+		<TD CLASS="nnText" width="65%" valign="top" colspan="2" nowrap><!$MG_Member_Ref></TD>
+	</TR>
+<!$MGENDIF>
+</TABLE>
+<BR>
+
+<TABLE border="0" cellpadding="0" cellspacing="1" width="100%">
+	<TR CLASS="bgbar">
+		<TD CLASS="bText" nowrap>&nbsp;Description</TD>
+		<TD CLASS="bText" nowrap>&nbsp;Item ID</TD>
+		<TD CLASS="bText" align="right" nowrap>Qty&nbsp;</TD>
+		<TD CLASS="bText" align="right" nowrap>Price&nbsp;</TD>
+		<TD CLASS="bText" align="right" nowrap>Total&nbsp;</TD>
+	</TR>
+<!$MGREPEAT><!-- Invoice Header -->
+<!$MGIF_IS_HEADER>
+	<TR height="23">
+		<TD CLASS="bText" colspan="6" nowrap>&nbsp;Invoice #<!$MG_Invoice_Number>&nbsp;&nbsp;-&nbsp;Date&nbsp;<!$MG_Invoice_Date>&nbsp;&nbsp;<!$MG_Reference>&nbsp;&nbsp;<!$MG_EventID></TD>
+	</TR>
+<!$MGENDIF>
+	<!$MGREPEAT><!-- Invoice Line -->
+		<TR>
+			<TD CLASS="bText" width="35%" nowrap>&nbsp;<!$MG_Product_Description></TD>
+			<TD CLASS="nnText" nowrap width="10%">&nbsp;<!$MG_Item_ID></TD>
+			<TD CLASS="nnText" width="7%" align="right" nowrap><!$MG_Quantity>&nbsp;</TD>
+			<TD CLASS="nnText" nowrap width="9%" align="right"><!$MG_Price>&nbsp;</TD>
+			<TD CLASS="nnText" nowrap width="11%" align="right"><!$MG_Line_Total>&nbsp;</TD>
+		</TR>
+		<!$MGIF_PRINT_2ND_LINE>
+			<TR>
+				<TD CLASS="nnText" nowrap width="35%">&nbsp;<!$MG_2nd_Line></TD>
+			<TR >
+		<!$MGENDIF>
+		<!$MGIF_PRINT_INCUR_MEMBER>
+			<TR>
+				<TD CLASS="nnText" nowrap width="35%">&nbsp;<!$MG_Incurring_Member></TD>
+			<TR>
+		<!$MGENDIF>
+	<!$MGENDREPEAT><!-- Invoice Line -->
+
+<!$MGIF_HAS_MEMO_CHARGES>
+	<!$MGREPEAT><!-- Memo Charge Line -->
+		<TR>
+			<TD CLASS="bText" width="35%" nowrap>&nbsp;<!$MG_Memo_Description></TD>
+			<TD CLASS="nnText" nowrap width="10%">&nbsp;<!$MG_Memo_Charge_Code></TD>
+			<TD CLASS="nnText" width="7%" align="right" nowrap>&nbsp;</TD>
+			<TD CLASS="nnText" nowrap width="9%" align="right">&nbsp;</TD>
+			<TD CLASS="nnText" nowrap width="11%" align="right"><!$MG_Memo_Total>&nbsp;</TD>
+		</TR>
+	<!$MGENDREPEAT><!-- Memo Charge Line -->
+<!$MGENDIF>
+	
+	<TR>
+		<TD colspan="5"><HR></TD>
+	</TR>
+<!$MGENDREPEAT><!-- Invoice Header -->
+	<TR>
+		<TD CLASS="nnText" align="right" colspan="4" nowrap>Sub-Total:&nbsp;</TD>
+		<TD CLASS="nnText" align="right" nowrap><!$MG_Sub_Total>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="nnText" align="right" colspan="4" nowrap>Tax:&nbsp;</TD>
+		<TD CLASS="nnText" align="right" nowrap><!$MG_Tax>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD align="right" colspan="5" nowrap><HR width="28%"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" align="right" colspan="3" nowrap><!$MG_Saving_Message></TD>
+		<TD CLASS="bText" align="right" nowrap>Total:&nbsp;</TD>
+		<TD CLASS="bText" align="right" CLASS="bgbar" nowrap><!$MG_Invoice_Total>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD colspan="5">&nbsp;</TD>
+	</TR>
+</TABLE>
+
+<!$MGIF_MESSAGE_1>
+	<TABLE border="0" cellpadding="0" cellspacing="1" width="100%">
+		<TR>
+			<TD CLASS="bText" colspan="5" align="Left" nowrap><!$MG_Invoice_Message_1><BR>&nbsp;</TD>
+		</TR>
+	</TABLE>
+<!$MGENDIF>
+	
+<!$MGIF_NOPAYMENT>
+		<!$MGIF_FROM_AR>
+			<TABLE align="center">
+				<!$MGIF_DOC_EXIST>
+					<!$MGINCLUDE><!$MG_Disclosure_Doc_Path><!$MGENDINCLUDE>
+				<!$MGENDIF>
+			</TABLE>
+		<!$MGENDIF>
+<TABLE border="0" cellpadding="0" cellspacing="1" width="100%">
+	<TR CLASS="bgbar">
+		<TD CLASS="bText" colspan="5" align="center" nowrap>Payment Information</TD>
+	</TR>
+	<TR>
+		<TD colspan="5">&nbsp;</TD>
+	</TR>
+	<!$MGIF_FROM_CHARGE>
+		<TR>
+			<TD CLASS="bText" align="right" colspan="4" nowrap>Total invoiced to your account:&nbsp;</TD>
+			<TD CLASS="bText" align="right" nowrap><!$MG_Receipt_Total>&nbsp;</TD>
+		</TR>
+</TABLE>
+	<!$MGENDIF>
+		
+<!$MGELSE>
+	 <!$MGIF_FROM_AR>
+		<TABLE align="center">
+			<!$MGIF_DOC_EXIST>
+				<!$MGINCLUDE><!$MG_Disclosure_Doc_Path><!$MGENDINCLUDE>
+			<!$MGENDIF>
+		</TABLE>
+	<!$MGENDIF>
+		 
+<TABLE align="center" border="0" cellpadding="0" cellspacing="1" width="70%">
+	<TR CLASS="bgbar">
+		<TD CLASS="bText" colspan="7" align="center" nowrap>Payment Information</TD>
+	</TR>
+	<TR CLASS="bgbar">	
+		<TD CLASS="bText" align="Left" width="10%">&nbsp;Receipt<BR>&nbsp;Number</TD>
+		<TD CLASS="bText" align="Left" nowrap width="10%">&nbsp;Date</TD>
+		<TD CLASS="bText" align="Left" nowrap width="10%">&nbsp;Applied<BR>&nbsp;On Invoice</TD>
+		<TD CLASS="bText" align="Left" nowrap width="10%">&nbsp;Applied<BR>&nbsp;On Receipt</TD>
+		<TD CLASS="bText" align="Left" nowrap width="15%">&nbsp;Payment Type</TD>
+		<TD CLASS="bText" align="Left" nowrap width="15%">&nbsp;Payment<BR>&nbsp;Number</TD>
+		<TD CLASS="bText" align="Left" nowrap width="15%">&nbsp;Expiration<BR>&nbsp;Date</TD>
+	</TR>
+	<!$MGREPEAT>
+	<TR>	
+		<TD CLASS="nnText" nowrap width="10%" align="right"><!$MG_ReceiptNumber>&nbsp;</TD>
+		<TD CLASS="nnText" nowrap width="10%">&nbsp;<!$MG_Date></TD>
+		<TD CLASS="nnText" align="right" nowrap width="10%"><!$MG_AppliedOnInvoice>&nbsp;</TD>
+		<TD CLASS="nnText" align="right" nowrap width="10%"><!$MG_AppliedOnReceipt>&nbsp;</TD>
+		<TD CLASS="nnText" align="Left" nowrap width="15%">&nbsp;<!$MG_Payment_Type></TD>
+		<TD CLASS="nnText" align="Left" nowrap width="15%">&nbsp;<!$MG_PaymentNumber></TD>
+		<TD CLASS="nnText" align="Left" nowrap width="15%">&nbsp;<!$MG_ExpirationDate></TD>
+	</TR>
+	<TR>
+		<TD colspan="7"><HR></TD>
+	</TR>
+	<!$MGENDREPEAT>
+</TABLE>
+<!$MGENDIF>
+<TABLE  border=0 cellpadding="0" cellspacing="1" width="100%">
+	<TR>
+		<TD align="center" nowrap>
+<!$MGIF_NO_EMAIL>
+	<!$MGIF_FROM_AR>
+		<FORM><INPUT TYPE="button" VALUE="Previous Screen" onClick="history.go(-1)"></FORM>
+		</TD>
+	<!$MGELSE>
+		<A  CLASS="bTextBlue" href="https://<!$MG_Server_Name>/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSMainMenu&ARGUMENTS=-N<!$MG_Session_Number>">Back to Main Menu</A></TD>
+	<!$MGENDIF>
+<!$MGENDIF>
+	</TR>
+</TABLE>
+
+</BODY>
+</HTML>
+		

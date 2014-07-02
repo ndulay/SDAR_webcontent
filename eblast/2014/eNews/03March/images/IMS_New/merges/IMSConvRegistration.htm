@@ -1,0 +1,230 @@
+<SCRIPT LANGUAGE="JavaScript">
+function initialize_form()
+	{
+	document.Convention.PrgOption.value = '1';
+	document.Convention.Option.value = '0';
+	}
+function LTrim(str) 
+	{
+	for (var i=0; str.charAt(i)==" "; i++);
+	return str.substring(i,str.length);
+	}
+function CheckAddress()
+		{
+		var Check_if_Blank = (document.Convention.Street_Addr.value);
+		if( Check_if_Blank == '')
+			{
+			alert ("Address is required.");
+			document.Convention.Street_Addr.focus();
+
+			}
+		}
+function CheckCity()
+		{
+		var Check_if_Blank = (document.Convention.City.value);
+		if( Check_if_Blank == '')
+			{
+			alert ("City is required.");
+			document.Convention.City.focus();
+
+			}
+		}	
+function CheckState()
+		{
+		var Check_if_Blank = (document.Convention.State.value);
+		if( Check_if_Blank == '')
+			{
+			alert ("State is required.");
+			document.Convention.State.focus();
+
+			}
+		}
+function CheckZip()
+		{
+		var Zipcode = LTrim(document.Convention.Zip_Code.value);
+		if (Zipcode = '' || Zipcode.length < 5)
+			{
+			alert('Invalid Zip Code');
+			document.Convention.Zip_Code.focus();
+
+			}
+		}
+function CheckEmail()
+		{
+		var Check_if_Blank = (document.Convention.Email_Address.value);
+		var str = (document.Convention.Email_Address.value);
+		if( Check_if_Blank == '')
+			{
+			alert ("E-Mail Address is required.");
+			document.Convention.Email_Address.focus();
+			}
+		else
+			{
+			var reg1 = /(@.*@)|(\.\.)|(@\.)|(\.@)|(^\.)/;														 // not valid
+			var reg2 = /^.+\@(\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,5}|[0-9]{1,5})(\]?)$/;		 // valid
+			if (!reg1.test(str) && reg2.test(str))																 // if reg1 false and reg2 true (valid)
+				{ 
+				return true;
+				}
+				else
+				{
+				alert('Invalid E-Mail Address');
+				document.Convention.Email_Address.focus();
+				return false;
+				}
+			}
+		}
+
+function Valid_Form(Voption)
+{
+	document.Convention.Option.value = Voption;
+	document.Convention.submit();
+}
+function Valid_Form_Guest(Voption)
+{
+	document.Convention.PrgOption.value = Voption;
+	document.Convention.submit();
+}
+function Valid_Form_Meal(Voption)
+{
+	document.Convention.PrgOption.value = Voption;
+	document.Convention.submit();
+}
+
+//-->
+</SCRIPT>
+
+<FORM NAME="Convention" action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="IMSConvRegistration">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-A<!$MG_Convention_ID>,-A<!$MG_Package_ID>,-N<!$MG_Package_Price>,PrgOption">
+	<INPUT type="hidden" name="PrgOption" value="1">
+	<INPUT type="hidden" name="Option" value="0">
+	<INPUT type="hidden" name="Total_Charge" value="<!$MG_Convention_Charge>">
+	<INPUT type="hidden" name="Num_Guest" value="<!$MG_Guest_Number>">
+
+<TABLE border="0" width="60%" cellpadding="0" cellspacing="2">
+	<TR>
+		<TD CLASS="bigTextMarine" align="left" colspan="4" nowrap>&nbsp;<!$MG_Convention_Name>&nbsp;-&nbsp;<!$MG_Package_Name></TD>
+	</TR>
+	<TR Height=20>
+		<TD CLASS="bText" align="left" nowrap>&nbsp;Convention ID</TD>
+		<TD CLASS="nnText" align="left" nowrap><!$MG_Convention_ID></TD>
+		<TD CLASS="bText" align="left" nowrap>Date</TD>
+		<TD CLASS="nnText" align="left" nowrap><!$MG_Convention_Date></TD>
+	</TR>
+	<TR Height=20>
+		<TD CLASS="bText" align="left" nowrap>&nbsp;Package Price</TD>
+		<TD CLASS="nnTextBlue" align="left" nowrap><!$MG_Ticket_Price></TD>
+		<TD CLASS="bText" align="left" nowrap>Location</TD>
+		<TD CLASS="nnText" align="left" nowrap><!$MG_Location></TD>
+	</TR>
+</TABLE>
+
+
+<CENTER>
+<BR>
+<TABLE border="0" width="100%" cellpadding="2" cellspacing="0">
+	<TR>
+		<TD CLASS="bgbar" nowrap><FONT face="arial" size="2">&nbsp;Verify or change address (effective for this registration only)</FONT></TD>
+	</TR>
+</TABLE>
+
+
+<BR>
+<INPUT type="Hidden" name="Add_Info_Name" value="<!$MG_Member_Name>">
+<INPUT type="Hidden" name="Add_Info_Office" value="<!$MG_Office_Name>">
+<TABLE border="0" width="60%" cellpadding="0" cellspacing="2">
+	<TR height="24">
+		<TD CLASS="bText" align="left" nowrap>&nbsp;Member Name</TD>
+		<TD CLASS="nnText" colspan="2" width="5%" align="left" nowrap>&nbsp;<!$MG_Member_Name></TD>
+		<TD CLASS="nnText" align="left" nowrap><B>Member #</B>&nbsp;&nbsp;<!$MG_Member_Number></TD>
+	</TR>
+	<TR height="24">
+		<TD CLASS="bText" align="left" nowrap>&nbsp;Office Name</TD>
+		<TD CLASS="nnText" colspan="2" align="left" nowrap>&nbsp;<!$MG_Office_Name></TD>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="150" nowrap nowrap>&nbsp;Attn/Care of</TD>
+		<TD colspan="2" nowrap><INPUT CLASS="input" type="text" name="Attn_CO" size="31" maxlength="30" value="<!$MG_Attn_CO_Now>"></TD>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="150" nowrap>&nbsp;Address</TD>
+		<TD colspan="2" nowrap><INPUT CLASS="input" type="text" name="Street_Addr" size="31" maxlength="30" onBlur="CheckAddress()"	 value="<!$MG_Street_Addr_Now>"></TD>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="150" nowrap>&nbsp;City, State Zip</TD>
+		<TD nowrap><INPUT CLASS="input" type="text" name="City" size="23" maxlength="21" onBlur="CheckCity()" value="<!$MG_City_Now>"></TD>
+		<TD align="right" nowrap><INPUT CLASS="input" type="text" name="State" size="2" maxlength="2" onBlur="CheckState()" value="<!$MG_State_Now>"></TD>
+		<TD nowrap>&nbsp;<INPUT CLASS="input" type="text" name="Zip_Code" size="5" maxlength="5" onBlur="CheckZip()"  value="<!$MG_Zip_Code_Now>">-<INPUT CLASS="input" type="text" name="Zip_Plus_4" size="4" maxlength="4" value="<!$MG_Zip_Plus_4_Now>"></TD>
+	</TR>
+</TABLE>
+<BR>
+<TABLE border="0" width="60%" cellpadding="0" cellspacing="2">
+		<TR>
+			<TD CLASS="bText" width="150" nowrap>&nbsp;Number of Tickets</TD>
+			<TD CLASS="bTextBlue"><INPUT type="Hidden" name="Ticket" value="<!$MG_Num_Tickets>"><!$MG_Num_Tickets></TD>
+		</TR>
+<TABLE>
+
+<!$MGIF_GUEST_TICKET_ALLOWED>
+	<TABLE border="0" width="60%" cellpadding="0" cellspacing="2">
+		<TR>
+			<TD nowrap><INPUT CLASS="sText" type="button" name="Guest" value="Click here to add guest tickets <!$MGIF_GUEST_REGISTERED>- <!$MG_Guest_Number> Guest(s) registered ($<!$MG_Guest_Total_Price>)<!$MGENDIF>  " onClick="Valid_Form_Guest('2')"></TD>
+		</TR>
+	</TABLE>
+<!$MGENDIF>
+<TABLE border="0" width="60%" cellpadding="0" cellspacing="2">
+		<TR>
+			<TD CLASS="bText" width="150" nowrap>&nbsp;Total Charge</TD>
+			<TD CLASS="bTextBlue" nowrap><!$MG_Convention_Charge></TD>
+		</TR>
+	</TABLE>
+<BR>
+<TABLE border="0" width="60%" cellpadding="0" cellspacing="2">
+	<TR>
+		<TD CLASS="bText" width="150" nowrap>&nbsp;E-Mail Address</TD>
+		<TD>
+					<!$MGIF_MODIFY_EMAIL>
+				<INPUT CLASS="input" type="text" name="Email_Address" size="50" maxlength="80" value="<!$MG_Email_Address_Now>" onBlur="CheckEmail()">
+			<!$MGELSE>
+				<DIV CLASS="input">
+					<INPUT type="hidden" name="Email_Address" value="<!$MG_Email_Address_Now>" onBlur="CheckEmail()"><!$MG_Email_Address_Now>
+				</DIV>
+			<!$MGENDIF>
+		
+		
+		<!--<INPUT CLASS="input" type="text" name="Email_Address" size="50" maxlength="80" onBlur="CheckEmail()" value="<!$MG_Email_Address_Now>">-->
+		
+		</TD>
+	</TR>
+</TABLE>
+
+<BR>
+<TABLE border="0" cellpadding="0" cellspacing="0" width="80%">
+	<TR align="center">	
+	<!$MGIF_REGISTRATION_COMPLETED>
+		<!$MGIF_FOUND_MEAL>
+			<TD nowrap><INPUT type="button" name="Meal_Choice" value="Meal Choice" onClick="Valid_Form_Meal('3')"></TD>
+		<!$MGENDIF>
+		<!$MGIF_PAY_BY_CC>
+			<TD nowrap><INPUT type="button" name="CreditCard" value="Pay by Credit Card" onClick="Valid_Form('1')"></TD>
+		<!$MGENDIF>
+		<!$MGIF_PAY_BY_TELECHECK>
+			<TD nowrap><INPUT type="button" name="Telecheck" value="Pay by TeleCheck" onClick="Valid_Form('5')"></TD>
+		<!$MGENDIF>
+		<!$MGIF_CHARGE_AUTH>
+			<TD nowrap><INPUT type="button" name="ChargeAccount" value="Charge to My Account" onClick="Valid_Form('2')"></TD>
+		<!$MGENDIF>
+	<!$MGELSE>
+			<TD nowrap><INPUT type="button" name="Meal_Choice" value="Continue" onClick="Valid_Form_Meal('3')"></TD>
+	<!$MGENDIF>
+	</TR>	
+</TABLE>
+</FORM>
+
+
+</CENTER>

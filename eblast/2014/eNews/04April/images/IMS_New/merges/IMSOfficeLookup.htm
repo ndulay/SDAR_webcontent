@@ -1,0 +1,131 @@
+<HTML>
+<HEAD>
+<TITLE><!$MG_Title></TITLE>
+<link href="/boardimages/style.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR>
+		<TD CLASS="bigTextMarine" nowrap height="30" valign="middle"><!$MG_Count> Office(s) found.</TD>
+	</TR>
+</TABLE>
+<TABLE border="0" cellpadding="0" cellspacing="0" width="100%">
+	<TR CLASS="bgbar">
+		<TD CLASS="nnText" nowrap>&nbsp;Click next to an office to select it</TD>
+	</TR>
+</TABLE>
+
+<form name="radio_form">
+<!$MGIF_FOUND_GT1>
+<script language="JavaScript">
+<!--
+function radio_button_checker()
+{
+// set var radio_choice to false
+var radio_choice = false;
+var Office_String = '';
+var Office_Number = '';
+var Office_Name = '';
+
+// Loop from zero to the one minus the number of radio button selections
+for (counter = 0; counter < radio_form.radio_button.length; counter++)
+{
+	// If a radio button has been selected it will return true
+	// (If not it will return false)
+	if (radio_form.radio_button[counter].checked)
+	{
+		radio_choice = true;
+		Office_String = document.radio_form.radio_button[counter].value;
+		Office_Number = Office_String.substr(0,9);
+		Office_Name = Office_String.substr(12,Office_String.length);
+		window.opener.document.forms.<!$MG_Form_Name>.Office_ID.value = Office_Number;
+		window.opener.document.forms.<!$MG_Form_Name>.Office_Name.value = Office_Name;
+	}
+}
+
+if (!radio_choice)
+{
+// If there were no selections made display an alert box 
+alert("Please select an Office or hit Cancel to close the window.");
+}
+else
+{
+window.close();
+}
+}
+-->
+</script>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+			<!$MGREPEAT>
+	<TR CLASS="<!$MGIF_ODD_ROW>bgWhite<!$MGELSE>bgSmoke<!$MGENDIF>">
+		<TD CLASS="nnText" nowrap>
+			<input type="radio" value="<!$MG_Office_Number> - <!$MG_Office_Name>" name="radio_button" onClick="radio_button_checker()">&nbsp;&nbsp;<b><!$MG_Office_Number>&nbsp;-&nbsp;<!$MG_Office_Name></b><BR>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!$MG_Office_address><BR><BR>
+		</TD>
+	</TR>
+			<!$MGENDREPEAT>
+</TABLE>
+<!$MGENDIF>
+
+<!$MGIF_NOTFOUND>
+	<TABLE border="0" width="50%" cellpadding="0" cellspacing="0">
+		<TR>
+			<TD CLASS="nnTextBlue" align="left" nowrap>No Records Found</TD>
+		</TR>
+		<TR>
+			<TD>&nbsp;</TD>
+		</TR>
+	</TABLE>
+<!$MGENDIF>
+
+<!$MGIF_FOUND_EG1>
+<script language="JavaScript">
+<!--
+function checkOffice()
+{
+	var Office_String = '';
+	var Office_Number = '';
+	var Office_Name = '';
+	Office_String = document.radio_form.OfficeID.value;
+	Office_Number = Office_String.substr(0,9);
+	Office_Name = Office_String.substr(12,Office_String.length);
+	window.opener.document.forms.<!$MG_Form_Name>.Office_ID.value = Office_Number;
+	window.opener.document.forms.<!$MG_Form_Name>.Office_Name.value = Office_Name;
+	window.close();
+}
+-->
+</script>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR>
+		<TD CLASS="nnText" nowrap>
+		<INPUT type="checkbox" name="CheckOffice"  onclick="checkOffice()">
+		<input type="hidden" value="<!$MG_Office_Number1> - <!$MG_Office_Name1>" name="OfficeID">
+		<b><!$MG_Office_Number1></b><BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!$MG_Office_Name1><BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!$MG_Office_address1><BR>
+		</TD>
+		<BR>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+
+<TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+	<TR><TD colspan="1"><HR noshade size="1"></TD></TR>
+	<TR>
+		<TD nowrap align="Center"><INPUT type="button" value="Cancel" name="btn2Cancel" onClick="window.close()">
+		</TD>
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+</TABLE>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR CLASS="bgMain">
+		<TD>&nbsp;</TD>
+	</TR>
+</TABLE>
+	
+</form>
+</BODY>
+</HTML>
+

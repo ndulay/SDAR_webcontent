@@ -1,0 +1,358 @@
+<!$MGIF_MERGE_HEADER>
+<SCRIPT LANGUAGE="JavaScript">
+<!---
+/////////////////////////////////////////////////////////////////////
+function InitForm()
+{
+	if(ValidPayment.Contribution.value =='Y')
+	{
+		Calculate(ValidPayment,0);
+	}
+	CalcTotalAmount(ValidPayment,0)
+}
+
+function CancelForm()
+{
+	document.ValidPayment.action = "https://<!$MG_Server_name>/scripts/mgrqispi.dll";
+	document.ValidPayment.SubmitControl.value="Cancel";
+	document.ValidPayment.submit();
+}
+function SubmitForm(VPayment)
+{
+	document.ValidPayment.Payment.value = VPayment;
+	document.ValidPayment.submit();
+}
+
+//-------------------------------------------------------------------
+//  Functions to make $ amount fields have 2 digits
+//-------------------------------------------------------------------
+function IsSome(str)
+{
+   str = new String(str);
+   if(str.length<=0)     { str="";  return "false" };
+   
+   str = str.substring(0, 255);
+   if(str=="NaN")        { str="";  return "false" };
+   if(str=="undefined")  { str="";  return "false" };
+   
+   if(str=="") return "false";
+   
+   return "true";
+  }
+function returnDecimal2(num)
+{
+   if(IsSome(num)=="false") return " "; 
+
+   var i = new String(Math.round(num*100)/100);
+   if      (i.length>2 && i.charAt(i.length-3) == ".") {} // do nothing
+   else if (i.length>1 && i.charAt(i.length-2) == ".") {i +=   "0";}
+   else if (i.length>0 && i.charAt(i.length-1) == ".") {i +=  "00";}
+   else                                                {i += ".00";}
+   return i;
+   }
+//------------------------------------------------------------------------
+//  Function to select minimum amount if box checked
+//------------------------------------------------------------------------
+function GetAmtToPay(lineno,minimumAmount,originalAmount)
+{
+	var objElements=document.ValidPayment.elements;
+	
+	if(objElements["Ckbox_Name_"+lineno].checked == true)
+		{
+			objElements["Pay_Amount_"+lineno].readOnly=false;
+			objElements["Pay_Amount_"+lineno].value=returnDecimal2(minimumAmount);
+		}
+		else
+		{
+			objElements["Pay_Amount_"+lineno].readOnly=true;
+			objElements["Pay_Amount_"+lineno].value=returnDecimal2(originalAmount);
+		}
+}
+//------------------------------------------------------------------------
+//  Function to check for valid amount entered
+//------------------------------------------------------------------------
+function CheckValidAmount(lineno,val,minimum,baldue)
+{
+	var objElements=document.ValidPayment.elements;
+	//var InputAmount = 0.0;
+	
+	if(objElements["Pay_Amount_"+lineno].value < minimum)
+		{
+		alert ('Amount must be equal or greater than the Minimum To Pay.' );
+		objElements["Pay_Amount_"+lineno].value=returnDecimal2(minimum);
+		}
+	if(objElements["Pay_Amount_"+lineno].value > baldue)
+		{
+		alert ('Amount cannot be greater than the Balance Due.' );
+		objElements["Pay_Amount_"+lineno].value=returnDecimal2(minimum);
+		}
+	else
+		{
+		val = returnDecimal2(objElements["Pay_Amount_"+lineno].value);
+		//alert ('val = ' +val)
+		objElements["Pay_Amount_"+lineno].value=val;
+		return val;
+		}
+}
+
+//------------------------------------------------------------------------
+//  Function to calculate totals
+//------------------------------------------------------------------------
+
+function CalcTotalAmount(f,val)
+{
+	TestVal = isNumeric(val);
+	if(TestVal == false)
+	{
+		val = 0;
+	}
+	TotalNotChanged = f.TotalNotModifiable.value - 0.0;
+	//alert('f.Contribution.value = ' + f.Contribution.value)
+	if(f.Contribution.value =='Y')
+	{
+		if (isNaN(f.TotalContribution.value))
+			{f.TotalContribution.value == 0.0;}
+		//if (f.TotalContribution.value <= 0)
+		//	{f.TotalContribution.value == 0.0;}
+		TotalCtrb = f.TotalContribution.value - 0.0;
+		//alert ('Total Contrib ' + TotalCtrb);
+	}
+	else {TotalCtrb = 0.0;}
+
+	var RecalcAmount = 0.0;
+	var ValidateAmount = 0.0;
+	var FinalTotal = 0.0;
+	var ExtractString = ''
+	var ExtractValue = 0.0
+	for(i=0; i<f.elements.length; i++)
+	{
+		ExtractString = f.elements[i].name;
+		ExtractValue = f.elements[i].value - 0.0;
+		if(ExtractString.substr(0,11) == 'Pay_Amount_')   // removed because credit amts allowed && ExtractValue >= 0.0)
+		{
+		RecalcAmount += f.elements[i].value - 0.0;
+		document.getElementById('Display_'+f.elements[i].name).innerHTML = '<B>'+f.elements[i].value+'</B>';
+		}
+	}
+	f.TotalSelected.value = RecalcAmount + TotalNotChanged;
+	//alert ('Total Selected value = ' + f.TotalSelected.value);
+	ValidateAmount  = RecalcAmount + TotalNotChanged;
+	f.TotalSelected.value = MoneyFormatWithCommas(ValidateAmount);
+	document.getElementById('Display_TotalSelected').innerHTML = '<B>'+f.TotalSelected.value+'</B>';
+
+	FinalTotal = TotalCtrb + ValidateAmount;
+	if(f.Contribution.value =='Y')
+	{
+		f.TotalToBePaid.value = MoneyFormatWithCommas(FinalTotal);
+		document.getElementById('Display_TotalToBePaid').innerHTML = '<B>'+f.TotalToBePaid.value+'</B>';
+	}	
+	val = MoneyFormat(val);
+	return val;
+}
+
+//-------------------------------------------------------------------
+// MoneyFormat (value)
+//   Pass a value to be converted to money format - 2 decimal places.
+//   Returns the formatted value
+//-------------------------------------------------------------------
+function MoneyFormat(amount) 
+{
+	var val = parseFloat(amount);
+	if (isNaN(val)) { return "0.00"; }
+	if (val <= 0) { return "0.00"; }
+	else { val = Math.round(val*100)/100; }
+	val = (val == Math.floor(val)) ? val + '.00' : ((val*10 == Math.floor(val*10)) ? val + '0' : val);
+	return val;
+}
+function MoneyFormatWithCommas(amount)
+{
+	var delimeter = ",";
+	var val = parseFloat(amount);
+	var val = MoneyFormat(amount);
+	if (isNaN(val)) { return "0.00"; }
+	if (val <= 0) { return "0.00"; }
+	val = val+"";
+	var i = val.indexOf('.');
+	while (i>3) {
+		val = val.substring(0,i-3)+delimeter+val.substring(i-3);
+		i = i-3;
+		}
+	return val;
+}
+function isNumeric(val) 
+{
+	var dp = false;
+	for (var i=0; i < val.length; i++)
+	{
+		if (!isDigit(val.charAt(i))) 
+		{ 
+			if (val.charAt(i) == '.') 
+			{
+				if (dp == true) { return false; } // already saw a decimal point
+				else { dp = true; }
+			}
+			else 
+			{
+				alert('Wrong entry! Only a numeric value is allowed');
+				return false
+			}
+		}
+	}
+	return true;
+}
+//-------------------------------------------------------------------
+// isDigit(value)
+//   Returns true if value is a 1-character digit
+//-------------------------------------------------------------------
+function isDigit(num) {
+	var string="1234567890";
+	if (string.indexOf(num) != -1) {
+		return true;
+		}
+	return false;
+	}
+
+//--->
+</SCRIPT>
+
+<CENTER>
+<FORM NAME="ValidPayment" ACTION="https://<!$MG_Server_name>/scripts/mgrqispi.dll" METHOD="POST">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="IMSViewAccount">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-N5,-N0,-N<!$MG_Total_Amt_Ckd>,-A<!$MG_Billing_Group>,-A<!$MG_Office_Member>,-N<!$MG_Office_Number_R1>">
+	<INPUT type="hidden" name="SubmitControl" value="Continue">
+	<INPUT type="hidden" name="Payment" value="C">
+	<!-- Contribution value = Y or N meaning Display Contribution Yes or No -->
+	<INPUT type="hidden" name="Contribution" value="<!$MG_Contribution>">
+	<INPUT type="hidden" name="TotalNotModifiable" value="<!$MG_TotalNotModifiable>">
+	
+<BR>
+
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR CLASS="bgbar">
+	<!$MGIF_AUTOPAY>
+		<TD CLASS="nnText" align="left" nowrap>To complete your application, please review the amount below and click the appropriate payment button.</TD>
+	<!$MGELSE>
+		<TD CLASS="nnText" align="left" nowrap>You selected the following invoices to pay. Click the appropriate payment button, or click Cancel to change your selections.</TD>
+	<!$MGENDIF>
+	</TR>
+</TABLE>
+<BR>
+<!-- IF any selected invoice has Payment plan option -->
+<!$MGIF_PAYMENT_PLAN>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="1">
+	<TR CLASS="bgbar">
+		<TD CLASS="bText" width="10%" align="left" nowrap>&nbsp;Invoice</TD>
+		<TD CLASS="bText" width="10%" align="center" nowrap>Date</TD>
+		<TD CLASS="bText" width="40%" align="left" nowrap>&nbsp;Office</TD>
+		<TD CLASS="bText" width="15%"  align="right" nowrap>Balance&nbsp;Due&nbsp;</TD>
+		<TD CLASS="bText" width="10%" align="center" nowrap>Payment&nbsp;Plan</TD>
+		<TD CLASS="bText" width="15%"  align="right" nowrap>Minimum&nbsp;to&nbsp;Pay&nbsp;</TD>
+	</TR>
+</TABLE>
+<!$MGELSE>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="1">
+	<TR CLASS="bgbar">
+		<TD CLASS="bText" width="10%" align="Left" nowrap>&nbsp;Invoice</TD>
+		<TD CLASS="bText" width="10%" align="center" nowrap>Date</TD>
+		<TD CLASS="bText" width="40%" align="left" nowrap>&nbsp;Office</TD>
+		<TD CLASS="bText" width="20%"  align="right" nowrap>Balance&nbsp;Due&nbsp;</TD>
+		<TD CLASS="bText" width="20%" align="right" nowrap>Minimum&nbsp;to&nbsp;Pay&nbsp;</TD>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+
+<!$MGREPEAT>
+	<TABLE border="0" width="100%" cellpadding="0" cellspacing="1">
+		<TR <!$MG_Line_Color>>
+			<TD CLASS="nnText" width="10%" align="left" nowrap>&nbsp;<A CLASS="bTextBlue"  href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R1>&PRGNAME=IMSDisplayInvoice&ARGUMENTS=-N<!$MG_Session_Number_R1>,-N<!$MG_Invoice>,-A,-A<!$MG_Server_Name_R1>,-A,-LT">
+			<!$MG_Invoice></A></TD>
+
+			<!-- IF any selected invoice has Payment plan option -->
+			<!$MGIF_PAYMENT_PLAN_R1>
+			<TD CLASS="nnText" width="10%" align="center"  nowrap><!$MG_Date></TD>
+			<TD CLASS="nnText" width="40%"  align="left" nowrap>&nbsp;<!$MG_Office_Name></TD>
+			<TD CLASS="nnText" width="15%" align="right" nowrap><!$MG_Balance_Due>&nbsp;</TD>
+			<!-- IF this line is a payment plan invoice type -->
+					<!$MGIF_SHOW_CKBOX_R1>
+							<TD CLASS="nnText" width="10%" align="center" size="1" nowrap><INPUT type="checkbox" name="Ckbox_Name_<!$MG_Invoice_R1>"  onClick="GetAmtToPay('<!$MG_Invoice_R1>',<!$MG_Min_To_Pay_R1>,<!$MG_Amt_To_Pay_R1>); CalcTotalAmount(ValidPayment,this.form.Pay_Amount_<!$MG_Invoice_R1>.value);"></TD>
+							<TD width="15%" align="right" nowrap>
+								<!$MGIF_PAYMENT_PLAN_R1>
+									<INPUT CLASS="input"  name="Pay_Amount_<!$MG_Invoice_R1>" id="id_Pay_Amount_<!$MG_Invoice_R1>" value="<!$MG_Amt_To_Pay_R1>" readOnly size="13" maxlength="15" onChange="CheckValidAmount('<!$MG_Invoice_R1>',<!$MG_Amt_To_Pay_R1>,<!$MG_Min_To_Pay_R1>,<!$MG_Balance_Due>);CalcTotalAmount(ValidPayment,this.form.Pay_Amount_<!$MG_Invoice_R1>.value)">
+									<font CLASS="nnText" style="display:none" id="Display_Pay_Amount_<!$MG_Invoice_R1>"><B><!$MG_Amt_To_Pay_R1></B></font>
+								<!$MGELSE>
+									<INPUT CLASS="input"  type="hidden" name="Pay_Amount_<!$MG_Invoice_R1>" id="id_Pay_Amount_<!$MG_Invoice_R1>" value="<!$MG_Amt_To_Pay_R1>" readOnly size="13" maxlength="15" onChange="CheckValidAmount('<!$MG_Invoice_R1>',<!$MG_Amt_To_Pay_R1>,<!$MG_Min_To_Pay_R1>,<!$MG_Balance_Due>);CalcTotalAmount(ValidPayment,this.form.Pay_Amount_<!$MG_Invoice_R1>.value)">
+									<font CLASS="nnText" id="Display_Pay_Amount_<!$MG_Invoice_R1>"><B><!$MG_Amt_To_Pay_R1></B></font>
+								<!$MGENDIF>
+							</TD>
+						<!$MGELSE>
+						<TD CLASS="nnText" width="10%" nowrap>&nbsp;</TD>
+						<TD CLASS="nnText" width="15%" align="right" nowrap><!$MG_Amt_To_Pay_R1></TD>
+					<!$MGENDIF>
+			<!$MGELSE>
+			<TD CLASS="nnText" width="10%" align="center" nowrap><!$MG_Date></TD>
+			<TD CLASS="nnText" width="40%"  align="left" nowrap>&nbsp;<!$MG_Office_Name></TD>
+			<TD CLASS="nnText" width="20%" align="right" nowrap><!$MG_Balance_Due>&nbsp;</TD>
+			<TD CLASS="nnText" width="20%" align="right" nowrap><!$MG_Amt_To_Pay_R1></TD>
+			<!$MGENDIF>
+		</TR>
+	</TABLE>
+<!$MGENDREPEAT>
+
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="bText" width="75%" align="right">Total Selected&nbsp;</TD>
+		<TD  width="25%" align="right">
+			<INPUT CLASS="input" type="hidden" name="TotalSelected" size="13" maxlength="13" readOnly value="<!$MG_Total_Amt>">
+			<font CLASS="nnText" id="Display_TotalSelected"><B><!$MG_Total_Amt></B></font>
+		</TD>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+
+<!$MGIF_MERGE_FOOTER>
+<BR>
+<TABLE align="center" border="0" width="100%" cellpadding="0" cellspacing="0">
+				
+	<!$MGIF_AMOUNT_OK>
+	<TR>
+		<TD nowrap  align="center" >
+			<!$MGIF_CC_AUTHORIZE>
+			<INPUT type="Button" name="CreditCard" value="Credit Card" onClick="SubmitForm('C')">&nbsp;
+			<!$MGENDIF>
+			<!$MGIF_TELECHECK_AUTHORIZE>
+			<INPUT type="Button" name="Telecheck" value="TeleCheck" onClick="SubmitForm('T')">&nbsp;
+			<!$MGENDIF>
+			<INPUT type="button" name="Cancel" value="Cancel" onClick="CancelForm()">
+		</TD>
+	</TR>
+	<!$MGELSE>
+	<TR>
+		<TD align="center" nowrap>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bTextRed" align="center" nowrap>The selected total must be greater than 0</TD>
+	</TR>
+	<TR>
+		<TD align="center" nowrap>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD align="center" ><INPUT type="button" name="Cancel" value="Cancel" onClick="CancelForm()"></TD>
+	</TR>
+	<!$MGENDIF>
+
+</TABLE>
+<!$MGIF_PRINT_DISCLOSURE>
+<BR>
+<TABLE align="center" border="0" width="60%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="sTextBrown" align="Left" nowrap><!$MG_Contrib_Disclosure><BR>&nbsp;</TD>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+</FORM>
+<BR>
+<BR>
+</CENTER>
+<!$MGENDIF>

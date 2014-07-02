@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+<TITLE><!$MG_Title></TITLE>
+
+<link href="/boardimages/style.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY>
+<CENTER>
+
+
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR>
+		<TD CLASS="bTextMarine" nowrap  width="100%" height="30">&nbsp;Find Offices</TD>
+	</TR>
+</TABLE>
+
+
+<TABLE width="100%" cellpadding="0" cellspacing="0">
+	<TR CLASS="bgbar">
+		<TD CLASS="nnText" nowrap>&nbsp;Enter information into any or all boxes</TD>
+	</TR>
+</TABLE>
+
+
+<TABLE width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD>
+			<FORM name="InputForm" action="/scripts/mgrqispi.dll" method="POST">
+				<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+				<INPUT type="hidden" name="PRGNAME" value="IMSSearchLookUp">
+				<INPUT type="hidden" name="ARGUMENTS" value="-A<!$MG_Session_Number>,-A<!$MG_App_Name>,-AOF,-A<!$MG_Lookup_From>">
+		</TD>
+	</TR>
+	</TABLE>
+	<BR>
+	<TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+		<TR>
+			<TD nowrap align="center">
+				<TABLE cellpadding="0" cellspacing="0">
+					<TR>
+						<TD CLASS="bTextMarine" nowrap align="left" valign="top">Office Name&nbsp;</TD>
+						<TD nowrap colspan="3" valign="top"><INPUT CLASS="input" type="text" name="Office_Name" size="50" maxlength="50" value=""></TD>
+					</TR>
+					<!$MGIF_REALTOR>
+						<TR><TD colspan="2">&nbsp;</TD></TR>
+						<TR>
+							<TD CLASS="bText" nowrap align="left" valign="top">Office ID&nbsp;</TD>
+							<TD nowrap><INPUT CLASS="input" name="Office_ID"  maxlength="9" value=""></TD>
+							<TD width="30">&nbsp;</TD>
+						</TR>
+					<!$MGENDIF>
+				</TABLE>
+
+
+				<TABLE cellpadding="0" cellspacing="0" width="1%">
+					<TR>
+						<TD width="1%" nowrap colspan="2" align="center"><BR><INPUT type="submit" value="Submit"></TD>
+						</FORM>
+					</TR>
+					<TR>
+						<TD colspan="2" align="center" nowrap>&nbsp;</TD>
+					</TR>
+				</TABLE>
+
+			</TD>
+		</TR>
+	</TABLE>
+
+
+</CENTER>
+</BODY>
+</HTML>

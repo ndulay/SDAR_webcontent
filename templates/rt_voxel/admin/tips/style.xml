@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<gantrytips>
+
+	<tip label="Main Style" id="main"><![CDATA[<strong>Main Style</strong> configuration panel. Choose the main template color style and background pattern that you would like to use.]]></tip>
+
+	<tip label="Accent Color" id="accent"><![CDATA[<strong>Accent Color</strong> configuration panel. Choose the template accent color that you would like to use.]]></tip>
+	
+	<tip label="Style Panel" id="stylepanel"><![CDATA[<strong>Style Panel</strong> configuration panel. Style Panel shows a frontend style panel. This allows you to change your style settings on the frontend of the template.]]></tip>
+	
+	<tip label="Load Transition" id="loadtransition"><![CDATA[Enable or disable the page loading transition animation effects.]]></tip>
+		
+	<tip label="WebFonts" id="webfonts"><![CDATA[This setting allows you to use <strong>3rd party WebFonts</strong> from providers such as Google. You must first set WebFonts to show and then save your changes, then the available WebFonts will appear in the Font Settings dropdown from where they can be selected.]]></tip>
+	
+	<tip label="Font Settings" id="font"><![CDATA[A selection of fonts to be applied to your site's frontend is available from the <strong>Font Settings</strong> dropdown. It is also possible to set the <strong>Font Size</strong> according to your preference.]]></tip>
+	
+</gantrytips>

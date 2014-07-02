@@ -1,0 +1,41 @@
+<CENTER>
+<!$MGIF_ANY_EVENTS>
+
+<p>
+
+	<BR>
+	<TABLE border="0" width="100%" cellpadding="0" cellspacing="1">
+		<TR CLASS="bgbar" >
+				<TD CLASS="bText" align="left" nowrap>&nbsp;Event Name</TD>
+				<TD CLASS="bText" align="left" nowrap>&nbsp;Event ID</TD>
+				<TD CLASS="bText" align="center" nowrap>Registration ID</TD>
+				<TD CLASS="bText" align="left" nowrap>&nbsp;Event Date</TD>
+				<TD CLASS="bText" align="right" nowrap>Amount</TD>
+		</TR>
+		<!$MGREPEAT>
+			<TR>
+				<TD CLASS="nnText" height="25" align="left" nowrap>&nbsp;<!$MG_Event_Name></TD>
+				<TD CLASS="nnText" height="25" align="left" nowrap>&nbsp;<!$MG_Event_ID></TD>
+				<TD CLASS="nnText" height="25" align="center" nowrap><!$MG_Registration_ID></TD>
+				<TD CLASS="nnText" height="25" align="left" nowrap>&nbsp;<!$MG_Event_Date></TD>
+				<TD CLASS="nnText" height="25" align="right" nowrap><!$MG_Amount></TD>
+			</TR>
+		<!$MGENDREPEAT>
+	</TABLE>
+
+<!$MGELSE>
+	<BR>
+	<BR>
+	<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+		<TR>
+			<TD CLASS="bigTextMarine" align="left" nowrap>You have not completed any classes.</TD>
+		</TR>
+	</TABLE>
+	<BR>
+<!$MGENDIF>
+
+
+
+</CENTER>
+<p>
+<BR>

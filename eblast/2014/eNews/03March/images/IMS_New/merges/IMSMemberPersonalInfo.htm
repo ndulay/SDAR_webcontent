@@ -1,0 +1,738 @@
+<!-- IMS Member Personal Info (45) -->
+<SCRIPT language="javascript" src="IMSTrimUtilities.js"></SCRIPT>
+<CENTER>
+<FORM name="InputForm" action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME"   value="<!$MG_App_Name_Top>">
+	<INPUT type="hidden" name="PRGNAME"   value="IMSSaveMemberDescription">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_session_Number_Top>">
+<TABLE border="0" cellspacing="0" cellpadding="0" width="100%">
+	<TR align="center">
+		<TD nowrap><INPUT TYPE="Button" VALUE="Submit" onClick="SubmitForm()"></TD>
+	</TR>
+</TABLE>
+<BR>
+<!-- START REPEAT ON PROFILE HEADER -->
+<!$MGREPEAT>
+<!$MGIF_PROFILE_HEADER>
+<BR>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR CLASS="bgbar">
+		<TD CLASS="bText" nowrap>&nbsp; <!$MG_Header_Text></TD>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+<!$MGIF_PROFILE_LABEL>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR>
+		<TD CLASS="nnText" nowrap>&nbsp; <!$MG_Header_Text></TD>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+
+<!$MGIF_PROFILE_PICTURE_BIO>
+<!$MGIF_BIO_PICTURE_INFO>
+<TABLE border="0" cellspacing="0" cellpadding="5" width="100%">
+	<TR CLASS="bgbar">
+		<TD width="50%">&nbsp;</TD>
+		<TD CLASS="nnText" colspan="2">Personal Biography</TD>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TR CLASS="bgbar">
+		<TD width="50%" align="center" nowrap><IMG src="<!$MG_Picture_Filename>">&nbsp;</TD>
+		<TD align="left" colspan="2">
+			<TEXTAREA CLASS="input" name="Internet_Bio" rows="10" cols="60"><!$MG_Internet_Bio></TEXTAREA>
+		</TD>
+		<TD>&nbsp;</TD>
+	</TR>
+			
+	<TR CLASS="bgbar">
+		<TD>&nbsp;</TD>
+		<TD align="left" nowrap>
+			<!$MGIF_HAS_PICTURE>
+				<!$MGIF_UPLOAD_PICTURE>
+					<DIV CLASS="input">
+					<INPUT type="checkbox" name="Delete_Picture">&nbsp;<B>Delete Picture</B>
+					</DIV>
+					<INPUT type="hidden" name="Filename" value="<!$MG_Filename>">
+				<!$MGENDIF>
+			<!$MGENDIF>
+		</TD>
+		<TD align="right" nowrap>
+			<!$MGIF_UPLOAD_PICTURE>
+				<A CLASS="bTextBlue"   HREF="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSPictureProcess&ARGUMENTS=-N<!$MG_Session_Number>">Upload Picture</A>
+			<!$MGENDIF>
+		</TD>
+		<TD>&nbsp;</TD>
+	</TR>
+</TABLE>
+<BR>
+<!$MGENDIF>
+<!$MGENDIF>
+<!$MGIF_PROFILE_NAME_DISPLAY>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="bText" nowrap valign="top"><!$MG_Member_Name></TD>
+		<TD CLASS="nnText" nowrap valign="top"><B>NRDS ID</B>&nbsp;&nbsp;<!$MG_Member_NRDS_Number></TD>
+		<TD CLASS="nnText" nowrap valign="top"><B>Member Number</B>&nbsp;&nbsp;<!$MG_Member_Number></TD>
+		<TD CLASS="nnText" nowrap valign="top"><B>MLS ID</B>&nbsp;&nbsp;<!$MG_Member_MLS_ID></TD>
+</TABLE>
+<BR>
+<!$MGENDIF>
+<!$MGIF_PROFILE_NAME_EDIT>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="nnText" nowrap valign="top"><B>NRDS ID</B>&nbsp;&nbsp;<!$MG_Member_NRDS_Number></TD>
+		<TD CLASS="nnText" nowrap valign="top"><B>Member Number</B>&nbsp;&nbsp;<!$MG_Member_Number></TD>
+		<TD CLASS="nnText" nowrap valign="top"><B>MLS ID</B>&nbsp;&nbsp;<!$MG_Member_MLS_ID></TD>
+</TABLE>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="bText" nowrap width="10%">Title</TD>
+		<TD nowrap align="Left" width="8%">
+			<SELECT name="Title" size="1" face="arial">
+				<OPTION CLASS="input" value="Mr" <!$MG_Title_Mr_Selected>> Mr</OPTION>
+				<OPTION CLASS="input" value="Mrs" <!$MG_Title_Mrs_Selected>> Mrs </OPTION>
+				<OPTION CLASS="input" value="Ms" <!$MG_Title_Ms_Selected>> Ms</OPTION>
+			</SELECT>
+		</TD>
+		<TD CLASS="bText" nowrap width="9%"><FONT color="red">*</FONT>First Name</TD>
+		<TD nowrap width="8%"><INPUT CLASS="input" type="text" name="First_Name" size="12" maxlength="12" value="<!$MG_First_Name_Now>" onChange="javascript:if (TrimSpaces(this.value) == ''){alert('First Name is required');return false;}"></TD>
+		<TD CLASS="bText" nowrap width="15%" align="right">Middle Initial&nbsp;&nbsp;&nbsp;</TD>
+		<TD nowrap width="8%"><INPUT CLASS="input" type="text" name="Middle_Initial" size="1" maxlength="1" value="<!$MG_Middle_Initial_Now>"></TD>
+		<TD CLASS="bText" nowrap width="8%"><FONT color="red">*</FONT>Last Name&nbsp;</TD>
+		<TD nowrap width="15%"><INPUT CLASS="input" type="text" name="Last_Name" size="17" maxlength="17" value="<!$MG_Last_Name_Now>" onChange="javascript:if (TrimSpaces(this.value) == ''){alert('Last Name is required');return false;}"></TD>
+		<TD CLASS="bText" nowrap width="5%">&nbsp;&nbsp;&nbsp;Gen&nbsp;</TD>
+		<TD nowrap>
+			<SELECT name="Generation" size="1" face="arial">
+				<OPTION CLASS="input" value=" " <!$MG_Gen_None_Selected>> </OPTION>
+				<OPTION CLASS="input" value="Jr" <!$MG_Gen_Jr_Selected>> Jr</OPTION>
+				<OPTION CLASS="input" value="Sr" <!$MG_Gen_Sr_Selected>> Sr </OPTION>
+				<OPTION CLASS="input" value="II" <!$MG_Gen_II_Selected>> II</OPTION>
+				<OPTION CLASS="input" value="III" <!$MG_Gen_III_Selected>> III </OPTION>
+				<OPTION CLASS="input" value="IV" <!$MG_Gen_IV_Selected>> IV</OPTION>
+			</SELECT>
+		</TD>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+<!$MGIF_PROFILE_NICKNAME>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR>
+		<TD CLASS="bText" width="15%" nowrap>Nickname</TD>
+		<TD nowrap>&nbsp;&nbsp;<INPUT CLASS="input" type="text" name="Member_Nickname" maxlength="12" value="<!$MG_Member_Nickname>"></TD>
+		<TD CLASS="sText" nowrap>(Note: No update will be made if you blank out the nickname)</TD>	
+		<TD>&nbsp;</TD>
+		<TD>&nbsp;<!$MGIF_CHANGE_PASSWORD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A CLASS="bTextBlue"  href="javascript:openChangePasswordWindow()">Change Password</A><!$MGENDIF>
+		</TD>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+<!$MGIF_PROFILE_GENDER>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR>
+		<TD CLASS="bText" nowrap width="15%">Gender</TD>
+		<TD nowrap>
+			&nbsp;&nbsp;<SELECT name="Sex_ComboBox" size="1" face="arial">
+				<OPTION CLASS="input" value="F" <!$MG_Gender_Female_Selected>> Female </OPTION>
+				<OPTION CLASS="input" value="M" <!$MG_Gender_Male_Selected>> Male </OPTION>
+			</SELECT>
+		</TD>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+<!$MGIF_PROFILE_BIRTHDATE>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR>
+		<TD CLASS="bText" width="15%" nowrap>Birth Date</TD>
+		<TD nowrap>&nbsp;&nbsp;<INPUT CLASS="input" type="text" name="Birth_Date" size="6" maxlength="8" value="<!$MG_Birth_Date_Now>"></TD>
+		<INPUT type="hidden" name="Birth_Date_Section" value="yes">
+	</TR>
+</TABLE>
+<!$MGENDIF>
+
+<!$MGIF_PROFILE_LICENSE>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="bText" nowrap valign="top" width="15%">Primary License Number</TD>
+		<TD CLASS="nnText" nowrap valign="top">&nbsp;&nbsp;<!$MG_Member_License_State>&nbsp;<!$MG_Member_License_Number></TD>
+		<TD CLASS="bText" nowrap>&nbsp;&nbsp;&nbsp;Expiration Date&nbsp;<FONT CLASS="nnText">&nbsp;<!$MG_Expiration_Date></FONT></TD>
+		<TD CLASS="bText" nowrap>&nbsp;&nbsp;&nbsp;License Type&nbsp;<FONT CLASS="nnText">&nbsp;<!$MG_License_Type_Description></FONT></TD>
+</TABLE>
+<!$MGENDIF>
+<!$MGIF_PROFILE_LICENSE_EDIT>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<INPUT type="hidden" name="License_Edit_Section" value="yes">
+		<TD CLASS="bText" width="15%" nowrap><!$MGIF_MEMBER_SESSION><FONT color="red">*</FONT><!$MGENDIF>Primary License #</TD>
+		<TD nowrap width="10%">&nbsp;&nbsp;<INPUT CLASS="input" type="text" name="Member_License_Number" size="11" maxlength="11" value="<!$MG_Member_License_Number>"></TD>
+		<TD CLASS="bText" nowrap>&nbsp;&nbsp;&nbsp;<!$MGIF_MEMBER_SESSION><FONT color="red">*</FONT><!$MGENDIF>Expiration Date&nbsp;&nbsp;<INPUT CLASS="input" type="text" name="Expiration_Date" size="6" maxlength="8" value="<!$MG_Expiration_Date>"></TD>
+		<TD CLASS="bText" nowrap>&nbsp;&nbsp;&nbsp;License Type&nbsp;&nbsp;
+			<SELECT name="License_Type_ComboBox" size="1" face="arial">
+				<!$MGREPEAT>
+					<OPTION CLASS="input" value="<!$MG_License_Type_R1>" <!$MG_License_Type_Selected_R1>> <!$MG_License_Type_Description_R1> </OPTION>
+				<!$MGENDREPEAT>
+			</SELECT>
+		</TD>
+		<TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A CLASS="bTextBlue"  href="javascript:openAddlLicenseWindow()">Add Additional License</A></TD><!$MGIF_ADD_LICENSE><!$MGENDIF>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+<!$MGIF_PROFILE_ADDITIONAL_LICENSES>
+	<!-- PROFILE_ADTL_LIC -->
+	<!$MGIF_HAS_ADDITIONAL_LICENSE>
+	<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+		<!$MGREPEAT>
+			<TR>
+				<TD CLASS="bText" nowrap valign="top" width="15%"><!$MGIF_SHOW_TITLE>Additional License(s)<!$MGENDIF></TD>
+				<TD CLASS="nnText" nowrap valign="top">&nbsp;&nbsp;<!$MG_Addl_License_Number>&nbsp;&nbsp;</TD>
+				<TD CLASS="nnText" nowrap valign="top"><B>State&nbsp;&nbsp;</B><!$MG_Addl_License_State>&nbsp;&nbsp;</TD>
+				<TD CLASS="nnText" nowrap valign="top"><B>Expiration Date&nbsp;&nbsp;</B><!$MG_Addl_License_Expiration></TD>
+			</TR>
+		<!$MGENDREPEAT>
+	</TABLE>
+	<!$MGENDIF>
+<!$MGENDIF>
+<!$MGIF_PROFILE_OFFICE>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR width="100%">
+		<TD CLASS="bText" width="15%" nowrap>Office Number&nbsp;/&nbsp;Name</TD>
+		<TD CLASS="bText" nowrap>&nbsp;&nbsp;<!$MG_Office_ID>&nbsp;&nbsp;<!$MG_Office_Name></TD>
+		<TD CLASS="nnText" nowrap><B>Office Phone</B>&nbsp;&nbsp;&nbsp;&nbsp;<!$MG_Member_Office_Phone>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Office Ext</b>&nbsp;&nbsp;<INPUT CLASS="input" type="text" name="Office_Phone_Ext" size="1" maxlength="4" value="<!$MG_Office_Phone_Ext>">
+		</TD>
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+		<TD CLASS="nnText" nowrap>&nbsp;&nbsp;<!$MG_Ofc_Street_Addr></TD>
+		<TD CLASS="nnText" nowrap><B>Office Fax&nbsp;&nbsp;&nbsp;&nbsp;</B>&nbsp;&nbsp;&nbsp;&nbsp;<!$MG_Member_Office_Fax></TD>
+		<TD>&nbsp;</TD>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+		<TD CLASS="nnText" nowrap>&nbsp;&nbsp;<!$MG_Ofc_City_St_Zip></TD>
+		<TD CLASS="nnText" nowrap><B>Office MLS ID</B>&nbsp;&nbsp;&nbsp;<!$MG_Office_MLS_ID></TD>	
+	</TR>
+</TABLE>
+<!$MGENDIF>
+<!$MGIF_PROFILE_EMAIL_ASSOC>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR>
+		<TD CLASS="bText" width="15%" nowrap <!$MGIF_MODIFY_EMAIL><!$MGELSE>DISABLED<!$MGENDIF>>Association E-mail</TD>
+		<TD nowrap>
+				&nbsp;&nbsp;<INPUT CLASS="input" type="text" name="Member_Email" size="80" maxlength="80" value="<!$MG_Member_Email>" <!$MGIF_MODIFY_EMAIL><!$MGELSE>DISABLED<!$MGENDIF>>
+		</TD>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+<!$MGIF_PROFILE_EMAIL_NAR>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR>
+		<TD CLASS="bText" width="15%" nowrap <!$MGIF_MODIFY_NAR_EMAIL><!$MGELSE>DISABLED<!$MGENDIF>><!$MG_MN_Email_Label> E-mail</TD>
+		<TD nowrap>
+				&nbsp;&nbsp;<INPUT CLASS="input" type="text" name="Member_NAR_Email" size="80" maxlength="80" value="<!$MG_Member_NAR_Email>" <!$MGIF_MODIFY_NAR_EMAIL><!$MGELSE>DISABLED<!$MGENDIF>>
+		</TD>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+<!$MGIF_PROFILE_WEB_PAGE>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR>
+		<TD CLASS="bText" width="15%" nowrap>Web Page</TD>
+		<TD nowrap>&nbsp;&nbsp;<INPUT CLASS="input" type="text" name="Member_Website" size="80" maxlength="80" value="<!$MG_Member_Website>"></TD>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+<!$MGIF_PROFILE_ADDRESS_HOME>
+<!-- <BR>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR CLASS="bgbar">
+		<TD CLASS="snText" nowrap>&nbsp; Home Address</TD>
+	</TR>
+</TABLE> -->
+<BR>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR>
+		<TD CLASS="bText" width="15%" nowrap>Attn/Care Of</TD>
+		<TD nowrap>&nbsp;&nbsp;<INPUT CLASS="input" type="text" name="Member_AttnCO" size="40" maxlength="30" value="<!$MG_Member_AttnCO>"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="15%" nowrap>Street Address</TD>
+		<TD nowrap>&nbsp;&nbsp;<INPUT CLASS="input" type="text" name="Member_Address" size="40" maxlength="30"  value="<!$MG_Member_Address>"></TD>
+		<TD CLASS="sText" nowrap>(Note: No update will be made if you blank out <br>any existing address, city, state or zip code)</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="15%" nowrap>City, State, Zip</TD>
+		<TD nowrap>&nbsp;&nbsp;<INPUT CLASS="input" type="text" name="Member_City" size="22" maxlength="21"  value="<!$MG_Member_City>">&nbsp;&nbsp;<INPUT CLASS="input" type="text" name="Member_State" size="1" maxlength="2" value="<!$MG_Member_State>">&nbsp;&nbsp;&nbsp;<INPUT CLASS="input" type="text" name="Member_Zip" size="2" maxlength="5" value="<!$MG_Member_Zip>">-<INPUT CLASS="input" type="text" name="Member_Zip_Plus_4" size="1" maxlength=4 value="<!$MG_Member_Zip_Plus_4>"></TD>
+	</TR>
+</TABLE>
+<!$MGENDIF>
+<!$MGIF_PROFILE_PHONE_HOME>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR>
+		<TD CLASS="bText" width="15%" nowrap>Home Phone</TD>
+		<TD nowrap>&nbsp;&nbsp;<INPUT CLASS="input" type="text" name="Member_Home_Phone_Area" size="2" maxlength="3" value="<!$MG_Member_Home_Phone_Area>" onBlur="isNumeric(this)">-<INPUT CLASS="input" type="text" name="Member_Home_Phone_Prefix" size="2" maxlength="3" value="<!$MG_Member_Home_Phone_Prefix>" onBlur="isNumeric(this)">-<INPUT CLASS="input" type="text" name="Member_Home_Phone_Suffix" size="3" maxlength="4" value="<!$MG_Member_Home_Phone_Suffix>" onBlur="isNumeric(this)"></TD>
+		<TD CLASS="sText" nowrap>(Note: No update will be made if you blank out any existing home phone information)</TD>
+	</TR>
+<!$MGENDIF>
+<!$MGIF_PROFILE_FAX>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR>
+		<TD CLASS="bText" width="15%" nowrap>Personal Fax</TD>
+		<TD nowrap>&nbsp;&nbsp;<INPUT CLASS="input" type="text" name="Member_Home_Fax_Area" size="2" maxlength="3" value="<!$MG_Member_Home_Fax_area>" onBlur="isNumeric(this)">-<INPUT CLASS="input" type="text" name="Member_Home_Fax_Prefix" size="2" maxlength="3" value="<!$MG_Member_Home_Fax_Prefix>" onBlur="isNumeric(this)">-<INPUT CLASS="input" type="text" name="Member_Home_Fax_Suffix" size="3" maxlength=4 value="<!$MG_Member_Home_Fax_Suffix>" onBlur="isNumeric(this)"></TD>
+	</TR>
+<!$MGENDIF>
+<!$MGIF_PROFILE_PHONE_CONTACT>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR>
+		<TD CLASS="bText" width="15%" nowrap>Contact Phone</TD>
+		<TD CLASS="nnText" nowrap id="ContactPhone" align="left">&nbsp;&nbsp;<!$MG_Contact_Phone></TD>
+		<TD width="170" align="left" nowrap><A CLASS="bTextBlue" href="javascript:openContactPhoneWindow()">Select Contact Phone</A></TD>
+		<TD width="170" align="left" nowrap><A CLASS="bTextBlue" href="javascript:openAddlPhoneWindow()">Additional Phone Info</A></TD>
+	</TR>
+	<TR>
+		<TD align="left" CLASS="sText" nowrap colspan="4">&nbsp;&nbsp;&nbsp;&nbsp;(Your Contact Phone Number will appear on various rosters and displays)</TD>
+	</TR>
+</TABLE>
+<BR>
+<!$MGENDIF>
+<!$MGIF_PROFILE_PREFERENCES>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR>
+	<!$MGREPEAT>
+		<!$MGIF_PROFILE_PREFERENCES_MEDIA>
+					<TD CLASS="bText" width="25%" nowrap>
+						Preferred Media<BR>
+						<SELECT CLASS="input" name="Prefered_media_Combo">
+							<OPTION value="M" <!$MG_PrefMed_Mail_Selected>>Mail</OPTION>
+							<OPTION value="F" <!$MG_PrefMed_Fax_Selected>>Fax</OPTION>
+							<OPTION value="E" <!$MG_PrefMed_Email_Selected>>E Mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</OPTION>
+						</SELECT>
+					</TD>
+		<!$MGENDIF>
+		<!$MGIF_PROFILE_PREFERENCES_ADDRESS>
+					<TD CLASS="bText" width="25%" nowrap>
+						Preferred Address<BR>
+						<SELECT CLASS="input" name="Prefered_addr_Combo">
+							<OPTION value="O" <!$MG_PrefMail_Office_Selected>>Office&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</OPTION>
+							<OPTION value="H" <!$MG_PrefMail_Home_Selected>>Home</OPTION>
+						</SELECT>
+					</TD>
+		<!$MGENDIF>
+		<!$MGIF_PROFILE_PREFERENCES_FAX>
+					<TD CLASS="bText" width="25%" nowrap>
+						Preferred Fax<BR>
+						<SELECT CLASS="input" name="Prefered_fax_Combo">
+							<OPTION value="O" <!$MG_PrefFax_Office_Selected>>Office</OPTION>
+							<OPTION value="P" <!$MG_PrefFax_Personal_Selected>>Personal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</OPTION>
+						</SELECT>
+					</TD>
+		<!$MGENDIF>
+		<!$MGIF_PROFILE_PREFERENCES_MAIL_TO>
+					<TD CLASS="bText" width="25%" nowrap>
+						Mail Publications to<BR>
+						<SELECT CLASS="input" name="Prefered_Publication_Combo">
+							<OPTION value="O" <!$MG_PrefPubl_Office_Selected>>Office Street</OPTION>
+							<OPTION value="H" <!$MG_PrefPubl_Home_Selected>>Home</OPTION>
+							<OPTION value="M" <!$MG_PrefPubl_Mail_Selected>>Mail</OPTION>
+							<OPTION value="F" <!$MG_PrefPubl_OfMail_Selected>>Office Mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</OPTION>
+						</SELECT>
+					</TD>
+		<!$MGENDIF>
+		<!$MGIF_PROFILE_PREFERENCES_BILLING>
+					<TD CLASS="bText" width="25%" nowrap>
+						Preferred Billing Method<BR>
+						<!$MGIF_MODIFY_BILLPREF>
+						<SELECT CLASS="input" name="Prefered_bill_Combo">
+							<OPTION value="M" <!$MG_PrefBil_Mail_Selected>>Mail</OPTION>
+							<OPTION value="E" <!$MG_PrefBil_Email_Selected>>E mail&nbsp;</OPTION>
+						</SELECT>
+						<!$MGELSE>
+						<DIV CLASS="input">
+							<INPUT type="hidden" name="PrefBil" value="<!$MG_Bill_Pref>">
+							&nbsp;&nbsp;<!$MG_Bill_Pref>
+						</DIV>
+						<!$MGENDIF>
+					</TD>
+		<!$MGENDIF>
+		<!$MGIF_PROFILE_PREFERENCES_PH_ROSTER>
+					<TD CLASS="bText" width="25%" nowrap>
+						Include my phone on rosters<BR>
+						<SELECT CLASS="input" name="Phone_Roster_Combo">
+							<OPTION value="Y" <!$MG_HPRoster_Yes_Selected>>Yes&nbsp;&nbsp;&nbsp;&nbsp;</OPTION>
+							<OPTION value="N" <!$MG_HPRoster_No_Selected>>No</OPTION>
+						</SELECT>
+					</TD>
+		<!$MGENDIF>
+		<!$MGIF_PROFILE_PREFERENCES_ADR_ROSTER>
+					<TD CLASS="bText" width="25%" nowrap>
+						Include my address on rosters<BR>
+						<SELECT CLASS="input" name="Address_Roster_Combo">
+							<OPTION value="Y" <!$MG_HARoster_Yes_Selected>>Yes&nbsp;&nbsp;&nbsp;&nbsp;</OPTION>
+							<OPTION value="N" <!$MG_HARoster_No_Selected>>No</OPTION>
+						</SELECT>
+					</TD>
+		<!$MGENDIF>
+		<!$MGIF_PROFILE_PREFERENCES_JUNK_EMAIL>
+					<TD CLASS="bText" width="25%" nowrap>
+						Include on E-mail mailing list<BR>
+						<SELECT CLASS="input" name="JunkEMail_Combo">
+							<OPTION value="Y" <!$MG_JunkEMail_Yes_Selected>>Yes&nbsp;&nbsp;&nbsp;&nbsp; </OPTION>
+							<OPTION value="N" <!$MG_JunkEMail_No_Selected>>No</OPTION>
+						</SELECT>
+					</TD>
+		<!$MGENDIF>
+		<!$MGIF_PROFILE_PREFERENCES_JUNK_MAIL>
+					<TD CLASS="bText" width="25%" nowrap>
+						Include on Mail mailing list<BR>
+						<SELECT CLASS="input" name="JunkMail_Combo">
+							<OPTION value="Y" <!$MG_JunkMail_Yes_Selected>>Yes&nbsp;&nbsp;&nbsp;&nbsp; </OPTION>
+							<OPTION value="N" <!$MG_JunkMail_No_Selected>>No</OPTION>
+						</SELECT>
+					</TD>
+		<!$MGENDIF>
+		<!$MGIF_PROFILE_PREFERENCES_JUNK_FAX>
+					<TD CLASS="bText" width="25%" nowrap>
+						Include on Fax mailing list<BR>
+						<SELECT CLASS="input" name="JunkFax_Combo">
+							<OPTION value="Y" <!$MG_JunkFax_Yes_Selected>>Yes&nbsp;&nbsp;&nbsp;&nbsp; </OPTION>
+							<OPTION value="N" <!$MG_JunkFax_No_Selected>>No</OPTION>
+						</SELECT>
+					</TD>
+		<!$MGENDIF>
+		<!$MGIF_PROFILE_PREFERENCES_NEW_ROW>
+				</TR>
+				<TR>
+		<!$MGENDIF>
+	<!$MGENDREPEAT>
+	</TR>
+</TABLE>
+<BR>
+<!$MGENDIF>
+<!$MGIF_PROFILE_FIELD_BUSINESS>
+<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+	<TR Height="23">
+		<TD CLASS="bText" width="25%" nowrap>Primary Field of Business</TD>
+		<TD nowrap>&nbsp;&nbsp;<A CLASS="bTextBlue" href="javascript:openFBPWindow()"><SPAN id="FBP"><!$MG_FBP></SPAN></A></TD>
+	</TR>
+	<TR Height="23">
+		<TD CLASS="bText" width="25%" nowrap>Secondary Field of Business 1</TD>
+		<TD nowrap>&nbsp;&nbsp;<A CLASS="bTextBlue"  href="javascript:openFBS1Window()"><SPAN id="FBS1"><!$MG_FBS1></A></SPAN></TD>
+	</TR>
+	<TR Height="23">
+		<TD CLASS="bText" width="25%" nowrap>Secondary Field of Business 2</TD>
+		<TD nowrap>&nbsp;&nbsp;<A CLASS="bTextBlue"  href="javascript:openFBS2Window()"><SPAN id="FBS2"><!$MG_FBS2></A></SPAN></TD>
+	</TR>
+	<TR Height="23">
+		<TD CLASS="bText" width="25%" nowrap>Secondary Field of Business 3</TD>
+		<TD nowrap>&nbsp;&nbsp;<A CLASS="bTextBlue"  href="javascript:openFBS3Window()"><SPAN id="FBS3"><!$MG_FBS3></A></SPAN></TD>
+	</TR>
+</TABLE>
+<BR>
+<!$MGENDIF>
+<!$MGIF_PROFILE_IMS_CATEGORY>
+<!-- <A href="#ListMaker"></A> -->
+	<!$MGIF_ACTIVE_IMS_CATEGORY>		<!-- ACTIVE_IMS_CATEGORY -->
+		<!$MGREPEAT><!-- ACTIVE_IMS_CATEGORY REPEAT-->
+			<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+			<TR CLASS="bgbar">
+				<TD CLASS="snText" width="25%" nowrap>&nbsp;<!$MG_Category_Descr_R></TD>
+					<!$MGIF_SHOW_COMMENT>
+						<TD CLASS="snText" width="25%" nowrap>Comment</TD>
+					<!$MGELSE>
+						<TD width="25%" nowrap>&nbsp;</TD>
+					<!$MGENDIF>
+					<!$MGIF_SHOW_STATUS>
+						<TD CLASS="snText" width="10%" nowrap>Status</TD>
+					<!$MGELSE>
+						<TD width="10%" nowrap>&nbsp;</TD>
+					<!$MGENDIF>
+					<!$MGIF_SHOW_DATE>
+						<TD CLASS="snText" width="10%" nowrap>Date</TD>
+					<!$MGELSE>
+						<TD width="10%" nowrap>&nbsp;</TD>
+					<!$MGENDIF>
+					<!$MGIF_SHOW_AMOUNT>
+						<TD CLASS="snText" width="15%" nowrap>Amount</TD>
+					<!$MGELSE>
+						<TD width="15%" nowrap>&nbsp;</TD>
+					<!$MGENDIF>
+					<!$MGIF_SHOW_ADDL_INFO>
+						<TD width="15%" nowrap>&nbsp;&nbsp;</TD>
+					<!$MGELSE>
+						<TD width="15%" nowrap>&nbsp;</TD>
+					<!$MGENDIF>
+			</TR>
+			<TR>
+				<TD nowrap>&nbsp;</TD>
+			</TR>
+			<!$MGIF_SHOW_ADD_LINK>
+				<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+					<TR>
+						<TD nowrap>&nbsp;&nbsp;</TD>
+						<TD nowrap><A CLASS="bTextBlue"  href="javascript:openAddListCodeWindow('<!$MG_Category_Code_R>','')">Add item</A></TD>
+					</TR>
+				</TABLE>
+			<!$MGENDIF>
+		<!-- Display List codes that member belongs to -->
+			<!$MGREPEAT>
+				<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+					<TR Height="23">
+					<!$MGIF_SHOW_NO_LINK_R>
+						<TD CLASS="bTextBlue" width="25%" nowrap><!$MG_Description_R></TD>
+					<!$MGELSE>
+						<TD width="25%" nowrap id="List_Code_Descr_For_<!$MG_Cat_Code_R><!$MG_List_Code_R>">&nbsp;&nbsp;<A CLASS="bTextBlue"  href="javascript:openListCodeWindow('<!$MG_Cat_Code_R>', '<!$MG_List_Code_R>')"><!$MG_Description_R></A></TD>
+					<!$MGENDIF>
+					<!$MGIF_SHOW_COMMENT_R>
+						<TD CLASS="snText" width="25%" nowrap id="Comment_For_<!$MG_Cat_Code_R><!$MG_List_Code_R>"><!$MG_Comment_R></TD>
+					<!$MGELSE>
+						<TD width="25%" nowrap>&nbsp;</TD>
+					<!$MGENDIF>
+					<!$MGIF_SHOW_STATUS_R>
+						<TD CLASS="snText" width="10%" nowrap id="Status_For_<!$MG_Cat_Code_R><!$MG_List_Code_R>"><!$MG_Status_Descr_R></TD>
+					<!$MGELSE>
+						<TD width="10%" nowrap>&nbsp;</TD>
+					<!$MGENDIF>
+					<!$MGIF_SHOW_DATE_R>
+						<TD CLASS="snText" width="10%" nowrap id="Date_For_<!$MG_Cat_Code_R><!$MG_List_Code_R>"><!$MG_Date_R></TD>
+					<!$MGELSE>
+						<TD width="10%" nowrap>&nbsp;</TD>
+					<!$MGENDIF>
+					<!$MGIF_SHOW_AMOUNT_R>
+						<TD CLASS="snText" width="15%" nowrap id="Amount_For_<!$MG_Cat_Code_R><!$MG_List_Code_R>"><!$MG_Amount_R></TD>
+					<!$MGELSE>
+						<TD width="15%" nowrap>&nbsp;</TD>
+					<!$MGENDIF>
+					<!$MGIF_SHOW_ADDL_INFO_R>
+						<TD width="15%" nowrap><!$MG_Addl_Info_Link_R>Additional Info</A></TD>
+					<!$MGELSE>
+						<TD width="15%" nowrap>&nbsp;</TD>
+					<!$MGENDIF>
+					</TR>
+				</TABLE>
+			<!$MGENDREPEAT>
+			<BR>
+		<!$MGENDREPEAT>
+	</TABLE>
+	<!$MGENDIF>
+<!$MGENDIF>
+
+<!$MGENDREPEAT>
+<!-- END REPEAT ON PROFILE HEADER -->
+
+<BR>
+<TABLE border="0" cellspacing="0" cellpadding="0" width="100%">
+	<TR align="center">
+		<TD nowrap><INPUT TYPE="Button" VALUE="Submit" onClick="SubmitForm()"></TD>
+	</TR>
+</TABLE>
+</FORM>
+
+</CENTER>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!---
+function isNumeric(objval) 
+{
+	var val = 0;
+	val = Trim(objval.value);
+	for (var i=0; i < val.length; i++) 
+	{
+		if (!isDigit(val.charAt(i))) 
+		{ 
+			alert('Wrong entry! Only a numeric value is allowed');
+			objval.focus()
+			return;
+		}
+	}
+	;
+}
+
+function isDigit(num)
+{
+	var string="1234567890";
+	if (string.indexOf(num) != -1)
+	{
+		return true;
+	}
+	return false;
+}
+
+function LTrim(str) 
+{
+	for (var i=0; str.charAt(i)==" "; i++);
+	return str.substring(i,str.length);
+}
+
+function RTrim(str) 
+{
+	for (var i=str.length-1; str.charAt(i)==" "; i--);
+	return str.substring(0,i+1);
+}
+
+function Trim(str) 
+{
+	return LTrim(RTrim(str));
+}
+
+function isUSStateAbbr(val)
+{
+	val = val+"";
+        if (val.length != 2) { return false; }
+        if (val.charAt(0) == ' ' || val.charAt(1) == ' ') { return false; }
+	var string="AK AL AR AZ CA CO CT DC DE FL GA HI IA ID IL IN KS KY LA MA MD ME MI MN MO MS MT NC ND NE NH NJ NM NV NY OH OK OR PA PR RI SC SD TN TX UT VA VI VT WA WI WV WY";
+	if (string.indexOf(val.toUpperCase()) != -1)
+	{
+		return true;
+	}
+	return false;
+}
+
+function openChangePasswordWindow()
+{
+	var objChangePasswordWindow = window.open ('/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_Top>&PRGNAME=IMSChangePassword&ARGUMENTS=-N<!$MG_session_Number_Top>,-LTrue' , 'newWin', 'menubar=no,toolbar=no,resizable=yes,directories=no,scrollbars=no,status=no,width=650,height=500 left = 255.5,top = 175.5');
+}
+
+function openContactPhoneWindow()
+{
+	var objContactPhoneWindow = window.open
+		('/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_Top>&PRGNAME=IMSSelectContactPhone&ARGUMENTS=-N<!$MG_session_Number_Top>' , 'newWin', 'menubar=no,toolbar=no,resizable=yes,directories=no,scrollbars=no,status=no,width=650,height=400');
+		//objContactPhoneWindow.focus();
+}
+
+function openAddlPhoneWindow()
+{
+	var objAddlPhoneWindow = window.open
+		('/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_Top>&PRGNAME=IMSAdditionalPhoneList&ARGUMENTS=-N<!$MG_session_Number_Top>,-N<!$MG_Member_Number_Top>,-AM,-AP' , 'newWin', 'menubar=no,toolbar=no,resizable=yes,directories=no,scrollbars=no,status=no,width=650,height=450');
+}
+
+function openAddlLicenseWindow()
+{
+	var objAddlLicenseWindow = window.open
+		('/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_Top>&PRGNAME=IMSAdditionalLicense&ARGUMENTS=-N<!$MG_session_Number_Top>' , 'newWin', 'menubar=no,toolbar=no,resizable=yes,directories=no,scrollbars=no,status=no,width=650,height=450');
+}
+
+function openFBPWindow()
+{
+	var objFBPWindow = window.open
+		('/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_Top>&PRGNAME=IMSBusinessLists&ARGUMENTS=-N<!$MG_session_Number_Top>,-AFBP,-A<!$MG_List_Code_FBP>,-A<!$MG_List_Code_FBP_Status>' , 'newWin', 'menubar=no,toolbar=no,resizable=yes,directories=no,scrollbars=no,status=no,width=650,height=400,top=190');
+}
+function openFBS1Window()
+{
+	var objFBS1Window = window.open
+		('/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_Top>&PRGNAME=IMSBusinessLists&ARGUMENTS=-N<!$MG_session_Number_Top>,-AFBS1,-A<!$MG_List_Code_FBS1>,-A<!$MG_List_Code_FBS1_Status>' , 'newWin', 'menubar=no,toolbar=no,resizable=yes,directories=no,scrollbars=no,status=no,width=650,height=400,top=190');
+}
+function openFBS2Window()
+{
+	var objFBS2Window = window.open
+		('/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_Top>&PRGNAME=IMSBusinessLists&ARGUMENTS=-N<!$MG_session_Number_Top>,-AFBS2,-A<!$MG_List_Code_FBS2>,-A<!$MG_List_Code_FBS2_Status>' , 'newWin', 'menubar=no,toolbar=no,resizable=yes,directories=no,scrollbars=no,status=no,width=650,height=400,top=190');
+}
+function openFBS3Window()
+{
+	var objFBS3Window = window.open
+		('/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_Top>&PRGNAME=IMSBusinessLists&ARGUMENTS=-N<!$MG_session_Number_Top>,-AFBS3,-A<!$MG_List_Code_FBS3>,-A<!$MG_List_Code_FBS3_Status>' , 'newWin', 'menubar=no,toolbar=no,resizable=yes,directories=no,scrollbars=no,status=no,width=650,height=400,top=190');
+}
+
+function openAddListCodeWindow(categorycode, listcode)
+{
+	var objListCodeWindow = window.open
+		('/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_Top>&PRGNAME=IMSListMaker&ARGUMENTS=-N<!$MG_session_Number_Top>,-A'+categorycode+',-A,-N2','newWin', 'menubar=no,toolbar=no,resizable=yes,directories=no,scrollbars=no,status=no,width=650,height=500,top=50');
+}
+function openListCodeWindow(categorycode, listcode)
+{
+	var objListCodeWindow = window.open
+		('/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_Top>&PRGNAME=IMSListMaker&ARGUMENTS=-N<!$MG_session_Number_Top>,-A'+categorycode+',-A'+listcode+', -N1','newWin', 'menubar=no,toolbar=no,resizable=yes,directories=no,scrollbars=no,status=no,width=650,height=500,top=50');
+}
+
+function SubmitForm()
+{
+	var check = "TRUE";
+	
+	if (document.InputForm.Member_State)
+	{
+	
+	var State = Trim(document.InputForm.Member_State.value);
+		
+		if (State != '' && isUSStateAbbr(State) == false)
+		{
+			alert('The State Does not exist');
+			document.InputForm.Member_State.focus();
+			return false;
+		}
+	}
+
+	if (document.InputForm.Member_Zip)
+	{
+	
+	var Zipcode = Trim(document.InputForm.Member_Zip.value);
+
+		if (Zipcode != '' && Zipcode.length < 5 && Zipcode != 'N')
+		{
+			alert('Invalid Zip Code');
+			document.InputForm.Member_Zip.focus();
+			return false;
+		}
+	}
+<!$MGIF_MODIFY_EMAIL_TOP>
+	if(document.InputForm.Member_Email)
+	{
+	var Email = Trim(document.InputForm.Member_Email.value);
+		if (Email == '')
+		{
+			alert('Association E-mail Address is required');
+			document.InputForm.Member_Email.focus();
+			return false;
+		}
+		if (Email != '')
+		{
+			var str = (Email);
+			var reg1 = /(@.*@)|(\.\.)|(@\.)|(\.@)|(^\.)/;														 // not valid
+			var reg2 = /^.+\@(\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,5}|[0-9]{1,5})(\]?)$/;		 // valid
+				 if (!reg1.test(str) && reg2.test(str))															 // if reg1 false and reg2 true (valid)
+					{ 
+					// alert('Good E-Mail Address');
+					}
+					else
+					{
+					alert('Invalid Association E-mail Address');
+					document.InputForm.Member_Email.focus();
+					return false;
+					 }
+		}
+	}
+<!$MGENDIF>
+<!$MGIF_MODIFY_NAR_EMAIL_TOP>
+	if(document.InputForm.Member_NAR_Email)
+	{
+	var Email = Trim(document.InputForm.Member_NAR_Email.value);
+		if (Email == '')
+		{
+			alert('<!$MG_MN_Email_Label_TOP> E-mail Address is required');
+			document.InputForm.Member_NAR_Email.focus();
+			return false;
+		}
+		if (Email != '')
+		{
+			var str = (Email);
+			var reg1 = /(@.*@)|(\.\.)|(@\.)|(\.@)|(^\.)/;														 // not valid
+			var reg2 = /^.+\@(\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,5}|[0-9]{1,5})(\]?)$/;		 // valid
+				 if (!reg1.test(str) && reg2.test(str))															 // if reg1 false and reg2 true (valid)
+					{ 
+					// alert('Good E-Mail Address');
+					}
+					else
+					{
+					alert('Invalid <!$MG_MN_Email_Label_TOP> E-mail Address');
+					document.InputForm.Member_NAR_Email.focus();
+					return false;
+					 }
+		}
+	}
+<!$MGENDIF>
+// No errors submit the form
+	document.InputForm.submit();
+
+	}
+
+//--->
+</SCRIPT>

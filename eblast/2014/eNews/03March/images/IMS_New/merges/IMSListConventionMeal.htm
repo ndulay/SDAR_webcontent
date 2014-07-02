@@ -1,0 +1,38 @@
+<FORM name="Meal" action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="IMSConventionMeal">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-A<!$MG_Convention_ID>,-AC">
+	
+<CENTER>
+
+
+<BR>
+<TABLE align="Center" border=0 cellspacing="1" width="80%">
+	<TR CLASS="bgbar">
+		<TD CLASS="bText" align="center" width="30%" nowrap>Event</TD>
+		<TD CLASS="bText" align="center" width="20%" nowrap>Name</TD>
+		<TD CLASS="bText" align="center" width="40%" nowrap>Meal Selection</TD>
+		<!-- <TD CLASS="bText" align="center" width="10%" nowrap>Table/Group</TD> -->
+	</TR>
+	<!$MGREPEAT>
+		<TR <!$MG_Line_Color_R1>>
+			<TD CLASS="nnText" nowrap><!$MG_Event_R1></TD>
+			<TD CLASS="nnText" nowrap><!$MG_Name_R1></TD>
+			<TD><SELECT CLASS="nnText" name="Meal_Choice_<!$MG_Meal_Ref_R1>">
+				<!$MGREPEAT>
+					<OPTION CLASS="input" value="<!$MG_Meal_R2>" <!$MG_Meal_Code_Selected_R2>> <!$MG_Meal_Description_R2></OPTION>
+				<!$MGENDREPEAT>
+			</SELECT></TD>
+			<!-- <TD CLASS="nnText" align="center" nowrap><INPUT CLASS="input" type="text" name="Table_<!$MG_Meal_Ref_R1>" size="4" maxlength="4" Value="<!$MG_Table_R1>"></TD> -->
+		</TR>
+	<!$MGENDREPEAT>
+</TABLE>		
+
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR align="center">
+		<TD nowrap><INPUT type="submit" name="" value="Submit"></TD>
+	</TR>
+</TABLE>
+<BR><BR>
+</CENTER>

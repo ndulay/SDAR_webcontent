@@ -1,0 +1,228 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<style type="text/css">
+	
+	.bTextBlue {
+	font-size : 10pt;
+	font-weight : bold;
+	color : Blue;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+	.bTextMarine {
+	font-size : 10pt;
+	font-weight : bold;
+	color : #004080;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+	.bTextRed {
+	font-size : 10pt;
+	font-weight : bold;
+	color : Red;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+	.bigTextRed {
+	font-size : 10pt;
+	font-weight : bold;
+	color : White;
+	font-family : Arial;	
+	text-decoration : none;
+	}
+</style>
+
+<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+	<TR>
+		<TD CLASS="bTextMarine">Dear Member,</TD>
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+</TABLE>
+<!$MGIF_CREDIT_CARD_UPDATE>
+<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+	<TR>
+		<TD CLASS="bTextMarine">The receipt referenced above has been validated.&nbsp;&nbsp;We received authorization number&nbsp;<!$MG_Auth_Number>&nbsp;for this transaction.</TD>
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TABLE width="40%" cellpadding="0" cellspacing="0" border="0">
+	<TR align="left">
+		<TD CLASS="bTextMarine">Amount</TD>
+		<TD CLASS="bTextMarine"><!$MG_Auth_Amount></TD>
+	</TR>
+	<TR align="left">
+		<TD CLASS="bTextMarine">Charged to</TD>
+		<TD CLASS="bTextMarine"><!$MG_CC_Description></TD>
+	</TR>
+	<TR align="left">
+		<TD CLASS="bTextMarine">Settlement Date</TD>
+		<TD CLASS="bTextMarine"><!$MG_Settle_Date_Response></TD>
+	</TR>
+	</TABLE>
+</TABLE>
+<!$MGENDIF>
+
+<!$MGIF_CC_VOID_TIMEOUT>
+<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+	<TR >
+		<TD CLASS="bTextRed">The receipt referenced above has been voided.&nbsp;&nbsp;We failed to obtain authorization for this payment from the credit card company.&nbsp;&nbsp;Please check the status of your account for any outstanding charges relating to this voided receipt.</TD>
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TABLE width="40%" cellpadding="0" cellspacing="0" border="0">
+	<TR align="left">
+		<TD CLASS="bTextMarine">Amount</TD>
+		<TD CLASS="bTextRed"><!$MG_Auth_Amount></TD>
+	</TR>
+	<TR align="left">
+		<TD CLASS="bTextMarine">Card type</TD>
+		<TD CLASS="bTextMarine"><!$MG_CC_Description></TD>
+	</TR>
+	<TR align="left">
+		<TD CLASS="bTextMarine">Original receipt date</TD>
+		<TD CLASS="bTextMarine"><!$MG_Settle_Date_Request></TD>
+	</TR>
+	</TABLE>
+</TABLE>
+<!$MGENDIF>
+
+<!$MGIF_CC_VOID_INCOMPLETE>
+<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+	<TR>
+		<TD CLASS="bTextRed">The receipt referenced above has been voided.&nbsp;&nbsp;The transaction is incomplete and was not processed by the credit card company.&nbsp;&nbsp;Please check the status of your account for any outstanding charges relating to this voided receipt.</TD>
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TABLE width="40%" cellpadding="0" cellspacing="0" border="0">
+	<TR align="left">
+		<TD CLASS="bTextMarine">Amount</TD>
+		<TD CLASS="bTextRed"><!$MG_Auth_Amount></TD>
+	</TR>
+	<TR align="left">
+		<TD CLASS="bTextMarine">Card type</TD>
+		<TD CLASS="bTextMarine"><!$MG_CC_Description></TD>
+	</TR>
+	<TR align="left">
+		<TD CLASS="bTextMarine">Original receipt date</TD>
+		<TD CLASS="bTextMarine"><!$MG_Settle_Date_Request></TD>
+	</TR>
+	</TABLE>
+</TABLE>
+<!$MGENDIF>
+
+<!$MGIF_TELECHECK_UPDATE>
+<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+	<TR>
+		<TD CLASS="bTextMarine">The receipt referenced above has been validated.&nbsp;&nbsp;We received authorization number&nbsp;<!$MG_Auth_Number>&nbsp;for this transaction.</TD>
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TABLE width="40%" cellpadding="0" cellspacing="0" border="0">
+	<TR align="left">
+		<TD CLASS="bTextMarine">Amount</TD>
+		<TD CLASS="bTextMarine"><!$MG_Auth_Amount></TD>
+	</TR>
+	<TR align="left">
+		<TD CLASS="bTextMarine">Check Number</TD>
+		<TD CLASS="bTextMarine"><!$MG_Check_Number></TD>
+	</TR>
+	<TR align="left">
+		<TD CLASS="bTextMarine">MICR Number</TD>
+		<TD CLASS="bTextMarine"><!$MG_MICR_Number></TD>
+	</TR>
+	<TR align="left">
+		<TD CLASS="bTextMarine">Settlement Date</TD>
+		<TD CLASS="bTextMarine"><!$MG_Settle_Date_Response></TD>
+	</TR>
+	</TABLE>
+</TABLE>
+<!$MGENDIF>
+
+<!$MGIF_TCHK_VOID_TIMEOUT>
+<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+	<TR>
+		<TD CLASS="bTextRed">The receipt referenced above has been voided.&nbsp;&nbsp;We failed to obtain authorization for this payment from the check processing company.&nbsp;&nbsp;Please check the status of your account for any outstanding charges relating to this voided receipt.</TD>
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TABLE width="40%" cellpadding="0" cellspacing="0" border="0">
+	<TR align="left">
+		<TD CLASS="bTextMarine">Amount</TD>
+		<TD CLASS="bTextRed"><!$MG_Auth_Amount></TD>
+	</TR>
+	<TR align="left">
+		<TD CLASS="bTextMarine">Check Number</TD>
+		<TD CLASS="bTextMarine"><!$MG_Check_Number></TD>
+	</TR>
+	<TR align="left">
+		<TD CLASS="bTextMarine">MICR Number</TD>
+		<TD CLASS="bTextMarine"><!$MG_MICR_Number></TD>
+	</TR>
+	<TR align="left">
+		<TD CLASS="bTextMarine">Original receipt date</TD>
+		<TD CLASS="bTextMarine"><!$MG_Settle_Date_Request></TD>
+	</TR>
+	</TABLE>
+</TABLE>
+<!$MGENDIF>
+
+<!$MGIF_TCHK_VOID_INCOMPLETE>
+<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+	<TR>
+		<TD CLASS="bTextRed">The receipt referenced above has been voided.&nbsp;&nbsp;The transaction is incomplete and was not processed by the check processing company.&nbsp;&nbsp;Please check the status of your account for any outstanding charges relating to this voided receipt.</TD>
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TABLE width="40%" cellpadding="0" cellspacing="0" border="0">
+	<TR align="left">
+		<TD CLASS="bTextMarine">Amount</TD>
+		<TD CLASS="bTextRed"><!$MG_Auth_Amount></TD>
+	</TR>
+	<TR align="left">
+		<TD CLASS="bTextMarine">Check Number</TD>
+		<TD CLASS="bTextMarine"><!$MG_Check_Number></TD>
+	</TR>
+	<TR align="left">
+		<TD CLASS="bTextMarine">MICR Number</TD>
+		<TD CLASS="bTextMarine"><!$MG_MICR_Number></TD>
+	</TR>
+	<TR align="left">
+		<TD CLASS="bTextMarine">Original receipt date</TD>
+		<TD CLASS="bTextMarine"><!$MG_Settle_Date_Request></TD>
+	</TR>
+	</TABLE>
+</TABLE>
+<!$MGENDIF>
+<TABLE width="100%" cellpadding="0" cellspacing="0" border="0">
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bTextMarine">If you have any questions regarding this transaction, please call the association office at&nbsp;<!$MG_Assoc_Phone></TD>
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bTextMarine">Sincerely,</TD>
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bTextMarine"><!$MG_Assoc_Name></TD>
+	</TR>
+</TABLE>
+
+</BODY>
+</HTML>

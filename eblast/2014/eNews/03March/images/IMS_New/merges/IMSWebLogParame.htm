@@ -1,0 +1,102 @@
+<SCRIPT LANGUAGE="JavaScript">
+<!--	
+//////////////////////////////////////////////////
+function initialize()
+{
+	
+	<!$MGIF_No_Error> document.WebParameters.Batch_ID.focus() <!$MGENDIF>
+	<!$MGIF_Find_Error> document.WebParameters.<!$MG_Error_field>.focus()<!$MGENDIF>
+
+} 	
+//-->
+</SCRIPT>
+
+<CENTER>
+
+<FORM NAME="WebParameters" action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="IMS_Web_Log_Transaction">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>">
+	<INPUT type="hidden" name="ProcessType" value="<!$MG_ProcessType>">
+
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR CLASS="bgbar">
+		<TD CLASS="nnText" nowrap>&nbsp;Please enter your report criteria below</TD>
+	</TR>
+</TABLE>
+<BR>
+
+<TABLE border="0" Align="Center" width="320" cellpadding="2" cellspacing="0">
+		<TR>
+			<TD CLASS="bText" align="left" nowrap width="120">Batch ID</TD>
+			<TD align="left" nowrap width="200"><INPUT CLASS="input" type="text" name="Batch_ID" size="10" maxlength="20" value="<!$MG_Batch_ID>"></TD>
+		</TR>
+		<TR>
+			<TD CLASS="bText" align="left" nowrap width="120">From Date</TD>
+			<TD CLASS="bTextRed" align="left" nowrap width="300">
+				<INPUT CLASS="input" type="text" name="From_Date" size="10" maxlength="10" value="<!$MG_From_Date>">
+				<!$MGIF_ERROR_DATE_FROM>
+					** <!$MG_Date_Error_From>
+				<!$MGENDIF>
+    		   </TD>
+			<TD CLASS="bText" align="left" nowrap width="30">Time</TD>
+			<TD CLASS="bTextRed" align="left" nowrap width="300">
+				<INPUT CLASS="input" type="text" name="From_Time" size="8" maxlength="8" value="<!$MG_From_Time>">
+				<!$MGIF_ERROR_TIME_FROM>
+					** <!$MG_Time_Error_From>
+				<!$MGENDIF>
+           </TD>
+			</TR>
+		<TR>
+			<TD CLASS="bText" align="left" nowrap width="120">Thru Date</TD>
+			<TD CLASS="bTextRed" align="left" nowrap width="300">
+				<INPUT CLASS="input" type="text" name="Until_Date" size="10" maxlength="10" value="<!$MG_Until_Date>">
+				<!$MGIF_ERROR_DATE_UNTIL>
+					** <!$MG_Date_Error_To>
+				<!$MGENDIF>
+			</TD>
+				<TD CLASS="bText" align="left" nowrap width="30">Time</TD>
+			<TD CLASS="bTextRed" align="left" nowrap width="300">
+				<INPUT CLASS="input" type="text" name="Until_Time" size="8" maxlength="8" value="<!$MG_Until_Time>">
+				<!$MGIF_ERROR_TIME_UNTIL>
+					** <!$MG_Time_Error_To>
+				<!$MGENDIF>
+			</TD>
+			</TR>
+		<!$MGIF_CREDIT_CARD_REPORT>
+			<TR>
+				<TD CLASS="bText" align="left" nowrap width="120">Transaction</TD>
+				<TD align="left" nowrap width="200">
+					<SELECT  CLASS="input" name="Transaction" SIZE=1>
+						<OPTION CLASS="input" <!$MGIF_SV_Transaction_All> SELECTED <!$MGENDIF> VALUE=" ">All Transactions
+						<OPTION CLASS="input" <!$MGIF_SV_Transaction_Purchase> SELECTED <!$MGENDIF> VALUE="P">Purchase
+						<OPTION CLASS="input" <!$MGIF_SV_Transaction_Settlement> SELECTED <!$MGENDIF> VALUE="S">Settlement
+						<OPTION CLASS="input" <!$MGIF_SV_Transaction_Authorization> SELECTED <!$MGENDIF> VALUE="A">Authorization
+						<OPTION CLASS="input" <!$MGIF_SV_Transaction_Refund> SELECTED <!$MGENDIF> VALUE="R">Refund
+					</SELECT>
+				</TD>
+			</TR>
+		<!$MGELSE>
+			<INPUT type="hidden" name="Transaction" value="P">
+		<!$MGENDIF>
+		<TR>
+			<TD CLASS="bText" align="left" nowrap width="120">Status</B></TD>
+			<TD align="left" nowrap width="200">
+				<SELECT CLASS="input" name="Status" SIZE=1>
+				<OPTION CLASS="input" <!$MGIF_SV_Status_All> SELECTED <!$MGENDIF> VALUE="C">All Statuses
+				<OPTION CLASS="input" <!$MGIF_SV_Status_Approved> SELECTED <!$MGENDIF> VALUE="A">Approved
+				<OPTION CLASS="input" <!$MGIF_SV_Status_Not_Approved> SELECTED <!$MGENDIF> VALUE="N">Not Approved
+				<OPTION CLASS="input" <!$MGIF_SV_Status_Pending> SELECTED <!$MGENDIF> VALUE="P">Pending
+				</SELECT>
+			</TD>
+		</TR>
+</TABLE>
+<BR>
+<BR>
+	<input type="submit" value="Submit" name="Submit">
+
+</FORM>
+<BR>
+<BR>
+
+</CENTER>

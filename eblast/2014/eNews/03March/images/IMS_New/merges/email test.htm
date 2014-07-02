@@ -1,0 +1,20 @@
+function CheckEmail()
+		{
+		var Check_if_Blank = (document.Convention.Email_Address.value);
+		if( Check_if_Blank == '')
+			{
+			alert ("E-Mail Address is required.");
+			document.Convention.Email_Address.focus();
+
+			}
+		else
+			{
+				var filter = eval("
+				/^([\\w-]+(?:\\.[\\w-]+)*)@((?:[\\w-]+\\.)*\\w[\\w-]{0,66})\\.([a-z]{2,6}(?:\\.[a-z]{2})?)$/i");
+				if  (filter.test(Check_if_Blank)==false);
+				{
+					alert('Invalid E-Mail Address');
+					document.Convention.Email_Address.focus();
+				}
+			}
+		}

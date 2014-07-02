@@ -1,0 +1,58 @@
+<CENTER>
+<!$MGIF_ACTIVE_CARD>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD colspan="7" nowrap>&nbsp;</TD>
+	</TR>
+</TABLE>
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="1">
+	<TR CLASS="bgbar">
+		<TD CLASS="bText" align="left" nowrap>&nbsp;Card Description</TD>
+		<TD CLASS="bText" align="center" nowrap>Valid From Date</TD>
+		<TD CLASS="bText" align="center" nowrap>Valid Thru Date</TD>
+		<TD CLASS="bText" align="center" nowrap>Status</TD>
+		<TD CLASS="bText" align="right" nowrap>Total Credits&nbsp;</TD>
+		<TD CLASS="bText" align="right" nowrap>Credits Used&nbsp;</TD>
+		<TD CLASS="bText" align="right" nowrap>Credits Available&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+	<!$MGREPEAT>
+	<TR>
+		<TD CLASS="nnText" align="left" nowrap>&nbsp;<!$MG_Card_Description></TD>
+		<TD CLASS="nnText" align="center" nowrap><!$MG_From_Date></TD>
+		<TD CLASS="nnText" align="center" nowrap><!$MG_Thru_Date></TD>
+		<TD CLASS="nnText" align="center" nowrap><!$MG_Status></TD>
+		<TD CLASS="nnText" align="right" nowrap><!$MG_Total_Credits>&nbsp;</TD>		
+		<TD CLASS="nnText" align="right" nowrap><!$MG_Credits_Used>&nbsp;</TD>
+		<TD CLASS="nnText" align="right" nowrap><!$MG_Credits_Available>&nbsp;</TD>
+	</TR>
+	<!$MGENDREPEAT>
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+	<!$MGIF_ED_DOC_EXISTS>
+	<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD nowrap>&nbsp;</TD>
+	</TR>
+	<TR align="center">
+			<TD nowrap><!$MG_Document_Name><!$MG_Link_Name></A></TD>
+	</TR>
+	</TABLE>
+	<!$MGENDIF>
+</TABLE>
+<BR>
+<!$MGELSE>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="bTextMarine" width="100%" align="left">You currently do not have any active education cards.</TD>
+	</TR>
+	<BR>
+<!$MGENDIF>
+</TABLE>
+
+</CENTER>
+<BR>

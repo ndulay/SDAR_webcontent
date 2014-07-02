@@ -1,0 +1,53 @@
+<SCRIPT LANGUAGE="JavaScript">
+<!---
+function fieldFocus() 
+{
+	document.Duplicate.SubmitB.focus();
+}
+//--->
+</SCRIPT>
+
+<CENTER>
+<FORM NAME="Duplicate" ACTION="/scripts/mgrqispi.dll" METHOD="POST">
+	<INPUT type="hidden" name="APPNAME"   value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME"   value="IMSReadUseAgreement">
+	<INPUT type="hidden" name="ARGUMENT" value="<!$MG_ARGUMENT>">
+<BR>
+<TABLE border="0" cellpadding="0" cellspacing="0" width="100%">
+	<!$MGIF_NEW_MEMBER>
+		<TR align="center">
+			<TD CLASS="bText" nowrap>Your application has been accepted.  You will now be logged in to Member Services.</TD>
+		</TR>
+		<TR>
+			<TD>&nbsp;</TD>
+		</TR>
+		<TR align="center">
+			<TD CLASS="nnText" nowrap>Please click Continue to display the Member Services Menu.</TD>
+		</TR>
+		<TR>
+			<TD>&nbsp;</TD>
+		</TR>
+	<!$MGELSE>
+		<TR align="center">
+			<TD CLASS="bText" nowrap>Your Logon ID is already logged in to Member Services.</TD>
+		</TR>
+		<TR>
+			<TD>&nbsp;</TD>
+		</TR>
+		<TR align="center">
+			<TD CLASS="nnText" nowrap>If you click Continue, the previous logon will be disconnected.</TD>
+		</TR>
+		<TR align="center">
+			<TD CLASS="nnText" nowrap>If you do not want to continue, press the Back button in your browser.</TD>
+		</TR>
+	<!$MGENDIF>
+
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TR align="center">
+		<TD nowrap><INPUT type="submit" name="SubmitB" value="Continue"></FORM></TD>
+	</TR>
+</TABLE>
+</CENTER>
+<BR>

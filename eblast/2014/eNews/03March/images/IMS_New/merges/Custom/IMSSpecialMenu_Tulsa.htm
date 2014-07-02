@@ -1,0 +1,156 @@
+<HTML>
+<HEAD>
+<META name="Rapattoni Corporation" content="Magic 8 Web IMS">
+<TITLE>Specific Menu</TITLE>
+<link href="/scripts/IMS/style.css" rel="stylesheet" type="text/css">
+<SCRIPT LANGUAGE="JavaScript">
+<!---
+function setCookie (name,value,expires,path,domain,secure) 
+{
+  document.cookie = name + "=" + escape (value) +
+    ((expires) ? "; expires=" + expires.toGMTString() : "") +
+    ((path) ? "; path=" + path : "") +
+    ((domain) ? "; domain=" + domain : "") +
+    ((secure) ? "; secure" : "");
+}
+function updSession()
+{
+	var twoHours = <!$MG_TimeOut>*1000;
+	var expDate = new Date();
+	var secondExpire = expDate.getTime();
+	//alert(secondExpire);
+	expDate.setTime(expDate.getTime() + twoHours);
+	setCookie("imssession",<!$MG_Session_Number>,expDate,"/",null,false);	
+	setCookie("imslastConnect",secondExpire,expDate,"/",null,false);	
+}
+/////////////////////////////////////////////////////////////////////
+//--->
+</SCRIPT>
+</HEAD>
+<BODY  BACKGROUND="/boardimages/background.jpg" text="black" onLoad="updSession();">
+
+<CENTER>
+<TABLE border="0" width="100%" cellpadding="3" cellspacing="0">
+	<TR  bgcolor="#004080" align="center">
+		<TD>
+        <IMG src="/boardimages/IMSbanner.jpg" align="bottom" width="600" height="70"></TD>
+	</TR>
+	<TR height="2" ></TR>
+</TABLE>
+
+<TABLE border="0" bgcolor="#004080" height="30" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD nowrap>&nbsp;<FONT color="white" face="arial" size="2"><B>Custom Member IMS Menu</B></FONT></TD>
+		<TD align="right" nowrap>
+							<FONT size="1" face="arial" color="wheat"><B>
+                            <a href="http://ims.tulsarealtors.com/scripts/mgrqispi.dll?APPNAME=IMS&PRGNAME=IMSMenuDirectCall&&ARGUMENTS=-N<!$MG_Session_Number>&SessionType=<!$MG_Session_Type>&ServiceName=LGOU">Log Off</a></B>&nbsp;|&nbsp;<B><a href="http://ims.tulsarealtors.com/scripts/mgrqispi.dll?APPNAME=IMS&PRGNAME=IMSMainMenu&&ARGUMENTS=-N<!$MG_Session_Number>&SessionType=<!$MG_Session_Type>,-LT">Services</a></B>&nbsp;|&nbsp;<B><a href="http://ims.tulsarealtors.com/scripts/mgrqispi.dll?APPNAME=IMS&PRGNAME=IMSMainMenu&ARGUMENTS=-N&lt;!$MG_Session_Number&gt;,-LT">Home</a></B></FONT>
+				</TD>
+	</TR>
+</TABLE>
+</CENTER>
+<CENTER>
+<BR>
+
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="1">
+	<TR>
+		<TD width="100%" align="left" bgcolor="wheat" nowrap><FONT face="arial" size="3">&nbsp;Services for <!$MG_Member_Name>&nbsp;(ID:<!$MG_Login_ID>)</FONT></TD>
+	</TR>
+</TABLE>
+<BR>
+<TABLE border="0" cellpadding="3" cellspacing="2" height="25" width="100%">
+	<TR>
+		<TD width="100%" align="left"  nowrap height="40" ><HR width="100%"></TD>
+	</TR>
+	<TR>
+		<TD width="100%" align="left"  nowrap><FONT face="arial" size="3" color="#004080">&nbsp;<B>Services 
+        that don't work yet</B></FONT></TD>
+	</TR>
+	<TR>
+		<TD width="100%" nowrap >
+			&nbsp;&nbsp;&nbsp;<FONT face="Arial" color="black" size="2"><B><a href="http://ims.tulsarealtors.com/scripts/mgrqispi.dll?APPNAME=IMS&PRGNAME=IMSMenuDirectCall&&ARGUMENTS=-N<!$MG_Session_Number>&SessionType=<!$MG_Session_Type>&ServiceName=PERS">Personal Information</a></B></FONT>
+		</TD>
+	</TR>
+	<TR>
+		<TD width="100%" nowrap>
+			&nbsp;
+			&nbsp;<FONT face="Arial" color="black" size="2"><B><a href="http://ims.tulsarealtors.com/scripts/mgrqispi.dll">IMS Menu</a></B></FONT>
+		</TD>
+	</TR>
+	<TR>
+		<TD width="100%" nowrap>
+			&nbsp;&nbsp;&nbsp;<FONT face="Arial" color="black" size="2"><B><a href="http://www.tulsamls.net/TechSupport/PMCtechnical_support.htm">Tech 
+            Support</a></B></FONT> </TD>
+	</TR>
+	<TR>
+		<TD width="100%" nowrap>
+			&nbsp;&nbsp;&nbsp;<A href="http://dev01/scripts/mgrqispi.dll?APPNAME=IMS&PRGNAME=IMSMenuDirectCall&&ARGUMENTS=-N<!$MG_Session_Number>&SessionType=<!$MG_Session_Type>&ServiceName=EVIN"><FONT face="Arial" color="black" size="2"><B>Event</B></FONT></A>
+		</TD>
+	</TR>
+	<TR>
+		<TD width="100%" nowrap>
+			&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD width="100%" nowrap>
+			<FONT face="arial" size="3" color="#004080">&nbsp;<B>Personal Services</B></FONT></TD>
+	</TR>
+	<!$MGIF_ASSOC_STAFF>
+		<tr>
+		<TD width="100%" nowrap >
+			&nbsp;&nbsp;&nbsp;<FONT face="Arial" color="black" size="2"><B><a href="http://ims.tulsarealtors.com/scripts/mgrqispi.dll?APPNAME=IMS&PRGNAME=IMSMenuDirectCall&&ARGUMENTS=-N<!$MG_Session_Number>&SessionType=<!$MG_Session_Type>&ServiceName=PERS">Personal Information</a></B></FONT>
+		</TD>
+	</tr>
+    <tr>
+		<TD width="100%" nowrap>
+			&nbsp;
+			&nbsp;<FONT face="Arial" color="black" size="2"><B><a href="http://ims.tulsarealtors.com/scripts/mgrqispi.dll?APPNAME=IMS&PRGNAME=IMSMenuDirectCall&&ARGUMENTS=-N<!$MG_Session_Number>&SessionType=<!$MG_Session_Type>&ServiceName=MENU">IMS Menu</a></B></FONT>
+		</TD>
+	</tr>
+    <tr>
+		<TD width="100%" nowrap>
+			&nbsp;&nbsp;&nbsp;<FONT face="Arial" color="black" size="2"><B><a href="http://www.tulsamls.net/TechSupport/PMCtechnical_support.htm">Tech 
+            Support</a></B></FONT> </TD>
+	</tr>
+    <tr>
+		<TD width="100%" nowrap>
+			&nbsp;&nbsp;&nbsp;<FONT face="Arial" color="black" size="2"><B><a href="http://ims.tulsarealtors.com/scripts/mgrqispi.dll?APPNAME=IMS&PRGNAME=IMSMenuDirectCall&&ARGUMENTS=-N<!$MG_Session_Number>&SessionType=<!$MG_Session_Type>&ServiceName=EVIN">Event</a></B></FONT>
+		</TD>
+	</tr>
+		<TR>
+			<TD width="100%" nowrap>
+				&nbsp;</TD>
+		</TR>
+	<!$MGENDIF>
+		<TR>
+			<TD width="100%" nowrap>
+				&nbsp;</TD>
+		</TR>
+		<TR>
+			<TD width="100%" nowrap>
+				&nbsp;</TD>
+		</TR>
+		<TR>
+			<TD width="100%" nowrap>
+				&nbsp;</TD>
+		</TR>
+		<TR>
+			<TD width="100%" nowrap>
+				&nbsp;</TD>
+		</TR>
+	</TABLE>
+
+</CENTER>
+<p>
+<BR><CENTER>
+<TABLE bgcolor="#004080" height="30" border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD align="center" nowrap><FONT color="wheat" size="-2">
+			<A href="http://dev01/scripts/mgrqispi.dll?APPNAME=IMS&PRGNAME=IMSMenuDirectCall&&ARGUMENTS=-N<!$MG_Session_Number>&SessionType=<!$MG_Session_Type>&ServiceName=OSRH"><FONT size="1" face="arial" color="wheat"><B>Agents/Offices</B></FONT></A>&nbsp;|&nbsp;<A href="http://dev01/default.htm"><FONT size="1" face="arial" color="wheat"><B>Home</B></FONT></A>
+		</TD>
+	</TR>
+</TABLE>
+
+
+</CENTER>
+</BODY>
+</HTML>

@@ -1,0 +1,133 @@
+<SCRIPT language="javascript">
+function Check_qte(ThisItem,qteAvailable)
+{
+var itemText = ''
+if (parseFloat(qteAvailable) > 1 )
+{
+	itemText = ' items are';
+}
+else
+{
+	itemText = ' item is';
+}
+var objElements = document.forms["InputForm"].elements;
+if (parseFloat(ThisItem.value) > parseFloat(qteAvailable))
+	{
+	alert('Only '+parseFloat(qteAvailable)+itemText+' available in stock');	
+	ThisItem.value = 1;
+	ThisItem.focus();
+	}
+}
+function updatePicture(itemText, picSrc, picWidth, picHeight)
+	{
+		document.getElementById('itemDescription').innerHTML = itemText;
+		document.getElementById('itemPicture').src = picSrc;
+		document.getElementById('itemPicture').width = picWidth;
+		document.getElementById('itemPicture').height = picHeight;
+	}
+function SubmitForm()
+{
+    var totalQty = <!$MG_Items_Count>;
+    var ok = false;
+    var form = document.InputForm;
+    var f = form.elements;
+    
+    for (var i=1; i <= totalQty; i++)
+    {
+        if(document.getElementById('Qty_'+i) && document.getElementById('Qty_'+i).value != '' && isFinite(document.getElementById('Qty_'+i).value))
+          {
+                ok = true;
+                document.InputForm.submit();
+          }
+       
+    }
+ 
+    if(ok == false)
+    {
+        alert('Please enter a valid quantity');
+    }
+      
+}
+</SCRIPT>
+
+<FORM name="InputForm" action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="ERealtorStore">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-N4,-A<!$MG_Billing_Group>">
+	<INPUT type="hidden" name="Items_Count" value="<!$MG_Items_Count>">
+<CENTER>
+<TABLE border="0" cellspacing="0" cellpadding="5" width="100%">
+	<TR class="bgbar">
+		<TD colspan="2" CLASS="bigTextMarine" align="left" nowrap><!$MG_Product_Name></TD>
+	</TR>
+	<TR height="<!$MG_Row_Height>">
+		<TD align="center" width="40%" style="border: 1px solid gray;vertical-align:middle;text-align:center; background : whitesmoke;">
+			<IMG id="itemPicture" src="<!$MG_Item_Picture>" border="0" height="<!$MG_Picture_Height>" width="<!$MG_Picture_Width>" style="border: solid 3px gray ">
+		</TD>
+		<TD CLASS="nnTextMarine" align="left"width="*" valign="top" style="border: 1px solid gray; ; "><BR>
+			<!$MGIF_GROUP_PICTURE><a href="javascript://void(0)" onclick="javascript:updatePicture('','<!$MG_Item_Picture>',<!$MG_Picture_Width>,<!$MG_Picture_Height>)"><IMG src="<!$MG_imagealias>camera.gif" border="0" ></A>&nbsp;<!$MGENDIF><!$MG_Web_Description><BR><BR><FONT ID="itemDescription"></FONT>
+		</TD>
+	</TR>
+</TABLE>
+<BR>
+<div style="overflow:auto; border: 1px solid gray;">
+<TABLE border=0 cellspacing="1" width="100%">
+	<TR CLASS="bgbar">
+		<!$MGIF_GROUP_ITEM><TD CLASS="bText" nowrap  width="5%">&nbsp;Picture&nbsp;</TD><!$MGENDIF>
+		<TD CLASS="bText" width="*%">&nbsp;Description&nbsp;</TD>
+		<TD CLASS="bText" align="center" nowrap width="10%">Qty</TD>
+	<!$MGIF_DETAILED_PRICES>
+		<TD CLASS="bText" align="center" width="10%">&nbsp;Non-Member Price&nbsp;</TD>
+		<TD CLASS="bText" align="center" width="10%" nowrap>Discount&nbsp;</TD>
+		<TD CLASS="bText" align="center" width="10%" nowrap>Your Price&nbsp;</TD>
+	<!$MGELSE>
+		<TD CLASS="bText" align="center" width="10%" nowrap>Price&nbsp;</TD>
+	<!$MGENDIF>
+		<!-- <TD CLASS="bText" align="right" nowrap width="16%">Total&nbsp;</TD> -->
+	</TR>
+<!$MGREPEAT>
+	<TR CLASS="<!$MG_Line_Color>">
+	<!$MGIF_GROUP_ITEM_R0><TD CLASS="nnText" nowrap" align="center">
+<!-- 
+			<!$MGIF_GROUP_ITEM_R0><A href="javascript://void(0)" onclick="javascript:updatePicture('<B><!$MG_Item_ID_R0></B> - <!$MG_Item_Description_JS_R0>'<!$MGIF_GROUP_PICTURE_R0>,'<!$MG_Item_Picture_R0>',<!$MG_Picture_Width_R0>,<!$MG_Picture_Height_R0><!$MGENDIF>)"><!$MGENDIF>
+				<!$MG_Item_ID_R0><!$MGIF_GROUP_ITEM_R0></A><!$MGENDIF>
+<!$MG_Item_ID_R0> -->
+			<!$MGIF_GROUP_PICTURE_R0><A href="javascript://void(0)" onclick="javascript:updatePicture('<!$MG_Item_Description_JS_R0>','<!$MG_Item_Picture_R0>',<!$MG_Picture_Width_R0>,<!$MG_Picture_Height_R0>)"><IMG src="<!$MG_imagealias_R0>camera.gif" border="0" ></A><!$MGENDIF></TD>
+	<!$MGENDIF>
+		<TD CLASS="nnText">&nbsp;<!$MG_Item_Description_R0></TD>
+		<TD CLASS="nnText" align="center" nowrap>
+			<INPUT type="hidden" name="Code_<!$MG_Item_Count_R0>" value="<!$MG_Item_ID_R0>">
+		<!$MGIF_IN_STOCK_R0>
+			<INPUT CLASS="input" type="text" id="Qty_<!$MG_Item_Count_R0>" name="Qty_<!$MG_Item_Count_R0>" size="3" maxlength="3" value="<!$MG_Item_Qty_R0>" onBlur="Check_qte(this,'<!$MG_Quantity_Available_R0>')">
+		<!$MGELSE>
+			<img src="<!$MG_imagealias_R0>outofstock.gif" border="0">
+		<!$MGENDIF>
+		</TD>
+	<!$MGIF_DETAILED_PRICES_R1>
+		<TD CLASS="nnTextMarine" align="right" nowrap><!$MG_NonMember_Price_r0>&nbsp;</TD>
+		<TD CLASS="nnTextMarine" align="right" nowrap><!$MG_Discount_R0>&nbsp;</TD>
+	<!$MGENDIF>
+		<TD CLASS="nnTextMarine" nowrap align="right"><B><!$MG_Item_Price_R0></B>&nbsp;</TD>
+		<!-- <TD CLASS="nnText" nowrap width="16%" align="right">$<!$MG_Item_Total_R0>&nbsp;</TD> -->
+	</TR>
+<!$MGENDREPEAT>
+</TABLE>
+</DIV>
+<TABLE border="0" width="30%" cellspacing="0" cellpadding="0">
+	<TR>
+		<TD  colspan=2>&nbsp;</TD>
+	</TR>
+
+	<TR>
+		<TD >&nbsp;</TD>
+<!-- 		<TD nowrap align="Center" ><INPUT type="submit" name="submit" value="Update Total"></TD>
+		<TD >&nbsp;</TD> -->
+		<TD nowrap align="Center" ><A onclick="SubmitForm()"><img src="<!$MG_imagealias>addtocart.gif" border="0"></A></TD>
+		<TD >&nbsp;</TD>
+	</TR>
+	<!$MGIF_IN_STOCK>
+	<!$MGENDIF>
+</TABLE>
+
+</CENTER>
+</FORM>

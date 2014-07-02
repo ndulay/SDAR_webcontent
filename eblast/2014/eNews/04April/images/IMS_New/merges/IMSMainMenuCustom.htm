@@ -1,0 +1,122 @@
+<SCRIPT LANGUAGE="JavaScript">
+<!---
+function setCookie (name,value,expires,path,domain,secure) 
+{
+  document.cookie = name + "=" + escape (value) +
+    ((expires) ? "; expires=" + expires.toGMTString() : "") +
+    ((path) ? "; path=" + path : "") +
+    ((domain) ? "; domain=" + domain : "") +
+    ((secure) ? "; secure" : "");
+}
+function updSession()
+{
+	var twoHours = <!$MG_TimeOut>*1000;
+	var expDate = new Date();
+	var secondExpire = expDate.getTime();
+	//alert(secondExpire);
+	expDate.setTime(expDate.getTime() + twoHours);
+	setCookie("imssession",<!$MG_Session_Number>,expDate,"/",null,false);	
+	setCookie("imslastConnect",secondExpire,expDate,"/",null,false);	
+}
+
+//--->
+</SCRIPT>
+<CENTER>
+<BR>
+<!$MGIF_UPDATE_EXTERNAL_WINDOW>
+
+<!$MGELSE>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="1">
+	<TR CLASS="bgbar">
+		<!$MGIF_SESSION_WITH_LOGIN>
+			<TD CLASS="titleText" width="100%" align="left" CLASS="bgbar" nowrap>&nbsp;Services for <!$MG_Member_Name>&nbsp;<!$MG_Agent_ID></TD>
+		<!$MGELSE>
+			<TD CLASS="titleText" width="100%" align="left" nowrap>&nbsp;Services</TD>
+		<!$MGENDIF>
+	</TR>
+</TABLE>
+
+<TABLE border="0" cellpadding="3" cellspacing="2" height="25" width="100%">
+<!$MGREPEAT>
+	<!$MGIF_GROUP_DESC_NO_BLANK>
+		<TR>
+			<TD width="100%" colspan=2 align="left"  nowrap height="40" ><HR width="100%"></TD>
+		</TR>
+		<TR>
+			<TD CLASS="bigTextMarine" width="100%" colspan=2 align="left"  nowrap>&nbsp;<!$MG_Group_Description></TD>
+		</TR>
+	<!$MGENDIF>
+	<!$MGREPEAT>
+		<!$MGIF_INTERNAL_MENU>
+			<TR>
+				<!$MGIF_ROWSPAN_INTERNAL_MENU>
+					<TD width="50%" nowrap rowspan="<!$MG_Row_Span>">
+				<!$MGELSE>
+					<!$MGIF_ROWSPAN_EXTERNAL_MENU>
+						<TD width="50%" nowrap>
+					<!$MGELSE>
+						<TD width="50%" colspan=2 nowrap>
+					<!$MGENDIF>
+				<!$MGENDIF>
+				<!$MGIF_IS_REPORT>
+						&nbsp;&nbsp;&nbsp;<A CLASS="bText" href="javascript://#<!$MG_Menu_Description>" onclick="openReportWindow(document.InputForm, '<!$MG_Menu_Description>', '<!$MG_App_Name>','<!$MG_Prg_name>','<!$MG_Arguments>',false)" ><!$MG_Menu_Description></A>
+				<!$MGELSE>
+						&nbsp;&nbsp;&nbsp;<A CLASS="bText" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=<!$MG_Prg_name>&ARGUMENTS=<!$MG_Arguments>&GoBack_PRG=<!$MG_Prg_name>&GoBack_ARG=<!$MG_Arguments>"><!$MGIF_IMG_EXIST><img border="0" src="<!$MG_IMG_Link>"><!$MGELSE><!$MG_Menu_Description><!$MGENDIF></A>
+					</TD>
+				<!$MGENDIF>
+				<!$MGIF_ROWSPAN_INTERNAL_MENU>
+					<TD width="50%" nowrap>&nbsp;</TD>
+				<!$MGENDIF>
+			</TR>
+		<!$MGELSE>
+			<!$MGIF_IMG_EXIST>
+				<!$MGIF_DESCRIPTION_EXIST>
+					<TR>
+				<!$MGELSE>
+					<TR height="1">
+				<!$MGENDIF>
+					<!$MGIF_DESCRIPTION_EXIST>
+						<TD width="50%" nowrap>&nbsp;&nbsp;&nbsp;<A CLASS="bText" href="<!$MG_Href_Link>" <!$MG_Target>><!$MG_Menu_Description></A></TD>
+					<!$MGELSE>
+						<!$MGIF_ROWSPAN_INTERNAL_MENU>
+						<!-- No display - RowSpan on Previous Internal Menu -->
+						<!$MGELSE>
+							<TD width="50%" nowrap>&nbsp;</TD>
+						<!$MGENDIF>
+					<!$MGENDIF>
+					<!$MGIF_ROW_SPAN>
+						<TD width="50%" Align="Center" rowspan="<!$MG_Row_Span>" nowrap>
+							<A href="<!$MG_Href_Link>" <!$MG_Target>><img border="0" src="<!$MG_IMG_Link>"></A></TD>
+					<!$MGELSE>
+						<TD width="50%" Align="Center" nowrap>
+							<A href="<!$MG_Href_Link>" <!$MG_Target>><img border="0" src="<!$MG_IMG_Link>"></A></TD>
+					<!$MGENDIF>
+				</TR>
+			<!$MGELSE>
+				<TR>
+					<!$MGIF_ROWSPAN_EXTERNAL_MENU>
+						<TD width="50%" nowrap>
+					<!$MGELSE>
+						<TD width="50%" Colspan=2 nowrap>
+					<!$MGENDIF>
+						&nbsp;&nbsp;&nbsp;<A CLASS="bText" href="<!$MG_Href_Link>" <!$MG_Target>><!$MG_Menu_Description></A>
+					</TD>
+				</TR>
+			<!$MGENDIF>
+			
+		<!$MGENDIF>
+	<!$MGENDREPEAT>
+<!$MGENDREPEAT>	
+</TABLE>
+
+<!$MGENDIF><!-- ENDIF UPDATE_EXTERNAL_WINDOW -->
+</CENTER>
+<p>
+<BR>
+<!-- Form is needed for Reports-Calls Popup /scripts/IMS/IMSReport.htm which needs variables updated from parent.window.opener.document.InputForm.XXX.value -->
+<FORM NAME="InputForm" action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME"   value="">
+	<INPUT type="hidden" name="PRGNAME"   value="">
+	<INPUT type="hidden" name="ARGUMENTS" value="">
+</FORM>
+<SCRIPT language="javascript" src="IMSopenReportWindow.js"></SCRIPT>

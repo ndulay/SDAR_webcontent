@@ -1,0 +1,269 @@
+A {
+	outline: none;
+	color: #0959ab;
+	text-decoration:none;
+	font-family: Arial;
+	font-size: 11px;
+	font-weight : bold;
+}
+A:hover {
+	color: #971919;
+	text-decoration:none;
+	font-family: Arial;
+	font-size: 11px;
+	font-weight : bold;
+}
+
+/* Main Background for header, footer, pmt receipt, web error msg */
+.bgMain  {
+background : #004080;
+}
+/* Background Bar displayed throughout */
+.bgbar  {
+background : #CCCCCC;
+}
+/* Background white & smoke used for A/R and store displays for easier reading of lines */
+.bgWhite  {
+background : White;
+}
+.bgSmoke  {
+background : whitesmoke;
+}
+
+
+/* Small Black Footer text for footer1, footer2 and footer3 (Size 1) */ 
+.Footer {
+font-size : 8pt;
+font-weight : normal;
+color : #000000;
+font-family : Arial;	
+text-decotation : none;
+}
+
+
+/* Small Fonts Arial BOLD (Size 1) */
+	/* Small Black BOLD text in wheat bar, input field comments, A/R radio button */
+.sText {
+font-size : 8pt;
+font-weight : bold;
+color : #000000;
+font-family : Arial;	
+text-decotation : none;
+}
+	/* Small Blue BOLD hyperlinks (credit cards, select an office) */
+.sTextBlue {
+font-size : 8pt;
+font-weight : bold;
+color : Blue;
+font-family : Arial;	
+text-decotation : none;
+}
+	/* Small Brown BOLD text from Payment receipt, payment void and in emails */
+	/* Note:  changing email, invoice or receipt attachments text must also */
+	/* be made directly to the html */
+.sTextBrown {
+font-size : 8pt;
+font-weight : bold;
+color : Brown;
+font-family : Arial;	
+text-decotation : none;
+}
+	/* Small Wheat BOLD text in header and footer */
+.sTextWheat {
+font-size : 8pt;
+font-weight : bold;
+color : Wheat;
+font-family : Arial;	
+text-decotation : none;
+}
+	/* Small White BOLD text in Store BUY column */
+.sTextWhite {
+font-size : 8pt;
+font-weight : bold;
+color : White;
+font-family : Arial;	
+text-decotation : none;
+}
+
+
+/* Small Fonts Arial Normal (Size 1) */
+	/* Small Black text in Web Log Transaction Report */
+.snText {
+font-size : 8pt;
+font-weight : normal;
+color : #000000;
+font-family : Arial;	
+text-decotation : none;
+}
+	/* Small Blue text for email password  */
+.snTextBlue {
+font-size : 8pt;
+font-weight : normal;
+color : Blue;
+font-family : Arial;	
+text-decotation : none;
+}
+	/* Small Red text for login, top of calendars, Agent notice, Broadcast notice*/	
+.snTextRed {
+font-size : 8pt;
+font-weight : normal;
+color : Red;
+font-family : Arial;	
+text-decotation : none;
+}
+
+
+/* Medium font Arial BOLD (Size 2) */
+	/* Medium Black BOLD text used throughout */
+.bText {
+	color: #0959ab;
+	text-decoration:none;
+	font-family: Arial;
+	font-size: 11px;
+	font-weight : bold;
+}
+	/* Medium Blue BOLD text for Hyperlinks and some total amounts */
+.bTextBlue {
+	color: #0959ab;
+	text-decoration:none;
+	font-family: Arial;
+	font-size: 11px;
+	font-weight : bold;
+}
+	/* Medium Brown BOLD text for payment and Emails */
+	/* Note:  changing email, invoice or receipt attachments text must also be */
+	/* made directly to the html */
+.bTextBrown {
+font-size : 10pt;
+font-weight : bold;
+color : Brown;
+font-family : Arial;	
+text-decotation : none;
+}
+	/* Medium Marine BOLD text used throughout */
+.bTextMarine {
+font-size : 10pt;
+font-weight : bold;
+color : #004080;
+font-family : Arial;	
+text-decotation : none;
+}
+	/* Medium Red BOLD text for error display, forced checkbox, warning msgs */
+.bTextRed {
+font-size : 10pt;
+font-weight : bold;
+color : Red;
+font-family : Arial;	
+text-decotation : none;
+}
+	/* Medium White BOLD text for header titles and payment receipt */
+.sBannerText {
+font-size : 10pt;
+font-weight : bold;
+color : White;
+font-family : Arial;	
+text-decotation : none;
+}
+
+
+/* Medium Font Arial Normal (Size 2) */
+	/* Medium Black text for input fields */
+.input {
+font-size : 10pt;
+font-weight : normal;
+color : #000000;
+font-family : Arial;	
+line-height : normal;
+}
+	/* Medium Black text used throughout */
+.nnText {
+font-size : 10pt;
+font-weight : normal;
+color : #333333;
+font-family : Arial;	
+text-decotation : none;
+}
+	/* Medium Blue text used by View account and other miscellaneous displays */
+.nnTextBlue {
+font-size : 10pt;
+font-weight : normal;
+color : #333333;
+font-family : Arial;	
+text-decotation : none;
+}
+	/* Medium Marine text for store price display, invoice and receipt attachments */
+.nnTextMarine {
+font-size : 10pt;
+font-weight : normal;
+color : #004080;
+font-family : Arial;	
+text-decotation : none;
+}
+	/* Medium Red text for Calendars display color */
+	/* (This cannot be changed - hard coded in programs) */
+.nnTextRed {
+font-size : 10pt;
+font-weight : normal;
+color : Red;
+font-family : Arial;	
+text-decotation : none;
+}
+
+	
+/* Large Font Arial BOLD (Size 3) */
+	/* Large Black BOLD text for Void Payment messages, class or */
+	/* event name of items registered for */
+.bbText {
+font-size : 12pt;
+font-weight : bold;
+color : #000000;
+font-family : Arial;	
+text-decotation : none;
+}
+	/* Large Blue BOLD text for Send Password message */
+.bigTextBlue {
+font-size : 12pt;
+font-weight : bold;
+color : Blue;
+font-family : Arial;	
+text-decotation : none;
+}
+	/* Large Marine BOLD text used throughout */
+.bigTextMarine {
+font-size : 12pt;
+font-weight : bold;
+color : #004080;
+font-family : Arial;	
+text-decotation : none;
+}
+	/* Large Red BOLD text for Void Payment Error msgs, Store error msgs */
+.bigTextRed {
+font-size : 12pt;
+font-weight : bold;
+color : Red;
+font-family : Arial;	
+text-decotation : none;
+}
+
+
+/* Large Font Arial Normal (Size 3) */
+	/* Large Black text for Main menu custom Title */
+.titleText {
+font-size : 12pt;
+font-weight : normal;
+color : #000000;
+font-family : Arial;	
+text-decotation : none;
+}
+
+
+/* Extra Large Font Arial BOLD (Size 4) */
+	/* Extra Large Black BOLD text for Office name display in Agents/Offices */
+.bigText {
+font-size : 14pt;
+font-weight : bold;
+color : #000000;
+font-family : Arial;	
+text-decotation : none;
+}
+	

@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony-project.org/2.0/container">
+	<parameters>
+		<parameter key="roksprocket.layouts.lists" type="collection">
+			<parameter key="library.paths" type="collection">
+                <parameter>%current.path%</parameter>
+			</parameter>
+		</parameter>
+	</parameters>
+    <services>
+   		<service id="roksprocket.layout.lists" class="RokSprocket_Layout_Lists_Tags" shared="false">
+   			<argument type="service" id="roksprocket_dispatcher"/>
+   		</service>
+   	</services>
+</container>

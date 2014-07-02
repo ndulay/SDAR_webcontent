@@ -1,0 +1,5 @@
+<style>img {display:block}</style> to the top of your HTML file.
+
+For example:
+
+<img style=”display:block” src=”sample.gif” alt=”sample” />

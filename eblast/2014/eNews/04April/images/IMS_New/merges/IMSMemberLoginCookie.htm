@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+<SCRIPT LANGUAGE="JavaScript">
+<!---
+function getCookie(name)
+{
+	var arg=name+"=";
+	var alen=arg.length;
+	var clen=document.cookie.length;
+	
+	var i = 0
+	while (i,clen)
+	{
+	
+	var j = i + alen;
+	if (document.cookie.substring(i,j) == arg) return getCookieVal(j);
+	i = document.cookie.indexOf(" " , i) +1;
+	if (i == 0) break;
+	}
+return null;
+}
+function getCookieVal (offset) {
+  var endstr = document.cookie.indexOf (";", offset);
+  if (endstr == -1)
+    endstr = document.cookie.length;
+  return unescape(document.cookie.substring(offset, endstr));
+}
+
+	
+function checkCookie() 
+{
+	
+	//clearCookie ("login");
+	//clearCookie ("loginall");
+	//clearCookie ("session",null,null);
+	//clearCookie ("lastConnect",null,null);
+	//clearCookie ("imssession",null,null);
+	//clearCookie ("imslastConnect",null,null);
+	
+	
+	var loginValue = getCookie("ims_id") ;
+	var sessionValue = getCookie("imssession") ;
+	var lastConnect = getCookie("imslastConnect");
+	var expDate = new Date();
+	var secondExpire = expDate.getTime();
+	var diffTime = secondExpire - lastConnect;
+	var elastTime = <!$MG_TimeOut>*1000;
+	//alert(diffTime+"-"+elastTime+"-"+secondExpire+"-"+lastConnect);
+	//alert(loginValue+"-"+sessionValue);
+	if (loginValue == null || sessionValue == null || diffTime > elastTime)
+	{
+		clearCookie("ims_id");
+		clearCookie("imssession");
+		clearCookie("imslastConnect");
+			
+	}
+	else
+	{	// Modify Link and call the menu form
+		//alert("Call menu");
+		<!$MGIF_IS_PORTAL>
+			document.Menu.PRGNAME.value = "IMSSSOPortal";
+			document.Menu.ARGUMENTS.value = "-A<!$MG_portal>,-A,-N0,-LT,-A<!$MG_Association>,-LT,-A<!$MG_resumePath>,-N"+sessionValue;
+		<!$MGELSE>
+			document.Menu.PRGNAME.value = "IMSMenuDirectCall";
+			document.Menu.ARGUMENTS.value = "-N"+sessionValue+",-LT,-A,-A,-A<!$MG_Association>";
+		<!$MGENDIF>
+	}
+	document.Menu.submit();
+}
+function deleteCookie (name,path,domain) {
+  if (getCookie(name)) {
+    document.cookie = name + "=" +
+      ((path) ? "; path=" + path : "") +
+      ((domain) ? "; domain=" + domain : "") +
+      "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+  }
+}
+function clearCookie(name)
+{
+	//alert("delete cookie "+name);
+	var treeDays = 3*24*60*60*1000;
+	var expDate = new Date();
+	expDate.setTime(expDate.getTime() - treeDays);
+	document.cookie = name +"=Cancel; expires="+expDate.toGMTString();
+}
+	
+/////////////////////////////////////////////////////////////////////
+//--->
+</SCRIPT>
+</HEAD>
+
+<BODY onLoad="checkCookie();">
+
+<FORM NAME="Menu" ACTION="/scripts/mgrqispi.dll" METHOD="POST">
+	<INPUT type="hidden" name="APPNAME"   value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME"   value="IMSMemberLogin">
+	<INPUT type="hidden" name="ARGUMENTS" value="-A<!$MG_Association>">
+	<INPUT type="hidden" name="SessionType" value="<!$MG_Session_Type>">
+	<INPUT type="hidden" name="ServiceName" value="<!$MG_Service_Name>">
+	<INPUT type="hidden" name="BillingGroup" value="<!$MG_Billing_Group>">
+	<INPUT type="hidden" name="ClassID" value="<!$MG_ClassID>">
+	<INPUT type="hidden" name="EventID" value="<!$MG_EventID>">
+	<INPUT type="hidden" name="ConvID" value="<!$MG_ConvID>">
+	<INPUT type="hidden" name="CategID" value="<!$MG_CategID>">
+	<INPUT type="hidden" name="GroupID" value="<!$MG_GroupID>">
+	<INPUT type="hidden" name="portal" value="<!$MG_portal>">
+	<INPUT type="hidden" name="resumePath" value="<!$MG_resumePath>">
+
+</BODY>
+</HTML>

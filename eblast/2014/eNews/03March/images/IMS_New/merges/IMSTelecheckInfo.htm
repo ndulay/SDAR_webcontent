@@ -1,0 +1,353 @@
+
+<SCRIPT LANGUAGE="JavaScript">
+<!---
+/////////////////////////////////////////////////////////////////////
+function SubmitForm()
+{
+	var check = "TRUE";
+	var TelecheckValue = document.PaymentInfo.Credit_Telecheck.value;
+	var position = TelecheckValue.indexOf("-");
+	var AccountNum = TelecheckValue.substring(0,position)
+	if (document.PaymentInfo.CheckSubmit.value == '2')
+	{
+		alert('Please Wait. Your Request Is In Process !');
+		check = "False";
+	}
+	if ( document.PaymentInfo.Check_Number.value == '')
+	{ 
+		alert('The Check Number cannot be blank');
+		check = "False";
+		document.PaymentInfo.Check_Number.focus();
+	}
+	if ( document.PaymentInfo.MICR_Number.value == '' && check == "TRUE")
+	{ 
+		alert('The MICR Number cannot be blank');
+		check = "False";
+		document.PaymentInfo.MICR_Number.focus();
+	}
+	if (isNaN(document.PaymentInfo.MICR_Number.value) == true && check == "TRUE")
+	{
+		alert ("The MICR Number must be Numeric Values only");
+		check = "False";
+		document.PaymentInfo.MICR_Number.focus();
+	}
+
+	if (document.PaymentInfo.MICR_Number.value.indexOf(document.PaymentInfo.Check_Number.value) < 0 && check == "TRUE")  
+	{
+		alert ("The MICR number is not Valid");
+		check = "False";
+		document.PaymentInfo.MICR_Number.focus();
+	}
+	if (document.PaymentInfo.MICR_Number.value.indexOf(AccountNum) < 0 && check == "TRUE")
+	{
+		alert ("The MICR number is not Valid");
+		check = "False";
+		document.PaymentInfo.MICR_Number.focus();
+	}
+	if (check == "TRUE")
+	{
+		document.PaymentInfo.SubmitButton.value = 'Processing. Please Wait';
+		document.PaymentInfo.CheckSubmit.value = '2';
+		document.PaymentInfo.submit();
+	};
+}
+
+function PaymentAddress()
+{
+document.PaymentInfo.CheckSubmit.value = '1';
+<!$MGIF_FROM_STORE>
+	<!$MGIF_HAVE_TELECHECK>
+		var v_address0;
+		var v_address1;
+		var v_address2;
+		var v_address3;
+		var v_address4;
+		var v_address5;
+		var v_address6;
+		var v_ccard;
+	
+		v_ccard = document.PaymentInfo.Credit_Telecheck.options[document.PaymentInfo.Credit_Telecheck.selectedIndex].value;
+		v_ccard = v_ccard.substr(v_ccard.lastIndexOf("-")+1);
+		
+
+		<!$MGREPEAT>
+			<!$MGIF_FIRST_TELECHECK>	
+				if (v_ccard == '<!$MG_Telecheck_Number1>')
+				{
+				v_address0 = '<!$MG_Telecheck_Address0>';
+				v_address1 = '<!$MG_Telecheck_Address1>';
+				v_address2 = '<!$MG_Telecheck_Address2>';
+				v_address3 = '<!$MG_Telecheck_Address3>';
+				v_address4 = '<!$MG_Telecheck_Address4>';
+				v_address5 = '<!$MG_Telecheck_Address5>';
+				v_address6 = '<!$MG_Telecheck_Address6>';
+				};
+			<!$MGELSE>
+				if (v_ccard == '<!$MG_Telecheck_Number1>')
+				{
+				v_address0 = '<!$MG_Telecheck_Address0>';
+				v_address1 = '<!$MG_Telecheck_Address1>';
+				v_address2 = '<!$MG_Telecheck_Address2>';
+				v_address3 = '<!$MG_Telecheck_Address3>';
+				v_address4 = '<!$MG_Telecheck_Address4>';
+				v_address5 = '<!$MG_Telecheck_Address5>';
+				v_address6 = '<!$MG_Telecheck_Address6>';
+				};
+			<!$MGENDIF>
+		<!$MGENDREPEAT>
+			document.PaymentInfo.BillingAddress0.value = v_address0;
+			document.PaymentInfo.BillingAddress1.value = v_address1;
+			document.PaymentInfo.BillingAddress2.value = v_address2;
+			document.PaymentInfo.BillingAddress3.value = v_address3;
+			document.PaymentInfo.BillingAddress4.value = v_address4;
+			document.PaymentInfo.BillingAddress5.value = v_address5;
+			document.PaymentInfo.BillingAddress6.value = v_address6;
+		<!$MGENDIF>
+	
+<!$MGENDIF>
+}
+function OpenOfficeWindow()
+{
+	// Open 'Select office' window
+	var objAreaWindow = window.open ('/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSSearchLookUp&ARGUMENTS=-N<!$MG_Session_Number>,-A<!$MG_App_Name>,-AOP,-APA', 'newWin', 'menubar=no,toolbar=no,resizable=yes,directories=no,scrollbars=yes,status=no,width=600,height=350');
+	return true;
+}
+	
+/////////////////////////////////////////////////////////////////////
+//--->
+</SCRIPT>
+
+<CENTER>
+<FORM NAME="PaymentInfo" action="https://<!$MG_Server_name>/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="IMSPaymentInfo">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-N<!$MG_Amount_Due_Param>,-N1,-A<!$MG_Transaction_Type>,-A<!$MG_Billing_Group>,-A<!$MG_Registration_ID>,-N<!$MG_Came_From>,-AT,-AN">
+	<INPUT type="hidden" name="CheckSubmit" value="1">
+	<!-- From Registration Form -->
+	<INPUT type="Hidden" name="Add_Info_Name" value="<!$MG_Add_Info_Name>">
+	<INPUT type="Hidden" name="Add_Info_Office" value="<!$MG_Add_Info_Office>">
+	<INPUT type="Hidden" name="Attn_CO" value="<!$MG_Attn_CO>">
+	<INPUT type="Hidden" name="Street_Addr" value="<!$MG_Street_Addr>">
+	<INPUT type="Hidden" name="City" value="<!$MG_City>">
+	<INPUT type="Hidden" name="State" value="<!$MG_State>">
+	<INPUT type="Hidden" name="Zip_Code" value="<!$MG_Zip_Code>">
+	<INPUT type="Hidden" name="Zip_Plus_4" value="<!$MG_Zip_Plus_4>">
+
+	
+<TABLE border="0" width="100%" cellpadding="2" cellspacing="0">
+	<TR CLASS="bgbar">
+		<TD CLASS="nnText" align="left" nowrap>&nbsp;Please select a Bank Account <!$MGIF_NOT_PKUP_CODE>and shipping address below<!$MGENDIF></TD>
+	</TR>
+</TABLE>
+
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="2">
+	<TR  align="center" >
+		<TD rowspan="3" ><IMG src="<!$MG_ImageAlias>telecheck.jpg" align="bottom"></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" Align= "Left" nowrap width="30%">Bank Account to be used</TD>
+		<TD Align= "Left" nowrap width="70%">
+			<SELECT name="Credit_Telecheck" size="1" onChange="PaymentAddress()">
+			<!$MGREPEAT>
+				<OPTION CLASS="input" value="<!$MG_Telecheck_Account>" <!$MG_Selected>><!$MG_Telecheck_Description></OPTION>
+				<!$MGENDREPEAT>
+			</SELECT></TD>
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+		<TD nowrap Align= "Left" nowrap><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSCheckAccount&ARGUMENTS=-N<!$MG_Session_Number>,-N<!$MG_Amount_Due>,-N0,-A<!$MG_Transaction_Type>,-A<!$MG_Billing_Group>,-A<!$MG_Registration_ID>,-N<!$MG_Came_From>,-AP&Add_Info_Name=<!$MG_Add_Info_Name>&Add_Info_Office=<!$MG_Add_Info_Office>&Attn_CO=<!$MG_Attn_CO>&Street_Addr=<!$MG_Street_Addr>&City=<!$MG_City>&State=<!$MG_State>&Zip_Code=<!$MG_Zip_Code>&Zip_Plus_4=<!$MG_Zip_Plus_4>">Add a new Account</A> &nbsp;&nbsp;
+		<!$MGIF_TELECHECK_TO_MODIFY>
+			<A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSCheckAccount&ARGUMENTS=-N<!$MG_Session_Number>,-N<!$MG_Amount_Due>,-N0,-A<!$MG_Transaction_Type>,-A<!$MG_Billing_Group>,-A<!$MG_Registration_ID>,-N<!$MG_Came_From>,-AP,-LT,-LT&Add_Info_Name=<!$MG_Add_Info_Name>&Add_Info_Office=<!$MG_Add_Info_Office>&Attn_CO=<!$MG_Attn_CO>&Street_Addr=<!$MG_Street_Addr>&City=<!$MG_City>&State=<!$MG_State>&Zip_Code=<!$MG_Zip_Code>&Zip_Plus_4=<!$MG_Zip_Plus_4>">Modify your Account</A></TD>
+			<!$MGENDIF>
+	</TR>
+	<TR>
+		<TD colspan="2" nowrap>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" align="Left" colspan="2" nowrap>Total to be charged to your TeleCheck&nbsp;&nbsp;
+		<!$MGIF_AMT_OVER_MAX><FONT color="red"><!$MG_Amount_Due><!$MGELSE><FONT color="blue"><!$MG_Amount_Due>
+		<!$MGENDIF></FONT></TD>
+	</TR>
+		<!$MGIF_AMT_OVER_MAX>
+	<TR>
+		<TD>&nbsp;</TD>
+		<TD CLASS="bTextRed" colspan="2" nowrap>The total amount is over the maximum of $2500.00 for TeleCheck processing.<BR>
+		Please select the back button to modify your selection.</TD>
+	</TR>
+	<!$MGENDIF>
+</TABLE>
+
+<TABLE border="0" width="70%" cellpadding="0" cellspacing="2">
+	<TR>
+		<TD colspan="2" nowrap>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" align="Left" colspan="2" nowrap>Please enter your check number. Record this check in your records as a used check.</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" align="Left" nowrap width="15%">Check Number&nbsp;&nbsp;</TD>
+		<TD align="Left" nowrap width="85%">&nbsp;&nbsp;<INPUT CLASS="input" type="text" name="Check_Number" size="10" maxlength="10"></TD>
+	</TR>
+	<TR>
+		<TD colspan="2" nowrap>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" align="Left" colspan="2" nowrap>Please enter the bank numbers (including the check number) that appear at the bottom of your check without spaces or punctuation characters.<BR>
+		<A CLASS="bTextBlue" 
+		Href="javascript://#LookUp" onclick=" var picWindow = window.open('<!$MG_ImageAlias>micr.gif','newWin', 'menubar=no,toolbar=no,resizable=yes,directories=no,scrollbars=no,status=no,height=420,width=530,left=600,top=505');">Click here for an example</A></TD>
+
+	</TR>
+	<TR>
+		<TD CLASS="bText" align="Left" nowrap width="15%">MICR&nbsp;&nbsp;</TD>
+		<TD align="Left" nowrap width="85%">&nbsp;&nbsp;<INPUT CLASS="input" type="text" name="MICR_Number" size="30" maxlength="30"></TD>
+	</TR>
+					
+</TABLE>
+
+<!$MGIF_FROM_STORE>
+	<HR>
+	<TABLE border="0" width="100%" cellpadding="2" cellspacing="0">
+		<TR>
+			<TD CLASS="bText" align="left" width="10%" nowrap>&nbsp;Shipping Mode Selected Is&nbsp;<!$MG_Shipping_Mode>&nbsp;&nbsp;&nbsp;</TD>
+			<TD CLASS="sTextBrown" align="left" width="90%" nowrap>&nbsp;<!$MG_Ship_To_Message></TD>
+		</TR>
+	</TABLE>
+	<!-- Used for the Ship to address - Additional info -->
+	<INPUT type="hidden" name="AllowedPoBox" value="<!$MG_AllowedPoBox>">
+
+	<TABLE border="0" width="100%" cellpadding="0" cellspacing="2">
+		<TR>
+			<TD width="15%"  nowrap align="right"><INPUT type="radio" name="Ship_To_Address" value="B" checked>
+			<TD CLASS="bText" width="85%" nowrap>My Billing Address</TD>
+		</TR>
+		<TR>
+			<TD width="15%" >&nbsp;</TD>
+			<TD width="85%">
+				<TABLE border="0" width="100%" cellpadding="0" cellspacing="2">
+					 <TR>
+						<TD CLASS="bText" width="13%" nowrap>Name</TD>
+						<TD width="87%" nowrap><INPUT CLASS="input" type="text" name="BillingAddress0"  size="35" maxlength="35" readOnly value="<!$MG_Mailing_Address0>" ></TD>
+					 </TR>
+					 <TR>
+						<TD CLASS="bText" width="13%" >Attn/Care of</TD>
+						<TD width="87%" nowrap><INPUT CLASS="input" type="text" name="BillingAddress1"  size="35" maxlength="35" readOnly value="<!$MG_Mailing_Address1>" ></TD>
+					</TR>
+					<TR>
+						<TD CLASS="bText" width="13%" >Address</TD>
+						<TD width="87%" nowrap><INPUT CLASS="input" type="text" name="BillingAddress2"  size="35" maxlength="35" readOnly value="<!$MG_Mailing_Address2>" ></TD>
+					</TR>
+					<TR>
+						<TD CLASS="bText" width="13%" >City, State Zip</TD>
+						<TD width="87%" nowrap><INPUT CLASS="input" type="text" name="BillingAddress3" size="20" maxlength="20" readOnly value="<!$MG_Mailing_Address3>" >&nbsp;<INPUT CLASS="input" type="text" name="BillingAddress4" size="2" maxlength="2" readOnly value="<!$MG_Mailing_Address4>" >&nbsp;<INPUT CLASS="input" type="text" name="BillingAddress5" size="5" maxlength="5" readOnly value="<!$MG_Mailing_Address5>" >-<INPUT CLASS="input" type="text" name="BillingAddress6" size="4" maxlength="4" readOnly value="<!$MG_Mailing_Address6>" ></TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+		<TR>
+			<TD>&nbsp;</TD>
+			<TD>&nbsp;</TD>
+		</TR>
+		<!$MGIF_NOT_PKUP_CODE>
+		<TR>
+			<TD width="15%"  nowrap align="right" ><INPUT type="radio" name="Ship_To_Address" value="S"></TD>
+			<TD CLASS="bText" width="85%" nowrap>Another Shipping Address <FONT size="1">(specify below)</FONT></TD>
+		</TR>
+		<TR>
+			<TD width="15%" >&nbsp;</TD>
+			<TD width="85%">
+				<TABLE border="0" width="100%" cellpadding="0" cellspacing="2">
+					<TR>
+						<TD CLASS="bText" width="13%"  nowrap >&nbsp;Name</TD>
+						<TD width="85%" nowrap ><INPUT CLASS="input" type="text" name="Ship_Full_Name" size="30" maxlength="40"></TD>
+					</TR>
+					<TR>
+						<TD CLASS="bText" width="13%"  nowrap>&nbsp;Attn/Care of</TD>
+						<TD width="85%" nowrap><INPUT CLASS="input" type="text" name="Shipping_Address_1" size="30" maxlength="40"></TD>
+					</TR>
+					<TR>
+						<TD CLASS="bText" width="13%"  nowrap>&nbsp;Address</TD>
+						<TD width="85%" nowrap><INPUT CLASS="input" type="text" name="Shipping_Address_2" size="30" maxlength="40"></TD>
+					</TR>
+					<TR>
+						<TD CLASS="bText" width="13%"  nowrap>&nbsp;City, State Zip</TD>
+						<TD width="85%" nowrap>
+							<INPUT CLASS="input" type="text" name="Ship_City" size="30" maxlength="40">
+							<INPUT CLASS="input" type="text" name="Ship_State" size="2" maxlength="2">
+							&nbsp;<INPUT CLASS="input" type="text" name="Ship_Zip_Code" size="5" maxlength="5">
+							-<INPUT CLASS="input" type="text" name="Ship_Zip_Plus_4" size="4" maxlength="4"></TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+	<HR>
+			<!$MGENDIF>
+<!$MGENDIF>
+
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="2">
+<!$MGIF_BROKER_OFCMGR>
+	<TR>
+	<TD nowrap width="100%" colspan=8>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="10%" nowrap>
+			Office ID
+		</TD>
+		<TD width="8%" nowrap>
+			<INPUT CLASS="input" type="text" name="Office_ID" size="12" maxlength="12" value="<!$MG_Office_ID>" readOnly>
+		</TD>
+		<TD nowrap colspan=3>
+			&nbsp;<INPUT CLASS="input" type="text" name="Office_Name" size="35" maxlength="35" readOnly value="<!$MG_Office_Name>">
+		</TD>
+		<TD nowrap colspan=3>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD width="10%" nowrap><A CLASS="sTextBlue" href="javascript://#LookUp" onClick="OpenOfficeWindow()">Select an office</A>
+		</TD>
+		<TD nowrap width="90%" colspan=7>&nbsp</TD>
+	</TR>
+		<!$MGELSE>
+		<INPUT type="Hidden" name="Office_ID" value="<!$MG_Office_ID>">
+		<INPUT type="Hidden" name="Office_Name" value="<!$MG_Office_Name>">
+	<!$MGENDIF>
+</TABLE>
+
+
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="2">
+	<TR>
+		<!$MGIF_MODIFY_EMAIL>
+			<TD CLASS="bTextMarine" nowrap>&nbsp;E-Mail Address<FONT size="1" color="red"> (required)</FONT>&nbsp;&nbsp;&nbsp;<INPUT CLASS="input" type="text" name="Email_Address" size="50" maxlength="80" value="<!$MG_EMail_Address>">
+			</TD>
+		<!$MGELSE>
+			<TD CLASS="bText" nowrap>
+			<INPUT CLASS="input" type="hidden" name="Email_Address" value="<!$MG_EMail_Address>">E-Mail Address<FONT color="blue">&nbsp;&nbsp;&nbsp;<!$MG_EMail_Address></FONT>
+			</TD>
+		<!$MGENDIF>
+	</TR>
+</TABLE>
+<BR>
+<DIV CLASS="snText">
+<TABLE border="0" width="90%" cellpadding="3" cellspacing="0">
+	<TR>Transaction Authorization: By typing in my driver's license or identification number above and clicking the "I Authorize This Transaction" link below, I confirm that I am the owner of the account identified by the MICR numbers entered in the Internet check above and authorize this merchant and/or TeleCheck to convert my account information entered above into a paper draft drawn on, or an electronic debit to, my account for the amount of this transaction. In the event that my paper draft or electronic debit is returned unpaid, I agree that a returned item fee also may be debited from my account electronically or drafted via paper draft. The amount of the fee will be determined by the state where my billing address is located. (See the list below for the fee for your billing address.) Further, by submitting a transaction, I expressly authorize this merchant to obtain a report of my check-writing history from TeleCheck to prevent fraud and for other authentication purposes. For more information on TeleCheck's process and privacy policy, see <A href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSTelecheckFAQ&ARGUMENTS=-N<!$MG_Session_Number>,-A1">Internet Check FAQ</A> and <A href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSTelecheckFAQ&ARGUMENTS=-N<!$MG_Session_Number>,-A3">TeleCheck Privacy Policy</A>. </TR> 
+	<TR>&nbsp;</TR>
+	<TR>Return Check Fee by State: Alabama $30**, Alaska $30, Arizona $25, Arkansas $25, California $25, Colorado $20**, Connecticut $20, Delaware $30, District of Columbia $25, Florida 25**^, Georgia $30#, Guam $20, Hawaii $20, Idaho $20, Illinois $25**, Indiana $20, Iowa $30, Kansas $30, Kentucky $25, Louisiana $25#, Maine $25, Maryland $35, Massachusetts $25, Michigan $25, Minnesota $30**, Mississippi $40, Missouri $25, Montana $30, Nebraska $35, Nevada $25, New Hampshire $25, New Jersey $30, New Mexico $30, New York $20, North Carolina $25, North Dakota $25, Ohio $30***, Oklahoma $25, Oregon $25, Pennsylvania $30, Puerto Rico $10, Rhode Island $25, South Carolina $30, South Dakota $30, Tennessee $20, Texas $30**, Utah $20, Vermont $25, Virgin Islands $35, Virginia $35, Washington $30**, West Virginia $25, Wisconsin $25**, Wyoming $30.
+	</TR>
+	<TR>&nbsp;</TR>
+	<TR>** Checkwriter also responsible for all other costs of collection</TR>
+	<TR>*** Amount stated or 10% of the face amount of the check, whichever is greater.</TR>
+	<TR>^ Checks from (1) $0.01 to $50.00 = $25.00 fee, (2) $50.01 to $300.00 = $30.00 fee, (3) $300.01 and over = the greater of $40.00 fee or 5% of the face amount of the check.</TR>
+	<TR># Amount stated or 5% of the face amount of the check, whichever is greater.</TR>
+</TABLE>
+</DIV>
+<BR>
+<TABLE cellpadding="0" cellspacing="0" width="100%">
+	<TR align="center">
+		<TD align="CENTER" width="50%"><INPUT TYPE="Button" Name="SubmitButton" VALUE="I Authorize This Transaction" onClick="SubmitForm()"></TD>
+	</TR>
+</TABLE>
+</FORM>
+
+
+</CENTER>

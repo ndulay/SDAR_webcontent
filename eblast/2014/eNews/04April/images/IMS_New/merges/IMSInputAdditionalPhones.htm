@@ -1,0 +1,55 @@
+
+<FORM action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="IMSSaveAdditionalPhones">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-N<!$MG_Mem/Ofc_Number>,-A<!$MG_M/O_Type>,-A<!$MG_Came_From>">
+
+
+<CENTER>
+
+<BR>
+<TABLE border="0" cellspacing="0" cellpadding="0" width="100%">
+	<TR CLASS="bgbar">
+		<TD CLASS="nnText" nowrap>&nbsp;<!$MG_Mem/Ofc_Name>&nbsp;<!$MG_MLS_ID></TD>
+	</TR>
+</TABLE>
+
+
+<BR>
+<TABLE border="0" width="100%" cellpadding="2" cellspacing="0">
+	<TR>
+		<TD CLASS="bText" width="30%" nowrap>Phone Number</TD>
+		<TD nowrap><INPUT CLASS="input" type="text" name="Phone_Area" size="3" face="arial" maxlength="3" value="">-<INPUT CLASS="input" type="text" name="Phone_Prefix" size="3" face="arial" maxlength="3" value="">-<INPUT CLASS="input" type="text" name="Phone_Suffix" size="4" face="arial" maxlength="4" value=""></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="30%" nowrap>Phone Type</TD>
+		<TD>
+			<SELECT name="Phone_Type" size="1" face="arial">
+				<!$MGREPEAT>
+					<OPTION CLASS="input" value="<!$MG_Phone_Type_R1>"> <!$MG_Phone_Description></OPTION>
+				<!$MGENDREPEAT>
+			</SELECT>
+		</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" width="30%" nowrap>Sort Sequence</TD>
+		<TD><INPUT CLASS="input" type="text" name="Phone_Sort_Seq" size="1" face="arial" maxlength="1" value=""></TD>
+	</TR>
+</TABLE>
+<TABLE>
+	<TR>
+		<TD align="center" CLASS="stext">(You must enter a Sort Sequence.  Please use a letter or number to specify<br> how you want the phone number to sort on displays and reports.)</TD>
+	</TR>
+</TABLE>
+
+
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR align="center">
+		<TD nowrap><INPUT type="submit" name="" value="Submit"></TD>
+	</TR>
+</TABLE>
+</FORM>
+
+
+</CENTER>

@@ -1,0 +1,415 @@
+/* ...............................PAGE SETUP........................ */
+
+BODY {
+font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+/* ...............................LINKS........................ */
+a {
+	text-decoration: underline;
+	color: #000000;
+
+
+
+
+}
+
+.Indent {
+	Margin-left: 25px;
+	Margin-top: 4px;
+	Margin-right: 25px;
+	Margin-bottom: 4px;
+	list-style: url(http://ims.sdar.com:9000/images/bulletBlue.gif);
+	font-size: smaller;
+	list-style-position: outside;
+
+
+	
+}
+
+
+a:hover {
+	text-decoration: underline;
+
+}
+
+a:visited {
+	text-decoration: underline;
+
+}
+a.altnav {
+    font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+    line-height : 110%;
+    color: #666666;
+    text-decoration : underline;   
+}
+a.subnav {
+    font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+    line-height : 110%;
+    color: #663300;
+    text-decoration : underline;   
+}
+a.subnav:active {
+   font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height : 110%;
+    color: #663300;
+    text-decoration : underline;   
+}
+a.subnav:hover {
+   font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height : 110%;
+    color: #663300;
+    text-decoration : underline;   
+}
+a.subnav:visted {
+   font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height : 110%;
+    color: #663300;
+    text-decoration : underline;   
+}
+
+/* ...............................HEADINGS........................ */
+
+h1 {
+	font: bold;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 16pt;
+	font-weight : bolder;
+	font-variant : normal;
+}
+
+h2 {
+	font: bold;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 14pt;
+}
+
+h3 {
+	font: bold;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 12pt;
+}
+
+.txwhiteb {
+	font: bold 10pt Verdana, Geneva, Arial, Helvetica, sans-serif;
+	color : White;
+}
+
+/* ...............................HORIZONTAL RULE........................ */
+
+HR {
+	color : #959D56;
+	border : solid;
+}
+
+/* ...............................TEXT........................ */
+.T0{
+font-size: 14px;	
+}
+.T0B{
+font-size: 14px;
+font-weight : 800;	
+}
+
+.T1 {
+	font-size : 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	list-style: circle;
+	margin: 3px;
+}
+
+.T1B{
+font-size: 12px;
+font-weight : 800;	
+}
+
+.T2 {
+	font-size : 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	list-style: circle;
+
+}
+.T2B{
+font-size: 10px;
+font-weight : 800;	
+}
+
+.T3 {
+font-size : 9px;
+}
+.T3B {
+font-size : 9px;
+font-weight : 800;
+}
+
+.L0 {
+font-size : 14px;
+color: black;
+}
+.L0B {
+font-size : 14px;
+font-weight : 800;
+color: black;
+}
+
+.L1 {
+font-size : 12px;
+color: black;
+}
+.L1B {
+font-size : 12px;
+font-weight : 800;
+color: black;
+}
+
+.L2 {
+font-size : 10px;
+color: black;
+}
+.L2B {
+font-size : 10px;
+font-weight : 800;
+color: black;
+}
+
+.L3 {
+font-size : 9px;
+color: black;
+}
+.L3B {
+font-size : 9px;
+font-weight : 800;
+color: black;
+}
+
+
+.W1 {
+font-size : 14px;
+font-weight : 700;
+color : white;
+line-height : 100%;
+}
+.W2 {
+font-size : 14px;
+font-weight : 700;
+color : white;
+line-height : 110%;
+}
+
+.txmdb{
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	color : #000000;
+	font-weight: 800;
+}
+.txmdb{
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	color : #000000;
+	font-weight: 800;
+}
+.txsmb{
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	color : #000000;
+	font-weight: 800;
+}
+.txsmb{
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	color : #000000;
+	font-weight: 800;
+}
+.txsm{
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	color : #000000;
+}
+.txsm{
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	color : #000000;
+}
+.txrow{
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 14px;
+	color : Black;
+	font-weight: 800;
+}
+.txrow{
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 14px;
+	color : Black;
+	font-weight: 800;
+}
+
+/* ............................ALL TABLES................................*/
+
+table.table1 {
+	background:  #FFFFFF;
+	padding: 5pt;
+	border-left-width : 1px;
+	border-right-width : 1px;
+	border-top-width : 1px;
+	border-bottom-width : 1px;
+	border-color : #000000;
+	border-style : solid;
+}
+
+table.table2 {
+	background:  #FFFFFF;
+	padding:2pt 2pt 2pt 2pt;
+	border-left-width : 4px;
+	border-right-width : 4px;
+	border-top-width : 4px;
+	border-bottom-width : 4px;
+}
+
+table.table3 {
+	background:  #FFFFFF;
+	padding: 3pt;
+	border-left-width : 1px;
+	border-right-width : 1px;
+	border-top-width : 1px;
+	border-bottom-width : 1px;
+	border-color : #000000;
+	border-style : solid;
+	font-family: Georgia, "Times New Roman", Times, serif;
+
+}
+/* ............................TABLE ROWS................................*/
+
+.rowdk{
+	background: #EBEBEB;
+}
+
+.rowcolor{
+	background: #959D56;
+}
+
+.rowlt{
+	background: #FFFFFF;
+}
+.Gray0 {
+
+font-size : 14px;
+color: #999999;
+}
+.Gray0B {
+
+font-size : 14px;
+font-weight : 800;
+color: #999999;
+}
+.Gray1 {
+
+font-size : 12px;
+color: #999999;
+}
+.Gray1B {
+
+font-size : 12px;
+font-weight : 800;
+color: #999999;
+}
+.Gray2 {
+
+font-size : 10px;
+color: #999999;
+}
+.Gray2B {
+
+font-size : 10px;
+font-weight : 800;
+color: #999999;
+}
+.Gray3 {
+
+
+font-size : 9px;
+color: #999999;
+}
+.Gray3B {
+
+
+font-size : 9px;
+font-weight : 800;
+color: #999999;
+}
+.A1 {
+	font-size : 12px;
+	color: black;
+	font-family: "Courier New", Courier, mono;
+
+}
+.A1B {
+	font-size : 12px;
+	font-weight : 800;
+	color: black;
+	font-family: "Courier New", Courier, mono;
+
+}
+.A0 {
+	font-size : 14px;
+	color: black;
+	font-family: "Courier New", Courier, mono;
+
+}
+.A0B {
+	font-size : 14px;
+	font-weight : 800;
+	color: black;
+	font-family: "Courier New", Courier, mono;
+
+}
+.A2 {
+	font-size : 10px;
+	color: black;
+	font-family: "Courier New", Courier, mono;
+
+}
+.A2B {
+	font-size : 10px;
+	font-weight : 800;
+	color: black;
+	font-family: "Courier New", Courier, mono;
+
+}
+.A3 {
+	font-size : 9px;
+	color: black;
+	font-family: "Courier New", Courier, mono;
+
+}
+.A3B {
+	font-size : 9px;
+	font-weight : 800;
+	color: black;
+	font-family: "Courier New", Courier, mono;
+
+}
+.txwhiteb-1 {
+
+	font: normal 9pt Verdana, Geneva, Arial, Helvetica, sans-serif;
+	color : White;
+}
+.txwhite-1 {
+
+
+	font: normal 9pt Verdana, Geneva, Arial, Helvetica, sans-serif;
+	color : White;
+}
+.rowLtBlue {
+
+	background: #B9C7E5;
+}
+.rowDkBlue {
+
+
+	background: #758BB7;
+}

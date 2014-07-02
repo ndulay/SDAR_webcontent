@@ -1,0 +1,124 @@
+<SCRIPT LANGUAGE="JavaScript">
+<!---
+function openAddListCodeWindow(categorycode, listcode)
+{
+	var objListCodeWindow = window.open
+		('/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSListMaker&ARGUMENTS=-N<!$MG_Session_Number>,-A'+categorycode+',-A,-N2,-A,-AD','newWin', 'menubar=no,toolbar=no,resizable=yes,directories=no,scrollbars=no,status=no,width=650,height=500,top=50');
+}
+function openListCodeWindow(categorycode, listcode)
+{
+	var objListCodeWindow = window.open
+		('/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSListMaker&ARGUMENTS=-N<!$MG_Session_Number>,-A'+categorycode+',-A'+listcode+', -N1,-A,-AD','newWin', 'menubar=no,toolbar=no,resizable=yes,directories=no,scrollbars=no,status=no,width=650,height=500,top=50');
+}
+
+//function SubmitForm()
+//{
+	// No errors submit the form
+	//document.ListMakerDirect.submit();
+	//}
+
+//--->
+</SCRIPT>
+
+<CENTER>
+<FORM name="ListMakerDirect" action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME"   value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME"   value="IMSListMaker">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>">
+
+	<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+		<TR>
+		<!$MGREPEAT>
+		<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+			<TR CLASS="bgbar">
+				<TD CLASS="snText" width="25%" nowrap>&nbsp;<!$MG_Category_Descr_R></TD>
+				<!$MGIF_SHOW_COMMENT>
+					<TD CLASS="snText" width="25%" nowrap>Comment</TD>
+				<!$MGELSE>
+					<TD width="25%" nowrap>&nbsp;</TD>
+				<!$MGENDIF>
+				<!$MGIF_SHOW_STATUS>
+					<TD CLASS="snText" width="10%" nowrap>Status</TD>
+				<!$MGELSE>
+					<TD width="10%" nowrap>&nbsp;</TD>
+				<!$MGENDIF>
+				<!$MGIF_SHOW_DATE>
+					<TD CLASS="snText" width="10%" nowrap>Date</TD>
+				<!$MGELSE>
+					<TD width="10%" nowrap>&nbsp;</TD>
+				<!$MGENDIF>
+				<!$MGIF_SHOW_AMOUNT>
+					<TD CLASS="snText" width="15%" nowrap>Amount</TD>
+				<!$MGELSE>
+					<TD width="15%" nowrap>&nbsp;</TD>
+				<!$MGENDIF>
+				<!$MGIF_SHOW_ADDL_INFO>
+					<TD width="15%" nowrap>&nbsp;&nbsp;</TD>
+				<!$MGELSE>
+					<TD width="15%" nowrap>&nbsp;</TD>
+				<!$MGENDIF>
+			</TR>
+			<TR>
+				<TD nowrap>&nbsp;</TD>
+			</TR>
+			<!$MGIF_SHOW_ADD_LINK>
+				<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+					<TR>
+						<TD nowrap>&nbsp;&nbsp;</TD>
+						<TD nowrap><A CLASS="bTextBlue"  href="javascript:openAddListCodeWindow('<!$MG_Category_Code_R>','')">Add item</A></TD>
+					</TR>
+				</TABLE>
+			<!$MGENDIF>
+		
+	<!-- Display List codes that member belongs to -->
+		<!$MGREPEAT>
+			<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+				<TR Height="23">
+				<!$MGIF_SHOW_NO_LINK_R>
+					<TD CLASS="bTextBlue" width="25%" nowrap><!$MG_Description_R></TD>
+				<!$MGELSE>
+					<TD width="25%" nowrap id="List_Code_Descr_For_<!$MG_Cat_Code_R><!$MG_List_Code_R>">&nbsp;&nbsp;<A CLASS="bTextBlue"  href="javascript:openListCodeWindow('<!$MG_Cat_Code_R>', '<!$MG_List_Code_R>')"><!$MG_Description_R></A></TD>
+				<!$MGENDIF>
+				<!$MGIF_SHOW_COMMENT_R>
+					<TD CLASS="snText" width="25%" nowrap id="Comment_For_<!$MG_Cat_Code_R><!$MG_List_Code_R>"><!$MG_Comment_R></TD>
+				<!$MGELSE>
+					<TD width="25%" nowrap>&nbsp;</TD>
+				<!$MGENDIF>
+				<!$MGIF_SHOW_STATUS_R>
+					<TD CLASS="snText" width="10%" nowrap id="Status_For_<!$MG_Cat_Code_R><!$MG_List_Code_R>"><!$MG_Status_Descr_R></TD>
+				<!$MGELSE>
+					<TD width="10%" nowrap>&nbsp;</TD>
+				<!$MGENDIF>
+				<!$MGIF_SHOW_DATE_R>
+					<TD CLASS="snText" width="10%" nowrap id="Date_For_<!$MG_Cat_Code_R><!$MG_List_Code_R>"><!$MG_Date_R></TD>
+				<!$MGELSE>
+					<TD width="10%" nowrap>&nbsp;</TD>
+				<!$MGENDIF>
+				<!$MGIF_SHOW_AMOUNT_R>
+					<TD CLASS="snText" width="15%" nowrap id="Amount_For_<!$MG_Cat_Code_R><!$MG_List_Code_R>"><!$MG_Amount_R></TD>
+				<!$MGELSE>
+					<TD width="15%" nowrap>&nbsp;</TD>
+				<!$MGENDIF>
+				<!$MGIF_SHOW_ADDL_INFO_R>
+					<TD width="15%" nowrap><!$MG_Addl_Info_Link_R>Additional Info</A></TD>
+				<!$MGELSE>
+					<TD width="15%" nowrap>&nbsp;</TD>
+				<!$MGENDIF>
+				</TR>
+			</TABLE>
+		<!$MGENDREPEAT>
+		<BR>
+	<!$MGENDREPEAT>
+		</TABLE>
+	</TABLE>
+<BR>
+<!--  <HR WIDTH="100%">
+<BR>
+<TABLE border="0" cellspacing="0" cellpadding="0" width="100%">
+	<TR align="center">
+		<TD nowrap><INPUT TYPE="Button" VALUE="Submit" onClick="SubmitForm()"></TD>
+	</TR>
+</TABLE>-->
+</FORM>
+
+</CENTER>

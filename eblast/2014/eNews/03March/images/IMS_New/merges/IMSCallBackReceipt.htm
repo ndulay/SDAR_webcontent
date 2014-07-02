@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+<META name="Rapattoni Corporation" content="Magic 8 Web IMS">
+<TITLE>IMS Web CC Authorization (122)</TITLE>
+<!-- IA 11/13/00 -->
+<!-- Name = IMSCallBackReceipt.htm -->
+</HEAD>
+
+	<!$MGIF_NOT_VIRTUAL_BROWSER>	
+		<BODY  text="black" onload="document.CallBack.submit()">
+	<!$MGELSE>
+		<BODY  text="black" >
+	<!$MGENDIF>
+</SCRIPT>
+<FORM NAME="CallBack" action="/scripts/mgrqispi.dll" method="POST" >
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="<!$MG_Prg_Name>">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Receipt_Number>,-A<!$MG_Email_Address>,-N<!$MG_Session_number>,-A<!$MG_Assoc_URL>,-A<!$MG_ErrorNum>">
+	<INPUT type="hidden" name="PNREF" value="<!$MG_PNREF>">
+	<INPUT type="hidden" name="ErrorMessage" value="<!$MG_ErrorMessage>">
+	<INPUT type="hidden" name="AuthorizationCode" value="<!$MG_AuthorizationCode>">
+	<INPUT type="hidden" name="ProcessedBy" value="<!$MG_ProcessedBy>">
+    <!$MGIF_NOT_VIRTUAL_BROWSER>	
+		<INPUT type="hidden" name="Submit" value="Submit">
+	<!$MGELSE>
+		<INPUT type="submit" name="Submit" value="Submit">
+    <!$MGENDIF>
+	
+</FORM>
+</BODY>
+</HTML>

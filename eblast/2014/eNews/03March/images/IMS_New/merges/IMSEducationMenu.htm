@@ -1,0 +1,36 @@
+<!-- Form is needed for Reports-Calls Popup /scripts/IMS/IMSReport.htm which needs variables updated from parent.window.opener.document.InputForm.XXX.value -->
+<SCRIPT language="javascript" src="IMSopenReportWindow.js"></SCRIPT>
+<FORM NAME="InputForm" action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME"   value="">
+	<INPUT type="hidden" name="PRGNAME"   value="">
+	<INPUT type="hidden" name="ARGUMENTS" value="">
+</FORM>
+
+
+<CENTER>
+<BR>
+<TABLE border="0" width="100%" cellpadding="3" cellspacing="3" height="25">
+	<TR>
+		<TD nowrap><A CLASS="bText" href="##javascript://<!$MG_Menu_Description>" onclick="openReportWindow(document.InputForm, 'IMS Continuing Education', '<!$MG_App_Name>','IMSContinuingEducation','-N<!$MG_Session_Number>,-N0,-A,-A,-AM')" >Personal Education Tracking</A></TD>
+	</TR>
+	<!$MGIF_OFFICE_EDUCATION>
+	<TR>
+		<TD nowrap><A CLASS="bText" href="##javascript://<!$MG_Menu_Description>" onclick="openReportWindow(document.InputForm, 'IMS Continuing Education', '<!$MG_App_Name>','IMSContinuingEducation','-N<!$MG_Session_Number>,-N0,-A,-A,-AO')" >Office(s) Education Tracking</A></TD>
+	</TR>
+	<!$MGENDIF>
+	<TR>
+		<TD nowrap><A CLASS="bText" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSRegisteredClasses&ARGUMENTS=-N<!$MG_Session_Number>">Classes You Are Registered For</A></TD>
+	</TR>
+	<TR>
+		<TD nowrap><A CLASS="bText" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSEducationHistory&ARGUMENTS=-N<!$MG_Session_Number>">Classes You Have Taken</A></TD>
+	</TR>
+	<!$MGIF_MEM_HAS_CARD>
+	<TR>
+		<TD nowrap><A CLASS="bText" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSEducationCards&ARGUMENTS=-N<!$MG_Session_Number>">Education Card Credits</A></TD>
+	</TR>
+	<!$MGENDIF>
+</TABLE>
+
+</CENTER>
+
+<BR>

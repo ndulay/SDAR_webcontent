@@ -1,0 +1,37 @@
+<CENTER>
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="bigTextMarine" align="left" nowrap>&nbsp;&nbsp;Office Members</TD>
+	</TR>
+</TABLE>
+
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="2">
+	<TR CLASS="bgbar">
+		<TD CLASS="bText" nowrap>&nbsp;Member Name</TD>
+	</TR>
+	<!$MGREPEAT>
+		<TR>
+			<TD nowrap>&nbsp;<A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R1>&PRGNAME=IMSListingAgentDetail&ARGUMENTS=-N<!$MG_Member_Number>,-N<!$MG_Session_Num>"><!$MG_Member_Name></A></TD>
+		</TR>
+	<!$MGENDREPEAT>
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+<TABLE>
+
+<TABLE width="25%" border="0" cellpadding="0" cellspacing="0" align="left">
+	<TR >
+	<!-- ITG 557420 JK 1/21/09 modified text from Denotes Designated Broker to Denotes Responsible Member -->
+		<TD CLASS="bTextBlue">&nbsp;&nbsp;&nbsp;&nbsp;**</TD>
+		<TD CLASS="nnText">Denotes Responsible Member</TD>
+	</TR>
+</TABLE>
+<BR>
+<TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+</TABLE>
+
+</CENTER>

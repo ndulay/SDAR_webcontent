@@ -1,0 +1,77 @@
+<CENTER>
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+<TR>
+	<TD CLASS="bigTextMarine" align="left" nowrap>&nbsp;Member Information</TD>
+</TR>
+</TABLE>
+
+
+<TABLE border="0" cellspacing="0" cellpadding="5" CLASS="bgbar" width="100%">
+	<TR>
+		<TD nowrap><!$MGIF_MEMBER_PHOTO><IMG src="<!$MG_Picture_Filename>"><!$MGENDIF></TD>
+		<TD CLASS="nnText"><!$MG_Internet_Bio></TD>
+	</TR>
+</TABLE>
+<BR>
+
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="bbText" width="400" colspan="2" nowrap><!$MG_Member_Full_Name></TD>
+	</TR>
+</TABLE>
+
+
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD width="1%" nowrap>&nbsp;</TD>
+		<TD class="bText" nowrap>
+			<A CLASS="bTextBlue"  href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSOfficeInformationPublic&ARGUMENTS=-N<!$MG_Office_Number>,-N<!$MG_Session_Number>"><!$MG_Office_Name></A><BR>
+			<!$MG_Office_Street><BR>
+			<!$MG_Office_City> <!$MG_Office_State> <!$MG_Office_Zip>
+		</TD>
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" nowrap>Contact:&nbsp;</TD>
+		<TD CLASS="nnText" nowrap><!$MG_Contact_Phone></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" nowrap>Office:&nbsp;</TD>
+		<TD CLASS="nnText" nowrap><!$MG_Member_Office_Phone></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" nowrap>Fax:&nbsp;</TD>
+		<TD CLASS="nnText" nowrap><!$MG_Member_Office_Fax></TD>
+	</TR>
+	<TR>
+	<!$MGIF_SHOW_MLSID>
+	<TR>
+		<TD CLASS="bText" nowrap>MLS ID:&nbsp;</TD>
+		<TD CLASS="nnText" nowrap><!$MG_Member_MLS_ID></TD>
+	</TR>
+	<!$MGENDIF>
+		<TD>&nbsp;</TD>
+	</TR>
+	<!$MGIF_SHOW_EMAIL>
+	<TR>
+		<TD CLASS="bText" nowrap>E-Mail:&nbsp;</TD>
+		<TD nowrap><A CLASS="bTextBlue" href="mailto:<!$MG_Member_Email>"><!$MG_Member_Email></A></TD>
+	</TR>
+	<!$MGENDIF>
+	<!$MGIF_HAS_WEB_PAGE>
+	<TR>
+		<TD CLASS="bText" nowrap>Web Page:&nbsp</TD>
+		<TD nowrap><A CLASS="bTextBlue" href="<!$MGIF_HTTP_Not_Found>http://<!$MGENDIF><!$MG_Member_Website>"><!$MG_Member_Website></A></TD>
+	</TR>
+	<!$MGENDIF>
+</TABLE>
+
+
+<BR>
+
+
+</CENTER>

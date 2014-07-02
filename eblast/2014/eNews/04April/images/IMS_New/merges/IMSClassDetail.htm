@@ -1,0 +1,162 @@
+<CENTER>
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="bigTextMarine" align="left" colspan="3" nowrap>
+		<!$MGIF_MORE_COURSE_INFO>
+			<!$MG_Course_More_Info><!$MG_Course_ID_Name></A>
+		<!$MGELSE>
+			<!$MG_Course_ID_Name>
+		<!$MGENDIF>
+		</TD>
+	</TR>
+</TABLE>
+
+<BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD CLASS="bText" align="left" nowrap>Class ID</TD>
+		<TD CLASS="nnText" align="left" nowrap><!$MG_Class_ID></TD>
+		<TD CLASS="bText" align="left" nowrap width="30%">Course Type</TD>
+		<TD CLASS="nnText" align="left" nowrap width="20%"><!$MG_Course_Type>
+		<!$MGIF_Course_Credits>&nbsp;<!$MG_Credits>&nbsp;Credits<!$MGENDIF></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" align="left" nowrap width="30%">Format</TD>
+		<TD CLASS="nnText" align="left" nowrap width="20%"><!$MG_Course_Format></TD>
+		<TD CLASS="bText" align="left" nowrap>Class Status/Spaces Available</TD>
+		<TD CLASS="bText" align="left" nowrap><FONT color="<!$MG_Class_Status_Color>"><!$MG_Class_Status>&nbsp;/&nbsp;<!$MG_Spaces_Available></FONT></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" align="left" nowrap><!$MG_Date_Heading></TD>
+		<TD CLASS="nnText" align="left" nowrap><!$MG_Class_Date></TD>
+		<TD CLASS="bText" align="left" nowrap>Time</TD>
+		<TD CLASS="nnText" align="left" nowrap><!$MG_Class_Time></TD>
+	</TR>
+	<!$MGIF_HAVE_EDUCATION_CARD>
+		<TR>
+			<TD CLASS="bText" align="left" nowrap><!$MG_Educ_Card_Desc>&nbsp;Credits Required</TD>
+			<TD CLASS="nnText" align="center" nowrap><!$MG_Course_Education_Card></TD>
+			<TD CLASS="bText" align="left" nowrap><!$MG_Educ_Card_Desc>&nbsp;Credits Available</TD>
+			<TD CLASS="bText" align="center" nowrap><FONT Color="<!$MG_Color_Education_Card>"><!$MG_Education_Card_Balance></FONT></TD>
+		</TR>
+	<!$MGENDIF>		
+		<TR>
+		<!$MGIF_NO_DEADLINE>
+			<TD CLASS="bText" align="left" nowrap>Price</TD>
+			<TD CLASS="nnText" align="left" nowrap><!$MG_Price_Before></TD>
+		<!$MGELSE>
+			<TD CLASS="bText" align="left" nowrap>Price On/Before&nbsp;<!$MG_Deadline_Date></TD>
+			<TD CLASS="nnText" align="left" nowrap><!$MG_Price_Before></TD>
+		<!$MGENDIF>
+		<TD CLASS="bText" align="left" nowrap>Instructor</TD>
+		<TD CLASS="nnText" align="left" nowrap><!$MG_Instructor></TD>	
+	</TR>
+	<TR>
+		<!$MGIF_NO_DEADLINE>
+			<TD align="left" nowrap Colspan=2>&nbsp;</TD>
+		<!$MGELSE>
+			<TD CLASS="bText" align="left" nowrap>Price After&nbsp;<!$MG_Deadline_Date> </TD>
+			<TD CLASS="nnText" align="left" nowrap><!$MG_Price_After></TD>
+		<!$MGENDIF>
+		<TD CLASS="bText" align="left" nowrap>Location</TD>
+		<TD align="left" nowrap>
+		<!$MGIF_LOCATION_EXIST>
+			<A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_L_App_Name>&PRGNAME=IMSDisplayLocation&ARGUMENTS=-N<!$MG_L_Session_Number>,-A<!$MG_LocationID>"><!$MG_Location></A>
+		<!$MGENDIF>
+		<!$MGIF_LOC_DOC_EXIST>
+			<!$MG_Loc_Web_Doc><!$MG_Location></A>
+		<!$MGENDIF>
+		</TD>
+	</TR>
+	<TR>
+	<!$MGIF_CANCELLATION_FEE>
+	<TR>
+		<!$MGIF_CANCEL_BEFORE>
+		<TD CLASS="bText" align="left" nowrap>Cancellation Fee On/Before&nbsp;<!$MG_Deadline_Date></TD>
+		<TD CLASS="nnText" align="left" nowrap><!$MG_Cancel_Fee_Before></TD>
+		<!$MGELSE>
+			<TD align="left" nowrap Colspan=2>&nbsp;</TD>
+		<!$MGENDIF>
+		<!$MGIF_REGISTERED>
+			<TD CLASS="bText" align="left" nowrap>Registration Status</TD>
+			<TD CLASS="bText" align="left" nowrap>
+				<FONT color="<!$MG_Registration_Color>"><!$MG_Registration_Status></FONT>
+			</TD>
+		<!$MGELSE>
+			<TD align="left" nowrap Colspan=2>&nbsp;</TD>
+		<!$MGENDIF>
+	</TR>
+	<TR>
+		<!$MGIF_CANCEL_AFTER>
+		<TD CLASS="bText" align="left" nowrap>Cancellation Fee After&nbsp;<!$MG_Deadline_Date> </TD>
+		<TD CLASS="nnText" align="left" nowrap><!$MG_Cancel_Fee_After></TD>
+		<!$MGELSE>
+		<TD align="left" nowrap Colspan=2>&nbsp;</TD>
+		<!$MGENDIF>
+		<!$MGIF_MORE_CLASS_INFO>
+			<TD align="left" nowrap></TD>
+			<TD align="left" nowrap><!$MG_Addl_Info_Doc_Name>Additional Class Info</A></TD>
+		<!$MGENDIF>
+	</TR>
+	<!$MGELSE>
+		<!$MGIF_REGISTERED>
+		<TR>
+			<TD align="left" nowrap Colspan=2>&nbsp;</TD>
+			<TD CLASS="bText" align="left" nowrap>Registration Status</TD>
+			<TD CLASS="bText" align="left" nowrap>
+				<FONT color="<!$MG_Registration_Color>"><!$MG_Registration_Status></FONT>
+			</TD>
+		</TR>
+		<!$MGENDIF>
+		<!$MGIF_MORE_CLASS_INFO>
+			<TD align="left" nowrap Colspan=3>&nbsp;</TD>
+			<TD align="left" nowrap><!$MG_Addl_Info_Doc_Name>Additional Class Info</A></TD>
+		<!$MGENDIF>
+	<!$MGENDIF>
+</TABLE>
+<BR>
+<!$MGIF_ED_DOC_EXISTS>
+	<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR align="center">
+			<TD nowrap><!$MG_Document_Name><!$MG_Link_Name></A></TD>
+	</TR>
+	</TABLE>
+<!$MGENDIF>
+<!$MGIF_CLASS_IS_FULL>
+	<BR>
+	<TABLE border="0" width="50%" cellpadding="0" cellspacing="0">
+		<TR>
+			<TD CLASS="bTextRed" align="center" nowrap>This class is full.</TD>
+		</TR>
+	</TABLE>
+<!$MGELSE>
+<!$MGIF_PRICE_WARNING>
+	<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+		<TR>
+				<TD CLASS="sText" align="Center" nowrap>Warning:  The cancellation fee is higher than the class fee.<BR>
+															You cannot cancel this registration online.</TD>
+		</TR>
+	</TABLE>
+<!$MGENDIF>
+<BR>
+	<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+		<TR>
+			<!$MGIF_REGISTERED>
+				<TD CLASS="bTextMarine" align="Left" nowrap>You are already registered for this class</TD>
+				<!$MGIF_CANCELLATION>
+					<TD align="Right" nowrap colspan=3><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_C_App_Name>&PRGNAME=IMSCancelRegistration&ARGUMENTS=-N<!$MG_C_Session_Number>,-A0,-A<!$MG_C_Convention_ID>,-A<!$MG_C_Registration_ID>,-A<!$MG_C_Class_ID>,-N<!$MG_C_Receipt_ID>,-N<!$MG_C_Invoice_ID>,-A<!$MG_Cancellation_Type>,-AC>">Registration Cancellation</A></TD>
+				<!$MGENDIF>
+			<!$MGELSE>
+				<!$MGIF_REGISTRATION_AUTHORIZED>
+					<TD align="left" nowrap><A CLASS="bTextBlue" href="https://<!$MG_Server_Name>/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSClassRegistration&ARGUMENTS=-N<!$MG_Session_Number>,-A<!$MG_Class_ID>,-N0&GoBack_PRG=<!$MG_GoBack_PRG>&GoBack_ARG=<!$MG_GoBack_ARG>">Proceed to Registration</A></TD>
+				<!$MGENDIF>
+				<!$MGIF_IN_CART>
+					<TD align="left" nowrap><A CLASS="bTextBlue" href="https://<!$MG_Server_Name>/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSRegistrationCart&ARGUMENTS=-N<!$MG_Session_Number>&GoBack_PRG=<!$MG_GoBack_PRG>&GoBack_ARG=<!$MG_GoBack_ARG>">Class In Cart - View Cart</A></TD>
+				<!$MGENDIF>
+			<!$MGENDIF>
+		</TR>
+	</TABLE>
+<!$MGENDIF>
+</CENTER>
+<BR>

@@ -1,0 +1,69 @@
+<SCRIPT LANGUAGE="JavaScript">
+<!---
+/////////////////////////////////////////////////////////////////////
+function SubmitForm(vOption)
+{
+	document.DisplayAward.MenuOption.value = vOption;
+	document.DisplayAward.submit();
+}
+	
+/////////////////////////////////////////////////////////////////////
+//--->
+</SCRIPT>
+
+
+<FORM Name="DisplayAward"action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="IMSAwards">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Num>,-A1">
+	<INPUT type="hidden" name="MenuOption"   value="0">
+
+
+<TABLE border=0 cellspacing="1" width="100%">
+	<TR CLASS="bgbar">
+		<TD CLASS="bText" align="Center"  width="5%">Modify</TD>
+		<TD CLASS="bText" align="Center" width="30%">Association</TD>
+		<TD CLASS="bText" nowrap align="Center" width="5%">Year</TD>
+		<TD CLASS="bText" nowrap align="Center" width="30%">Office</TD>
+		<TD CLASS="bText" align="center" nowrap width="15%">Specialization</TD>
+		<TD CLASS="bText" align="center" nowrap width="5%">Trans.</TD>
+		<TD CLASS="bText" align="center" nowrap width="10%">Amount</TD>
+	</TR>
+	<!$MGREPEAT>
+		<TR>
+			<!$MGIF_MODIFY_RECORD>
+				<TD align="center" nowrap width="5%">
+					<A href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_L1>&PRGNAME=IMSAwards&ARGUMENTS=-N<!$MG_Session_Number_L1>,-A2,-A<!$MG_Association_L1>,-A<!$MG_Year_L1>"><IMG src="<!$MG_Images_Path>white_circle.gif" border="0"></A>
+				</TD>
+			<!$MGELSE>
+				<TD align="center" nowrap width="5%">
+					&nbsp;
+				</TD>
+			<!$MGENDIF>
+			<TD CLASS="nnText" align="left" nowrap width="30%"><!$MG_Association></TD>
+			<TD CLASS="nnText" align="Center" nowrap  width="5%"><!$MG_Year></TD>
+			<TD CLASS="nnText" align="left" nowrap  width="30%"><!$MG_Office></TD>
+			<TD CLASS="nnText" align="left" nowrap width="15%"><!$MG_Specialization></TD>
+			<TD CLASS="nnText" align="center" nowrap width="5%"><!$MG_Transaction></TD>
+			<TD CLASS="nnText" align="right" nowrap width="10%"><!$MG_Amount></TD>
+		</TR>
+	<!$MGENDREPEAT>
+	<TR>
+		<TD colspan="5" nowrap>&nbsp;</TD>
+		<TD align="right" colspan="2" nowrap><HR></TD>
+	</TR>
+	<TR>
+		<TD colspan="5" nowrap></TD>
+		<TD CLASS="nnText" align="Center" nowrap><!$MG_Total_Transaction></TD>
+		<TD CLASS="nnText" align="right" nowrap><!$MG_Total_Amount></TD>
+	</TR>
+</TABLE>
+ <TABLE border="0" width="100%">
+	<TR>
+		<TD Align="Center" >
+			<INPUT type="Button" name="Add" value="Add New Sales" onClick="SubmitForm('1')">
+		</TD>
+	</TR>
+</TABLE>
+</FORM>
+

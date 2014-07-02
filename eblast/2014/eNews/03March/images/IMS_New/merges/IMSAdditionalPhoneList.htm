@@ -1,0 +1,50 @@
+
+<CENTER>
+
+<BR>
+<TABLE border="0" cellspacing="0" cellpadding="0" width="100%">
+	<TR CLASS="bgbar">
+		<TD CLASS="bText" valign="top" nowrap>Phone Number</TD>
+		<TD CLASS="bText" valign="top" nowrap>Type</TD>
+		<TD CLASS="bText" valign="top" nowrap>Sort Sequence</TD>
+	</TR>
+	<!$MGREPEAT>
+		<TR>
+			<TD valign="top" nowrap><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R1>&PRGNAME=IMSModifyAdditionalPhones&ARGUMENTS=-N<!$MG_Session_Number_R1>,-N<!$MG_Mem/Ofc_Number_R1>,-A<!$MG_M/O_Type_R1>,-A<!$MG_Came_From_R1>,-A<!$MG_Phone_Type_R1>"><!$MG_Addl_Phone_Number></A></TD>
+			<TD CLASS="nnText" valign="top" nowrap><!$MG_Addl_Phone_Description></TD>
+			<TD CLASS="nnText" valign="top" nowrap><!$MG_Addl_Phone_Sort_Seq></TD>
+		</TR>
+	<!$MGENDREPEAT>
+</TABLE>
+
+
+<BR><BR>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<TR align="left">
+		<TD align="center" nowrap><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSInputAdditionalPhones&ARGUMENTS=-N<!$MG_Session_Number>,-N<!$MG_Mem/Ofc_Number>,-A<!$MG_M/O_Type>,-A<!$MG_Came_From>">Create New Phone</A></TD>
+		<!$MGIF_MEMBER_TYPE>
+			<TD align="right" nowrap><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSMemberUtilitiesMenu&ARGUMENTS=-N<!$MG_Session_Number>,-N<!$MG_Mem/Ofc_Number>,-AM">Member Utilities Menu</A></TD>
+		<!$MGENDIF>
+		<!$MGIF_OFFICE_TYPE>
+			<TD align="right" nowrap><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSMemberUtilitiesMenu&ARGUMENTS=-N<!$MG_Session_Number>,-N<!$MG_Mem/Ofc_Number>,-AO">Office Utilities Menu</A></TD>
+		<!$MGENDIF>
+
+		<!-- no longer used <!$MGIF_PERSONAL_TYPE>
+			<TD align="right" nowrap><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSMemberPersonalInfo&ARGUMENTS=-N<!$MG_Session_Number>">Back to Personal Information</A></TD>
+		<!$MGENDIF>-->
+
+		<TD align="center" colspan="3" nowrap><INPUT TYPE="Button" VALUE="Close this window" onClick="CloseWindow()"></TD>
+		<SCRIPT LANGUAGE="JavaScript">
+				<!---
+				function CloseWindow()
+				{
+				window.close();
+				}
+				//--->
+		</SCRIPT>
+	</TR>
+</TABLE>
+
+
+<BR>
+</CENTER>

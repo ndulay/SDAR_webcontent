@@ -1,0 +1,277 @@
+<HTML>
+<HEAD>
+<META name="Rapattoni Corporation" content="Magic 8 IMS">
+<TITLE>IMS LookUp Bill Type </TITLE>
+<!-- Program = IMS LookUp Multi Select -->
+
+<STYLE TYPE="text/css">
+	BODY
+	{
+		background: white;
+		color: black;
+		vertical-align: top
+	}
+
+	TABLE
+	{
+		width: 100%
+	}
+
+	TR
+	{
+		background: whitesmoke;
+		color: black;
+		font-family: arial;
+		font-size: 8pt
+	}
+
+	TD
+	{
+		vertical-align: middle
+	}
+
+	FONT
+	{
+		font-family: arial;
+		font-size: 8pt;
+		color: red;
+	}
+
+	.titleBar
+	{
+		background: #004080;
+		color: white;
+		height: 22px;
+		font-family: arial;
+		font-size: 12pt;
+		font-weight: bold;
+		vertical-align: middle
+	}
+</STYLE>
+
+<SCRIPT language="javascript">
+	// Get References to Search page
+	var objSearchForms = window.opener.document.forms;
+	var objBill_TypeFillIn = objSearchForms["InputForm"].elements["Bill_Type_FillIn"];
+	var strCheckboxBehavior = "<!$MG_Checkbox_Behavior>";
+	var objCheckbox = null;
+
+	function InitCheckboxes()
+		{
+		// Get reference to this page's Elements collection
+		var objElements = document.forms["InputForm"].elements;
+
+		var strTemp = RemoveSpaces(objBill_TypeFillIn.value);
+		var strBill_Type = "";
+		var strToken = ",";
+		var intTokenIndex = 0;
+		
+		window.resizeTo(400,350);
+		window.focus();
+
+		// Parse Bill_Type_Fill_In field
+		while((intTokenIndex = strTemp.indexOf(strToken)) != -1)
+		{
+			// Get next value and update strTemp
+			strBill_Type = strTemp.substring(0, intTokenIndex);
+			strTemp = strTemp.substr(intTokenIndex + 1);
+	
+			// Find Bill_Type and set checkbox,
+			// exit For Loop when number found
+					for(var i=1; i <= <!$MG_Total_Bill_Type_Count>; i++)  // ** Magic merge tag **
+					{
+						if(objElements["Bill_Type_Number_" + i].value == strBill_Type)
+						{
+							objElements["Bill_Type_" + i].checked = true;
+							break;
+						}
+					}
+			}
+		
+		{
+		// Find Bill_Type and set checkbox,
+		// exit For Loop when number found
+				for(var i=1; i <= <!$MG_Total_Bill_Type_Count>; i++)  // ** Magic merge tag **
+				{
+					if(objElements["Bill_Type_Number_" + i].value == strTemp)
+					{
+						objElements["Bill_Type_" + i].checked = true;
+						objCheckbox = objElements["Bill_Type_" + i];
+						break;
+					}
+				}
+			}
+		
+		return true;
+	}
+	function UpdateSearchWindow()
+	{
+		// Get reference to this page's Elements collection
+		var objElements = document.forms["InputForm"].elements;
+
+		var strBill_Types = "";
+		var intPreviousBill_Type = 0;
+		var boolSequenceBreak = true;
+		var intSequenceCount = 0;
+		
+		// Clear Bill_Type_Fill_In field and loop through bill type checkboxes
+		objBill_TypeFillIn.value = strBill_Types;
+		for(var i=1; i <= <!$MG_Total_Bill_Type_Count>; i++)  // ** Magic merge tag **
+		{
+			if(objElements["Bill_Type_" + i].checked == true)
+			{
+				strBill_Types = strBill_Types + objElements["Bill_Type_Number_" + i].value + ",";
+			}
+		}
+		
+		{
+			objSearchForms["InputForm"].elements["Bill_Type_FillIn"].value = 
+			strBill_Types.substr(0,strBill_Types.length - 1);
+ 		}
+		window.close();
+		return true;
+	}
+
+	function SetCheckboxes()
+	{
+		// Get reference to this page's Elements collection
+		var objElements = document.forms["InputForm"].elements;
+
+		if(objElements["btn1CheckAll"].value == "  Check All  ")
+		{
+			for(var i=1; i<=<!$MG_Total_Bill_Type_Count>; i++)  // ** Magic merge tag **
+			{
+				objElements["Bill_Type_" + i].checked = true;
+			}
+			objElements["btn1CheckAll"].value = "Uncheck All";
+			<!$MGIF_DISPLAY_LOWER_BUTTONS>  // ** Magic merge tag **
+				objElements["btn2CheckAll"].value = "Uncheck All";
+			<!$MGENDIF>  // ** Magic merge tag **
+		}
+		else
+		{
+			for(var i=1; i<=<!$MG_Total_Bill_Type_Count>; i++)  // ** Magic merge tag **
+			{
+				objElements["Bill_Type_" + i].checked = false;
+			}
+			objElements["btn1CheckAll"].value = "  Check All  ";
+			<!$MGIF_DISPLAY_LOWER_BUTTONS>  // ** Magic merge tag **
+				objElements["btn2CheckAll"].value = "  Check All  ";
+			<!$MGENDIF>  // ** Magic merge tag **
+		}
+		return true;
+	}
+
+	function RadioButton(Cbox)
+	{
+		// Get reference to this page's Elements collection
+		var objElements = document.forms["InputForm"].elements;
+		var boolCboxState = Cbox.checked;
+
+		if(strCheckboxBehavior == "R")
+		{
+			if(objCheckbox != null)
+			{
+				objCheckbox.checked = false;
+			}
+			Cbox.checked = boolCboxState;
+			objCheckbox = Cbox;
+		}
+
+		return true;
+	}
+
+	function RemoveSpaces(strString)
+	{
+		var strTemp = "";
+
+		for(var i = 0; i < strString.length; i++)
+		{
+			if(strString.substr(i, 1) != " ")
+			{
+				strTemp = strTemp + strString.substr(i,1);
+			}
+		}
+		return strTemp;
+	}
+
+</SCRIPT>
+
+</HEAD>
+
+<BODY onLoad="InitCheckboxes()">
+<CENTER>
+<FORM name="InputForm">
+
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="1">
+	<TR>
+		<TD class="titleBar">&nbsp;<!$MG_Bill_Types_Label></TD>
+	</TR>
+</TABLE>
+
+<DIV id="Loading">
+<BR><BR>
+<TABLE>
+	<TR align="center">
+		<TD bgcolor="white"><FONT color="brown" style="font-size:22pt"><B>Loading</B></FONT></TD>
+	</TR>
+	<TR align="center">
+		<TD bgcolor="white"><FONT color="brown" style="font-size:10pt"><B>Please Wait...</B></FONT></TD>
+	</TR>
+</TABLE>
+<BR>
+</DIV>
+
+<DIV id="Loaded" style="visibility:hidden">
+<TABLE>
+	<TR></TR>
+	<TR>
+		<!$MGIF_DISPLAY_CHECK_ALL_BUTTON>
+			<TD bgcolor="white">&nbsp;<INPUT type="button" value="  Check All  " name="btn1CheckAll" style="font-family: arial; font-size: 8pt" onClick="SetCheckboxes()"></TD>
+		<!$MGENDIF>
+		<TD align="center" bgcolor="white"><INPUT type="button" value="      OK     " name="btn1Ok" style="font-family: arial; font-size: 8pt" onClick="UpdateSearchWindow()"></TD>
+		<TD align="<!$MG_Align_Cancel_Button>" bgcolor="white"><INPUT type="button" value="    Cancel   " name="btn1Cancel" style="font-family: arial; font-size: 8pt" onClick="window.close()">&nbsp;</TD>
+	</TR>
+	<TR><TD colspan="3" bgcolor="white"><HR noshade size="1"></TD></TR>
+</TABLE>
+
+<TABLE>
+	<TR>
+		<TD></TD>
+		<TD>&nbsp;<B>Description</B></TD>
+		<TD>&nbsp;<B>Code</B></TD>
+	</TR>
+	<!$MGREPEAT>
+		<TR>
+			<TD width="1%"><INPUT type="checkbox" name="Bill_Type_<!$MG_Bill_Type_Count>" <!$MG_Checkbox_Checked> onclick="RadioButton(this)"></TD>
+			<TD>&nbsp;<!$MG_Bill_Type_Description></TD>
+			<TD><FONT>&nbsp;<!$MG_Bill_Type_Number></FONT><INPUT type="hidden" name="Bill_Type_Number_<!$MG_Bill_Type_Count>" value="<!$MG_Bill_Type_Number>"></TD>
+		</TR>
+	<!$MGENDREPEAT>
+</TABLE>
+
+<!$MGIF_DISPLAY_LOWER_BUTTONS>
+	<TABLE>
+		<TR><TD colspan="3" bgcolor="white"><HR noshade size="1"></TD></TR>
+		<TR>
+			<!$MGIF_DISPLAY_CHECK_ALL_BUTTON>
+				<TD bgcolor="white">&nbsp;<INPUT type="button" value="  Check All  " name="btn2CheckAll" style="font-family: arial; font-size: 8pt" onClick="SetCheckboxes()"></TD>
+			<!$MGENDIF>
+			<TD align="center" bgcolor="white"><INPUT type="button" value="      OK     " name="btn2Ok" style="font-family: arial; font-size: 8pt" onClick="UpdateSearchWindow()"></TD>
+			<TD align="<!$MG_Align_Cancel_Button>" bgcolor="white"><INPUT type="button" value="    Cancel   " name="btn2Cancel" style="font-family: arial; font-size: 8pt" onClick="window.close()">&nbsp;</TD>
+		</TR>
+	</TABLE>
+<!$MGENDIF>
+</DIV>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	document.getElementById('Loading').style.display = "none";
+	document.getElementById('Loaded').style.visibility = "visible";
+//-->
+</SCRIPT>
+
+</FORM>
+</CENTER>
+</BODY>
+</HTML>

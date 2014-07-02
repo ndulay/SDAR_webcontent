@@ -1,0 +1,107 @@
+<SCRIPT LANGUAGE="JavaScript">
+<!---
+		
+function SubmitForm(Value) 
+{
+  document.WebParameters.Action.value = Value;
+  document.WebParameters.submit();
+    
+}
+/////////////////////////////////////////////////////////////////////
+//--->
+</SCRIPT>
+
+<CENTER>
+<BR>
+<TABLE border="0" cellpadding="0" cellspacing="0" width="100%">
+	<TR CLASS="bgbar">
+		<TD CLASS="nnText" nowrap>&nbsp;Transaction Status For Receipt # <!$MG_Receipt_num>, Batch ID <!$MG_Batch_ID>, Member Name <!$MG_Member_Name></TD>
+	</TR>
+</TABLE>
+
+<FORM NAME="WebParameters" action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="OpenedWebTransactionUpdate">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-N<!$MG_Merchant_ID>,-N<!$MG_Transaction_Number>,-N<!$MG_EC_Control_Number>,-A<!$MG_LoginID>">
+	<INPUT type="hidden" name="Action" value="">
+	<INPUT type="hidden" name="Batch_ID" value="<!$MG_Param_Batch_ID>">
+	<INPUT type="hidden" name="From_Date" value="<!$MG_Param_From_Date>">
+	<INPUT type="hidden" name="Until_Date" value="<!$MG_Param_Until_Date>">
+	<INPUT type="hidden" name="Transaction" value="<!$MG_Param_Transaction>">
+	<INPUT type="hidden" name="Status" value="<!$MG_Param_Status>">
+	<INPUT type="hidden" name="ProcessType" value="<!$MG_ProcessType>">
+	<INPUT type="hidden" name="ErrorCode" value="<!$MG_Code>">
+	<INPUT type="hidden" name="From_Time" value="<!$MG_Param_From_Time>">
+	<INPUT type="hidden" name="Until_Time" value="<!$MG_Param_Until_Time>">
+	
+
+<BR>
+<TABLE noborder Align="Center" width="100%" cellpadding="0" cellspacing="1">
+		<TR>
+			<TD CLASS="bText" align="left" nowrap width="20%">&nbsp;Merchant ID</TD>
+			<TD CLASS="bText" align="left" nowrap width="80%">&nbsp;<!$MG_Merchant_trans_ID></TD>
+		</TR>
+		<TR>
+			<TD CLASS="bText" align="left" nowrap width="20%">&nbsp;Transaction #</TD>
+			<TD CLASS="bText" align="left" nowrap width="80%">&nbsp;<!$MG_Transaction></TD>
+		</TR>
+		<TR>
+			<TD CLASS="bText" align="left" nowrap width="20%">&nbsp;EC Control Number</TD>
+			<TD CLASS="bText" align="left" nowrap width="80%">&nbsp;<!$MG_ECC_Control></TD>
+		</TR>
+		<TR>
+			<TD CLASS="bText" align="left" nowrap width="20%">&nbsp;Result Code</TD>
+			<TD CLASS="bText" align="left" nowrap width="80%">&nbsp;<!$MG_Code></TD>
+		</TR>
+		<TR>
+			<TD CLASS="bText" align="left" nowrap width="20%">&nbsp;Result Message</TD>
+			<TD CLASS="bText" align="left" nowrap width="80%">&nbsp;<!$MG_Message></TD>
+		</TR>
+		<TR>
+			<TD CLASS="bText" align="left" nowrap width="20%">&nbsp;Action</TD>
+			<TD CLASS="bText" align="left" nowrap width="80%">&nbsp;<!$MG_Action></TD>
+		</TR>
+</TABLE>
+<BR>
+<TABLE border="0" width="100%">
+	<TR align="left">
+		<TD  nowrap>
+					<A  CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMS_Web_Log_Transaction&ARGUMENTS=-N<!$MG_Session_Number>&ProcessType=<!$MG_ProcessType>&Batch_ID=<!$MG_Param_Batch_ID>&From_Date=<!$MG_Param_From_Date>&Until_Date=<!$MG_Param_Until_Date>&Transaction=<!$MG_Param_Transaction>&Status=<!$MG_Param_Status>&From_Time=<!$MG_Param_From_Time>&Until_Time=<!$MG_Param_Until_Time>">Back To The Result List</A>
+		</TD>
+	</TR>
+</TABLE>
+<BR>
+<CENTER>
+
+<!$MGIF_STARTED_STATUS_OK>
+	<TABLE noborder Align="Center" width="100%" cellpadding="0" cellspacing="1">
+		<TR>
+			<TD CLASS="bTextRed" align="Center">This transaction is in started status. Please click the continue button and call NAR to verify<BR> this transactions' status.
+							Once NAR has verified that this transaction was NOT PROCESSED,<BR>then click the "Void This Transaction" button below.</TD>
+		</TR>
+		<TR>
+			<TD>&nbsp;&nbsp;</TD>
+		</TR>
+		<TR>
+			<TD CLASS="bTextRed" align="Center">
+				<input type="button" value="Continue" name="Continue" onClick="SubmitForm('C')";>
+			</TD>
+		</TR>
+	</TABLE>
+<!$MGENDIF>
+<BR>
+<!$MGIF_VOID_OK>
+	<input type="button" value="Void This Transaction" name="Void" onClick="SubmitForm('V')";>
+<!$MGENDIF>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<!$MGIF_UPDATE_OK>
+	<input type="button" value="Update This Transaction" name="Update" onClick="SubmitForm('U')";>
+<!$MGENDIF>
+</CENTER>
+</FORM>
+
+
+<BR>
+
+</CENTER>
+

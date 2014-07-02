@@ -1,0 +1,39 @@
+<CENTER>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+	<BR>
+	<TR>
+		<TD Class=bigTextMarine align="left" nowrap>Select an Office</TD>
+	</TR>
+</TABLE>
+<BR>
+<TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+
+	<!$MGREPEAT>
+		<TR>
+			<!$MGIF_SHOW_OFF_ID>
+				<TD CLASS="nnText" nowrap><!$MG_Office_MLS_ID>&nbsp;&nbsp;</TD>
+			<!$MGENDIF>
+			<TD nowrap><A CLASS="bTextBlue"  href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R2>&PRGNAME=IMSViewAccount&ARGUMENTS=-N<!$MG_Session_Number_R2>,-N0,-N0,-N0,-A<!$MG_Billing_Group_R2>,-AO,-N<!$MG_Office_Number_R2>"><!$MG_OFF_OFFICE_NAME></A>&nbsp;&nbsp;</TD>
+			<TD CLASS="nnText"><!$MG_OFF_OFFICE_ADDRESS></TD>
+		</TR>
+	<!$MGENDREPEAT>
+
+</TABLE>
+<BR>
+<!$MGIF_INACTIVE_OFC_EXIST>
+	<TABLE border="0" cellpadding="0" cellspacing="1" width="100%">
+		<TR>
+			<TD  align="center" nowrap><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSViewAccount&ARGUMENTS=-N<!$MG_Session_Number>,-N6,-N,-N,-A<!$MG_Billing_Group>,-AO">View All Offices</A></TD>
+		</TR>
+<!$MGENDIF>
+	</TABLE>
+
+<!$MGIF_DISPLAY_ACTIVE_OFC>
+	<TABLE border="0" cellpadding="0" cellspacing="1" width="100%">
+		<TR>
+			<TD  align="center" nowrap><A CLASS="bTextBlue" href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSViewAccount&ARGUMENTS=-N<!$MG_Session_Number>,-N2,-N,-N,-A<!$MG_Billing_Group>,-AO">View All Active Offices</A></TD>
+		</TR>
+	<!$MGENDIF>
+	</TABLE>
+</CENTER>
+<BR>

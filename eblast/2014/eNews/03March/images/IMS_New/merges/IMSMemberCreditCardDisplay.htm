@@ -1,0 +1,57 @@
+	
+<CENTER>
+<FORM NAME="MemberCreditCardDisplay" action="https://<!$MG_Server_name>/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="IMSMemberCreditCardEnty">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-N1,-LF">
+	<INPUT type="hidden" name="CheckSubmit" value="1">
+		
+<BR>
+<TABLE border="0" width="100%" cellpadding="2" cellspacing="0">
+	<TR CLASS="bgbar">
+		<TD CLASS="nnText" align="left" nowrap>&nbsp;The following credit card is currently on file </TD>
+	</TR>
+</TABLE>
+<BR>
+<TABLE border="0" width="50%" cellpadding="0" cellspacing="2">
+	<TR>
+		<TD align="left" colspan="4" nowrap>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" nowrap>&nbsp;Credit Card Type</TD>
+		<TD CLASS="nnText" nowrap><!$MG_Pmt_Card_Descr></TD>
+	</TR>
+	<TR>
+		<TD CLASS="bText" nowrap>&nbsp;Credit Card Number&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+		<TD CLASS="nnText" nowrap><!$MG_Display_Card_Number></TD>
+			<!$MGIF_CID_EXISTS>
+				<TD CLASS="bText" nowrap>Card ID&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+				<TD CLASS="nnText" nowrap><!$MG_Card_CID>&nbsp;&nbsp;&nbsp;</TD>
+				<TD nowrap>&nbsp;</TD>
+			<!$MGENDIF>
+	</TR>
+	<TR>
+		<TD CLASS="bText" nowrap>&nbsp;Expiration Date (MM/YY)</TD>
+		<TD CLASS="<!$MG_Display_Style>" nowrap><!$MG_Expiration_Date>
+			<!$MGIF_CARD_EXPIRED>
+				&nbsp;&nbsp;&nbsp;Card Expired
+			<!$MGENDIF>
+			</TD>
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+		<TD nowrap><A CLASS="sTextBlue"
+		 href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name>&PRGNAME=IMSMemberCreditCardEntry&ARGUMENTS=-N<!$MG_Session_Number>,-N1,-LT">Modify this Credit Card</A>
+		</TD>
+	</TR>
+	<TR>
+		<TD colspan="2" nowrap>&nbsp;</TD>
+	</TR>
+</TABLE>
+	
+</FORM>
+
+</CENTER>

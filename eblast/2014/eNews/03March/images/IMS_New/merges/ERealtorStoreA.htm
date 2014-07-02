@@ -1,0 +1,108 @@
+<SCRIPT language="javascript" src="IMSTrimUtilities.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+<!---
+function setCookie (name,value,expires,path,domain,secure) 
+{
+  document.cookie = name + "=" + escape (value) +
+    ((expires) ? "; expires=" + expires.toGMTString() : "") +
+    ((path) ? "; path=" + path : "") +
+    ((domain) ? "; domain=" + domain : "") +
+    ((secure) ? "; secure" : "");
+}
+function updSession()
+{
+	var twoHours = <!$MG_TimeOut>*1000;
+	var expDate = new Date();
+	var secondExpire = expDate.getTime();
+	//alert(secondExpire);
+	expDate.setTime(expDate.getTime() + twoHours);
+	setCookie("imssession",<!$MG_Session_Number>,expDate,"/",null,false);	
+	setCookie("imslastConnect",secondExpire,expDate,"/",null,false);	
+}
+function checkSearch()
+{
+	if(TrimSpaces(document.getElementById('SearchText').value)=='')
+	{
+		if (document.getElementById('SearchCategory').value == '')
+		{
+			alert('Please enter a value or select a Category');
+			return false
+		}
+		else
+		{
+			//return(confirm('You have not entered any search value. Click OK to view the products in the Category selected or Cancel'));
+		}
+	}
+}
+/////////////////////////////////////////////////////////////////////
+//--->
+</SCRIPT>
+<CENTER>
+<FORM name="InputForm" action="/scripts/mgrqispi.dll" method="POST">
+	<INPUT type="hidden" name="APPNAME" value="<!$MG_App_Name>">
+	<INPUT type="hidden" name="PRGNAME" value="ERealtorStore">
+	<INPUT type="hidden" name="ARGUMENTS" value="-N<!$MG_Session_Number>,-N5,-A<!$MG_Billing_Group>">
+<CENTER>
+<TABLE border="0" cellspacing="0" cellpadding="1" width="100%">
+	<TR>
+		<TD CLASS="bTextMarine" nowrap width="50%">
+			&nbsp;<INPUT CLASS="input" type="text" size="30" id="SearchText" name="Search_Text" maxlength="30" value="<!$MG_Search_Text>">&nbsp;
+			<SELECT name="Search_Category" id="SearchCategory">
+				<OPTION value="">All Categories</OPTION>
+			<!$MGREPEAT>
+				<OPTION value="<!$MG_Category_Code_R2>" <!$MG_Category_Selected_R2> ><!$MG_Category_Description_R2></option>
+			<!$MGENDREPEAT>
+			</SELECT>
+			<INPUT type="submit" name="submit" value="Search" onclick="return checkSearch()">			
+	<!$MGIF_NO_RESULTS>
+		<FONT CLASS="bTextRed">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The search criteria you entered returned no results
+		</FONT>
+	<!$MGENDIF>
+	<!$MGIF_RESULTS>
+		</TD>
+		<TD CLASS="bTextMarine">
+			&nbsp;&nbsp;&nbsp;<!$MG_Search_Count> Product(s) found
+	<!$MGENDIF>
+		</TD>
+	</TR>
+</TABLE>
+</FORM>
+<!$MGIF_DISPLAY_CATEGORIES>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="1">
+	<TR CLASS="bgbar">
+		<TD CLASS="bText" align="left" colspan="4" nowrap>&nbsp;Product Categories</TD>
+	</TR>
+		<TD CLASS="bTextMarine" nowrap>
+			&nbsp;To view store products, click on a category below:<BR><BR>
+		</TD>
+	</TR>
+</TABLE>
+	<!$MGIF_ITEMS_EXIST>
+<TABLE border="0" width="100%" cellpadding="0" cellspacing="1">
+	<TR>
+		<TD valign="top"  width="33%">
+			<UL>
+	<!$MGREPEAT>
+				<LI><A CLASS="bTextBlue"  href="/scripts/mgrqispi.dll?APPNAME=<!$MG_App_Name_R1>&PRGNAME=ERealtorStore&ARGUMENTS=-N<!$MG_Session_Number_R1>,-N2,-A<!$MG_Billing_Group_R1>,-A<!$MG_Category_Code>"><!$MG_Category_Description></A>
+				</LI>
+	<!$MGIF_NEW_COLUMN>
+			</UL>
+		</TD>
+		<TD valign="top" width="33%">
+			<UL>
+	<!$MGENDIF>
+	<!$MGENDREPEAT>
+			</UL>
+		</TD>
+	</TR>
+</TABLE>
+	<!$MGELSE>
+			<TR>
+				<TD CLASS="bTextRed" colspan="7" align="left" nowrap>&nbsp;No items exist for this location</TD>
+			</TR>
+	<!$MGENDIF>
+</TABLE>
+<BR>
+<!$MGENDIF>
+</CENTER>

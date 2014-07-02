@@ -1,0 +1,66 @@
+/**
+* @version   $Id: stylepanel.css 585 2012-05-01 21:51:29Z kevin $
+* @author    RocketTheme http://www.rockettheme.com
+* @copyright Copyright (C) 2007 - ${copyright_year} RocketTheme, LLC
+* @license   http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+*/
+
+.style-panel-container {position: absolute;left: 0;top: 120px;z-index: 10;}
+.style-panel2 {width: 104px;padding: 10px;position: relative;z-index: 2;}
+.style-panel-toggle {position: absolute;width: 22px;height: 35px;right: -21px;top: 10px;border-radius: 0 3px 3px 0;cursor: pointer;z-index: 10;}
+.style-panel-toggle span {display: block;text-align: center;font-size: 2.3em;line-height: 30px;height: 35px;position: relative;}
+.style-panel-toggle.turkey span {-webkit-transform: rotate(-180deg);-moz-transform: rotate(-180deg);-o-transform: rotate(-180deg);-ms-transform: rotate(-180deg);transform: rotate(-180deg);}
+.presets-title {font-weight: bold;display: block;font-size: 1.3em;line-height: 1.6em;padding: 0;margin-bottom: 10px;}
+.presets-block {overflow: hidden;margin-bottom: 15px;}
+.preset-item, .pattern-item, .main-item {display: block;width: 22px;height: 22px;float: left;margin: 0 2px 4px;cursor: pointer;}
+.preset-item, .pattern-item, .main-item {box-shadow: 1px 1px 2px rgba(0,0,0,0.4);}
+.pattern-item.active {width: 20px;height: 20px;}
+.colortop, .colorbottom {width: 22px;height: 11px;display: block;}
+.style1 .colortop {background: #F34557;}
+.style2 .colortop {background: #3095c7;}
+.style3 .colortop {background: #de2323;}
+.style4 .colortop {background: #3A5472;}
+.style5 .colortop {background: #7EAF28;}
+.style6 .colortop {background: #EA7130;}
+.style7 .colortop {background: #895A70;}
+.style8 .colortop {background: #D0B535;}
+.style9 .colortop {background: #7EAF28;}
+.style10 .colortop {background: #F38D2A;}
+.style11 .colortop {background: #de2323;}
+.style12 .colortop {background: #258DC2;}
+.style1 .colorbottom, .style2 .colorbottom, .style3 .colorbottom, .style4 .colorbottom, .style5 .colorbottom, .style6 .colorbottom, .style7 .colorbottom, .style8 .colorbottom {background: #fff;}
+.style9 .colorbottom, .style10 .colorbottom, .style11 .colorbottom, .style12 .colorbottom {background: #000;}
+.style-panel-container input {font-size: 10px;padding: 5px 4px;border-radius: 3px;}
+.moorainbow {text-shadow: none;}
+.moorainbow .moor-hexLabel {margin-top: 120px;}
+.pattern-item {background-image: url(../images/stylepanel-patterns.png);}
+.scratch {background-position: 0 0;}
+.graph {background-position: -22px 0;}
+.diagonal {background-position: -44px 0;}
+.crackle {background-position: -66px 0;}
+.psychedelic {background-position: 0 -22px;}
+.quilt {background-position: -22px -22px;}
+.triangles {background-position: -44px -22px;}
+.leather-light {background-position: -66px -22px;}
+.leather-dark {background-position: 0 -44px;}
+.argyle {background-position: -22px -44px;}
+.iron {background-position: -44px -44px;}
+.vertical-lines {background-position: -66px -44px;}
+
+.main-style-light .style-panel {box-shadow: 0 0 7px rgba(0,0,0,0.2);background-color: #F4F4F4;border-top: 1px solid #e0e0e0;border-right: 1px solid #e0e0e0;border-bottom: 1px solid #e0e0e0;}
+.main-style-light .style-panel2 {border-top: 1px solid #c0c0c0;border-right: 1px solid #c0c0c0;border-bottom: 1px solid #c0c0c0;}
+.main-style-light .style-panel-toggle {background-color: #F4F4F4;border-top: 1px solid #e0e0e0;border-right: 1px solid #e0e0e0;border-bottom: 1px solid #e0e0e0;box-shadow: 3px 0 4px rgba(0,0,0,0.1);color: #999;}
+.main-style-light .style-panel-toggle2 {border-top: 1px solid #c0c0c0;border-right: 1px solid #c0c0c0;border-bottom: 1px solid #c0c0c0;}
+.main-style-light .main-item.light {background: #fff;}
+.main-style-light .main-item.dark {background: #000;}
+.main-style-light .presets-title {border-bottom: 1px dashed #ddd;}
+.main-style-light .style-panel-container input {border: 1px solid #ccc;}
+
+.main-style-dark .style-panel {box-shadow: 0 0 7px rgba(0,0,0,0.5);background-color: #303030;border-top: 1px solid #000;border-right: 1px solid #000;border-bottom: 1px solid #000;}
+.main-style-dark .style-panel2 {border-top: 1px solid #393939;border-right: 1px solid #393939;border-bottom: 1px solid #393939;}
+.main-style-dark .style-panel-toggle {background-color: #303030;border-top: 1px solid #000;border-right: 1px solid #000;border-bottom: 1px solid #000;box-shadow: 3px 0 4px rgba(0,0,0,0.5);color: #999;}
+.main-style-dark .style-panel-toggle2 {border-top: 1px solid #393939;border-right: 1px solid #393939;border-bottom: 1px solid #393939;}
+.main-style-dark .main-item.light {background: #fff;}
+.main-style-dark .main-item.dark {background: #000;}
+.main-style-dark .presets-title {border-bottom: 1px dashed #484848;}
+.main-style-dark .style-panel-container input {background: #484848;border: 1px solid #555;color: #ddd;}
