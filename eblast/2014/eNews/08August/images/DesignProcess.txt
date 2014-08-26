@@ -1,0 +1,18 @@
+- Begin each project by creating a folder in the appropriate location in the P drive (Commdata). Perform work on the Communications drive, not on your local hard drive or desktop.
+
+- When creating artwork save the native working file with layers. For example .psd and .ai files. Always perform changes on the working file and use it to export the final artwork.
+
+- Save the inDesign project file in the project folder previously created. Save ALL images used to the same folder and link to all files from within the folder (sub folders are okay). Do Not link to items on your local hard drive, desktop, or even folders within the Communications drive. When folders are moved or archived this will create broken links.
+
+- When placing artwork in inDesign, optimize the graphic first. Do not use PSD or PDF files in inDesign. Large placed files will result in a final PDF that cannot be reduced. The Layered working files should be saved in the project folder as well.
+
+- When updating forms, work from the original inDesign file (Not the PDF) on file in the Communications drive.
+
+- Save all stock art to the Communications drive after purchase.
+
+- Perform all typesetting in inDesign. Type from illustrator or photoshop can be used to get certain effects and filters, but copy should be done in inDesign.
+
+- Kern all headlines so they are tight but not touching (unless the headline is purposely being spaced)
+
+- When vector or .ai files are provided they should be imported as smart objects when brining them into photoshop as opposed to rasterizing.
+
